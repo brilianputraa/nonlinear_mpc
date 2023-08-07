@@ -52,6 +52,7 @@
 
 #include <memory>
 #include <mutex>
+#include <iostream>
 
 namespace mpc_local_planner {
 
@@ -574,6 +575,7 @@ corbo::StructuredOptimalControlProblem::Ptr Controller::configureOcp(const ros::
             ROS_ERROR_STREAM("State weights dimension invalid. Must be either " << x_dim << " x 1 or " << x_dim << " x " << x_dim << ".");
             return {};
         }
+        std::cout << "Q value " << Q << std::endl;
         std::vector<double> control_weights;
         nh.param("planning/objective/quadratic_form/control_weights", control_weights, control_weights);
         Eigen::MatrixXd R;

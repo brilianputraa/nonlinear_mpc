@@ -59,7 +59,10 @@ MpcLocalPlannerROS:
   ## Planning options
   planning:
     objective:
-      type: "minimum_time" # minimum_time requires grid/variable_grid/enable=True and grid/xf_fixed set properly
+      type: "quadratic_form" # minimum_time requires grid/variable_grid/enable=True and grid/xf_fixed set properly
+      quadratic_form: 
+        state_weights: [1.5, 0, 0, 0, 1.5, 0, 0, 0, 0.75]
+        control_weights: [0.0, 0.0, 0.0, 0.0]
     terminal_cost:
       type: "none"
     terminal_constraint:

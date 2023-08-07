@@ -1,0 +1,1 @@
+/home/vialab/mpc_traj_ws/devel/.private/mpc_local_planner_examples/lib/pkgconfig/mpc_local_planner_examples.pc

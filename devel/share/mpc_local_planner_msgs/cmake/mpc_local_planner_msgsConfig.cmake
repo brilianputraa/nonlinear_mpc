@@ -1,0 +1,1 @@
+/home/vialab/mpc_traj_ws/devel/.private/mpc_local_planner_msgs/share/mpc_local_planner_msgs/cmake/mpc_local_planner_msgsConfig.cmake
