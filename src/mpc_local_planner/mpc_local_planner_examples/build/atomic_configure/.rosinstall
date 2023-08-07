@@ -1,0 +1,2 @@
+- setup-file:
+    local-name: /home/vialab/car_ws/src/ackerman_ros_robot_gazebo_simulation/custom_controllers/mpc_local_planner_examples/build/devel/setup.sh

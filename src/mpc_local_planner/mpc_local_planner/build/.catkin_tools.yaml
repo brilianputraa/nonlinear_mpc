@@ -1,0 +1,6 @@
+devel_space: /home/vialab/mpc_traj_ws/mpc_local_planner/mpc_local_planner/devel
+install: false
+install_space: /home/vialab/mpc_traj_ws/mpc_local_planner/mpc_local_planner/install
+profile: default
+source_space: /home/vialab/mpc_traj_ws/mpc_local_planner/mpc_local_planner/src
+workspace: /home/vialab/mpc_traj_ws/mpc_local_planner/mpc_local_planner

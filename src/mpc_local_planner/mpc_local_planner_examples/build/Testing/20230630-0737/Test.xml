@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Site BuildName="(empty)"
+	BuildStamp="20230630-0737-Experimental"
+	Name="vialab"
+	Generator="ctest-3.26.3"
+	CompilerName="/usr/bin/g++"
+	CompilerVersion="7.5.0"
+	OSName="Linux"
+	Hostname="vialab"
+	OSRelease="5.4.0-150-generic"
+	OSVersion="#167~18.04.1-Ubuntu SMP Wed May 24 00:51:42 UTC 2023"
+	OSPlatform="x86_64"
+	Is64Bits="1"
+	VendorString="GenuineIntel"
+	VendorID="Intel Corporation"
+	FamilyID="6"
+	ModelID="85"
+	ProcessorCacheSize="19712"
+	NumberOfLogicalCPU="28"
+	NumberOfPhysicalCPU="14"
+	TotalVirtualMemory="2047"
+	TotalPhysicalMemory="63997"
+	LogicalProcessorsPerPhysical="2"
+	ProcessorClockFrequency="1525.35"
+	>
+	<Testing>
+		<StartDateTime>Jun 30 16:37 KST</StartDateTime>
+		<StartTestTime>1688110645</StartTestTime>
+		<TestList/>
+		<EndDateTime>Jun 30 16:37 KST</EndDateTime>
+		<EndTestTime>1688110645</EndTestTime>
+		<ElapsedMinutes>0</ElapsedMinutes>
+	</Testing>
+</Site>

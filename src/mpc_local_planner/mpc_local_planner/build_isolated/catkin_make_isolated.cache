@@ -1,0 +1,2 @@
+
+-G Unix Makefiles -DCATKIN_DEVEL_PREFIX=/home/vialab/mpc_traj_ws/mpc_local_planner/mpc_local_planner/devel_isolated -DCMAKE_INSTALL_PREFIX=/home/vialab/mpc_traj_ws/mpc_local_planner/mpc_local_planner/install_isolated
