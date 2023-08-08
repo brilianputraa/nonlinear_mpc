@@ -2023,6 +2023,8 @@ CMakeFiles/mpc_local_planner.dir/src/controller.cpp.o: /home/vialab/mpc_traj_ws/
   /home/vialab/mpc_traj_ws/src/mpc_local_planner/mpc_local_planner/include/mpc_local_planner/systems/unicycle_robot.h \
   /home/vialab/mpc_traj_ws/src/mpc_local_planner/mpc_local_planner/include/mpc_local_planner/utils/time_series_se2.h \
   /home/vialab/mpc_traj_ws/devel/.private/mpc_local_planner_msgs/include/mpc_local_planner_msgs/OptimalControlResult.h \
+  /opt/ros/melodic/include/ackermann_msgs/AckermannDriveStamped.h \
+  /opt/ros/melodic/include/ackermann_msgs/AckermannDrive.h \
   /opt/ros/melodic/include/control_box_rst/corbo-communication/utilities.h \
   /opt/ros/melodic/include/tf2/utils.h \
   /opt/ros/melodic/include/tf2/LinearMath/Transform.h \
@@ -5498,6 +5500,8 @@ CMakeFiles/mpc_local_planner.dir/src/mpc_local_planner_ros.cpp.o: /home/vialab/m
 
 /usr/include/eigen3/Eigen/src/SparseCore/SparseDenseProduct.h:
 
+/opt/ros/melodic/include/ackermann_msgs/AckermannDriveStamped.h:
+
 /usr/include/eigen3/Eigen/src/SparseCore/SparseDiagonalProduct.h:
 
 /usr/include/eigen3/Eigen/src/SparseCore/SparseView.h:
@@ -7085,6 +7089,8 @@ CMakeFiles/mpc_local_planner.dir/src/mpc_local_planner_ros.cpp.o: /home/vialab/m
 /usr/include/boost/mpl/aux_/na_assert.hpp:
 
 /usr/include/boost/mpl/vector/aux_/empty.hpp:
+
+/opt/ros/melodic/include/ackermann_msgs/AckermannDrive.h:
 
 /usr/include/boost/mpl/assert.hpp:
 

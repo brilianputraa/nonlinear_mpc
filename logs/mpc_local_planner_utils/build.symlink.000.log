@@ -1,0 +1,3 @@
+Symlinking /home/vialab/mpc_traj_ws/devel/lib/pkgconfig/mpc_local_planner_utils.pc
+Symlinking /home/vialab/mpc_traj_ws/devel/share/mpc_local_planner_utils/cmake/mpc_local_planner_utilsConfig.cmake
+Symlinking /home/vialab/mpc_traj_ws/devel/share/mpc_local_planner_utils/cmake/mpc_local_planner_utilsConfig-version.cmake

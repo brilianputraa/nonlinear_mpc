@@ -8,8 +8,8 @@ MpcLocalPlannerROS:
     simple_car:
       wheelbase: 2.48
       front_wheel_driving: False
-      max_vel_x: 2.5
-      max_vel_x_backwards: 1.0
+      max_vel_x: 1.5
+      max_vel_x_backwards: 0.5
       max_steering_angle: 0.5236
       acc_lim_x: 5.0 # deactive bounds with zero
       dec_lim_x: 2.0 # deactive bounds with zero
@@ -37,10 +37,11 @@ MpcLocalPlannerROS:
     costmap_obstacles_behind_robot_dist: 4.0
     collision_check_no_poses: 5
     
+
   ## Planning grid 
   grid:
     type: "fd_grid"
-    grid_size_ref: 10
+    grid_size_ref: 15
     dt_ref: 0.1
     xf_fixed: [True, True, True]
     warm_start: True
@@ -59,14 +60,9 @@ MpcLocalPlannerROS:
   ## Planning options
   planning:
     objective:
-      type: "quadratic_form" # minimum_time requires grid/variable_grid/enable=True and grid/xf_fixed set properly
-      quadratic_form: 
-        state_weights: [1.0, 0, 0, 0, 1.0, 0, 0, 0, 0.25]
-        control_weights: [0.05, 0.0, 0.0, 0.0]
+      type: "minimum_time" # minimum_time requires grid/variable_grid/enable=True and grid/xf_fixed set properly
     terminal_cost:
-      type: "quadratic"
-      quadratic: 
-        final_state_weights: [5.0, 0, 0, 0, 5.0, 0, 0, 0, 2.5]
+      type: "none"
     terminal_constraint:
       type: "none"
 
@@ -88,7 +84,7 @@ MpcLocalPlannerROS:
   solver:
     type: "ipopt"
     ipopt:
-      iterations: 10
+      iterations: 100
       max_cpu_time: -1.0
       warm_start_init_point: "yes"
       ipopt_numeric_options:

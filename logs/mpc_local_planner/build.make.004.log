@@ -1,9 +1,0 @@
-[ 23%] Built target mpc_local_planner_utils
-[ 70%] Built target mpc_local_planner_optimal_control
-[ 76%] [32mBuilding CXX object CMakeFiles/mpc_local_planner.dir/src/controller.cpp.o[0m
-[ 82%] [32mBuilding CXX object CMakeFiles/mpc_local_planner.dir/src/mpc_local_planner_ros.cpp.o[0m
-[ 88%] [32m[1mLinking CXX shared library /home/vialab/mpc_traj_ws/devel/.private/mpc_local_planner/lib/libmpc_local_planner.so[0m
-[ 88%] Built target mpc_local_planner
-[ 94%] [32mBuilding CXX object CMakeFiles/test_mpc_optim_node.dir/src/test_mpc_optim_node.cpp.o[0m
-[100%] [32m[1mLinking CXX executable /home/vialab/mpc_traj_ws/devel/.private/mpc_local_planner/lib/mpc_local_planner/test_mpc_optim_node[0m
-[100%] Built target test_mpc_optim_node

@@ -1,0 +1,2 @@
+- setup-file:
+    local-name: /home/vialab/mpc_traj_ws/devel/.private/mpc_local_planner_utils/setup.sh
