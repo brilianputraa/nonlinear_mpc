@@ -8,8 +8,8 @@ MpcLocalPlannerROS:
     simple_car:
       wheelbase: 2.48
       front_wheel_driving: False
-      max_vel_x: 2.0
-      max_vel_x_backwards: 1.0
+      max_vel_x: 1.111
+      max_vel_x_backwards: 0.8
       max_steering_angle: 0.5236
       acc_lim_x: 5.0 # deactive bounds with zero
       dec_lim_x: 5.0 # deactive bounds with zero
@@ -48,7 +48,7 @@ MpcLocalPlannerROS:
     collocation_method: "midpoint_differences"
     cost_integration_method: "left_sum"
     variable_grid:
-      enable: True  
+      enable: False  
       min_dt: 0.0;
       max_dt: 10.0;
       grid_adaptation:
@@ -62,7 +62,7 @@ MpcLocalPlannerROS:
     objective:
       type: "quadratic_form" # minimum_time requires grid/variable_grid/enable=True and grid/xf_fixed set properly
       quadratic_form: 
-        state_weights: [0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.05]
+        state_weights: [0.01, 0, 0, 0, 0.01, 0, 0, 0, 0.0]
         control_weights: [0.0, 0.0, 0.0, 0.0]
         integral_form: false
     terminal_cost:
@@ -75,12 +75,12 @@ MpcLocalPlannerROS:
   ## Controller options
   controller:
     outer_ocp_iterations: 1
-    xy_goal_tolerance: 0.5
+    xy_goal_tolerance: 0.25
     yaw_goal_tolerance: 0.1
     global_plan_overwrite_orientation: True
     global_plan_prune_distance: 1.0
     allow_init_with_backward_motion: True
-    max_global_plan_lookahead_dist: 5 
+    max_global_plan_lookahead_dist: 50 
     force_reinit_new_goal_dist: 1.0
     force_reinit_new_goal_angular: 1.57
     prefer_x_feedback: False
