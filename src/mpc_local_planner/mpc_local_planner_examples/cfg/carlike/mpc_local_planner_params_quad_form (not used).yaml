@@ -9,12 +9,12 @@ MpcLocalPlannerROS:
       wheelbase: 2.48
       front_wheel_driving: False
       max_vel_x: 2.0
-      max_vel_x_backwards: 2.0
+      max_vel_x_backwards: 1.0
       max_steering_angle: 0.5236
       acc_lim_x: 5.0 # deactive bounds with zero
       dec_lim_x: 5.0 # deactive bounds with zero
-      max_steering_rate: 0.174533  
-      # 0.115192 0.174533  # deactive bounds with zero
+      max_steering_rate: 0.115192 
+      # 0.174533  # deactive bounds with zero
 
   ## Footprint model for collision avoidance
   footprint_model: # types: "point", "circular", "two_circles", "line", "polygon"
@@ -45,10 +45,10 @@ MpcLocalPlannerROS:
     dt_ref: 0.05
     xf_fixed: [True, True, True]
     warm_start: True
-    collocation_method: "forward_differences"
+    collocation_method: "midpoint_differences"
     cost_integration_method: "left_sum"
     variable_grid:
-      enable: False  
+      enable: True  
       min_dt: 0.0;
       max_dt: 10.0;
       grid_adaptation:
@@ -62,13 +62,13 @@ MpcLocalPlannerROS:
     objective:
       type: "quadratic_form" # minimum_time requires grid/variable_grid/enable=True and grid/xf_fixed set properly
       quadratic_form: 
-        state_weights: [2.0, 0, 0, 0, 2.0, 0, 0, 0, 0.5]
-        control_weights: [1.0, 0.0, 0.5, 0.0]
+        state_weights: [0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.05]
+        control_weights: [0.0, 0.0, 0.0, 0.0]
         integral_form: false
     terminal_cost:
       type: "quadratic"
       quadratic: 
-        final_state_weights: [10.0, 0, 0, 0, 10.0, 0, 0, 0, 0.5]
+        final_state_weights: [1.0, 0, 0, 0, 1.0, 0, 0, 0, 0.25]
     terminal_constraint:
       type: "none"
 
@@ -80,7 +80,7 @@ MpcLocalPlannerROS:
     global_plan_overwrite_orientation: True
     global_plan_prune_distance: 1.0
     allow_init_with_backward_motion: True
-    max_global_plan_lookahead_dist: 50 
+    max_global_plan_lookahead_dist: 30 
     force_reinit_new_goal_dist: 1.0
     force_reinit_new_goal_angular: 1.57
     prefer_x_feedback: False
