@@ -8,12 +8,13 @@ MpcLocalPlannerROS:
     simple_car:
       wheelbase: 2.48
       front_wheel_driving: False
-      max_vel_x: 1.5
-      max_vel_x_backwards: 0.5
+      max_vel_x: 4.0
+      max_vel_x_backwards: 4.0
       max_steering_angle: 0.5236
       acc_lim_x: 5.0 # deactive bounds with zero
-      dec_lim_x: 2.0 # deactive bounds with zero
-      max_steering_rate: 0.174533 # 0.115192 # deactive bounds with zero
+      dec_lim_x: 5.0 # deactive bounds with zero
+      max_steering_rate: 0.174533  
+      # 0.115192 0.174533  # deactive bounds with zero
 
   ## Footprint model for collision avoidance
   footprint_model: # types: "point", "circular", "two_circles", "line", "polygon"
@@ -37,20 +38,19 @@ MpcLocalPlannerROS:
     costmap_obstacles_behind_robot_dist: 4.0
     collision_check_no_poses: 5
     
-
   ## Planning grid 
   grid:
     type: "fd_grid"
-    grid_size_ref: 20
-    dt_ref: 0.05
+    grid_size_ref: 50
+    dt_ref: 0.1
     xf_fixed: [True, True, True]
     warm_start: True
-    collocation_method: "forward_differences"
+    collocation_method: "crank_nicolson_differences"
     cost_integration_method: "left_sum"
     variable_grid:
       enable: True  
-      min_dt: 0.0;
-      max_dt: 10.0;
+      min_dt: 0.001
+      max_dt: inf
       grid_adaptation:
         enable: True
         dt_hyst_ratio: 0.1
@@ -60,23 +60,29 @@ MpcLocalPlannerROS:
   ## Planning options
   planning:
     objective:
-      type: "minimum_time" # minimum_time requires grid/variable_grid/enable=True and grid/xf_fixed set properly
+      type: "quadratic_form" # minimum_time requires grid/variable_grid/enable=True and grid/xf_fixed set properly
+      quadratic_form: 
+        control_weights: [0.01, 0.0, 0.0, 0.0]
+        integral_form: False
+        hybrid_cost_minimum_time: True
     terminal_cost:
-      type: "none"
+      type: "quadratic"
+      quadratic: 
+        final_state_weights: [10.0, 0, 0, 0, 10.0, 0, 0, 0, 1.0]
     terminal_constraint:
       type: "none"
 
   ## Controller options
   controller:
     outer_ocp_iterations: 1
-    xy_goal_tolerance: 0.1
+    xy_goal_tolerance: 0.4
     yaw_goal_tolerance: 0.1
     global_plan_overwrite_orientation: True
     global_plan_prune_distance: 1.0
     allow_init_with_backward_motion: True
-    max_global_plan_lookahead_dist: 5 
-    force_reinit_new_goal_dist: 1.0
-    force_reinit_new_goal_angular: 1.57
+    max_global_plan_lookahead_dist: 50 
+    force_reinit_new_goal_dist: 0.0
+    force_reinit_new_goal_angular: 0.0
     prefer_x_feedback: False
     publish_ocp_results: True
     
