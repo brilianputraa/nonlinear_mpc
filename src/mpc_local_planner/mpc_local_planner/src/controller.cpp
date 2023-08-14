@@ -87,7 +87,7 @@ bool Controller::configure(ros::NodeHandle& nh, const teb_local_planner::ObstCon
     // result publisher:
     _ocp_result_pub = nh.advertise<mpc_local_planner_msgs::OptimalControlResult>("ocp_result", 100);
     // change the topic name of the control pub here:
-    _ctrl_pub = nh.advertise<ackermann_msgs::AckermannDriveStamped>("/rbcar_robot_control/command", 1);
+    _ctrl_pub = nh.advertise<ackermann_msgs::AckermannDriveStamped>("/ack_cmd", 1);
 
     nh.param("controller/publish_ocp_results", _publish_ocp_results, _publish_ocp_results);
     nh.param("controller/print_cpu_time", _print_cpu_time, _print_cpu_time);
