@@ -1,6 +1,11 @@
 #!/usr/bin/env python2.7
-import rospy
 import re
+import math
+import sys
+import rospy
+import numpy as np
+import pandas as pd
+import tf
 
 from ackermann_msgs.msg import AckermannDriveStamped
 from mpc_local_planner_msgs.msg import OptimalControlResult
@@ -8,6 +13,13 @@ from actionlib_msgs.msg import GoalStatusArray
 
 
 pub_ctrl = rospy.Publisher("/rbcar_robot_control/command", AckermannDriveStamped, queue_size=1)
+
+
+# Global vars
+x_data = []
+y_data = []
+yaw_data = []
+vel_data = []
 
 
 def ocp_results_cb(ocp_res):
@@ -37,7 +49,7 @@ def control_cb(goal_stats):
                 control_msg.drive.jerk = 0.0
                 
                 pub_ctrl.publish(control_msg)
-    
+                
     
 def main():
     sub_goal = rospy.Subscriber("/move_base/status", GoalStatusArray, control_cb, queue_size=1)
