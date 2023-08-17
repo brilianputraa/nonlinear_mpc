@@ -40,7 +40,7 @@
 
 	<!-- Bagfiles-->
 	<node pkg="rosbag" type="record" name="traj_data_log_bag"
-		args="-o traj_data_log_bag /move_base_simple/goal /move_base/MpcLocalPlannerROS/obstacles /rbcar_robot_control/command /move_base/global_costmap/costmap  /move_base/MpcLocalPlannerROS/local_plan /move_base/MpcLocalPlannerROS/global_plan /move_base/MpcLocalPlannerROS/ocp_result /move_base/local_costmap/footprint /move_base/GlobalPlanner/potential /move_base/local_costmap/costmap /move_base/local_costmap/costmap /map /odoms" />
+		args="-o traj_data_log_bag /move_base_simple/goal /move_base/MpcLocalPlannerROS/obstacles /ack_cmd /move_base/global_costmap/costmap  /move_base/MpcLocalPlannerROS/local_plan /move_base/MpcLocalPlannerROS/global_plan /move_base/MpcLocalPlannerROS/ocp_result /move_base/local_costmap/footprint /move_base/GlobalPlanner/potential /move_base/local_costmap/costmap /move_base/local_costmap/costmap /map /INS/odom" />
 	
 	<!-- RViz-->
 	<node name="rviz" pkg="rviz" type="rviz" args="-d $(find mpc_local_planner_examples)/cfg/rviz_golfcart_navigation.rviz" if="$(arg rviz)"/>
