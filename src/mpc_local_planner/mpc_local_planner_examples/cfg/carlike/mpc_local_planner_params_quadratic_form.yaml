@@ -1,6 +1,6 @@
 MpcLocalPlannerROS:
 
-  odom_topic: /odom
+  odom_topic: /INS/odom
     
    ## Robot settings
   robot:
