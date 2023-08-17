@@ -5,6 +5,7 @@ import signal
 import math
 import sys
 import traceback
+import os
 
 import rospy
 import numpy as np
@@ -14,27 +15,36 @@ import message_filters
 
 from ackermann_msgs.msg import AckermannDriveStamped
 from mpc_local_planner_msgs.msg import OptimalControlResult
+from std_msgs.msg import Bool
 from nav_msgs.msg import Odometry
 from actionlib_msgs.msg import GoalStatusArray
 
 class ControlLogger:
     
     def __init__(self):
+        self.ros_time = []
         self.odom_x = []
         self.odom_y = []
         self.odom_yaw = []
         self.odom_vel = []
+        self.mpc_vel = []
+        self.mpc_steer = []
+        self.path_x = []
+        self.path_y = []
+        self.path_yaw = []
+        self.N = rospy.get_param("/move_base/MpcLocalPlannerROS/grid/grid_size_ref")
         self.pub_ctrl = rospy.Publisher("/rbcar_robot_control/command", AckermannDriveStamped, queue_size=1)
+        self.pub_stop = rospy.Publisher("/stop_signal", Bool, queue_size=1)
+        self.pub_mpc = rospy.Publisher("/activate_lmpc", Bool, queue_size=1)
         self.sub_goal = rospy.Subscriber("/move_base/status", GoalStatusArray, self.control_cb, queue_size=1)
-        self.sub_ctrl = message_filters.Subscriber("/move_base/MpcLocalPlannerROS/ocp_result", OptimalControlResult, queue_size=1)
-        self.sub_odom =  message_filters.Subscriber("/odoms", OptimalControlResult, queue_size=1)
+        self.sub_ctrl = message_filters.Subscriber("/move_base/MpcLocalPlannerROS/ocp_result", OptimalControlResult)
+        self.sub_odom =  message_filters.Subscriber("/odoms", Odometry)
         
         self.header_measurement = ["odom_x", "odom_y", "odom_vel", "odom_yaw"]
-        self.header_mpcOutput = ["mpc_vel", "mpc_steer"]
+        self.header_mpcOutput = ["ros_time", "mpc_vel", "mpc_steer"]
+        self.header_path = ["path_x", "path_y", "path_yaw"]
         
-        self.ts = message_filters.TimeSynchronizer([self.sub_ctrl, self.sub_odom], 1)
-        self.ts.registerCallback(self.data_logger_cb)
-        
+        self.ts = message_filters.ApproximateTimeSynchronizer([self.sub_ctrl, self.sub_odom], 10, 0.1, allow_headerless=True)
         signal.signal(signal.SIGINT, self.sigint_handler)
         
     def control_cb(self, goal_stats):
@@ -59,35 +69,44 @@ class ControlLogger:
                     control_msg.drive.speed = 0.0
                     control_msg.drive.jerk = 0.0
                     
+                    # Stop signal when goal is reached
+                    isstop = Bool()
+                    isstop.data = True
+                    
                     self.pub_ctrl.publish(control_msg)
+                    self.pub_stop.publish(isstop)
         
     def save_data(self):
-        minLen = min(minLen)
-
         dataFrame = {}
 
         data_measurement = [self.odom_x, self.odom_y, self.odom_vel, self.odom_yaw]
-        data_mpcOutput = [self.state_v, self.input_a, self.steer]
+        data_mpcOutput = [self.ros_time, self.mpc_vel, self.mpc_steer]
+        data_path = [self.path_x, self.path_y, self.path_yaw]
 
         for i in range(len(self.header_measurement)):
-            dataFrame[self.header_measurement[i]] = data_measurement[i][:minLen]
+            dataFrame[self.header_measurement[i]] = data_measurement[i][:]
 
         for i in range(len(self.header_mpcOutput)):
-            dataFrame[self.header_mpcOutput[i]] = data_mpcOutput[i][:minLen]
+            dataFrame[self.header_mpcOutput[i]] = data_mpcOutput[i][:]
+            
+        for i in range(len(self.header_path)):
+            dataFrame[self.header_path[i]] = data_path[i]
+        
 
         cur_date = datetime.datetime.now()
         cur_date = cur_date.strftime("%Y%m%d%H%M")
         df = pd.DataFrame(dataFrame)
         # print(df)
-        # print(os.getcwd()
-        df.to_csv(f'./logs/{cur_date}_mpc_local_planner.csv')
+        print(os.getcwd())
+        df.to_csv('/home/vialab/mpc_traj_ws/src/mpc_local_planner/mpc_local_planner_utils/scripts/logs/%s_mpc_local_planner.csv' % cur_date)
                 
     def sigint_handler(self, signal, frame):
         print('KeyboardInterrupt is caught')
         self.save_data()
+        print("Logging data saved!")
         sys.exit(0)
             
-    def data_logger_cb(self, odom, ctrl):
+    def data_logger_cb(self, ctrl, odom):
         try:
             quaternion = (
                 odom.pose.pose.orientation.x,
@@ -116,7 +135,26 @@ class ControlLogger:
             self.odom_yaw.append(psi)
             self.odom_vel.append(v)
             
-            print(ctrl)
+            time = rospy.Time.now()
+            speed = ctrl.controls[0]
+            steer = ctrl.controls[1]
+                        
+            self.ros_time.append(time)
+            self.mpc_vel.append(speed)
+            self.mpc_steer.append(steer)
+            
+            # print("original")
+            # print(path)
+            path = ctrl.states
+            path = np.array(path).reshape(self.N,3)
+            self.path_x.append(path[:,0].tolist())
+            self.path_y.append(path[:,1].tolist())
+            self.path_yaw.append(path[:,2].tolist())
+            #print(path)
+            #print(self.path_x)
+            # print("path")
+            # print(path)
+
             
         except:
             print(traceback.format_exc())
@@ -125,8 +163,9 @@ class ControlLogger:
             sys.exit(1)
             
 def main():
-    obj = ControlLogger()
     rospy.init_node('control_logger', anonymous=True)
+    obj = ControlLogger()
+    obj.ts.registerCallback(obj.data_logger_cb)
     try:
         rospy.spin()
     except KeyboardInterrupt:
@@ -134,3 +173,4 @@ def main():
 
 if __name__ == '__main__':
     main()
+    
