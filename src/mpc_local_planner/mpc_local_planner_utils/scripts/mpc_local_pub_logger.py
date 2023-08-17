@@ -5,6 +5,7 @@ import signal
 import math
 import sys
 import traceback
+import os
 
 import rospy
 import numpy as np
@@ -24,17 +25,18 @@ class ControlLogger:
         self.odom_y = []
         self.odom_yaw = []
         self.odom_vel = []
+        self.mpc_vel = []
+        self.mpc_steer = []
+        self.N = rospy.get_param("/move_base/MpcLocalPlannerROS/grid/grid_size_ref")
         self.pub_ctrl = rospy.Publisher("/rbcar_robot_control/command", AckermannDriveStamped, queue_size=1)
         self.sub_goal = rospy.Subscriber("/move_base/status", GoalStatusArray, self.control_cb, queue_size=1)
-        self.sub_ctrl = message_filters.Subscriber("/move_base/MpcLocalPlannerROS/ocp_result", OptimalControlResult, queue_size=1)
-        self.sub_odom =  message_filters.Subscriber("/odoms", OptimalControlResult, queue_size=1)
+        self.sub_ctrl = message_filters.Subscriber("/move_base/MpcLocalPlannerROS/ocp_result", OptimalControlResult)
+        self.sub_odom =  message_filters.Subscriber("/odoms", Odometry)
         
         self.header_measurement = ["odom_x", "odom_y", "odom_vel", "odom_yaw"]
         self.header_mpcOutput = ["mpc_vel", "mpc_steer"]
         
-        self.ts = message_filters.TimeSynchronizer([self.sub_ctrl, self.sub_odom], 1)
-        self.ts.registerCallback(self.data_logger_cb)
-        
+        self.ts = message_filters.ApproximateTimeSynchronizer([self.sub_ctrl, self.sub_odom], 10, 0.1, allow_headerless=True)
         signal.signal(signal.SIGINT, self.sigint_handler)
         
     def control_cb(self, goal_stats):
@@ -62,32 +64,31 @@ class ControlLogger:
                     self.pub_ctrl.publish(control_msg)
         
     def save_data(self):
-        minLen = min(minLen)
-
         dataFrame = {}
 
         data_measurement = [self.odom_x, self.odom_y, self.odom_vel, self.odom_yaw]
-        data_mpcOutput = [self.state_v, self.input_a, self.steer]
+        data_mpcOutput = [self.mpc_vel, self.mpc_steer]
 
         for i in range(len(self.header_measurement)):
-            dataFrame[self.header_measurement[i]] = data_measurement[i][:minLen]
+            dataFrame[self.header_measurement[i]] = data_measurement[i][:]
 
         for i in range(len(self.header_mpcOutput)):
-            dataFrame[self.header_mpcOutput[i]] = data_mpcOutput[i][:minLen]
+            dataFrame[self.header_mpcOutput[i]] = data_mpcOutput[i][:]
 
         cur_date = datetime.datetime.now()
         cur_date = cur_date.strftime("%Y%m%d%H%M")
         df = pd.DataFrame(dataFrame)
         # print(df)
-        # print(os.getcwd()
-        df.to_csv(f'./logs/{cur_date}_mpc_local_planner.csv')
+        # print(os.getcwd())
+        df.to_csv('./src/mpc_local_planner/mpc_local_planner_utils/scripts/logs/%s_mpc_local_planner.csv' % cur_date)
                 
     def sigint_handler(self, signal, frame):
         print('KeyboardInterrupt is caught')
         self.save_data()
+        print("Logging data saved!")
         sys.exit(0)
             
-    def data_logger_cb(self, odom, ctrl):
+    def data_logger_cb(self, ctrl, odom):
         try:
             quaternion = (
                 odom.pose.pose.orientation.x,
@@ -116,7 +117,10 @@ class ControlLogger:
             self.odom_yaw.append(psi)
             self.odom_vel.append(v)
             
-            print(ctrl)
+            speed = ctrl.controls[0]
+            steer = ctrl.controls[1]
+            self.mpc_vel.append(speed)
+            self.mpc_steer.append(steer)
             
         except:
             print(traceback.format_exc())
@@ -125,8 +129,9 @@ class ControlLogger:
             sys.exit(1)
             
 def main():
-    obj = ControlLogger()
     rospy.init_node('control_logger', anonymous=True)
+    obj = ControlLogger()
+    obj.ts.registerCallback(obj.data_logger_cb)
     try:
         rospy.spin()
     except KeyboardInterrupt:
