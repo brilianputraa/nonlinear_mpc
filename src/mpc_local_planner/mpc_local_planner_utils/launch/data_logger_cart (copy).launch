@@ -1,0 +1,5 @@
+<launch>
+        <!--  ************** Logger ***************  -->
+	<node pkg="mpc_local_planner_utils" type="mpc_local_pub_logger.py" respawn="false" name="mpc_local_planner_utils_logger" output="screen">
+	</node>
+</launch>
