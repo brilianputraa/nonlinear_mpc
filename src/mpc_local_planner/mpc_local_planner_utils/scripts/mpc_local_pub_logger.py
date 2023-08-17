@@ -75,6 +75,7 @@ class ControlLogger:
                     
                     self.pub_ctrl.publish(control_msg)
                     self.pub_stop.publish(isstop)
+                    self.pub_mpc.publish(isstop)
         
     def save_data(self):
         dataFrame = {}
