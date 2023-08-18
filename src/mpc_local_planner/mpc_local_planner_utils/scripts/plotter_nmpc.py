@@ -4,7 +4,7 @@ import pandas as pd
 
 
 # File name
-filename = "202308171756_mpc_local_planner.csv"
+filename = "./logs/202308171756_mpc_local_planner.csv"
 
 # Read data
 logs = pd.read_csv(filename)
