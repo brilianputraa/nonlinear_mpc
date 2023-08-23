@@ -1,0 +1,1 @@
+/home/vialab/nonlinear_mpc/devel/.private/mpc_local_planner_msgs/share/mpc_local_planner_msgs/cmake/mpc_local_planner_msgsConfig-version.cmake

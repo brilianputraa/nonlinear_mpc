@@ -1,0 +1,16 @@
+<!-- 
+  Simulate a carlike robot with the mpc_local_planner in stage:
+  - stage
+  - map_server
+  - move_base
+  - static map
+  - amcl
+  - rviz view
+ -->
+<launch>
+        <!--  ************** Navigation ***************  -->
+	<node pkg="mpc_local_planner_utils" type="mpc_local_pub_logger.py" respawn="false" name="mpc_local_planner_utils_logger" output="screen">
+		<remap from="/odoms" to="/INS/odom"/>
+		<remap from="/rbcar_robot_control/command" to="/ack_cmd"/>
+	</node>
+</launch>

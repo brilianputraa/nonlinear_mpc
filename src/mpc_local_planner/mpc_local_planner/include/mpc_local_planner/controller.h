@@ -122,6 +122,8 @@ class Controller : public corbo::PredictiveController
     corbo::StructuredOptimalControlProblem::Ptr _structured_ocp;
 
     ros::Publisher _ocp_result_pub;
+    ros::Publisher _ctrl_pub;
+
     bool _ocp_successful      = false;
     std::size_t _ocp_seq      = 0;
     bool _publish_ocp_results = false;

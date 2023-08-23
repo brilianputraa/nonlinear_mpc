@@ -44,6 +44,7 @@
 
 #include <mpc_local_planner_msgs/OptimalControlResult.h>
 #include <mpc_local_planner_msgs/StateFeedback.h>
+#include <ackermann_msgs/AckermannDriveStamped.h>
 
 #include <corbo-communication/utilities.h>
 #include <corbo-core/console.h>
@@ -52,6 +53,7 @@
 
 #include <memory>
 #include <mutex>
+#include <iostream>
 
 namespace mpc_local_planner {
 
@@ -84,6 +86,9 @@ bool Controller::configure(ros::NodeHandle& nh, const teb_local_planner::ObstCon
 
     // result publisher:
     _ocp_result_pub = nh.advertise<mpc_local_planner_msgs::OptimalControlResult>("ocp_result", 100);
+    // change the topic name of the control pub here:
+    _ctrl_pub = nh.advertise<ackermann_msgs::AckermannDriveStamped>("/rbcar_robot_control/command", 1);
+
     nh.param("controller/publish_ocp_results", _publish_ocp_results, _publish_ocp_results);
     nh.param("controller/print_cpu_time", _print_cpu_time, _print_cpu_time);
 
@@ -217,6 +222,15 @@ void Controller::publishOptimalControlResult()
         msg.controls      = _u_ts->getValues();
     }
 
+    ackermann_msgs::AckermannDriveStamped ackermann_msg;
+    ackermann_msg.header.stamp = ros::Time::now();
+    ackermann_msg.header.seq   = static_cast<unsigned int>(_ocp_seq);
+    ackermann_msg.drive.speed  = msg.controls[0];
+    ackermann_msg.drive.steering_angle = msg.controls[1];
+    _ctrl_pub.publish(ackermann_msg);
+
+    std::cout<< "Control velocity signal " << msg.controls[0] << " Control steering signal " << msg.controls[1] << std::endl;
+    
     _ocp_result_pub.publish(msg);
 }
 
@@ -574,6 +588,7 @@ corbo::StructuredOptimalControlProblem::Ptr Controller::configureOcp(const ros::
             ROS_ERROR_STREAM("State weights dimension invalid. Must be either " << x_dim << " x 1 or " << x_dim << " x " << x_dim << ".");
             return {};
         }
+        std::cout << "Q value " << Q << std::endl;
         std::vector<double> control_weights;
         nh.param("planning/objective/quadratic_form/control_weights", control_weights, control_weights);
         Eigen::MatrixXd R;

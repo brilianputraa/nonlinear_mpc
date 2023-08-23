@@ -37,14 +37,15 @@ MpcLocalPlannerROS:
     costmap_obstacles_behind_robot_dist: 4.0
     collision_check_no_poses: 5
     
+
   ## Planning grid 
   grid:
     type: "fd_grid"
-    grid_size_ref: 10
-    dt_ref: 0.1
+    grid_size_ref: 20
+    dt_ref: 0.05
     xf_fixed: [True, True, True]
     warm_start: True
-    collocation_method: "midpoint_differences"
+    collocation_method: "forward_differences"
     cost_integration_method: "left_sum"
     variable_grid:
       enable: True  
@@ -77,13 +78,13 @@ MpcLocalPlannerROS:
     force_reinit_new_goal_dist: 1.0
     force_reinit_new_goal_angular: 1.57
     prefer_x_feedback: False
-    publish_ocp_results: False
+    publish_ocp_results: True
     
   ## Solver settings
   solver:
     type: "ipopt"
     ipopt:
-      iterations: 100
+      iterations: 10
       max_cpu_time: -1.0
       warm_start_init_point: "yes"
       ipopt_numeric_options:

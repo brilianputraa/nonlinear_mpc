@@ -1,0 +1,5 @@
+mpc_local_planner/mpc_local_planner_examples
+/home/vialab/nonlinear_mpc/devel/.private/mpc_local_planner_examples/cmake.lock /home/vialab/nonlinear_mpc/devel/./cmake.lock
+/home/vialab/nonlinear_mpc/devel/.private/mpc_local_planner_examples/lib/pkgconfig/mpc_local_planner_examples.pc /home/vialab/nonlinear_mpc/devel/lib/pkgconfig/mpc_local_planner_examples.pc
+/home/vialab/nonlinear_mpc/devel/.private/mpc_local_planner_examples/share/mpc_local_planner_examples/cmake/mpc_local_planner_examplesConfig.cmake /home/vialab/nonlinear_mpc/devel/share/mpc_local_planner_examples/cmake/mpc_local_planner_examplesConfig.cmake
+/home/vialab/nonlinear_mpc/devel/.private/mpc_local_planner_examples/share/mpc_local_planner_examples/cmake/mpc_local_planner_examplesConfig-version.cmake /home/vialab/nonlinear_mpc/devel/share/mpc_local_planner_examples/cmake/mpc_local_planner_examplesConfig-version.cmake

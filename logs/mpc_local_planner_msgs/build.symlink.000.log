@@ -1,24 +1,97 @@
-Symlinking /home/vialab/mpc_traj_ws/devel/lib/python2.7/dist-packages/mpc_local_planner_msgs/__init__.py
-Symlinking /home/vialab/mpc_traj_ws/devel/lib/python2.7/dist-packages/mpc_local_planner_msgs/msg/_StateFeedback.py
-Symlinking /home/vialab/mpc_traj_ws/devel/lib/python2.7/dist-packages/mpc_local_planner_msgs/msg/__init__.py
-Symlinking /home/vialab/mpc_traj_ws/devel/lib/python2.7/dist-packages/mpc_local_planner_msgs/msg/_OptimalControlResult.py
-Symlinking /home/vialab/mpc_traj_ws/devel/lib/pkgconfig/mpc_local_planner_msgs.pc
-Symlinking /home/vialab/mpc_traj_ws/devel/include/mpc_local_planner_msgs/StateFeedback.h
-Symlinking /home/vialab/mpc_traj_ws/devel/include/mpc_local_planner_msgs/OptimalControlResult.h
-Symlinking /home/vialab/mpc_traj_ws/devel/share/gennodejs/ros/mpc_local_planner_msgs/_index.js
-Symlinking /home/vialab/mpc_traj_ws/devel/share/gennodejs/ros/mpc_local_planner_msgs/msg/_index.js
-Symlinking /home/vialab/mpc_traj_ws/devel/share/gennodejs/ros/mpc_local_planner_msgs/msg/StateFeedback.js
-Symlinking /home/vialab/mpc_traj_ws/devel/share/gennodejs/ros/mpc_local_planner_msgs/msg/OptimalControlResult.js
-Symlinking /home/vialab/mpc_traj_ws/devel/share/common-lisp/ros/mpc_local_planner_msgs/msg/StateFeedback.lisp
-Symlinking /home/vialab/mpc_traj_ws/devel/share/common-lisp/ros/mpc_local_planner_msgs/msg/OptimalControlResult.lisp
-Symlinking /home/vialab/mpc_traj_ws/devel/share/common-lisp/ros/mpc_local_planner_msgs/msg/mpc_local_planner_msgs-msg.asd
-Symlinking /home/vialab/mpc_traj_ws/devel/share/common-lisp/ros/mpc_local_planner_msgs/msg/_package.lisp
-Symlinking /home/vialab/mpc_traj_ws/devel/share/common-lisp/ros/mpc_local_planner_msgs/msg/_package_OptimalControlResult.lisp
-Symlinking /home/vialab/mpc_traj_ws/devel/share/common-lisp/ros/mpc_local_planner_msgs/msg/_package_StateFeedback.lisp
-Symlinking /home/vialab/mpc_traj_ws/devel/share/roseus/ros/mpc_local_planner_msgs/manifest.l
-Symlinking /home/vialab/mpc_traj_ws/devel/share/roseus/ros/mpc_local_planner_msgs/msg/StateFeedback.l
-Symlinking /home/vialab/mpc_traj_ws/devel/share/roseus/ros/mpc_local_planner_msgs/msg/OptimalControlResult.l
-Symlinking /home/vialab/mpc_traj_ws/devel/share/mpc_local_planner_msgs/cmake/mpc_local_planner_msgsConfig-version.cmake
-Symlinking /home/vialab/mpc_traj_ws/devel/share/mpc_local_planner_msgs/cmake/mpc_local_planner_msgsConfig.cmake
-Symlinking /home/vialab/mpc_traj_ws/devel/share/mpc_local_planner_msgs/cmake/mpc_local_planner_msgs-msg-extras.cmake
-Symlinking /home/vialab/mpc_traj_ws/devel/share/mpc_local_planner_msgs/cmake/mpc_local_planner_msgs-msg-paths.cmake
+Symlinking /home/vialab/nonlinear_mpc/devel/lib/python2.7/dist-packages/mpc_local_planner_msgs/__init__.py
+Symlinking /home/vialab/nonlinear_mpc/devel/lib/python2.7/dist-packages/mpc_local_planner_msgs/msg/_StateFeedback.py
+Symlinking /home/vialab/nonlinear_mpc/devel/lib/python2.7/dist-packages/mpc_local_planner_msgs/msg/__init__.py
+Symlinking /home/vialab/nonlinear_mpc/devel/lib/python2.7/dist-packages/mpc_local_planner_msgs/msg/_OptimalControlResult.py
+Symlinking /home/vialab/nonlinear_mpc/devel/lib/pkgconfig/mpc_local_planner_msgs.pc
+Symlinking /home/vialab/nonlinear_mpc/devel/include/mpc_local_planner_msgs/StateFeedback.h
+Symlinking /home/vialab/nonlinear_mpc/devel/include/mpc_local_planner_msgs/OptimalControlResult.h
+Symlinking /home/vialab/nonlinear_mpc/devel/share/gennodejs/ros/mpc_local_planner_msgs/_index.js
+Symlinking /home/vialab/nonlinear_mpc/devel/share/gennodejs/ros/mpc_local_planner_msgs/msg/_index.js
+Symlinking /home/vialab/nonlinear_mpc/devel/share/gennodejs/ros/mpc_local_planner_msgs/msg/StateFeedback.js
+Symlinking /home/vialab/nonlinear_mpc/devel/share/gennodejs/ros/mpc_local_planner_msgs/msg/OptimalControlResult.js
+Symlinking /home/vialab/nonlinear_mpc/devel/share/common-lisp/ros/mpc_local_planner_msgs/msg/StateFeedback.lisp
+Symlinking /home/vialab/nonlinear_mpc/devel/share/common-lisp/ros/mpc_local_planner_msgs/msg/OptimalControlResult.lisp
+Symlinking /home/vialab/nonlinear_mpc/devel/share/common-lisp/ros/mpc_local_planner_msgs/msg/mpc_local_planner_msgs-msg.asd
+Symlinking /home/vialab/nonlinear_mpc/devel/share/common-lisp/ros/mpc_local_planner_msgs/msg/_package.lisp
+Symlinking /home/vialab/nonlinear_mpc/devel/share/common-lisp/ros/mpc_local_planner_msgs/msg/_package_OptimalControlResult.lisp
+Symlinking /home/vialab/nonlinear_mpc/devel/share/common-lisp/ros/mpc_local_planner_msgs/msg/_package_StateFeedback.lisp
+Symlinking /home/vialab/nonlinear_mpc/devel/share/roseus/ros/mpc_local_planner_msgs/manifest.l
+Symlinking /home/vialab/nonlinear_mpc/devel/share/roseus/ros/mpc_local_planner_msgs/msg/StateFeedback.l
+Symlinking /home/vialab/nonlinear_mpc/devel/share/roseus/ros/mpc_local_planner_msgs/msg/OptimalControlResult.l
+Symlinking /home/vialab/nonlinear_mpc/devel/share/mpc_local_planner_msgs/cmake/mpc_local_planner_msgsConfig-version.cmake
+Symlinking /home/vialab/nonlinear_mpc/devel/share/mpc_local_planner_msgs/cmake/mpc_local_planner_msgsConfig.cmake
+Symlinking /home/vialab/nonlinear_mpc/devel/share/mpc_local_planner_msgs/cmake/mpc_local_planner_msgs-msg-extras.cmake
+Symlinking /home/vialab/nonlinear_mpc/devel/share/mpc_local_planner_msgs/cmake/mpc_local_planner_msgs-msg-paths.cmake
+Cleaning: (/home/vialab/mpc_traj_ws/devel/.private/mpc_local_planner_msgs/cmake.lock, /home/vialab/mpc_traj_ws/devel/./cmake.lock)
+Cleaning: (/home/vialab/mpc_traj_ws/devel/.private/mpc_local_planner_msgs/lib/python2.7/dist-packages/mpc_local_planner_msgs/__init__.py, /home/vialab/mpc_traj_ws/devel/lib/python2.7/dist-packages/mpc_local_planner_msgs/__init__.py)
+Cleaning: (/home/vialab/mpc_traj_ws/devel/.private/mpc_local_planner_msgs/lib/python2.7/dist-packages/mpc_local_planner_msgs/msg/_StateFeedback.py, /home/vialab/mpc_traj_ws/devel/lib/python2.7/dist-packages/mpc_local_planner_msgs/msg/_StateFeedback.py)
+Cleaning: (/home/vialab/mpc_traj_ws/devel/.private/mpc_local_planner_msgs/lib/python2.7/dist-packages/mpc_local_planner_msgs/msg/__init__.py, /home/vialab/mpc_traj_ws/devel/lib/python2.7/dist-packages/mpc_local_planner_msgs/msg/__init__.py)
+Cleaning: (/home/vialab/mpc_traj_ws/devel/.private/mpc_local_planner_msgs/lib/python2.7/dist-packages/mpc_local_planner_msgs/msg/_OptimalControlResult.py, /home/vialab/mpc_traj_ws/devel/lib/python2.7/dist-packages/mpc_local_planner_msgs/msg/_OptimalControlResult.py)
+Cleaning: (/home/vialab/mpc_traj_ws/devel/.private/mpc_local_planner_msgs/lib/pkgconfig/mpc_local_planner_msgs.pc, /home/vialab/mpc_traj_ws/devel/lib/pkgconfig/mpc_local_planner_msgs.pc)
+Cleaning: (/home/vialab/mpc_traj_ws/devel/.private/mpc_local_planner_msgs/include/mpc_local_planner_msgs/StateFeedback.h, /home/vialab/mpc_traj_ws/devel/include/mpc_local_planner_msgs/StateFeedback.h)
+Cleaning: (/home/vialab/mpc_traj_ws/devel/.private/mpc_local_planner_msgs/include/mpc_local_planner_msgs/OptimalControlResult.h, /home/vialab/mpc_traj_ws/devel/include/mpc_local_planner_msgs/OptimalControlResult.h)
+Cleaning: (/home/vialab/mpc_traj_ws/devel/.private/mpc_local_planner_msgs/share/gennodejs/ros/mpc_local_planner_msgs/_index.js, /home/vialab/mpc_traj_ws/devel/share/gennodejs/ros/mpc_local_planner_msgs/_index.js)
+Cleaning: (/home/vialab/mpc_traj_ws/devel/.private/mpc_local_planner_msgs/share/gennodejs/ros/mpc_local_planner_msgs/msg/_index.js, /home/vialab/mpc_traj_ws/devel/share/gennodejs/ros/mpc_local_planner_msgs/msg/_index.js)
+Cleaning: (/home/vialab/mpc_traj_ws/devel/.private/mpc_local_planner_msgs/share/gennodejs/ros/mpc_local_planner_msgs/msg/StateFeedback.js, /home/vialab/mpc_traj_ws/devel/share/gennodejs/ros/mpc_local_planner_msgs/msg/StateFeedback.js)
+Cleaning: (/home/vialab/mpc_traj_ws/devel/.private/mpc_local_planner_msgs/share/gennodejs/ros/mpc_local_planner_msgs/msg/OptimalControlResult.js, /home/vialab/mpc_traj_ws/devel/share/gennodejs/ros/mpc_local_planner_msgs/msg/OptimalControlResult.js)
+Cleaning: (/home/vialab/mpc_traj_ws/devel/.private/mpc_local_planner_msgs/share/common-lisp/ros/mpc_local_planner_msgs/msg/StateFeedback.lisp, /home/vialab/mpc_traj_ws/devel/share/common-lisp/ros/mpc_local_planner_msgs/msg/StateFeedback.lisp)
+Cleaning: (/home/vialab/mpc_traj_ws/devel/.private/mpc_local_planner_msgs/share/common-lisp/ros/mpc_local_planner_msgs/msg/OptimalControlResult.lisp, /home/vialab/mpc_traj_ws/devel/share/common-lisp/ros/mpc_local_planner_msgs/msg/OptimalControlResult.lisp)
+Cleaning: (/home/vialab/mpc_traj_ws/devel/.private/mpc_local_planner_msgs/share/common-lisp/ros/mpc_local_planner_msgs/msg/mpc_local_planner_msgs-msg.asd, /home/vialab/mpc_traj_ws/devel/share/common-lisp/ros/mpc_local_planner_msgs/msg/mpc_local_planner_msgs-msg.asd)
+Cleaning: (/home/vialab/mpc_traj_ws/devel/.private/mpc_local_planner_msgs/share/common-lisp/ros/mpc_local_planner_msgs/msg/_package.lisp, /home/vialab/mpc_traj_ws/devel/share/common-lisp/ros/mpc_local_planner_msgs/msg/_package.lisp)
+Cleaning: (/home/vialab/mpc_traj_ws/devel/.private/mpc_local_planner_msgs/share/common-lisp/ros/mpc_local_planner_msgs/msg/_package_OptimalControlResult.lisp, /home/vialab/mpc_traj_ws/devel/share/common-lisp/ros/mpc_local_planner_msgs/msg/_package_OptimalControlResult.lisp)
+Cleaning: (/home/vialab/mpc_traj_ws/devel/.private/mpc_local_planner_msgs/share/common-lisp/ros/mpc_local_planner_msgs/msg/_package_StateFeedback.lisp, /home/vialab/mpc_traj_ws/devel/share/common-lisp/ros/mpc_local_planner_msgs/msg/_package_StateFeedback.lisp)
+Cleaning: (/home/vialab/mpc_traj_ws/devel/.private/mpc_local_planner_msgs/share/roseus/ros/mpc_local_planner_msgs/manifest.l, /home/vialab/mpc_traj_ws/devel/share/roseus/ros/mpc_local_planner_msgs/manifest.l)
+Cleaning: (/home/vialab/mpc_traj_ws/devel/.private/mpc_local_planner_msgs/share/roseus/ros/mpc_local_planner_msgs/msg/StateFeedback.l, /home/vialab/mpc_traj_ws/devel/share/roseus/ros/mpc_local_planner_msgs/msg/StateFeedback.l)
+Cleaning: (/home/vialab/mpc_traj_ws/devel/.private/mpc_local_planner_msgs/share/roseus/ros/mpc_local_planner_msgs/msg/OptimalControlResult.l, /home/vialab/mpc_traj_ws/devel/share/roseus/ros/mpc_local_planner_msgs/msg/OptimalControlResult.l)
+Cleaning: (/home/vialab/mpc_traj_ws/devel/.private/mpc_local_planner_msgs/share/mpc_local_planner_msgs/cmake/mpc_local_planner_msgsConfig-version.cmake, /home/vialab/mpc_traj_ws/devel/share/mpc_local_planner_msgs/cmake/mpc_local_planner_msgsConfig-version.cmake)
+Cleaning: (/home/vialab/mpc_traj_ws/devel/.private/mpc_local_planner_msgs/share/mpc_local_planner_msgs/cmake/mpc_local_planner_msgsConfig.cmake, /home/vialab/mpc_traj_ws/devel/share/mpc_local_planner_msgs/cmake/mpc_local_planner_msgsConfig.cmake)
+Cleaning: (/home/vialab/mpc_traj_ws/devel/.private/mpc_local_planner_msgs/share/mpc_local_planner_msgs/cmake/mpc_local_planner_msgs-msg-extras.cmake, /home/vialab/mpc_traj_ws/devel/share/mpc_local_planner_msgs/cmake/mpc_local_planner_msgs-msg-extras.cmake)
+Cleaning: (/home/vialab/mpc_traj_ws/devel/.private/mpc_local_planner_msgs/share/mpc_local_planner_msgs/cmake/mpc_local_planner_msgs-msg-paths.cmake, /home/vialab/mpc_traj_ws/devel/share/mpc_local_planner_msgs/cmake/mpc_local_planner_msgs-msg-paths.cmake)
+Unlinking: /home/vialab/mpc_traj_ws/devel/lib/python2.7/dist-packages/mpc_local_planner_msgs/__init__.py
+Already unlinked: {}
+Unlinking: /home/vialab/mpc_traj_ws/devel/lib/python2.7/dist-packages/mpc_local_planner_msgs/msg/_StateFeedback.py
+Already unlinked: {}
+Unlinking: /home/vialab/mpc_traj_ws/devel/lib/python2.7/dist-packages/mpc_local_planner_msgs/msg/__init__.py
+Already unlinked: {}
+Unlinking: /home/vialab/mpc_traj_ws/devel/lib/python2.7/dist-packages/mpc_local_planner_msgs/msg/_OptimalControlResult.py
+Already unlinked: {}
+Unlinking: /home/vialab/mpc_traj_ws/devel/lib/pkgconfig/mpc_local_planner_msgs.pc
+Already unlinked: {}
+Unlinking: /home/vialab/mpc_traj_ws/devel/include/mpc_local_planner_msgs/StateFeedback.h
+Already unlinked: {}
+Unlinking: /home/vialab/mpc_traj_ws/devel/include/mpc_local_planner_msgs/OptimalControlResult.h
+Already unlinked: {}
+Unlinking: /home/vialab/mpc_traj_ws/devel/share/gennodejs/ros/mpc_local_planner_msgs/_index.js
+Already unlinked: {}
+Unlinking: /home/vialab/mpc_traj_ws/devel/share/gennodejs/ros/mpc_local_planner_msgs/msg/_index.js
+Already unlinked: {}
+Unlinking: /home/vialab/mpc_traj_ws/devel/share/gennodejs/ros/mpc_local_planner_msgs/msg/StateFeedback.js
+Already unlinked: {}
+Unlinking: /home/vialab/mpc_traj_ws/devel/share/gennodejs/ros/mpc_local_planner_msgs/msg/OptimalControlResult.js
+Already unlinked: {}
+Unlinking: /home/vialab/mpc_traj_ws/devel/share/common-lisp/ros/mpc_local_planner_msgs/msg/StateFeedback.lisp
+Already unlinked: {}
+Unlinking: /home/vialab/mpc_traj_ws/devel/share/common-lisp/ros/mpc_local_planner_msgs/msg/OptimalControlResult.lisp
+Already unlinked: {}
+Unlinking: /home/vialab/mpc_traj_ws/devel/share/common-lisp/ros/mpc_local_planner_msgs/msg/mpc_local_planner_msgs-msg.asd
+Already unlinked: {}
+Unlinking: /home/vialab/mpc_traj_ws/devel/share/common-lisp/ros/mpc_local_planner_msgs/msg/_package.lisp
+Already unlinked: {}
+Unlinking: /home/vialab/mpc_traj_ws/devel/share/common-lisp/ros/mpc_local_planner_msgs/msg/_package_OptimalControlResult.lisp
+Already unlinked: {}
+Unlinking: /home/vialab/mpc_traj_ws/devel/share/common-lisp/ros/mpc_local_planner_msgs/msg/_package_StateFeedback.lisp
+Already unlinked: {}
+Unlinking: /home/vialab/mpc_traj_ws/devel/share/roseus/ros/mpc_local_planner_msgs/manifest.l
+Already unlinked: {}
+Unlinking: /home/vialab/mpc_traj_ws/devel/share/roseus/ros/mpc_local_planner_msgs/msg/StateFeedback.l
+Already unlinked: {}
+Unlinking: /home/vialab/mpc_traj_ws/devel/share/roseus/ros/mpc_local_planner_msgs/msg/OptimalControlResult.l
+Already unlinked: {}
+Unlinking: /home/vialab/mpc_traj_ws/devel/share/mpc_local_planner_msgs/cmake/mpc_local_planner_msgsConfig-version.cmake
+Already unlinked: {}
+Unlinking: /home/vialab/mpc_traj_ws/devel/share/mpc_local_planner_msgs/cmake/mpc_local_planner_msgsConfig.cmake
+Already unlinked: {}
+Unlinking: /home/vialab/mpc_traj_ws/devel/share/mpc_local_planner_msgs/cmake/mpc_local_planner_msgs-msg-extras.cmake
+Already unlinked: {}
+Unlinking: /home/vialab/mpc_traj_ws/devel/share/mpc_local_planner_msgs/cmake/mpc_local_planner_msgs-msg-paths.cmake
+Already unlinked: {}

@@ -1,0 +1,1 @@
+/home/vialab/nonlinear_mpc/devel/.private/mpc_local_planner_examples/share/mpc_local_planner_examples/cmake/mpc_local_planner_examplesConfig-version.cmake

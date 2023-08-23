@@ -1,15 +1,15 @@
-Symlinking /home/vialab/mpc_local_ws/devel/./_setup_util.py
-Symlinking /home/vialab/mpc_local_ws/devel/./local_setup.sh
-Symlinking /home/vialab/mpc_local_ws/devel/./env.sh
-Symlinking /home/vialab/mpc_local_ws/devel/./setup.sh
-Symlinking /home/vialab/mpc_local_ws/devel/./setup.bash
-Symlinking /home/vialab/mpc_local_ws/devel/./setup.zsh
-Symlinking /home/vialab/mpc_local_ws/devel/./cmake.lock
-Symlinking /home/vialab/mpc_local_ws/devel/./local_setup.zsh
-Symlinking /home/vialab/mpc_local_ws/devel/./local_setup.bash
-Symlinking /home/vialab/mpc_local_ws/devel/lib/pkgconfig/catkin_tools_prebuild.pc
-Symlinking /home/vialab/mpc_local_ws/devel/share/catkin_tools_prebuild/cmake/catkin_tools_prebuildConfig-version.cmake
-Symlinking /home/vialab/mpc_local_ws/devel/share/catkin_tools_prebuild/cmake/catkin_tools_prebuildConfig.cmake
+Symlinking /home/vialab/nonlinear_mpc/devel/./_setup_util.py
+Symlinking /home/vialab/nonlinear_mpc/devel/./local_setup.sh
+Symlinking /home/vialab/nonlinear_mpc/devel/./env.sh
+Symlinking /home/vialab/nonlinear_mpc/devel/./setup.sh
+Symlinking /home/vialab/nonlinear_mpc/devel/./setup.bash
+Symlinking /home/vialab/nonlinear_mpc/devel/./setup.zsh
+Symlinking /home/vialab/nonlinear_mpc/devel/./cmake.lock
+Symlinking /home/vialab/nonlinear_mpc/devel/./local_setup.zsh
+Symlinking /home/vialab/nonlinear_mpc/devel/./local_setup.bash
+Symlinking /home/vialab/nonlinear_mpc/devel/lib/pkgconfig/catkin_tools_prebuild.pc
+Symlinking /home/vialab/nonlinear_mpc/devel/share/catkin_tools_prebuild/cmake/catkin_tools_prebuildConfig-version.cmake
+Symlinking /home/vialab/nonlinear_mpc/devel/share/catkin_tools_prebuild/cmake/catkin_tools_prebuildConfig.cmake
 Cleaning: (/home/vialab/mpc_traj_ws/devel/.private/catkin_tools_prebuild/_setup_util.py, /home/vialab/mpc_traj_ws/devel/./_setup_util.py)
 Cleaning: (/home/vialab/mpc_traj_ws/devel/.private/catkin_tools_prebuild/local_setup.sh, /home/vialab/mpc_traj_ws/devel/./local_setup.sh)
 Cleaning: (/home/vialab/mpc_traj_ws/devel/.private/catkin_tools_prebuild/env.sh, /home/vialab/mpc_traj_ws/devel/./env.sh)

@@ -1,12 +1,10 @@
-Symlinking /home/vialab/mpc_local_ws/devel/lib/pkgconfig/mpc_local_planner_examples.pc
-Symlinking /home/vialab/mpc_local_ws/devel/share/mpc_local_planner_examples/cmake/mpc_local_planner_examplesConfig.cmake
-Symlinking /home/vialab/mpc_local_ws/devel/share/mpc_local_planner_examples/cmake/mpc_local_planner_examplesConfig-version.cmake
+Symlinking /home/vialab/nonlinear_mpc/devel/lib/pkgconfig/mpc_local_planner_examples.pc
+Symlinking /home/vialab/nonlinear_mpc/devel/share/mpc_local_planner_examples/cmake/mpc_local_planner_examplesConfig.cmake
+Symlinking /home/vialab/nonlinear_mpc/devel/share/mpc_local_planner_examples/cmake/mpc_local_planner_examplesConfig-version.cmake
 Cleaning: (/home/vialab/mpc_traj_ws/devel/.private/mpc_local_planner_examples/cmake.lock, /home/vialab/mpc_traj_ws/devel/./cmake.lock)
 Cleaning: (/home/vialab/mpc_traj_ws/devel/.private/mpc_local_planner_examples/lib/pkgconfig/mpc_local_planner_examples.pc, /home/vialab/mpc_traj_ws/devel/lib/pkgconfig/mpc_local_planner_examples.pc)
 Cleaning: (/home/vialab/mpc_traj_ws/devel/.private/mpc_local_planner_examples/share/mpc_local_planner_examples/cmake/mpc_local_planner_examplesConfig.cmake, /home/vialab/mpc_traj_ws/devel/share/mpc_local_planner_examples/cmake/mpc_local_planner_examplesConfig.cmake)
 Cleaning: (/home/vialab/mpc_traj_ws/devel/.private/mpc_local_planner_examples/share/mpc_local_planner_examples/cmake/mpc_local_planner_examplesConfig-version.cmake, /home/vialab/mpc_traj_ws/devel/share/mpc_local_planner_examples/cmake/mpc_local_planner_examplesConfig-version.cmake)
-Unlinking: /home/vialab/mpc_traj_ws/devel/./cmake.lock
-Already unlinked: {}
 Unlinking: /home/vialab/mpc_traj_ws/devel/lib/pkgconfig/mpc_local_planner_examples.pc
 Already unlinked: {}
 Unlinking: /home/vialab/mpc_traj_ws/devel/share/mpc_local_planner_examples/cmake/mpc_local_planner_examplesConfig.cmake

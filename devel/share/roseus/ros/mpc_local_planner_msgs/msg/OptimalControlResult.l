@@ -1,0 +1,1 @@
+/home/vialab/nonlinear_mpc/devel/.private/mpc_local_planner_msgs/share/roseus/ros/mpc_local_planner_msgs/msg/OptimalControlResult.l

@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<package format="2">
+  <name>mpc_local_planner_utils</name>
+  <version>0.0.3</version>
+  <description>The mpc_local_planner_utils package</description>
+
+  <maintainer email="123@ros.com">John Doe</maintainer>
+  <author email="123@ros.com">John Doe</author>
+
+  <license>BSD</license>
+
+  <url type="website">http://wiki.ros.org/mpc_local_planner_examples</url>
+
+
+  <buildtool_depend>catkin</buildtool_depend>
+
+  <depend>mpc_local_planner_msgs</depend>
+  <depend>rospy</depend>
+  <depend>ackermann_msgs</depend>
+  <depend>actionlib_msgs</depend>
+
+
+  <!-- The export tag contains other, unspecified, tags -->
+  <export>
+    <!-- Other tools can request additional information be placed here -->
+  </export>
+
+</package>
