@@ -71,16 +71,16 @@ class ControlLogger:
                         # Halt control and align wheels
                         control_msg = AckermannDriveStamped()
                         control_msg.header.stamp = rospy.Time.now()
-                        control_msg.drive.steering_angle = 0.0
                         control_msg.drive.acceleration = 0.0
                         control_msg.drive.speed = 0.0
+                        control_msg.drive.steering_angle = -26.0
                         control_msg.drive.jerk = 0.0
                         self.pub_ctrl.publish(control_msg)
-                        self.pub_stop.publish(isstop)
                         self.counter += 1
-                    
-                    # Activating the Linear MPC for Parking    
-                    self.pub_mpc.publish(isstop)
+                        self.pub_stop.publish(isstop)
+                    else:
+                        # Activating the Linear MPC for Parking    
+                        self.pub_mpc.publish(isstop)
 
         
     def save_data(self):
