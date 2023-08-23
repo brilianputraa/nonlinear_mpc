@@ -1,1 +1,1 @@
-/home/vialab/mpc_traj_ws/devel/.private/catkin_tools_prebuild/local_setup.zsh
+/home/vialab/nonlinear_mpc/devel/.private/catkin_tools_prebuild/local_setup.zsh

@@ -1,6 +1,6 @@
 file(REMOVE_RECURSE
-  "/home/vialab/mpc_traj_ws/devel/.private/mpc_local_planner/lib/mpc_local_planner/test_mpc_optim_node"
-  "/home/vialab/mpc_traj_ws/devel/.private/mpc_local_planner/lib/mpc_local_planner/test_mpc_optim_node.pdb"
+  "/home/vialab/nonlinear_mpc/devel/.private/mpc_local_planner/lib/mpc_local_planner/test_mpc_optim_node"
+  "/home/vialab/nonlinear_mpc/devel/.private/mpc_local_planner/lib/mpc_local_planner/test_mpc_optim_node.pdb"
   "CMakeFiles/test_mpc_optim_node.dir/src/test_mpc_optim_node.cpp.o"
   "CMakeFiles/test_mpc_optim_node.dir/src/test_mpc_optim_node.cpp.o.d"
 )

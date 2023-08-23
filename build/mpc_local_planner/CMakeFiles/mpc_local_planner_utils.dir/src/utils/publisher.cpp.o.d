@@ -1,7 +1,7 @@
 CMakeFiles/mpc_local_planner_utils.dir/src/utils/publisher.cpp.o: \
- /home/vialab/mpc_traj_ws/src/mpc_local_planner/mpc_local_planner/src/utils/publisher.cpp \
+ /home/vialab/nonlinear_mpc/src/mpc_local_planner/mpc_local_planner/src/utils/publisher.cpp \
  /usr/include/stdc-predef.h \
- /home/vialab/mpc_traj_ws/src/mpc_local_planner/mpc_local_planner/include/mpc_local_planner/utils/publisher.h \
+ /home/vialab/nonlinear_mpc/src/mpc_local_planner/mpc_local_planner/include/mpc_local_planner/utils/publisher.h \
  /opt/ros/melodic/include/control_box_rst/corbo-core/time_series.h \
  /opt/ros/melodic/include/control_box_rst/corbo-core/types.h \
  /usr/include/eigen3/Eigen/Core \
@@ -308,7 +308,7 @@ CMakeFiles/mpc_local_planner_utils.dir/src/utils/publisher.cpp.o: \
  /usr/include/c++/7/backward/auto_ptr.h /usr/include/c++/7/vector \
  /usr/include/c++/7/bits/stl_vector.h \
  /usr/include/c++/7/bits/stl_bvector.h /usr/include/c++/7/bits/vector.tcc \
- /home/vialab/mpc_traj_ws/src/mpc_local_planner/mpc_local_planner/include/mpc_local_planner/systems/robot_dynamics_interface.h \
+ /home/vialab/nonlinear_mpc/src/mpc_local_planner/mpc_local_planner/include/mpc_local_planner/systems/robot_dynamics_interface.h \
  /opt/ros/melodic/include/control_box_rst/corbo-systems/system_dynamics_interface.h \
  /opt/ros/melodic/include/control_box_rst/corbo-core/factory.h \
  /opt/ros/melodic/include/control_box_rst/corbo-core/console.h \
@@ -1599,7 +1599,7 @@ CMakeFiles/mpc_local_planner_utils.dir/src/utils/publisher.cpp.o: \
  /opt/ros/melodic/include/teb_local_planner/robot_footprint_model.h \
  /opt/ros/melodic/include/visualization_msgs/Marker.h \
  /opt/ros/melodic/include/std_msgs/ColorRGBA.h \
- /home/vialab/mpc_traj_ws/src/mpc_local_planner/mpc_local_planner/include/mpc_local_planner/utils/conversion.h \
+ /home/vialab/nonlinear_mpc/src/mpc_local_planner/mpc_local_planner/include/mpc_local_planner/utils/conversion.h \
  /opt/ros/melodic/include/base_local_planner/goal_functions.h \
  /opt/ros/melodic/include/nav_msgs/Odometry.h \
  /opt/ros/melodic/include/geometry_msgs/PoseWithCovariance.h \

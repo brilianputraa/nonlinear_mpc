@@ -1,4 +1,4 @@
-prefix=/home/vialab/mpc_traj_ws/install
+prefix=/home/vialab/nonlinear_mpc/install
 
 Name: catkin_tools_prebuild
 Description: Description of catkin_tools_prebuild

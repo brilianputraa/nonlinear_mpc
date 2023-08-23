@@ -67,14 +67,14 @@ set(mpc_local_planner_msgs_CONFIG_INCLUDED TRUE)
 
 # set variables for source/devel/install prefixes
 if("FALSE" STREQUAL "TRUE")
-  set(mpc_local_planner_msgs_SOURCE_PREFIX /home/vialab/mpc_traj_ws/src/mpc_local_planner/mpc_local_planner_msgs)
-  set(mpc_local_planner_msgs_DEVEL_PREFIX /home/vialab/mpc_traj_ws/devel/.private/mpc_local_planner_msgs)
+  set(mpc_local_planner_msgs_SOURCE_PREFIX /home/vialab/nonlinear_mpc/src/mpc_local_planner/mpc_local_planner_msgs)
+  set(mpc_local_planner_msgs_DEVEL_PREFIX /home/vialab/nonlinear_mpc/devel/.private/mpc_local_planner_msgs)
   set(mpc_local_planner_msgs_INSTALL_PREFIX "")
   set(mpc_local_planner_msgs_PREFIX ${mpc_local_planner_msgs_DEVEL_PREFIX})
 else()
   set(mpc_local_planner_msgs_SOURCE_PREFIX "")
   set(mpc_local_planner_msgs_DEVEL_PREFIX "")
-  set(mpc_local_planner_msgs_INSTALL_PREFIX /home/vialab/mpc_traj_ws/install)
+  set(mpc_local_planner_msgs_INSTALL_PREFIX /home/vialab/nonlinear_mpc/install)
   set(mpc_local_planner_msgs_PREFIX ${mpc_local_planner_msgs_INSTALL_PREFIX})
 endif()
 
@@ -154,7 +154,7 @@ foreach(library ${libraries})
     set(lib_path "")
     set(lib "${library}-NOTFOUND")
     # since the path where the library is found is returned we have to iterate over the paths manually
-    foreach(path /home/vialab/mpc_traj_ws/install/lib;/home/vialab/mpc_traj_ws/devel/lib;/home/vialab/mpc_local_ws/devel/lib;/opt/ros/melodic/lib)
+    foreach(path /home/vialab/nonlinear_mpc/install/lib;/home/vialab/nonlinear_mpc/devel/lib;/home/vialab/mpc_local_ws/devel/lib;/opt/ros/melodic/lib)
       find_library(lib ${library}
         PATHS ${path}
         NO_DEFAULT_PATH NO_CMAKE_FIND_ROOT_PATH)

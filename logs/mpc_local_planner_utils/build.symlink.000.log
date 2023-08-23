@@ -1,3 +1,13 @@
-Symlinking /home/vialab/mpc_traj_ws/devel/lib/pkgconfig/mpc_local_planner_utils.pc
-Symlinking /home/vialab/mpc_traj_ws/devel/share/mpc_local_planner_utils/cmake/mpc_local_planner_utilsConfig.cmake
-Symlinking /home/vialab/mpc_traj_ws/devel/share/mpc_local_planner_utils/cmake/mpc_local_planner_utilsConfig-version.cmake
+Symlinking /home/vialab/nonlinear_mpc/devel/lib/pkgconfig/mpc_local_planner_utils.pc
+Symlinking /home/vialab/nonlinear_mpc/devel/share/mpc_local_planner_utils/cmake/mpc_local_planner_utilsConfig.cmake
+Symlinking /home/vialab/nonlinear_mpc/devel/share/mpc_local_planner_utils/cmake/mpc_local_planner_utilsConfig-version.cmake
+Cleaning: (/home/vialab/mpc_traj_ws/devel/.private/mpc_local_planner_utils/cmake.lock, /home/vialab/mpc_traj_ws/devel/./cmake.lock)
+Cleaning: (/home/vialab/mpc_traj_ws/devel/.private/mpc_local_planner_utils/lib/pkgconfig/mpc_local_planner_utils.pc, /home/vialab/mpc_traj_ws/devel/lib/pkgconfig/mpc_local_planner_utils.pc)
+Cleaning: (/home/vialab/mpc_traj_ws/devel/.private/mpc_local_planner_utils/share/mpc_local_planner_utils/cmake/mpc_local_planner_utilsConfig.cmake, /home/vialab/mpc_traj_ws/devel/share/mpc_local_planner_utils/cmake/mpc_local_planner_utilsConfig.cmake)
+Cleaning: (/home/vialab/mpc_traj_ws/devel/.private/mpc_local_planner_utils/share/mpc_local_planner_utils/cmake/mpc_local_planner_utilsConfig-version.cmake, /home/vialab/mpc_traj_ws/devel/share/mpc_local_planner_utils/cmake/mpc_local_planner_utilsConfig-version.cmake)
+Unlinking: /home/vialab/mpc_traj_ws/devel/lib/pkgconfig/mpc_local_planner_utils.pc
+Already unlinked: {}
+Unlinking: /home/vialab/mpc_traj_ws/devel/share/mpc_local_planner_utils/cmake/mpc_local_planner_utilsConfig.cmake
+Already unlinked: {}
+Unlinking: /home/vialab/mpc_traj_ws/devel/share/mpc_local_planner_utils/cmake/mpc_local_planner_utilsConfig-version.cmake
+Already unlinked: {}

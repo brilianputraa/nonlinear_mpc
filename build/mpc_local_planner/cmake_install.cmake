@@ -1,8 +1,8 @@
-# Install script for directory: /home/vialab/mpc_traj_ws/src/mpc_local_planner/mpc_local_planner
+# Install script for directory: /home/vialab/nonlinear_mpc/src/mpc_local_planner/mpc_local_planner
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
-  set(CMAKE_INSTALL_PREFIX "/home/vialab/mpc_traj_ws/install")
+  set(CMAKE_INSTALL_PREFIX "/home/vialab/nonlinear_mpc/install")
 endif()
 string(REGEX REPLACE "/$" "" CMAKE_INSTALL_PREFIX "${CMAKE_INSTALL_PREFIX}")
 
@@ -54,102 +54,102 @@ endif()
 
 if(CMAKE_INSTALL_COMPONENT STREQUAL "Unspecified" OR NOT CMAKE_INSTALL_COMPONENT)
   list(APPEND CMAKE_ABSOLUTE_DESTINATION_FILES
-   "/home/vialab/mpc_traj_ws/install/_setup_util.py")
+   "/home/vialab/nonlinear_mpc/install/_setup_util.py")
   if(CMAKE_WARN_ON_ABSOLUTE_INSTALL_DESTINATION)
     message(WARNING "ABSOLUTE path INSTALL DESTINATION : ${CMAKE_ABSOLUTE_DESTINATION_FILES}")
   endif()
   if(CMAKE_ERROR_ON_ABSOLUTE_INSTALL_DESTINATION)
     message(FATAL_ERROR "ABSOLUTE path INSTALL DESTINATION forbidden (by caller): ${CMAKE_ABSOLUTE_DESTINATION_FILES}")
   endif()
-  file(INSTALL DESTINATION "/home/vialab/mpc_traj_ws/install" TYPE PROGRAM FILES "/home/vialab/mpc_traj_ws/build/mpc_local_planner/catkin_generated/installspace/_setup_util.py")
+  file(INSTALL DESTINATION "/home/vialab/nonlinear_mpc/install" TYPE PROGRAM FILES "/home/vialab/nonlinear_mpc/build/mpc_local_planner/catkin_generated/installspace/_setup_util.py")
 endif()
 
 if(CMAKE_INSTALL_COMPONENT STREQUAL "Unspecified" OR NOT CMAKE_INSTALL_COMPONENT)
   list(APPEND CMAKE_ABSOLUTE_DESTINATION_FILES
-   "/home/vialab/mpc_traj_ws/install/env.sh")
+   "/home/vialab/nonlinear_mpc/install/env.sh")
   if(CMAKE_WARN_ON_ABSOLUTE_INSTALL_DESTINATION)
     message(WARNING "ABSOLUTE path INSTALL DESTINATION : ${CMAKE_ABSOLUTE_DESTINATION_FILES}")
   endif()
   if(CMAKE_ERROR_ON_ABSOLUTE_INSTALL_DESTINATION)
     message(FATAL_ERROR "ABSOLUTE path INSTALL DESTINATION forbidden (by caller): ${CMAKE_ABSOLUTE_DESTINATION_FILES}")
   endif()
-  file(INSTALL DESTINATION "/home/vialab/mpc_traj_ws/install" TYPE PROGRAM FILES "/home/vialab/mpc_traj_ws/build/mpc_local_planner/catkin_generated/installspace/env.sh")
+  file(INSTALL DESTINATION "/home/vialab/nonlinear_mpc/install" TYPE PROGRAM FILES "/home/vialab/nonlinear_mpc/build/mpc_local_planner/catkin_generated/installspace/env.sh")
 endif()
 
 if(CMAKE_INSTALL_COMPONENT STREQUAL "Unspecified" OR NOT CMAKE_INSTALL_COMPONENT)
   list(APPEND CMAKE_ABSOLUTE_DESTINATION_FILES
-   "/home/vialab/mpc_traj_ws/install/setup.bash;/home/vialab/mpc_traj_ws/install/local_setup.bash")
+   "/home/vialab/nonlinear_mpc/install/setup.bash;/home/vialab/nonlinear_mpc/install/local_setup.bash")
   if(CMAKE_WARN_ON_ABSOLUTE_INSTALL_DESTINATION)
     message(WARNING "ABSOLUTE path INSTALL DESTINATION : ${CMAKE_ABSOLUTE_DESTINATION_FILES}")
   endif()
   if(CMAKE_ERROR_ON_ABSOLUTE_INSTALL_DESTINATION)
     message(FATAL_ERROR "ABSOLUTE path INSTALL DESTINATION forbidden (by caller): ${CMAKE_ABSOLUTE_DESTINATION_FILES}")
   endif()
-  file(INSTALL DESTINATION "/home/vialab/mpc_traj_ws/install" TYPE FILE FILES
-    "/home/vialab/mpc_traj_ws/build/mpc_local_planner/catkin_generated/installspace/setup.bash"
-    "/home/vialab/mpc_traj_ws/build/mpc_local_planner/catkin_generated/installspace/local_setup.bash"
+  file(INSTALL DESTINATION "/home/vialab/nonlinear_mpc/install" TYPE FILE FILES
+    "/home/vialab/nonlinear_mpc/build/mpc_local_planner/catkin_generated/installspace/setup.bash"
+    "/home/vialab/nonlinear_mpc/build/mpc_local_planner/catkin_generated/installspace/local_setup.bash"
     )
 endif()
 
 if(CMAKE_INSTALL_COMPONENT STREQUAL "Unspecified" OR NOT CMAKE_INSTALL_COMPONENT)
   list(APPEND CMAKE_ABSOLUTE_DESTINATION_FILES
-   "/home/vialab/mpc_traj_ws/install/setup.sh;/home/vialab/mpc_traj_ws/install/local_setup.sh")
+   "/home/vialab/nonlinear_mpc/install/setup.sh;/home/vialab/nonlinear_mpc/install/local_setup.sh")
   if(CMAKE_WARN_ON_ABSOLUTE_INSTALL_DESTINATION)
     message(WARNING "ABSOLUTE path INSTALL DESTINATION : ${CMAKE_ABSOLUTE_DESTINATION_FILES}")
   endif()
   if(CMAKE_ERROR_ON_ABSOLUTE_INSTALL_DESTINATION)
     message(FATAL_ERROR "ABSOLUTE path INSTALL DESTINATION forbidden (by caller): ${CMAKE_ABSOLUTE_DESTINATION_FILES}")
   endif()
-  file(INSTALL DESTINATION "/home/vialab/mpc_traj_ws/install" TYPE FILE FILES
-    "/home/vialab/mpc_traj_ws/build/mpc_local_planner/catkin_generated/installspace/setup.sh"
-    "/home/vialab/mpc_traj_ws/build/mpc_local_planner/catkin_generated/installspace/local_setup.sh"
+  file(INSTALL DESTINATION "/home/vialab/nonlinear_mpc/install" TYPE FILE FILES
+    "/home/vialab/nonlinear_mpc/build/mpc_local_planner/catkin_generated/installspace/setup.sh"
+    "/home/vialab/nonlinear_mpc/build/mpc_local_planner/catkin_generated/installspace/local_setup.sh"
     )
 endif()
 
 if(CMAKE_INSTALL_COMPONENT STREQUAL "Unspecified" OR NOT CMAKE_INSTALL_COMPONENT)
   list(APPEND CMAKE_ABSOLUTE_DESTINATION_FILES
-   "/home/vialab/mpc_traj_ws/install/setup.zsh;/home/vialab/mpc_traj_ws/install/local_setup.zsh")
+   "/home/vialab/nonlinear_mpc/install/setup.zsh;/home/vialab/nonlinear_mpc/install/local_setup.zsh")
   if(CMAKE_WARN_ON_ABSOLUTE_INSTALL_DESTINATION)
     message(WARNING "ABSOLUTE path INSTALL DESTINATION : ${CMAKE_ABSOLUTE_DESTINATION_FILES}")
   endif()
   if(CMAKE_ERROR_ON_ABSOLUTE_INSTALL_DESTINATION)
     message(FATAL_ERROR "ABSOLUTE path INSTALL DESTINATION forbidden (by caller): ${CMAKE_ABSOLUTE_DESTINATION_FILES}")
   endif()
-  file(INSTALL DESTINATION "/home/vialab/mpc_traj_ws/install" TYPE FILE FILES
-    "/home/vialab/mpc_traj_ws/build/mpc_local_planner/catkin_generated/installspace/setup.zsh"
-    "/home/vialab/mpc_traj_ws/build/mpc_local_planner/catkin_generated/installspace/local_setup.zsh"
+  file(INSTALL DESTINATION "/home/vialab/nonlinear_mpc/install" TYPE FILE FILES
+    "/home/vialab/nonlinear_mpc/build/mpc_local_planner/catkin_generated/installspace/setup.zsh"
+    "/home/vialab/nonlinear_mpc/build/mpc_local_planner/catkin_generated/installspace/local_setup.zsh"
     )
 endif()
 
 if(CMAKE_INSTALL_COMPONENT STREQUAL "Unspecified" OR NOT CMAKE_INSTALL_COMPONENT)
   list(APPEND CMAKE_ABSOLUTE_DESTINATION_FILES
-   "/home/vialab/mpc_traj_ws/install/.rosinstall")
+   "/home/vialab/nonlinear_mpc/install/.rosinstall")
   if(CMAKE_WARN_ON_ABSOLUTE_INSTALL_DESTINATION)
     message(WARNING "ABSOLUTE path INSTALL DESTINATION : ${CMAKE_ABSOLUTE_DESTINATION_FILES}")
   endif()
   if(CMAKE_ERROR_ON_ABSOLUTE_INSTALL_DESTINATION)
     message(FATAL_ERROR "ABSOLUTE path INSTALL DESTINATION forbidden (by caller): ${CMAKE_ABSOLUTE_DESTINATION_FILES}")
   endif()
-  file(INSTALL DESTINATION "/home/vialab/mpc_traj_ws/install" TYPE FILE FILES "/home/vialab/mpc_traj_ws/build/mpc_local_planner/catkin_generated/installspace/.rosinstall")
+  file(INSTALL DESTINATION "/home/vialab/nonlinear_mpc/install" TYPE FILE FILES "/home/vialab/nonlinear_mpc/build/mpc_local_planner/catkin_generated/installspace/.rosinstall")
 endif()
 
 if(CMAKE_INSTALL_COMPONENT STREQUAL "Unspecified" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/pkgconfig" TYPE FILE FILES "/home/vialab/mpc_traj_ws/build/mpc_local_planner/catkin_generated/installspace/mpc_local_planner.pc")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/pkgconfig" TYPE FILE FILES "/home/vialab/nonlinear_mpc/build/mpc_local_planner/catkin_generated/installspace/mpc_local_planner.pc")
 endif()
 
 if(CMAKE_INSTALL_COMPONENT STREQUAL "Unspecified" OR NOT CMAKE_INSTALL_COMPONENT)
   file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/mpc_local_planner/cmake" TYPE FILE FILES
-    "/home/vialab/mpc_traj_ws/build/mpc_local_planner/catkin_generated/installspace/mpc_local_plannerConfig.cmake"
-    "/home/vialab/mpc_traj_ws/build/mpc_local_planner/catkin_generated/installspace/mpc_local_plannerConfig-version.cmake"
+    "/home/vialab/nonlinear_mpc/build/mpc_local_planner/catkin_generated/installspace/mpc_local_plannerConfig.cmake"
+    "/home/vialab/nonlinear_mpc/build/mpc_local_planner/catkin_generated/installspace/mpc_local_plannerConfig-version.cmake"
     )
 endif()
 
 if(CMAKE_INSTALL_COMPONENT STREQUAL "Unspecified" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/mpc_local_planner" TYPE FILE FILES "/home/vialab/mpc_traj_ws/src/mpc_local_planner/mpc_local_planner/package.xml")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/mpc_local_planner" TYPE FILE FILES "/home/vialab/nonlinear_mpc/src/mpc_local_planner/mpc_local_planner/package.xml")
 endif()
 
 if(CMAKE_INSTALL_COMPONENT STREQUAL "Unspecified" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/mpc_local_planner" TYPE PROGRAM FILES "/home/vialab/mpc_traj_ws/src/mpc_local_planner/mpc_local_planner/scripts/plot_optimal_control_results.py")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/mpc_local_planner" TYPE PROGRAM FILES "/home/vialab/nonlinear_mpc/src/mpc_local_planner/mpc_local_planner/scripts/plot_optimal_control_results.py")
 endif()
 
 if(CMAKE_INSTALL_COMPONENT STREQUAL "Unspecified" OR NOT CMAKE_INSTALL_COMPONENT)
@@ -159,12 +159,12 @@ if(CMAKE_INSTALL_COMPONENT STREQUAL "Unspecified" OR NOT CMAKE_INSTALL_COMPONENT
          FILE "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/libmpc_local_planner.so"
          RPATH "")
   endif()
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib" TYPE SHARED_LIBRARY FILES "/home/vialab/mpc_traj_ws/devel/.private/mpc_local_planner/lib/libmpc_local_planner.so")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib" TYPE SHARED_LIBRARY FILES "/home/vialab/nonlinear_mpc/devel/.private/mpc_local_planner/lib/libmpc_local_planner.so")
   if(EXISTS "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/libmpc_local_planner.so" AND
      NOT IS_SYMLINK "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/libmpc_local_planner.so")
     file(RPATH_CHANGE
          FILE "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/libmpc_local_planner.so"
-         OLD_RPATH "/home/vialab/mpc_traj_ws/devel/.private/mpc_local_planner/lib:/opt/ros/melodic/lib:"
+         OLD_RPATH "/home/vialab/nonlinear_mpc/devel/.private/mpc_local_planner/lib:/opt/ros/melodic/lib:"
          NEW_RPATH "")
     if(CMAKE_INSTALL_DO_STRIP)
       execute_process(COMMAND "/usr/bin/strip" "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/libmpc_local_planner.so")
@@ -182,7 +182,7 @@ if(CMAKE_INSTALL_COMPONENT STREQUAL "Unspecified" OR NOT CMAKE_INSTALL_COMPONENT
          FILE "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/libmpc_local_planner_utils.so"
          RPATH "")
   endif()
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib" TYPE SHARED_LIBRARY FILES "/home/vialab/mpc_traj_ws/devel/.private/mpc_local_planner/lib/libmpc_local_planner_utils.so")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib" TYPE SHARED_LIBRARY FILES "/home/vialab/nonlinear_mpc/devel/.private/mpc_local_planner/lib/libmpc_local_planner_utils.so")
   if(EXISTS "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/libmpc_local_planner_utils.so" AND
      NOT IS_SYMLINK "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/libmpc_local_planner_utils.so")
     if(CMAKE_INSTALL_DO_STRIP)
@@ -201,7 +201,7 @@ if(CMAKE_INSTALL_COMPONENT STREQUAL "Unspecified" OR NOT CMAKE_INSTALL_COMPONENT
          FILE "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/libmpc_local_planner_optimal_control.so"
          RPATH "")
   endif()
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib" TYPE SHARED_LIBRARY FILES "/home/vialab/mpc_traj_ws/devel/.private/mpc_local_planner/lib/libmpc_local_planner_optimal_control.so")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib" TYPE SHARED_LIBRARY FILES "/home/vialab/nonlinear_mpc/devel/.private/mpc_local_planner/lib/libmpc_local_planner_optimal_control.so")
   if(EXISTS "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/libmpc_local_planner_optimal_control.so" AND
      NOT IS_SYMLINK "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/libmpc_local_planner_optimal_control.so")
     if(CMAKE_INSTALL_DO_STRIP)
@@ -220,12 +220,12 @@ if(CMAKE_INSTALL_COMPONENT STREQUAL "Unspecified" OR NOT CMAKE_INSTALL_COMPONENT
          FILE "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/mpc_local_planner/test_mpc_optim_node"
          RPATH "")
   endif()
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/mpc_local_planner" TYPE EXECUTABLE FILES "/home/vialab/mpc_traj_ws/devel/.private/mpc_local_planner/lib/mpc_local_planner/test_mpc_optim_node")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/mpc_local_planner" TYPE EXECUTABLE FILES "/home/vialab/nonlinear_mpc/devel/.private/mpc_local_planner/lib/mpc_local_planner/test_mpc_optim_node")
   if(EXISTS "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/mpc_local_planner/test_mpc_optim_node" AND
      NOT IS_SYMLINK "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/mpc_local_planner/test_mpc_optim_node")
     file(RPATH_CHANGE
          FILE "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/mpc_local_planner/test_mpc_optim_node"
-         OLD_RPATH "/home/vialab/mpc_traj_ws/devel/.private/mpc_local_planner/lib:/opt/ros/melodic/lib:"
+         OLD_RPATH "/home/vialab/nonlinear_mpc/devel/.private/mpc_local_planner/lib:/opt/ros/melodic/lib:"
          NEW_RPATH "")
     if(CMAKE_INSTALL_DO_STRIP)
       execute_process(COMMAND "/usr/bin/strip" "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/mpc_local_planner/test_mpc_optim_node")
@@ -234,24 +234,24 @@ if(CMAKE_INSTALL_COMPONENT STREQUAL "Unspecified" OR NOT CMAKE_INSTALL_COMPONENT
 endif()
 
 if(CMAKE_INSTALL_COMPONENT STREQUAL "Unspecified" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include/mpc_local_planner" TYPE DIRECTORY FILES "/home/vialab/mpc_traj_ws/src/mpc_local_planner/mpc_local_planner/include/mpc_local_planner/" REGEX "/\\.svn$" EXCLUDE)
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include/mpc_local_planner" TYPE DIRECTORY FILES "/home/vialab/nonlinear_mpc/src/mpc_local_planner/mpc_local_planner/include/mpc_local_planner/" REGEX "/\\.svn$" EXCLUDE)
 endif()
 
 if(CMAKE_INSTALL_COMPONENT STREQUAL "Unspecified" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/mpc_local_planner" TYPE FILE FILES "/home/vialab/mpc_traj_ws/src/mpc_local_planner/mpc_local_planner/mpc_local_planner_plugin.xml")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/mpc_local_planner" TYPE FILE FILES "/home/vialab/nonlinear_mpc/src/mpc_local_planner/mpc_local_planner/mpc_local_planner_plugin.xml")
 endif()
 
 if(CMAKE_INSTALL_COMPONENT STREQUAL "Unspecified" OR NOT CMAKE_INSTALL_COMPONENT)
   file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/mpc_local_planner" TYPE DIRECTORY FILES
-    "/home/vialab/mpc_traj_ws/src/mpc_local_planner/mpc_local_planner/launch"
-    "/home/vialab/mpc_traj_ws/src/mpc_local_planner/mpc_local_planner/cfg"
-    "/home/vialab/mpc_traj_ws/src/mpc_local_planner/mpc_local_planner/scripts"
+    "/home/vialab/nonlinear_mpc/src/mpc_local_planner/mpc_local_planner/launch"
+    "/home/vialab/nonlinear_mpc/src/mpc_local_planner/mpc_local_planner/cfg"
+    "/home/vialab/nonlinear_mpc/src/mpc_local_planner/mpc_local_planner/scripts"
     REGEX "/\\.svn$" EXCLUDE)
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
-  include("/home/vialab/mpc_traj_ws/build/mpc_local_planner/gtest/cmake_install.cmake")
+  include("/home/vialab/nonlinear_mpc/build/mpc_local_planner/gtest/cmake_install.cmake")
 
 endif()
 
@@ -263,5 +263,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/home/vialab/mpc_traj_ws/build/mpc_local_planner/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/home/vialab/nonlinear_mpc/build/mpc_local_planner/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

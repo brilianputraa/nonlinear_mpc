@@ -1,6 +1,6 @@
 file(REMOVE_RECURSE
-  "/home/vialab/mpc_traj_ws/devel/.private/mpc_local_planner_msgs/share/common-lisp/ros/mpc_local_planner_msgs/msg/OptimalControlResult.lisp"
-  "/home/vialab/mpc_traj_ws/devel/.private/mpc_local_planner_msgs/share/common-lisp/ros/mpc_local_planner_msgs/msg/StateFeedback.lisp"
+  "/home/vialab/nonlinear_mpc/devel/.private/mpc_local_planner_msgs/share/common-lisp/ros/mpc_local_planner_msgs/msg/OptimalControlResult.lisp"
+  "/home/vialab/nonlinear_mpc/devel/.private/mpc_local_planner_msgs/share/common-lisp/ros/mpc_local_planner_msgs/msg/StateFeedback.lisp"
   "CMakeFiles/mpc_local_planner_msgs_generate_messages_lisp"
 )
 

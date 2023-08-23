@@ -1,7 +1,7 @@
 CMakeFiles/mpc_local_planner.dir/src/mpc_local_planner_ros.cpp.o: \
- /home/vialab/mpc_traj_ws/src/mpc_local_planner/mpc_local_planner/src/mpc_local_planner_ros.cpp \
+ /home/vialab/nonlinear_mpc/src/mpc_local_planner/mpc_local_planner/src/mpc_local_planner_ros.cpp \
  /usr/include/stdc-predef.h \
- /home/vialab/mpc_traj_ws/src/mpc_local_planner/mpc_local_planner/include/mpc_local_planner/mpc_local_planner_ros.h \
+ /home/vialab/nonlinear_mpc/src/mpc_local_planner/mpc_local_planner/include/mpc_local_planner/mpc_local_planner_ros.h \
  /opt/ros/melodic/include/ros/ros.h /opt/ros/melodic/include/ros/time.h \
  /opt/ros/melodic/include/ros/platform.h /usr/include/c++/7/stdlib.h \
  /usr/include/c++/7/cstdlib \
@@ -1573,7 +1573,7 @@ CMakeFiles/mpc_local_planner.dir/src/mpc_local_planner_ros.cpp.o: \
  /opt/ros/melodic/include/tf2/LinearMath/Quaternion.h \
  /opt/ros/melodic/include/mbf_utility/types.h \
  /opt/ros/melodic/include/nav_core/base_local_planner.h \
- /home/vialab/mpc_traj_ws/src/mpc_local_planner/mpc_local_planner/include/mpc_local_planner/controller.h \
+ /home/vialab/nonlinear_mpc/src/mpc_local_planner/mpc_local_planner/include/mpc_local_planner/controller.h \
  /opt/ros/melodic/include/control_box_rst/corbo-controllers/predictive_controller.h \
  /opt/ros/melodic/include/control_box_rst/corbo-controllers/controller_interface.h \
  /opt/ros/melodic/include/control_box_rst/corbo-controllers/statistics.h \
@@ -1810,7 +1810,7 @@ CMakeFiles/mpc_local_planner.dir/src/mpc_local_planner_ros.cpp.o: \
  /opt/ros/melodic/include/control_box_rst/corbo-optimization/hyper_graph/hyper_graph.h \
  /opt/ros/melodic/include/control_box_rst/corbo-optimization/solver/nlp_solver_interface.h \
  /opt/ros/melodic/include/control_box_rst/corbo-optimization/types.h \
- /home/vialab/mpc_traj_ws/src/mpc_local_planner/mpc_local_planner/include/mpc_local_planner/optimal_control/stage_inequality_se2.h \
+ /home/vialab/nonlinear_mpc/src/mpc_local_planner/mpc_local_planner/include/mpc_local_planner/optimal_control/stage_inequality_se2.h \
  /opt/ros/melodic/include/teb_local_planner/robot_footprint_model.h \
  /opt/ros/melodic/include/teb_local_planner/pose_se2.h \
  /opt/ros/melodic/include/g2o/stuff/misc.h \
@@ -1938,10 +1938,10 @@ CMakeFiles/mpc_local_planner.dir/src/mpc_local_planner_ros.cpp.o: \
  /opt/ros/melodic/include/teb_local_planner/distance_calculations.h \
  /opt/ros/melodic/include/visualization_msgs/Marker.h \
  /opt/ros/melodic/include/std_msgs/ColorRGBA.h \
- /home/vialab/mpc_traj_ws/src/mpc_local_planner/mpc_local_planner/include/mpc_local_planner/systems/robot_dynamics_interface.h \
- /home/vialab/mpc_traj_ws/devel/.private/mpc_local_planner_msgs/include/mpc_local_planner_msgs/StateFeedback.h \
+ /home/vialab/nonlinear_mpc/src/mpc_local_planner/mpc_local_planner/include/mpc_local_planner/systems/robot_dynamics_interface.h \
+ /home/vialab/nonlinear_mpc/devel/.private/mpc_local_planner_msgs/include/mpc_local_planner_msgs/StateFeedback.h \
  /usr/include/c++/7/mutex /usr/include/c++/7/bits/std_mutex.h \
- /home/vialab/mpc_traj_ws/src/mpc_local_planner/mpc_local_planner/include/mpc_local_planner/utils/publisher.h \
+ /home/vialab/nonlinear_mpc/src/mpc_local_planner/mpc_local_planner/include/mpc_local_planner/utils/publisher.h \
  /opt/ros/melodic/include/costmap_converter/ObstacleMsg.h \
  /opt/ros/melodic/include/visualization_msgs/MarkerArray.h \
  /opt/ros/melodic/include/tf2/utils.h \
@@ -1960,7 +1960,7 @@ CMakeFiles/mpc_local_planner.dir/src/mpc_local_planner_ros.cpp.o: \
  /opt/ros/melodic/include/ros/callback_queue_interface.h \
  /opt/ros/melodic/include/ros/internal/condition_variable.h \
  /opt/ros/melodic/include/costmap_converter/ObstacleArrayMsg.h \
- /home/vialab/mpc_traj_ws/src/mpc_local_planner/mpc_local_planner/include/mpc_local_planner/utils/math_utils.h \
+ /home/vialab/nonlinear_mpc/src/mpc_local_planner/mpc_local_planner/include/mpc_local_planner/utils/math_utils.h \
  /opt/ros/melodic/include/tf2_eigen/tf2_eigen.h \
  /opt/ros/melodic/include/mbf_msgs/ExePathResult.h \
  /opt/ros/melodic/include/pluginlib/class_list_macros.h \

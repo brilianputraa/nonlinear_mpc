@@ -39,6 +39,8 @@ class ControlLogger:
         self.sub_goal = rospy.Subscriber("/move_base/status", GoalStatusArray, self.control_cb, queue_size=1)
         self.sub_ctrl = message_filters.Subscriber("/move_base/MpcLocalPlannerROS/ocp_result", OptimalControlResult)
         self.sub_odom =  message_filters.Subscriber("/odoms", Odometry)
+        self.counter = 0
+        self.count_flag = True
         
         self.header_measurement = ["odom_x", "odom_y", "odom_vel", "odom_yaw"]
         self.header_mpcOutput = ["ros_time", "mpc_vel", "mpc_steer"]
@@ -61,20 +63,25 @@ class ControlLogger:
                 status = match.group("number")
                 if status == "3":
                     print("==================================== GOAL REACHED =============================================")
-                    # Halt control and align wheels
-                    control_msg = AckermannDriveStamped()
-                    control_msg.header.stamp = rospy.Time.now()
-                    control_msg.drive.steering_angle = 0.0
-                    control_msg.drive.acceleration = 0.0
-                    control_msg.drive.speed = 0.0
-                    control_msg.drive.jerk = 0.0
-                    
                     # Stop signal when goal is reached
                     isstop = Bool()
                     isstop.data = True
+                                    
+                    if self.counter < 20:
+                        # Halt control and align wheels
+                        control_msg = AckermannDriveStamped()
+                        control_msg.header.stamp = rospy.Time.now()
+                        control_msg.drive.steering_angle = 0.0
+                        control_msg.drive.acceleration = 0.0
+                        control_msg.drive.speed = 0.0
+                        control_msg.drive.jerk = 0.0
+                        self.pub_ctrl.publish(control_msg)
+                        self.pub_stop.publish(isstop)
+                        self.counter += 1
                     
-                    self.pub_ctrl.publish(control_msg)
-                    self.pub_stop.publish(isstop)
+                    # Activating the Linear MPC for Parking    
+                    self.pub_mpc.publish(isstop)
+
         
     def save_data(self):
         dataFrame = {}
@@ -98,7 +105,7 @@ class ControlLogger:
         df = pd.DataFrame(dataFrame)
         # print(df)
         print(os.getcwd())
-        df.to_csv('/home/vialab/mpc_traj_ws/src/mpc_local_planner/mpc_local_planner_utils/scripts/logs/%s_mpc_local_planner.csv' % cur_date)
+        df.to_csv('/home/vialab/nonlinear_mpc/src/mpc_local_planner/mpc_local_planner_utils/scripts/logs/%s_mpc_local_planner.csv' % cur_date)
                 
     def sigint_handler(self, signal, frame):
         print('KeyboardInterrupt is caught')
@@ -150,8 +157,8 @@ class ControlLogger:
             self.path_x.append(path[:,0].tolist())
             self.path_y.append(path[:,1].tolist())
             self.path_yaw.append(path[:,2].tolist())
-            #print(path)
-            #print(self.path_x)
+            # print(path)
+            # print(self.path_x)
             # print("path")
             # print(path)
 

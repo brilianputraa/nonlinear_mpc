@@ -1,6 +1,6 @@
-devel_space: /home/vialab/mpc_traj_ws/devel
+devel_space: /home/vialab/nonlinear_mpc/devel
 install: false
-install_space: /home/vialab/mpc_traj_ws/install
+install_space: /home/vialab/nonlinear_mpc/install
 profile: default
-source_space: /home/vialab/mpc_traj_ws/src
-workspace: /home/vialab/mpc_traj_ws
+source_space: /home/vialab/nonlinear_mpc/src
+workspace: /home/vialab/nonlinear_mpc

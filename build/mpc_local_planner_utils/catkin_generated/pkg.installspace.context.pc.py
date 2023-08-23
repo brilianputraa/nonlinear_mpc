@@ -4,5 +4,5 @@ PROJECT_PKG_CONFIG_INCLUDE_DIRS = "${prefix}/include".split(';') if "${prefix}/i
 PROJECT_CATKIN_DEPENDS = "rospy;ackermann_msgs;actionlib_msgs".replace(';', ' ')
 PKG_CONFIG_LIBRARIES_WITH_PREFIX = "".split(';') if "" != "" else []
 PROJECT_NAME = "mpc_local_planner_utils"
-PROJECT_SPACE_DIR = "/home/vialab/mpc_traj_ws/install"
+PROJECT_SPACE_DIR = "/home/vialab/nonlinear_mpc/install"
 PROJECT_VERSION = "0.0.3"

@@ -1,7 +1,7 @@
 CMakeFiles/mpc_local_planner_optimal_control.dir/src/optimal_control/min_time_via_points_cost.cpp.o: \
- /home/vialab/mpc_traj_ws/src/mpc_local_planner/mpc_local_planner/src/optimal_control/min_time_via_points_cost.cpp \
+ /home/vialab/nonlinear_mpc/src/mpc_local_planner/mpc_local_planner/src/optimal_control/min_time_via_points_cost.cpp \
  /usr/include/stdc-predef.h \
- /home/vialab/mpc_traj_ws/src/mpc_local_planner/mpc_local_planner/include/mpc_local_planner/optimal_control/min_time_via_points_cost.h \
+ /home/vialab/nonlinear_mpc/src/mpc_local_planner/mpc_local_planner/include/mpc_local_planner/optimal_control/min_time_via_points_cost.h \
  /opt/ros/melodic/include/control_box_rst/corbo-core/reference_trajectory.h \
  /opt/ros/melodic/include/control_box_rst/corbo-core/factory.h \
  /opt/ros/melodic/include/control_box_rst/corbo-core/console.h \
@@ -1083,7 +1083,7 @@ CMakeFiles/mpc_local_planner_optimal_control.dir/src/optimal_control/min_time_vi
  /usr/include/log4cxx/helpers/objectptr.h \
  /usr/include/log4cxx/helpers/classregistration.h \
  /opt/ros/melodic/include/rosconsole/macros_generated.h \
- /home/vialab/mpc_traj_ws/src/mpc_local_planner/mpc_local_planner/include/mpc_local_planner/optimal_control/full_discretization_grid_base_se2.h \
+ /home/vialab/nonlinear_mpc/src/mpc_local_planner/mpc_local_planner/include/mpc_local_planner/optimal_control/full_discretization_grid_base_se2.h \
  /opt/ros/melodic/include/control_box_rst/corbo-optimal-control/structured_ocp/discretization_grids/discretization_grid_interface.h \
  /opt/ros/melodic/include/control_box_rst/corbo-optimization/hyper_graph/edge_set.h \
  /opt/ros/melodic/include/control_box_rst/corbo-optimization/hyper_graph/vertex_set.h \
@@ -1091,6 +1091,6 @@ CMakeFiles/mpc_local_planner_optimal_control.dir/src/optimal_control/min_time_vi
  /opt/ros/melodic/include/control_box_rst/corbo-numerics/dynamics_eval_interface.h \
  /opt/ros/melodic/include/control_box_rst/corbo-core/range.h \
  /opt/ros/melodic/include/control_box_rst/corbo-systems/system_dynamics_interface.h \
- /home/vialab/mpc_traj_ws/src/mpc_local_planner/mpc_local_planner/include/mpc_local_planner/optimal_control/vector_vertex_se2.h \
- /home/vialab/mpc_traj_ws/src/mpc_local_planner/mpc_local_planner/include/mpc_local_planner/utils/math_utils.h \
+ /home/vialab/nonlinear_mpc/src/mpc_local_planner/mpc_local_planner/include/mpc_local_planner/optimal_control/vector_vertex_se2.h \
+ /home/vialab/nonlinear_mpc/src/mpc_local_planner/mpc_local_planner/include/mpc_local_planner/utils/math_utils.h \
  /opt/ros/melodic/include/control_box_rst/corbo-numerics/finite_differences_collocation.h

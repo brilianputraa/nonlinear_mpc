@@ -4,5 +4,5 @@ PROJECT_PKG_CONFIG_INCLUDE_DIRS = "".split(';') if "" != "" else []
 PROJECT_CATKIN_DEPENDS = "".replace(';', ' ')
 PKG_CONFIG_LIBRARIES_WITH_PREFIX = "".split(';') if "" != "" else []
 PROJECT_NAME = "mpc_local_planner_examples"
-PROJECT_SPACE_DIR = "/home/vialab/mpc_traj_ws/install"
+PROJECT_SPACE_DIR = "/home/vialab/nonlinear_mpc/install"
 PROJECT_VERSION = "0.0.3"
