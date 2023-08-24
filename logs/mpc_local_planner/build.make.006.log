@@ -1,0 +1,4 @@
+[ 23%] Built target mpc_local_planner_utils
+[ 70%] Built target mpc_local_planner_optimal_control
+[ 88%] Built target mpc_local_planner
+[100%] Built target test_mpc_optim_node
