@@ -1,7 +1,7 @@
 CMakeFiles/mpc_local_planner_optimal_control.dir/src/optimal_control/full_discretization_grid_base_se2.cpp.o: \
- /home/vialab/mpc_traj_ws/src/mpc_local_planner/mpc_local_planner/src/optimal_control/full_discretization_grid_base_se2.cpp \
+ /home/vialab/nonlinear_mpc/src/mpc_local_planner/mpc_local_planner/src/optimal_control/full_discretization_grid_base_se2.cpp \
  /usr/include/stdc-predef.h \
- /home/vialab/mpc_traj_ws/src/mpc_local_planner/mpc_local_planner/include/mpc_local_planner/optimal_control/full_discretization_grid_base_se2.h \
+ /home/vialab/nonlinear_mpc/src/mpc_local_planner/mpc_local_planner/include/mpc_local_planner/optimal_control/full_discretization_grid_base_se2.h \
  /opt/ros/melodic/include/control_box_rst/corbo-optimal-control/structured_ocp/discretization_grids/discretization_grid_interface.h \
  /opt/ros/melodic/include/control_box_rst/corbo-optimization/hyper_graph/edge_set.h \
  /opt/ros/melodic/include/control_box_rst/corbo-optimization/hyper_graph/edge_interface.h \
@@ -349,8 +349,8 @@ CMakeFiles/mpc_local_planner_optimal_control.dir/src/optimal_control/full_discre
  /opt/ros/melodic/include/control_box_rst/corbo-numerics/dynamics_eval_interface.h \
  /opt/ros/melodic/include/control_box_rst/corbo-core/range.h \
  /opt/ros/melodic/include/control_box_rst/corbo-systems/system_dynamics_interface.h \
- /home/vialab/mpc_traj_ws/src/mpc_local_planner/mpc_local_planner/include/mpc_local_planner/optimal_control/vector_vertex_se2.h \
- /home/vialab/mpc_traj_ws/src/mpc_local_planner/mpc_local_planner/include/mpc_local_planner/utils/math_utils.h \
+ /home/vialab/nonlinear_mpc/src/mpc_local_planner/mpc_local_planner/include/mpc_local_planner/optimal_control/vector_vertex_se2.h \
+ /home/vialab/nonlinear_mpc/src/mpc_local_planner/mpc_local_planner/include/mpc_local_planner/utils/math_utils.h \
  /opt/ros/melodic/include/teb_local_planner/pose_se2.h \
  /opt/ros/melodic/include/g2o/stuff/misc.h \
  /opt/ros/melodic/include/g2o/stuff/macros.h \

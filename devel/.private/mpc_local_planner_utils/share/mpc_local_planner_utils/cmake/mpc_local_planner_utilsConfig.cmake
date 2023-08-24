@@ -67,14 +67,14 @@ set(mpc_local_planner_utils_CONFIG_INCLUDED TRUE)
 
 # set variables for source/devel/install prefixes
 if("TRUE" STREQUAL "TRUE")
-  set(mpc_local_planner_utils_SOURCE_PREFIX /home/vialab/mpc_traj_ws/src/mpc_local_planner/mpc_local_planner_utils)
-  set(mpc_local_planner_utils_DEVEL_PREFIX /home/vialab/mpc_traj_ws/devel/.private/mpc_local_planner_utils)
+  set(mpc_local_planner_utils_SOURCE_PREFIX /home/vialab/nonlinear_mpc/src/mpc_local_planner/mpc_local_planner_utils)
+  set(mpc_local_planner_utils_DEVEL_PREFIX /home/vialab/nonlinear_mpc/devel/.private/mpc_local_planner_utils)
   set(mpc_local_planner_utils_INSTALL_PREFIX "")
   set(mpc_local_planner_utils_PREFIX ${mpc_local_planner_utils_DEVEL_PREFIX})
 else()
   set(mpc_local_planner_utils_SOURCE_PREFIX "")
   set(mpc_local_planner_utils_DEVEL_PREFIX "")
-  set(mpc_local_planner_utils_INSTALL_PREFIX /home/vialab/mpc_traj_ws/install)
+  set(mpc_local_planner_utils_INSTALL_PREFIX /home/vialab/nonlinear_mpc/install)
   set(mpc_local_planner_utils_PREFIX ${mpc_local_planner_utils_INSTALL_PREFIX})
 endif()
 
@@ -91,9 +91,9 @@ endif()
 # flag project as catkin-based to distinguish if a find_package()-ed project is a catkin project
 set(mpc_local_planner_utils_FOUND_CATKIN_PROJECT TRUE)
 
-if(NOT "/home/vialab/mpc_traj_ws/src/mpc_local_planner/mpc_local_planner_utils/scripts " STREQUAL " ")
+if(NOT "/home/vialab/nonlinear_mpc/src/mpc_local_planner/mpc_local_planner_utils/scripts " STREQUAL " ")
   set(mpc_local_planner_utils_INCLUDE_DIRS "")
-  set(_include_dirs "/home/vialab/mpc_traj_ws/src/mpc_local_planner/mpc_local_planner_utils/scripts")
+  set(_include_dirs "/home/vialab/nonlinear_mpc/src/mpc_local_planner/mpc_local_planner_utils/scripts")
   if(NOT " " STREQUAL " ")
     set(_report "Check the issue tracker '' and consider creating a ticket if the problem has not been reported yet.")
   elseif(NOT "http://wiki.ros.org/mpc_local_planner_examples " STREQUAL " ")
@@ -110,7 +110,7 @@ if(NOT "/home/vialab/mpc_traj_ws/src/mpc_local_planner/mpc_local_planner_utils/s
         message(FATAL_ERROR "Project 'mpc_local_planner_utils' specifies '${idir}' as an include dir, which is not found.  It does not exist in '${include}'.  ${_report}")
       endif()
     else()
-      message(FATAL_ERROR "Project 'mpc_local_planner_utils' specifies '${idir}' as an include dir, which is not found.  It does neither exist as an absolute directory nor in '/home/vialab/mpc_traj_ws/src/mpc_local_planner/mpc_local_planner_utils/${idir}'.  ${_report}")
+      message(FATAL_ERROR "Project 'mpc_local_planner_utils' specifies '${idir}' as an include dir, which is not found.  It does neither exist as an absolute directory nor in '/home/vialab/nonlinear_mpc/src/mpc_local_planner/mpc_local_planner_utils/${idir}'.  ${_report}")
     endif()
     _list_append_unique(mpc_local_planner_utils_INCLUDE_DIRS ${include})
   endforeach()
@@ -154,7 +154,7 @@ foreach(library ${libraries})
     set(lib_path "")
     set(lib "${library}-NOTFOUND")
     # since the path where the library is found is returned we have to iterate over the paths manually
-    foreach(path /home/vialab/mpc_traj_ws/devel/.private/mpc_local_planner_utils/lib;/home/vialab/mpc_traj_ws/devel/lib;/home/vialab/mpc_local_ws/devel/lib;/opt/ros/melodic/lib)
+    foreach(path /home/vialab/nonlinear_mpc/devel/.private/mpc_local_planner_utils/lib;/home/vialab/nonlinear_mpc/devel/lib;/home/vialab/mpc_local_ws/devel/lib;/opt/ros/melodic/lib)
       find_library(lib ${library}
         PATHS ${path}
         NO_DEFAULT_PATH NO_CMAKE_FIND_ROOT_PATH)

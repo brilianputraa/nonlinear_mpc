@@ -1,6 +1,6 @@
 file(REMOVE_RECURSE
-  "/home/vialab/mpc_traj_ws/devel/.private/mpc_local_planner/lib/libmpc_local_planner.pdb"
-  "/home/vialab/mpc_traj_ws/devel/.private/mpc_local_planner/lib/libmpc_local_planner.so"
+  "/home/vialab/nonlinear_mpc/devel/.private/mpc_local_planner/lib/libmpc_local_planner.pdb"
+  "/home/vialab/nonlinear_mpc/devel/.private/mpc_local_planner/lib/libmpc_local_planner.so"
   "CMakeFiles/mpc_local_planner.dir/src/controller.cpp.o"
   "CMakeFiles/mpc_local_planner.dir/src/controller.cpp.o.d"
   "CMakeFiles/mpc_local_planner.dir/src/mpc_local_planner_ros.cpp.o"

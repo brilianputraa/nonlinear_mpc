@@ -1,7 +1,7 @@
 CMakeFiles/mpc_local_planner_optimal_control.dir/src/optimal_control/quadratic_cost_se2.cpp.o: \
- /home/vialab/mpc_traj_ws/src/mpc_local_planner/mpc_local_planner/src/optimal_control/quadratic_cost_se2.cpp \
+ /home/vialab/nonlinear_mpc/src/mpc_local_planner/mpc_local_planner/src/optimal_control/quadratic_cost_se2.cpp \
  /usr/include/stdc-predef.h \
- /home/vialab/mpc_traj_ws/src/mpc_local_planner/mpc_local_planner/include/mpc_local_planner/optimal_control/quadratic_cost_se2.h \
+ /home/vialab/nonlinear_mpc/src/mpc_local_planner/mpc_local_planner/include/mpc_local_planner/optimal_control/quadratic_cost_se2.h \
  /opt/ros/melodic/include/control_box_rst/corbo-optimal-control/functions/quadratic_cost.h \
  /opt/ros/melodic/include/control_box_rst/corbo-core/reference_trajectory.h \
  /opt/ros/melodic/include/control_box_rst/corbo-core/factory.h \
@@ -342,4 +342,4 @@ CMakeFiles/mpc_local_planner_optimal_control.dir/src/optimal_control/quadratic_c
  /opt/ros/melodic/include/control_box_rst/corbo-core/utilities.h \
  /opt/ros/melodic/include/control_box_rst/corbo-optimization/hyper_graph/scalar_vertex.h \
  /opt/ros/melodic/include/control_box_rst/corbo-optimal-control/functions/quadratic_state_cost.h \
- /home/vialab/mpc_traj_ws/src/mpc_local_planner/mpc_local_planner/include/mpc_local_planner/utils/math_utils.h
+ /home/vialab/nonlinear_mpc/src/mpc_local_planner/mpc_local_planner/include/mpc_local_planner/utils/math_utils.h

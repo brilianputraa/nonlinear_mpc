@@ -1,7 +1,11 @@
-[ 23%] Built target mpc_local_planner_utils
+[  5%] [32mBuilding CXX object CMakeFiles/mpc_local_planner_utils.dir/src/utils/conversion.cpp.o[0m
+[ 11%] [32mBuilding CXX object CMakeFiles/mpc_local_planner_optimal_control.dir/src/optimal_control/quadratic_cost_se2.cpp.o[0m
+[ 17%] [32m[1mLinking CXX shared library /home/vialab/nonlinear_mpc/devel/.private/mpc_local_planner/lib/libmpc_local_planner_utils.so[0m
+[ 29%] Built target mpc_local_planner_utils
+[ 35%] [32m[1mLinking CXX shared library /home/vialab/nonlinear_mpc/devel/.private/mpc_local_planner/lib/libmpc_local_planner_optimal_control.so[0m
 [ 70%] Built target mpc_local_planner_optimal_control
-[ 76%] [32mBuilding CXX object CMakeFiles/mpc_local_planner.dir/src/controller.cpp.o[0m
-[ 82%] [32m[1mLinking CXX shared library /home/vialab/mpc_traj_ws/devel/.private/mpc_local_planner/lib/libmpc_local_planner.so[0m
+[ 76%] [32mBuilding CXX object CMakeFiles/mpc_local_planner.dir/src/mpc_local_planner_ros.cpp.o[0m
+[ 82%] [32m[1mLinking CXX shared library /home/vialab/nonlinear_mpc/devel/.private/mpc_local_planner/lib/libmpc_local_planner.so[0m
 [ 88%] Built target mpc_local_planner
-[ 94%] [32m[1mLinking CXX executable /home/vialab/mpc_traj_ws/devel/.private/mpc_local_planner/lib/mpc_local_planner/test_mpc_optim_node[0m
+[ 94%] [32m[1mLinking CXX executable /home/vialab/nonlinear_mpc/devel/.private/mpc_local_planner/lib/mpc_local_planner/test_mpc_optim_node[0m
 [100%] Built target test_mpc_optim_node

@@ -1,1 +1,1 @@
-/home/vialab/mpc_traj_ws/devel/.private/catkin_tools_prebuild/env.sh
+/home/vialab/nonlinear_mpc/devel/.private/catkin_tools_prebuild/env.sh

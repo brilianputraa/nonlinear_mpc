@@ -1,0 +1,29 @@
+Symlinking /home/vialab/nonlinear_mpc/devel/lib/libmpc_local_planner.so
+Symlinking /home/vialab/nonlinear_mpc/devel/lib/libmpc_local_planner_optimal_control.so
+Symlinking /home/vialab/nonlinear_mpc/devel/lib/libmpc_local_planner_utils.so
+Symlinking /home/vialab/nonlinear_mpc/devel/lib/mpc_local_planner/test_mpc_optim_node
+Symlinking /home/vialab/nonlinear_mpc/devel/lib/pkgconfig/mpc_local_planner.pc
+Symlinking /home/vialab/nonlinear_mpc/devel/share/mpc_local_planner/cmake/mpc_local_plannerConfig-version.cmake
+Symlinking /home/vialab/nonlinear_mpc/devel/share/mpc_local_planner/cmake/mpc_local_plannerConfig.cmake
+Cleaning: (/home/vialab/mpc_traj_ws/devel/.private/mpc_local_planner/cmake.lock, /home/vialab/mpc_traj_ws/devel/./cmake.lock)
+Cleaning: (/home/vialab/mpc_traj_ws/devel/.private/mpc_local_planner/lib/libmpc_local_planner.so, /home/vialab/mpc_traj_ws/devel/lib/libmpc_local_planner.so)
+Cleaning: (/home/vialab/mpc_traj_ws/devel/.private/mpc_local_planner/lib/libmpc_local_planner_optimal_control.so, /home/vialab/mpc_traj_ws/devel/lib/libmpc_local_planner_optimal_control.so)
+Cleaning: (/home/vialab/mpc_traj_ws/devel/.private/mpc_local_planner/lib/libmpc_local_planner_utils.so, /home/vialab/mpc_traj_ws/devel/lib/libmpc_local_planner_utils.so)
+Cleaning: (/home/vialab/mpc_traj_ws/devel/.private/mpc_local_planner/lib/mpc_local_planner/test_mpc_optim_node, /home/vialab/mpc_traj_ws/devel/lib/mpc_local_planner/test_mpc_optim_node)
+Cleaning: (/home/vialab/mpc_traj_ws/devel/.private/mpc_local_planner/lib/pkgconfig/mpc_local_planner.pc, /home/vialab/mpc_traj_ws/devel/lib/pkgconfig/mpc_local_planner.pc)
+Cleaning: (/home/vialab/mpc_traj_ws/devel/.private/mpc_local_planner/share/mpc_local_planner/cmake/mpc_local_plannerConfig-version.cmake, /home/vialab/mpc_traj_ws/devel/share/mpc_local_planner/cmake/mpc_local_plannerConfig-version.cmake)
+Cleaning: (/home/vialab/mpc_traj_ws/devel/.private/mpc_local_planner/share/mpc_local_planner/cmake/mpc_local_plannerConfig.cmake, /home/vialab/mpc_traj_ws/devel/share/mpc_local_planner/cmake/mpc_local_plannerConfig.cmake)
+Unlinking: /home/vialab/mpc_traj_ws/devel/lib/libmpc_local_planner.so
+Already unlinked: {}
+Unlinking: /home/vialab/mpc_traj_ws/devel/lib/libmpc_local_planner_optimal_control.so
+Already unlinked: {}
+Unlinking: /home/vialab/mpc_traj_ws/devel/lib/libmpc_local_planner_utils.so
+Already unlinked: {}
+Unlinking: /home/vialab/mpc_traj_ws/devel/lib/mpc_local_planner/test_mpc_optim_node
+Already unlinked: {}
+Unlinking: /home/vialab/mpc_traj_ws/devel/lib/pkgconfig/mpc_local_planner.pc
+Already unlinked: {}
+Unlinking: /home/vialab/mpc_traj_ws/devel/share/mpc_local_planner/cmake/mpc_local_plannerConfig-version.cmake
+Already unlinked: {}
+Unlinking: /home/vialab/mpc_traj_ws/devel/share/mpc_local_planner/cmake/mpc_local_plannerConfig.cmake
+Already unlinked: {}

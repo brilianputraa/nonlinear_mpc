@@ -1,4 +1,4 @@
-prefix=/home/vialab/mpc_traj_ws/install
+prefix=/home/vialab/nonlinear_mpc/install
 
 Name: mpc_local_planner_utils
 Description: Description of mpc_local_planner_utils

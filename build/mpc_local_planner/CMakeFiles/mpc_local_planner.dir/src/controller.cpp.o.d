@@ -1,7 +1,7 @@
 CMakeFiles/mpc_local_planner.dir/src/controller.cpp.o: \
- /home/vialab/mpc_traj_ws/src/mpc_local_planner/mpc_local_planner/src/controller.cpp \
+ /home/vialab/nonlinear_mpc/src/mpc_local_planner/mpc_local_planner/src/controller.cpp \
  /usr/include/stdc-predef.h \
- /home/vialab/mpc_traj_ws/src/mpc_local_planner/mpc_local_planner/include/mpc_local_planner/controller.h \
+ /home/vialab/nonlinear_mpc/src/mpc_local_planner/mpc_local_planner/include/mpc_local_planner/controller.h \
  /opt/ros/melodic/include/control_box_rst/corbo-controllers/predictive_controller.h \
  /opt/ros/melodic/include/control_box_rst/corbo-controllers/controller_interface.h \
  /opt/ros/melodic/include/control_box_rst/corbo-controllers/statistics.h \
@@ -437,7 +437,7 @@ CMakeFiles/mpc_local_planner.dir/src/controller.cpp.o: \
  /opt/ros/melodic/include/control_box_rst/corbo-optimization/hyper_graph/hyper_graph.h \
  /opt/ros/melodic/include/control_box_rst/corbo-optimization/solver/nlp_solver_interface.h \
  /opt/ros/melodic/include/control_box_rst/corbo-optimization/types.h \
- /home/vialab/mpc_traj_ws/src/mpc_local_planner/mpc_local_planner/include/mpc_local_planner/optimal_control/stage_inequality_se2.h \
+ /home/vialab/nonlinear_mpc/src/mpc_local_planner/mpc_local_planner/include/mpc_local_planner/optimal_control/stage_inequality_se2.h \
  /opt/ros/melodic/include/teb_local_planner/robot_footprint_model.h \
  /opt/ros/melodic/include/teb_local_planner/pose_se2.h \
  /opt/ros/melodic/include/g2o/stuff/misc.h \
@@ -1703,8 +1703,8 @@ CMakeFiles/mpc_local_planner.dir/src/controller.cpp.o: \
  /opt/ros/melodic/include/teb_local_planner/distance_calculations.h \
  /opt/ros/melodic/include/visualization_msgs/Marker.h \
  /opt/ros/melodic/include/std_msgs/ColorRGBA.h \
- /home/vialab/mpc_traj_ws/src/mpc_local_planner/mpc_local_planner/include/mpc_local_planner/systems/robot_dynamics_interface.h \
- /home/vialab/mpc_traj_ws/devel/.private/mpc_local_planner_msgs/include/mpc_local_planner_msgs/StateFeedback.h \
+ /home/vialab/nonlinear_mpc/src/mpc_local_planner/mpc_local_planner/include/mpc_local_planner/systems/robot_dynamics_interface.h \
+ /home/vialab/nonlinear_mpc/devel/.private/mpc_local_planner_msgs/include/mpc_local_planner_msgs/StateFeedback.h \
  /opt/ros/melodic/include/base_local_planner/costmap_model.h \
  /opt/ros/melodic/include/base_local_planner/world_model.h \
  /opt/ros/melodic/include/costmap_2d/observation.h \
@@ -1851,23 +1851,23 @@ CMakeFiles/mpc_local_planner.dir/src/controller.cpp.o: \
  /usr/include/coin/IpRegOptions.hpp \
  /opt/ros/melodic/include/control_box_rst/corbo-optimization/solver/qp_solver_osqp.h \
  /opt/ros/melodic/include/control_box_rst/corbo-optimization/solver/qp_solver_interface.h \
- /home/vialab/mpc_traj_ws/src/mpc_local_planner/mpc_local_planner/include/mpc_local_planner/optimal_control/fd_collocation_se2.h \
- /home/vialab/mpc_traj_ws/src/mpc_local_planner/mpc_local_planner/include/mpc_local_planner/utils/math_utils.h \
- /home/vialab/mpc_traj_ws/src/mpc_local_planner/mpc_local_planner/include/mpc_local_planner/optimal_control/final_state_conditions_se2.h \
+ /home/vialab/nonlinear_mpc/src/mpc_local_planner/mpc_local_planner/include/mpc_local_planner/optimal_control/fd_collocation_se2.h \
+ /home/vialab/nonlinear_mpc/src/mpc_local_planner/mpc_local_planner/include/mpc_local_planner/utils/math_utils.h \
+ /home/vialab/nonlinear_mpc/src/mpc_local_planner/mpc_local_planner/include/mpc_local_planner/optimal_control/final_state_conditions_se2.h \
  /opt/ros/melodic/include/control_box_rst/corbo-optimal-control/functions/final_state_constraints.h \
  /opt/ros/melodic/include/control_box_rst/corbo-optimal-control/functions/final_state_cost.h \
- /home/vialab/mpc_traj_ws/src/mpc_local_planner/mpc_local_planner/include/mpc_local_planner/optimal_control/finite_differences_variable_grid_se2.h \
- /home/vialab/mpc_traj_ws/src/mpc_local_planner/mpc_local_planner/include/mpc_local_planner/optimal_control/finite_differences_grid_se2.h \
- /home/vialab/mpc_traj_ws/src/mpc_local_planner/mpc_local_planner/include/mpc_local_planner/optimal_control/full_discretization_grid_base_se2.h \
- /home/vialab/mpc_traj_ws/src/mpc_local_planner/mpc_local_planner/include/mpc_local_planner/optimal_control/vector_vertex_se2.h \
- /home/vialab/mpc_traj_ws/src/mpc_local_planner/mpc_local_planner/include/mpc_local_planner/optimal_control/min_time_via_points_cost.h \
- /home/vialab/mpc_traj_ws/src/mpc_local_planner/mpc_local_planner/include/mpc_local_planner/optimal_control/quadratic_cost_se2.h \
- /home/vialab/mpc_traj_ws/src/mpc_local_planner/mpc_local_planner/include/mpc_local_planner/systems/kinematic_bicycle_model.h \
- /home/vialab/mpc_traj_ws/src/mpc_local_planner/mpc_local_planner/include/mpc_local_planner/systems/base_robot_se2.h \
- /home/vialab/mpc_traj_ws/src/mpc_local_planner/mpc_local_planner/include/mpc_local_planner/systems/simple_car.h \
- /home/vialab/mpc_traj_ws/src/mpc_local_planner/mpc_local_planner/include/mpc_local_planner/systems/unicycle_robot.h \
- /home/vialab/mpc_traj_ws/src/mpc_local_planner/mpc_local_planner/include/mpc_local_planner/utils/time_series_se2.h \
- /home/vialab/mpc_traj_ws/devel/.private/mpc_local_planner_msgs/include/mpc_local_planner_msgs/OptimalControlResult.h \
+ /home/vialab/nonlinear_mpc/src/mpc_local_planner/mpc_local_planner/include/mpc_local_planner/optimal_control/finite_differences_variable_grid_se2.h \
+ /home/vialab/nonlinear_mpc/src/mpc_local_planner/mpc_local_planner/include/mpc_local_planner/optimal_control/finite_differences_grid_se2.h \
+ /home/vialab/nonlinear_mpc/src/mpc_local_planner/mpc_local_planner/include/mpc_local_planner/optimal_control/full_discretization_grid_base_se2.h \
+ /home/vialab/nonlinear_mpc/src/mpc_local_planner/mpc_local_planner/include/mpc_local_planner/optimal_control/vector_vertex_se2.h \
+ /home/vialab/nonlinear_mpc/src/mpc_local_planner/mpc_local_planner/include/mpc_local_planner/optimal_control/min_time_via_points_cost.h \
+ /home/vialab/nonlinear_mpc/src/mpc_local_planner/mpc_local_planner/include/mpc_local_planner/optimal_control/quadratic_cost_se2.h \
+ /home/vialab/nonlinear_mpc/src/mpc_local_planner/mpc_local_planner/include/mpc_local_planner/systems/kinematic_bicycle_model.h \
+ /home/vialab/nonlinear_mpc/src/mpc_local_planner/mpc_local_planner/include/mpc_local_planner/systems/base_robot_se2.h \
+ /home/vialab/nonlinear_mpc/src/mpc_local_planner/mpc_local_planner/include/mpc_local_planner/systems/simple_car.h \
+ /home/vialab/nonlinear_mpc/src/mpc_local_planner/mpc_local_planner/include/mpc_local_planner/systems/unicycle_robot.h \
+ /home/vialab/nonlinear_mpc/src/mpc_local_planner/mpc_local_planner/include/mpc_local_planner/utils/time_series_se2.h \
+ /home/vialab/nonlinear_mpc/devel/.private/mpc_local_planner_msgs/include/mpc_local_planner_msgs/OptimalControlResult.h \
  /opt/ros/melodic/include/ackermann_msgs/AckermannDriveStamped.h \
  /opt/ros/melodic/include/ackermann_msgs/AckermannDrive.h \
  /opt/ros/melodic/include/control_box_rst/corbo-communication/utilities.h \

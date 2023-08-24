@@ -1,6 +1,6 @@
 file(REMOVE_RECURSE
-  "/home/vialab/mpc_traj_ws/devel/.private/mpc_local_planner_msgs/include/mpc_local_planner_msgs/OptimalControlResult.h"
-  "/home/vialab/mpc_traj_ws/devel/.private/mpc_local_planner_msgs/include/mpc_local_planner_msgs/StateFeedback.h"
+  "/home/vialab/nonlinear_mpc/devel/.private/mpc_local_planner_msgs/include/mpc_local_planner_msgs/OptimalControlResult.h"
+  "/home/vialab/nonlinear_mpc/devel/.private/mpc_local_planner_msgs/include/mpc_local_planner_msgs/StateFeedback.h"
   "CMakeFiles/mpc_local_planner_msgs_generate_messages_cpp"
 )
 

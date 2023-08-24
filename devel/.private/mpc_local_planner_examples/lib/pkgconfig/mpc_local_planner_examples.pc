@@ -1,4 +1,4 @@
-prefix=/home/vialab/mpc_traj_ws/devel/.private/mpc_local_planner_examples
+prefix=/home/vialab/nonlinear_mpc/devel/.private/mpc_local_planner_examples
 
 Name: mpc_local_planner_examples
 Description: Description of mpc_local_planner_examples

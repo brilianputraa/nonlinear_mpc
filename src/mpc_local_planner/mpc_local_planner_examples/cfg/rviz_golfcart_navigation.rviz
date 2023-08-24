@@ -121,29 +121,11 @@ Visualization Manager:
           Frame Timeout: 15
           Frames:
             All Enabled: false
-            back_scan_link:
-              Value: true
-            base_footprint:
-              Value: true
-            base_link:
-              Value: true
             base_stabilized:
-              Value: true
-            camera:
-              Value: true
-            gps_base_link:
-              Value: true
-            imu_link:
-              Value: true
-            laser_scan_link:
               Value: true
             map:
               Value: true
             odom:
-              Value: true
-            velodyne:
-              Value: true
-            velodyne_base_link:
               Value: true
             world:
               Value: true
@@ -153,26 +135,12 @@ Visualization Manager:
           Show Axes: true
           Show Names: true
           Tree:
+            base_stabilized:
+              odom:
+                {}
             map:
               world:
-                base_stabilized:
-                  base_footprint:
-                    base_link:
-                      back_scan_link:
-                        {}
-                      camera:
-                        {}
-                      gps_base_link:
-                        {}
-                      imu_link:
-                        {}
-                      laser_scan_link:
-                        {}
-                      velodyne_base_link:
-                        velodyne:
-                          {}
-                  odom:
-                    {}
+                {}
           Update Interval: 0
           Value: true
         - Class: rviz/InteractiveMarkers
@@ -687,8 +655,7 @@ Visualization Manager:
       Marker Topic: /move_base/MpcLocalPlannerROS/mpc_markers
       Name: Marker
       Namespaces:
-        PointObstacles: true
-        RobotFootprintModel: true
+        {}
       Queue Size: 100
       Value: true
     - Alpha: 1
@@ -718,7 +685,7 @@ Visualization Manager:
   Global Options:
     Background Color: 48; 48; 48
     Default Light: true
-    Fixed Frame: odom
+    Fixed Frame: world
     Frame Rate: 26
   Name: root
   Tools:

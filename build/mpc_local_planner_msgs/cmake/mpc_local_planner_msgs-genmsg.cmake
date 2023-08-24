@@ -2,7 +2,7 @@
 
 message(STATUS "mpc_local_planner_msgs: 2 messages, 0 services")
 
-set(MSG_I_FLAGS "-Impc_local_planner_msgs:/home/vialab/mpc_traj_ws/src/mpc_local_planner/mpc_local_planner_msgs/msg;-Istd_msgs:/opt/ros/melodic/share/std_msgs/cmake/../msg")
+set(MSG_I_FLAGS "-Impc_local_planner_msgs:/home/vialab/nonlinear_mpc/src/mpc_local_planner/mpc_local_planner_msgs/msg;-Istd_msgs:/opt/ros/melodic/share/std_msgs/cmake/../msg")
 
 # Find all generators
 find_package(gencpp REQUIRED)
@@ -17,14 +17,14 @@ add_custom_target(mpc_local_planner_msgs_generate_messages ALL)
 
 
 
-get_filename_component(_filename "/home/vialab/mpc_traj_ws/src/mpc_local_planner/mpc_local_planner_msgs/msg/StateFeedback.msg" NAME_WE)
+get_filename_component(_filename "/home/vialab/nonlinear_mpc/src/mpc_local_planner/mpc_local_planner_msgs/msg/OptimalControlResult.msg" NAME_WE)
 add_custom_target(_mpc_local_planner_msgs_generate_messages_check_deps_${_filename}
-  COMMAND ${CATKIN_ENV} ${PYTHON_EXECUTABLE} ${GENMSG_CHECK_DEPS_SCRIPT} "mpc_local_planner_msgs" "/home/vialab/mpc_traj_ws/src/mpc_local_planner/mpc_local_planner_msgs/msg/StateFeedback.msg" "std_msgs/Header"
+  COMMAND ${CATKIN_ENV} ${PYTHON_EXECUTABLE} ${GENMSG_CHECK_DEPS_SCRIPT} "mpc_local_planner_msgs" "/home/vialab/nonlinear_mpc/src/mpc_local_planner/mpc_local_planner_msgs/msg/OptimalControlResult.msg" "std_msgs/Header"
 )
 
-get_filename_component(_filename "/home/vialab/mpc_traj_ws/src/mpc_local_planner/mpc_local_planner_msgs/msg/OptimalControlResult.msg" NAME_WE)
+get_filename_component(_filename "/home/vialab/nonlinear_mpc/src/mpc_local_planner/mpc_local_planner_msgs/msg/StateFeedback.msg" NAME_WE)
 add_custom_target(_mpc_local_planner_msgs_generate_messages_check_deps_${_filename}
-  COMMAND ${CATKIN_ENV} ${PYTHON_EXECUTABLE} ${GENMSG_CHECK_DEPS_SCRIPT} "mpc_local_planner_msgs" "/home/vialab/mpc_traj_ws/src/mpc_local_planner/mpc_local_planner_msgs/msg/OptimalControlResult.msg" "std_msgs/Header"
+  COMMAND ${CATKIN_ENV} ${PYTHON_EXECUTABLE} ${GENMSG_CHECK_DEPS_SCRIPT} "mpc_local_planner_msgs" "/home/vialab/nonlinear_mpc/src/mpc_local_planner/mpc_local_planner_msgs/msg/StateFeedback.msg" "std_msgs/Header"
 )
 
 #
@@ -34,13 +34,13 @@ add_custom_target(_mpc_local_planner_msgs_generate_messages_check_deps_${_filena
 ### Section generating for lang: gencpp
 ### Generating Messages
 _generate_msg_cpp(mpc_local_planner_msgs
-  "/home/vialab/mpc_traj_ws/src/mpc_local_planner/mpc_local_planner_msgs/msg/StateFeedback.msg"
+  "/home/vialab/nonlinear_mpc/src/mpc_local_planner/mpc_local_planner_msgs/msg/OptimalControlResult.msg"
   "${MSG_I_FLAGS}"
   "/opt/ros/melodic/share/std_msgs/cmake/../msg/Header.msg"
   ${CATKIN_DEVEL_PREFIX}/${gencpp_INSTALL_DIR}/mpc_local_planner_msgs
 )
 _generate_msg_cpp(mpc_local_planner_msgs
-  "/home/vialab/mpc_traj_ws/src/mpc_local_planner/mpc_local_planner_msgs/msg/OptimalControlResult.msg"
+  "/home/vialab/nonlinear_mpc/src/mpc_local_planner/mpc_local_planner_msgs/msg/StateFeedback.msg"
   "${MSG_I_FLAGS}"
   "/opt/ros/melodic/share/std_msgs/cmake/../msg/Header.msg"
   ${CATKIN_DEVEL_PREFIX}/${gencpp_INSTALL_DIR}/mpc_local_planner_msgs
@@ -60,9 +60,9 @@ add_custom_target(mpc_local_planner_msgs_generate_messages_cpp
 add_dependencies(mpc_local_planner_msgs_generate_messages mpc_local_planner_msgs_generate_messages_cpp)
 
 # add dependencies to all check dependencies targets
-get_filename_component(_filename "/home/vialab/mpc_traj_ws/src/mpc_local_planner/mpc_local_planner_msgs/msg/StateFeedback.msg" NAME_WE)
+get_filename_component(_filename "/home/vialab/nonlinear_mpc/src/mpc_local_planner/mpc_local_planner_msgs/msg/OptimalControlResult.msg" NAME_WE)
 add_dependencies(mpc_local_planner_msgs_generate_messages_cpp _mpc_local_planner_msgs_generate_messages_check_deps_${_filename})
-get_filename_component(_filename "/home/vialab/mpc_traj_ws/src/mpc_local_planner/mpc_local_planner_msgs/msg/OptimalControlResult.msg" NAME_WE)
+get_filename_component(_filename "/home/vialab/nonlinear_mpc/src/mpc_local_planner/mpc_local_planner_msgs/msg/StateFeedback.msg" NAME_WE)
 add_dependencies(mpc_local_planner_msgs_generate_messages_cpp _mpc_local_planner_msgs_generate_messages_check_deps_${_filename})
 
 # target for backward compatibility
@@ -75,13 +75,13 @@ list(APPEND ${PROJECT_NAME}_EXPORTED_TARGETS mpc_local_planner_msgs_generate_mes
 ### Section generating for lang: geneus
 ### Generating Messages
 _generate_msg_eus(mpc_local_planner_msgs
-  "/home/vialab/mpc_traj_ws/src/mpc_local_planner/mpc_local_planner_msgs/msg/StateFeedback.msg"
+  "/home/vialab/nonlinear_mpc/src/mpc_local_planner/mpc_local_planner_msgs/msg/OptimalControlResult.msg"
   "${MSG_I_FLAGS}"
   "/opt/ros/melodic/share/std_msgs/cmake/../msg/Header.msg"
   ${CATKIN_DEVEL_PREFIX}/${geneus_INSTALL_DIR}/mpc_local_planner_msgs
 )
 _generate_msg_eus(mpc_local_planner_msgs
-  "/home/vialab/mpc_traj_ws/src/mpc_local_planner/mpc_local_planner_msgs/msg/OptimalControlResult.msg"
+  "/home/vialab/nonlinear_mpc/src/mpc_local_planner/mpc_local_planner_msgs/msg/StateFeedback.msg"
   "${MSG_I_FLAGS}"
   "/opt/ros/melodic/share/std_msgs/cmake/../msg/Header.msg"
   ${CATKIN_DEVEL_PREFIX}/${geneus_INSTALL_DIR}/mpc_local_planner_msgs
@@ -101,9 +101,9 @@ add_custom_target(mpc_local_planner_msgs_generate_messages_eus
 add_dependencies(mpc_local_planner_msgs_generate_messages mpc_local_planner_msgs_generate_messages_eus)
 
 # add dependencies to all check dependencies targets
-get_filename_component(_filename "/home/vialab/mpc_traj_ws/src/mpc_local_planner/mpc_local_planner_msgs/msg/StateFeedback.msg" NAME_WE)
+get_filename_component(_filename "/home/vialab/nonlinear_mpc/src/mpc_local_planner/mpc_local_planner_msgs/msg/OptimalControlResult.msg" NAME_WE)
 add_dependencies(mpc_local_planner_msgs_generate_messages_eus _mpc_local_planner_msgs_generate_messages_check_deps_${_filename})
-get_filename_component(_filename "/home/vialab/mpc_traj_ws/src/mpc_local_planner/mpc_local_planner_msgs/msg/OptimalControlResult.msg" NAME_WE)
+get_filename_component(_filename "/home/vialab/nonlinear_mpc/src/mpc_local_planner/mpc_local_planner_msgs/msg/StateFeedback.msg" NAME_WE)
 add_dependencies(mpc_local_planner_msgs_generate_messages_eus _mpc_local_planner_msgs_generate_messages_check_deps_${_filename})
 
 # target for backward compatibility
@@ -116,13 +116,13 @@ list(APPEND ${PROJECT_NAME}_EXPORTED_TARGETS mpc_local_planner_msgs_generate_mes
 ### Section generating for lang: genlisp
 ### Generating Messages
 _generate_msg_lisp(mpc_local_planner_msgs
-  "/home/vialab/mpc_traj_ws/src/mpc_local_planner/mpc_local_planner_msgs/msg/StateFeedback.msg"
+  "/home/vialab/nonlinear_mpc/src/mpc_local_planner/mpc_local_planner_msgs/msg/OptimalControlResult.msg"
   "${MSG_I_FLAGS}"
   "/opt/ros/melodic/share/std_msgs/cmake/../msg/Header.msg"
   ${CATKIN_DEVEL_PREFIX}/${genlisp_INSTALL_DIR}/mpc_local_planner_msgs
 )
 _generate_msg_lisp(mpc_local_planner_msgs
-  "/home/vialab/mpc_traj_ws/src/mpc_local_planner/mpc_local_planner_msgs/msg/OptimalControlResult.msg"
+  "/home/vialab/nonlinear_mpc/src/mpc_local_planner/mpc_local_planner_msgs/msg/StateFeedback.msg"
   "${MSG_I_FLAGS}"
   "/opt/ros/melodic/share/std_msgs/cmake/../msg/Header.msg"
   ${CATKIN_DEVEL_PREFIX}/${genlisp_INSTALL_DIR}/mpc_local_planner_msgs
@@ -142,9 +142,9 @@ add_custom_target(mpc_local_planner_msgs_generate_messages_lisp
 add_dependencies(mpc_local_planner_msgs_generate_messages mpc_local_planner_msgs_generate_messages_lisp)
 
 # add dependencies to all check dependencies targets
-get_filename_component(_filename "/home/vialab/mpc_traj_ws/src/mpc_local_planner/mpc_local_planner_msgs/msg/StateFeedback.msg" NAME_WE)
+get_filename_component(_filename "/home/vialab/nonlinear_mpc/src/mpc_local_planner/mpc_local_planner_msgs/msg/OptimalControlResult.msg" NAME_WE)
 add_dependencies(mpc_local_planner_msgs_generate_messages_lisp _mpc_local_planner_msgs_generate_messages_check_deps_${_filename})
-get_filename_component(_filename "/home/vialab/mpc_traj_ws/src/mpc_local_planner/mpc_local_planner_msgs/msg/OptimalControlResult.msg" NAME_WE)
+get_filename_component(_filename "/home/vialab/nonlinear_mpc/src/mpc_local_planner/mpc_local_planner_msgs/msg/StateFeedback.msg" NAME_WE)
 add_dependencies(mpc_local_planner_msgs_generate_messages_lisp _mpc_local_planner_msgs_generate_messages_check_deps_${_filename})
 
 # target for backward compatibility
@@ -157,13 +157,13 @@ list(APPEND ${PROJECT_NAME}_EXPORTED_TARGETS mpc_local_planner_msgs_generate_mes
 ### Section generating for lang: gennodejs
 ### Generating Messages
 _generate_msg_nodejs(mpc_local_planner_msgs
-  "/home/vialab/mpc_traj_ws/src/mpc_local_planner/mpc_local_planner_msgs/msg/StateFeedback.msg"
+  "/home/vialab/nonlinear_mpc/src/mpc_local_planner/mpc_local_planner_msgs/msg/OptimalControlResult.msg"
   "${MSG_I_FLAGS}"
   "/opt/ros/melodic/share/std_msgs/cmake/../msg/Header.msg"
   ${CATKIN_DEVEL_PREFIX}/${gennodejs_INSTALL_DIR}/mpc_local_planner_msgs
 )
 _generate_msg_nodejs(mpc_local_planner_msgs
-  "/home/vialab/mpc_traj_ws/src/mpc_local_planner/mpc_local_planner_msgs/msg/OptimalControlResult.msg"
+  "/home/vialab/nonlinear_mpc/src/mpc_local_planner/mpc_local_planner_msgs/msg/StateFeedback.msg"
   "${MSG_I_FLAGS}"
   "/opt/ros/melodic/share/std_msgs/cmake/../msg/Header.msg"
   ${CATKIN_DEVEL_PREFIX}/${gennodejs_INSTALL_DIR}/mpc_local_planner_msgs
@@ -183,9 +183,9 @@ add_custom_target(mpc_local_planner_msgs_generate_messages_nodejs
 add_dependencies(mpc_local_planner_msgs_generate_messages mpc_local_planner_msgs_generate_messages_nodejs)
 
 # add dependencies to all check dependencies targets
-get_filename_component(_filename "/home/vialab/mpc_traj_ws/src/mpc_local_planner/mpc_local_planner_msgs/msg/StateFeedback.msg" NAME_WE)
+get_filename_component(_filename "/home/vialab/nonlinear_mpc/src/mpc_local_planner/mpc_local_planner_msgs/msg/OptimalControlResult.msg" NAME_WE)
 add_dependencies(mpc_local_planner_msgs_generate_messages_nodejs _mpc_local_planner_msgs_generate_messages_check_deps_${_filename})
-get_filename_component(_filename "/home/vialab/mpc_traj_ws/src/mpc_local_planner/mpc_local_planner_msgs/msg/OptimalControlResult.msg" NAME_WE)
+get_filename_component(_filename "/home/vialab/nonlinear_mpc/src/mpc_local_planner/mpc_local_planner_msgs/msg/StateFeedback.msg" NAME_WE)
 add_dependencies(mpc_local_planner_msgs_generate_messages_nodejs _mpc_local_planner_msgs_generate_messages_check_deps_${_filename})
 
 # target for backward compatibility
@@ -198,13 +198,13 @@ list(APPEND ${PROJECT_NAME}_EXPORTED_TARGETS mpc_local_planner_msgs_generate_mes
 ### Section generating for lang: genpy
 ### Generating Messages
 _generate_msg_py(mpc_local_planner_msgs
-  "/home/vialab/mpc_traj_ws/src/mpc_local_planner/mpc_local_planner_msgs/msg/StateFeedback.msg"
+  "/home/vialab/nonlinear_mpc/src/mpc_local_planner/mpc_local_planner_msgs/msg/OptimalControlResult.msg"
   "${MSG_I_FLAGS}"
   "/opt/ros/melodic/share/std_msgs/cmake/../msg/Header.msg"
   ${CATKIN_DEVEL_PREFIX}/${genpy_INSTALL_DIR}/mpc_local_planner_msgs
 )
 _generate_msg_py(mpc_local_planner_msgs
-  "/home/vialab/mpc_traj_ws/src/mpc_local_planner/mpc_local_planner_msgs/msg/OptimalControlResult.msg"
+  "/home/vialab/nonlinear_mpc/src/mpc_local_planner/mpc_local_planner_msgs/msg/StateFeedback.msg"
   "${MSG_I_FLAGS}"
   "/opt/ros/melodic/share/std_msgs/cmake/../msg/Header.msg"
   ${CATKIN_DEVEL_PREFIX}/${genpy_INSTALL_DIR}/mpc_local_planner_msgs
@@ -224,9 +224,9 @@ add_custom_target(mpc_local_planner_msgs_generate_messages_py
 add_dependencies(mpc_local_planner_msgs_generate_messages mpc_local_planner_msgs_generate_messages_py)
 
 # add dependencies to all check dependencies targets
-get_filename_component(_filename "/home/vialab/mpc_traj_ws/src/mpc_local_planner/mpc_local_planner_msgs/msg/StateFeedback.msg" NAME_WE)
+get_filename_component(_filename "/home/vialab/nonlinear_mpc/src/mpc_local_planner/mpc_local_planner_msgs/msg/OptimalControlResult.msg" NAME_WE)
 add_dependencies(mpc_local_planner_msgs_generate_messages_py _mpc_local_planner_msgs_generate_messages_check_deps_${_filename})
-get_filename_component(_filename "/home/vialab/mpc_traj_ws/src/mpc_local_planner/mpc_local_planner_msgs/msg/OptimalControlResult.msg" NAME_WE)
+get_filename_component(_filename "/home/vialab/nonlinear_mpc/src/mpc_local_planner/mpc_local_planner_msgs/msg/StateFeedback.msg" NAME_WE)
 add_dependencies(mpc_local_planner_msgs_generate_messages_py _mpc_local_planner_msgs_generate_messages_check_deps_${_filename})
 
 # target for backward compatibility

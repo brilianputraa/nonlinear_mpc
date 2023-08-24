@@ -110,6 +110,7 @@ bool Controller::step(const Controller::PoseSE2& start, const Controller::PoseSE
     std::vector<geometry_msgs::PoseStamped> initial_plan(2);
     start.toPoseMsg(initial_plan.front().pose);
     goal.toPoseMsg(initial_plan.back().pose);
+    std::cout << "Current GOal " << goal << std::endl;
     return step(initial_plan, vel, dt, t, u_seq, x_seq);
 }
 
@@ -154,6 +155,7 @@ bool Controller::step(const std::vector<geometry_msgs::PoseStamped>& initial_pla
     }
 
     // now check goal
+    std::cout << "Current Goal " << goal << std::endl;
     if (_force_reinit_num_steps > 0 && _ocp_seq % _force_reinit_num_steps == 0) _grid->clear();
     if (!_grid->isEmpty() && ((goal.position() - _last_goal.position()).norm() > _force_reinit_new_goal_dist ||
                               std::abs(normalize_theta(goal.theta() - _last_goal.theta())) > _force_reinit_new_goal_angular))
@@ -173,8 +175,11 @@ bool Controller::step(const std::vector<geometry_msgs::PoseStamped>& initial_pla
 
     corbo::StaticReference xref(xf);  // currently, we only support point-to-point transitions in ros
     corbo::ZeroReference uref(_dynamics->getInputDimension());
+    // Getting the x reference
+    std::cout << "Current X final " << xf << std::endl;
 
     _ocp_successful = PredictiveController::step(x, xref, uref, corbo::Duration(dt), time, u_seq, x_seq, nullptr, nullptr, &_x_seq_init);
+    
     // publish results if desired
     if (_publish_ocp_results) publishOptimalControlResult();  // TODO(roesmann): we could also pass time t from above
     ROS_INFO_STREAM_COND(_print_cpu_time, "Cpu time: " << _statistics.step_time.toSec() * 1000.0 << " ms.");
@@ -825,6 +830,9 @@ bool Controller::generateInitialStateTrajectory(const Eigen::VectorXd& x0, const
     if (initial_plan.size() < 2 || !_dynamics) return false;
 
     TimeSeriesSE2::Ptr ts = std::make_shared<TimeSeriesSE2>();
+
+    // std::cout << "iNITIAL TRAJECTORY REFERENCE " << initial_plan << std::endl;
+
 
     int n_init = (int)initial_plan.size();
     int n_ref  = _grid->getInitialN();

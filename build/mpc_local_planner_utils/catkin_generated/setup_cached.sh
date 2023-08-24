@@ -7,9 +7,7 @@
 # new environment variables
 
 # modified environment variables
-export CMAKE_PREFIX_PATH="/home/vialab/mpc_traj_ws/devel/.private/mpc_local_planner_utils:$CMAKE_PREFIX_PATH"
-export LD_LIBRARY_PATH="/home/vialab/mpc_traj_ws/devel/.private/mpc_local_planner_utils/lib:$LD_LIBRARY_PATH"
-export PKG_CONFIG_PATH="/home/vialab/mpc_traj_ws/devel/.private/mpc_local_planner_utils/lib/pkgconfig:$PKG_CONFIG_PATH"
-export PWD='/home/vialab/mpc_traj_ws/build/mpc_local_planner_utils'
-export ROSLISP_PACKAGE_DIRECTORIES="/home/vialab/mpc_traj_ws/devel/.private/mpc_local_planner_utils/share/common-lisp:$ROSLISP_PACKAGE_DIRECTORIES"
-export ROS_PACKAGE_PATH="/home/vialab/mpc_traj_ws/src/mpc_local_planner/mpc_local_planner_utils:$ROS_PACKAGE_PATH"
+export CMAKE_PREFIX_PATH="/home/vialab/nonlinear_mpc/devel/.private/mpc_local_planner_utils:$CMAKE_PREFIX_PATH"
+export PWD='/home/vialab/nonlinear_mpc/build/mpc_local_planner_utils'
+export ROSLISP_PACKAGE_DIRECTORIES="/home/vialab/nonlinear_mpc/devel/.private/mpc_local_planner_utils/share/common-lisp:$ROSLISP_PACKAGE_DIRECTORIES"
+export ROS_PACKAGE_PATH="/home/vialab/nonlinear_mpc/src/mpc_local_planner/mpc_local_planner_utils:$ROS_PACKAGE_PATH"

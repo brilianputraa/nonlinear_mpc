@@ -53,10 +53,10 @@ RM = /home/vialab/anaconda3/lib/python3.7/site-packages/cmake/data/bin/cmake -E 
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/vialab/mpc_traj_ws/src/mpc_local_planner/mpc_local_planner_examples
+CMAKE_SOURCE_DIR = /home/vialab/nonlinear_mpc/src/mpc_local_planner/mpc_local_planner_examples
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/vialab/mpc_traj_ws/build/mpc_local_planner_examples
+CMAKE_BINARY_DIR = /home/vialab/nonlinear_mpc/build/mpc_local_planner_examples
 
 # Utility rule file for run_tests.
 
@@ -78,6 +78,6 @@ CMakeFiles/run_tests.dir/clean:
 .PHONY : CMakeFiles/run_tests.dir/clean
 
 CMakeFiles/run_tests.dir/depend:
-	cd /home/vialab/mpc_traj_ws/build/mpc_local_planner_examples && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/vialab/mpc_traj_ws/src/mpc_local_planner/mpc_local_planner_examples /home/vialab/mpc_traj_ws/src/mpc_local_planner/mpc_local_planner_examples /home/vialab/mpc_traj_ws/build/mpc_local_planner_examples /home/vialab/mpc_traj_ws/build/mpc_local_planner_examples /home/vialab/mpc_traj_ws/build/mpc_local_planner_examples/CMakeFiles/run_tests.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/vialab/nonlinear_mpc/build/mpc_local_planner_examples && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/vialab/nonlinear_mpc/src/mpc_local_planner/mpc_local_planner_examples /home/vialab/nonlinear_mpc/src/mpc_local_planner/mpc_local_planner_examples /home/vialab/nonlinear_mpc/build/mpc_local_planner_examples /home/vialab/nonlinear_mpc/build/mpc_local_planner_examples /home/vialab/nonlinear_mpc/build/mpc_local_planner_examples/CMakeFiles/run_tests.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/run_tests.dir/depend
 

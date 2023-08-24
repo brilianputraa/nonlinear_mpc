@@ -1,9 +1,134 @@
-[01m[K/home/vialab/mpc_traj_ws/src/mpc_local_planner/mpc_local_planner/src/controller.cpp:[m[K In member function ‘[01m[Kvoid mpc_local_planner::Controller::publishOptimalControlResult()[m[K’:
-[01m[K/home/vialab/mpc_traj_ws/src/mpc_local_planner/mpc_local_planner/src/controller.cpp:221:66:[m[K [01;31m[Kerror: [m[Kno match for ‘[01m[Koperator-[m[K’ (operand types are ‘[01m[Kmpc_local_planner_msgs::OptimalControlResult_<std::allocator<void> >::_controls_type {aka std::vector<double>}[m[K’ and ‘[01m[Kint[m[K’)
-     std::cout<< "Controls list length " << ([01;31m[K*(&msg.controls + 1) - 1[m[K) << std::endl;
-                                             [01;31m[K~~~~~~~~~~~~~~~~~~~~~^~~[m[K
-In file included from [01m[K/usr/include/c++/7/deque:64:0[m[K,
-                 from [01m[K/usr/include/boost/detail/container_fwd.hpp:91[m[K,
+[01m[K/home/vialab/nonlinear_mpc/src/mpc_local_planner/mpc_local_planner/src/controller.cpp:[m[K In member function ‘[01m[Kbool mpc_local_planner::Controller::generateInitialStateTrajectory(const VectorXd&, const VectorXd&, const std::vector<geometry_msgs::PoseStamped_<std::allocator<void> > >&, bool)[m[K’:
+[01m[K/home/vialab/nonlinear_mpc/src/mpc_local_planner/mpc_local_planner/src/controller.cpp:834:50:[m[K [01;31m[Kerror: [m[Kno match for ‘[01m[Koperator<<[m[K’ (operand types are ‘[01m[Kstd::basic_ostream<char>[m[K’ and ‘[01m[Kconst std::vector<geometry_msgs::PoseStamped_<std::allocator<void> > >[m[K’)
+     [01;31m[Kstd::cout << "iNITIAL TRAJECTORY REFERENCE " << initial_plan[m[K << std::endl;
+     [01;31m[K~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~[m[K
+In file included from [01m[K/usr/include/c++/7/iostream:39:0[m[K,
+                 from [01m[K/opt/ros/melodic/include/control_box_rst/corbo-core/time.h:32[m[K,
+                 from [01m[K/opt/ros/melodic/include/control_box_rst/corbo-controllers/statistics.h:28[m[K,
+                 from [01m[K/opt/ros/melodic/include/control_box_rst/corbo-controllers/controller_interface.h:28[m[K,
+                 from [01m[K/opt/ros/melodic/include/control_box_rst/corbo-controllers/predictive_controller.h:28[m[K,
+                 from [01m[K/home/vialab/nonlinear_mpc/src/mpc_local_planner/mpc_local_planner/include/mpc_local_planner/controller.h:26[m[K,
+                 from [01m[K/home/vialab/nonlinear_mpc/src/mpc_local_planner/mpc_local_planner/src/controller.cpp:23[m[K:
+[01m[K/usr/include/c++/7/ostream:108:7:[m[K [01;36m[Knote: [m[Kcandidate: std::basic_ostream<_CharT, _Traits>::__ostream_type& std::basic_ostream<_CharT, _Traits>::operator<<(std::basic_ostream<_CharT, _Traits>::__ostream_type& (*)(std::basic_ostream<_CharT, _Traits>::__ostream_type&)) [with _CharT = char; _Traits = std::char_traits<char>; std::basic_ostream<_CharT, _Traits>::__ostream_type = std::basic_ostream<char>]
+       [01;36m[Koperator[m[K<<(__ostream_type& (*__pf)(__ostream_type&))
+       [01;36m[K^~~~~~~~[m[K
+[01m[K/usr/include/c++/7/ostream:108:7:[m[K [01;36m[Knote: [m[K  no known conversion for argument 1 from ‘[01m[Kconst std::vector<geometry_msgs::PoseStamped_<std::allocator<void> > >[m[K’ to ‘[01m[Kstd::basic_ostream<char>::__ostream_type& (*)(std::basic_ostream<char>::__ostream_type&) {aka std::basic_ostream<char>& (*)(std::basic_ostream<char>&)}[m[K’
+[01m[K/usr/include/c++/7/ostream:117:7:[m[K [01;36m[Knote: [m[Kcandidate: std::basic_ostream<_CharT, _Traits>::__ostream_type& std::basic_ostream<_CharT, _Traits>::operator<<(std::basic_ostream<_CharT, _Traits>::__ios_type& (*)(std::basic_ostream<_CharT, _Traits>::__ios_type&)) [with _CharT = char; _Traits = std::char_traits<char>; std::basic_ostream<_CharT, _Traits>::__ostream_type = std::basic_ostream<char>; std::basic_ostream<_CharT, _Traits>::__ios_type = std::basic_ios<char>]
+       [01;36m[Koperator[m[K<<(__ios_type& (*__pf)(__ios_type&))
+       [01;36m[K^~~~~~~~[m[K
+[01m[K/usr/include/c++/7/ostream:117:7:[m[K [01;36m[Knote: [m[K  no known conversion for argument 1 from ‘[01m[Kconst std::vector<geometry_msgs::PoseStamped_<std::allocator<void> > >[m[K’ to ‘[01m[Kstd::basic_ostream<char>::__ios_type& (*)(std::basic_ostream<char>::__ios_type&) {aka std::basic_ios<char>& (*)(std::basic_ios<char>&)}[m[K’
+[01m[K/usr/include/c++/7/ostream:127:7:[m[K [01;36m[Knote: [m[Kcandidate: std::basic_ostream<_CharT, _Traits>::__ostream_type& std::basic_ostream<_CharT, _Traits>::operator<<(std::ios_base& (*)(std::ios_base&)) [with _CharT = char; _Traits = std::char_traits<char>; std::basic_ostream<_CharT, _Traits>::__ostream_type = std::basic_ostream<char>]
+       [01;36m[Koperator[m[K<<(ios_base& (*__pf) (ios_base&))
+       [01;36m[K^~~~~~~~[m[K
+[01m[K/usr/include/c++/7/ostream:127:7:[m[K [01;36m[Knote: [m[K  no known conversion for argument 1 from ‘[01m[Kconst std::vector<geometry_msgs::PoseStamped_<std::allocator<void> > >[m[K’ to ‘[01m[Kstd::ios_base& (*)(std::ios_base&)[m[K’
+[01m[K/usr/include/c++/7/ostream:166:7:[m[K [01;36m[Knote: [m[Kcandidate: std::basic_ostream<_CharT, _Traits>::__ostream_type& std::basic_ostream<_CharT, _Traits>::operator<<(long int) [with _CharT = char; _Traits = std::char_traits<char>; std::basic_ostream<_CharT, _Traits>::__ostream_type = std::basic_ostream<char>]
+       [01;36m[Koperator[m[K<<(long __n)
+       [01;36m[K^~~~~~~~[m[K
+[01m[K/usr/include/c++/7/ostream:166:7:[m[K [01;36m[Knote: [m[K  no known conversion for argument 1 from ‘[01m[Kconst std::vector<geometry_msgs::PoseStamped_<std::allocator<void> > >[m[K’ to ‘[01m[Klong int[m[K’
+[01m[K/usr/include/c++/7/ostream:170:7:[m[K [01;36m[Knote: [m[Kcandidate: std::basic_ostream<_CharT, _Traits>::__ostream_type& std::basic_ostream<_CharT, _Traits>::operator<<(long unsigned int) [with _CharT = char; _Traits = std::char_traits<char>; std::basic_ostream<_CharT, _Traits>::__ostream_type = std::basic_ostream<char>]
+       [01;36m[Koperator[m[K<<(unsigned long __n)
+       [01;36m[K^~~~~~~~[m[K
+[01m[K/usr/include/c++/7/ostream:170:7:[m[K [01;36m[Knote: [m[K  no known conversion for argument 1 from ‘[01m[Kconst std::vector<geometry_msgs::PoseStamped_<std::allocator<void> > >[m[K’ to ‘[01m[Klong unsigned int[m[K’
+[01m[K/usr/include/c++/7/ostream:174:7:[m[K [01;36m[Knote: [m[Kcandidate: std::basic_ostream<_CharT, _Traits>::__ostream_type& std::basic_ostream<_CharT, _Traits>::operator<<(bool) [with _CharT = char; _Traits = std::char_traits<char>; std::basic_ostream<_CharT, _Traits>::__ostream_type = std::basic_ostream<char>]
+       [01;36m[Koperator[m[K<<(bool __n)
+       [01;36m[K^~~~~~~~[m[K
+[01m[K/usr/include/c++/7/ostream:174:7:[m[K [01;36m[Knote: [m[K  no known conversion for argument 1 from ‘[01m[Kconst std::vector<geometry_msgs::PoseStamped_<std::allocator<void> > >[m[K’ to ‘[01m[Kbool[m[K’
+In file included from [01m[K/usr/include/c++/7/ostream:693:0[m[K,
+                 from [01m[K/usr/include/c++/7/iostream:39[m[K,
+                 from [01m[K/opt/ros/melodic/include/control_box_rst/corbo-core/time.h:32[m[K,
+                 from [01m[K/opt/ros/melodic/include/control_box_rst/corbo-controllers/statistics.h:28[m[K,
+                 from [01m[K/opt/ros/melodic/include/control_box_rst/corbo-controllers/controller_interface.h:28[m[K,
+                 from [01m[K/opt/ros/melodic/include/control_box_rst/corbo-controllers/predictive_controller.h:28[m[K,
+                 from [01m[K/home/vialab/nonlinear_mpc/src/mpc_local_planner/mpc_local_planner/include/mpc_local_planner/controller.h:26[m[K,
+                 from [01m[K/home/vialab/nonlinear_mpc/src/mpc_local_planner/mpc_local_planner/src/controller.cpp:23[m[K:
+[01m[K/usr/include/c++/7/bits/ostream.tcc:91:5:[m[K [01;36m[Knote: [m[Kcandidate: std::basic_ostream<_CharT, _Traits>& std::basic_ostream<_CharT, _Traits>::operator<<(short int) [with _CharT = char; _Traits = std::char_traits<char>]
+     [01;36m[Kbasic_ostream<_CharT, _Traits>[m[K::
+     [01;36m[K^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K
+[01m[K/usr/include/c++/7/bits/ostream.tcc:91:5:[m[K [01;36m[Knote: [m[K  no known conversion for argument 1 from ‘[01m[Kconst std::vector<geometry_msgs::PoseStamped_<std::allocator<void> > >[m[K’ to ‘[01m[Kshort int[m[K’
+In file included from [01m[K/usr/include/c++/7/iostream:39:0[m[K,
+                 from [01m[K/opt/ros/melodic/include/control_box_rst/corbo-core/time.h:32[m[K,
+                 from [01m[K/opt/ros/melodic/include/control_box_rst/corbo-controllers/statistics.h:28[m[K,
+                 from [01m[K/opt/ros/melodic/include/control_box_rst/corbo-controllers/controller_interface.h:28[m[K,
+                 from [01m[K/opt/ros/melodic/include/control_box_rst/corbo-controllers/predictive_controller.h:28[m[K,
+                 from [01m[K/home/vialab/nonlinear_mpc/src/mpc_local_planner/mpc_local_planner/include/mpc_local_planner/controller.h:26[m[K,
+                 from [01m[K/home/vialab/nonlinear_mpc/src/mpc_local_planner/mpc_local_planner/src/controller.cpp:23[m[K:
+[01m[K/usr/include/c++/7/ostream:181:7:[m[K [01;36m[Knote: [m[Kcandidate: std::basic_ostream<_CharT, _Traits>::__ostream_type& std::basic_ostream<_CharT, _Traits>::operator<<(short unsigned int) [with _CharT = char; _Traits = std::char_traits<char>; std::basic_ostream<_CharT, _Traits>::__ostream_type = std::basic_ostream<char>]
+       [01;36m[Koperator[m[K<<(unsigned short __n)
+       [01;36m[K^~~~~~~~[m[K
+[01m[K/usr/include/c++/7/ostream:181:7:[m[K [01;36m[Knote: [m[K  no known conversion for argument 1 from ‘[01m[Kconst std::vector<geometry_msgs::PoseStamped_<std::allocator<void> > >[m[K’ to ‘[01m[Kshort unsigned int[m[K’
+In file included from [01m[K/usr/include/c++/7/ostream:693:0[m[K,
+                 from [01m[K/usr/include/c++/7/iostream:39[m[K,
+                 from [01m[K/opt/ros/melodic/include/control_box_rst/corbo-core/time.h:32[m[K,
+                 from [01m[K/opt/ros/melodic/include/control_box_rst/corbo-controllers/statistics.h:28[m[K,
+                 from [01m[K/opt/ros/melodic/include/control_box_rst/corbo-controllers/controller_interface.h:28[m[K,
+                 from [01m[K/opt/ros/melodic/include/control_box_rst/corbo-controllers/predictive_controller.h:28[m[K,
+                 from [01m[K/home/vialab/nonlinear_mpc/src/mpc_local_planner/mpc_local_planner/include/mpc_local_planner/controller.h:26[m[K,
+                 from [01m[K/home/vialab/nonlinear_mpc/src/mpc_local_planner/mpc_local_planner/src/controller.cpp:23[m[K:
+[01m[K/usr/include/c++/7/bits/ostream.tcc:105:5:[m[K [01;36m[Knote: [m[Kcandidate: std::basic_ostream<_CharT, _Traits>& std::basic_ostream<_CharT, _Traits>::operator<<(int) [with _CharT = char; _Traits = std::char_traits<char>]
+     [01;36m[Kbasic_ostream<_CharT, _Traits>[m[K::
+     [01;36m[K^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K
+[01m[K/usr/include/c++/7/bits/ostream.tcc:105:5:[m[K [01;36m[Knote: [m[K  no known conversion for argument 1 from ‘[01m[Kconst std::vector<geometry_msgs::PoseStamped_<std::allocator<void> > >[m[K’ to ‘[01m[Kint[m[K’
+In file included from [01m[K/usr/include/c++/7/iostream:39:0[m[K,
+                 from [01m[K/opt/ros/melodic/include/control_box_rst/corbo-core/time.h:32[m[K,
+                 from [01m[K/opt/ros/melodic/include/control_box_rst/corbo-controllers/statistics.h:28[m[K,
+                 from [01m[K/opt/ros/melodic/include/control_box_rst/corbo-controllers/controller_interface.h:28[m[K,
+                 from [01m[K/opt/ros/melodic/include/control_box_rst/corbo-controllers/predictive_controller.h:28[m[K,
+                 from [01m[K/home/vialab/nonlinear_mpc/src/mpc_local_planner/mpc_local_planner/include/mpc_local_planner/controller.h:26[m[K,
+                 from [01m[K/home/vialab/nonlinear_mpc/src/mpc_local_planner/mpc_local_planner/src/controller.cpp:23[m[K:
+[01m[K/usr/include/c++/7/ostream:192:7:[m[K [01;36m[Knote: [m[Kcandidate: std::basic_ostream<_CharT, _Traits>::__ostream_type& std::basic_ostream<_CharT, _Traits>::operator<<(unsigned int) [with _CharT = char; _Traits = std::char_traits<char>; std::basic_ostream<_CharT, _Traits>::__ostream_type = std::basic_ostream<char>]
+       [01;36m[Koperator[m[K<<(unsigned int __n)
+       [01;36m[K^~~~~~~~[m[K
+[01m[K/usr/include/c++/7/ostream:192:7:[m[K [01;36m[Knote: [m[K  no known conversion for argument 1 from ‘[01m[Kconst std::vector<geometry_msgs::PoseStamped_<std::allocator<void> > >[m[K’ to ‘[01m[Kunsigned int[m[K’
+[01m[K/usr/include/c++/7/ostream:201:7:[m[K [01;36m[Knote: [m[Kcandidate: std::basic_ostream<_CharT, _Traits>::__ostream_type& std::basic_ostream<_CharT, _Traits>::operator<<(long long int) [with _CharT = char; _Traits = std::char_traits<char>; std::basic_ostream<_CharT, _Traits>::__ostream_type = std::basic_ostream<char>]
+       [01;36m[Koperator[m[K<<(long long __n)
+       [01;36m[K^~~~~~~~[m[K
+[01m[K/usr/include/c++/7/ostream:201:7:[m[K [01;36m[Knote: [m[K  no known conversion for argument 1 from ‘[01m[Kconst std::vector<geometry_msgs::PoseStamped_<std::allocator<void> > >[m[K’ to ‘[01m[Klong long int[m[K’
+[01m[K/usr/include/c++/7/ostream:205:7:[m[K [01;36m[Knote: [m[Kcandidate: std::basic_ostream<_CharT, _Traits>::__ostream_type& std::basic_ostream<_CharT, _Traits>::operator<<(long long unsigned int) [with _CharT = char; _Traits = std::char_traits<char>; std::basic_ostream<_CharT, _Traits>::__ostream_type = std::basic_ostream<char>]
+       [01;36m[Koperator[m[K<<(unsigned long long __n)
+       [01;36m[K^~~~~~~~[m[K
+[01m[K/usr/include/c++/7/ostream:205:7:[m[K [01;36m[Knote: [m[K  no known conversion for argument 1 from ‘[01m[Kconst std::vector<geometry_msgs::PoseStamped_<std::allocator<void> > >[m[K’ to ‘[01m[Klong long unsigned int[m[K’
+[01m[K/usr/include/c++/7/ostream:220:7:[m[K [01;36m[Knote: [m[Kcandidate: std::basic_ostream<_CharT, _Traits>::__ostream_type& std::basic_ostream<_CharT, _Traits>::operator<<(double) [with _CharT = char; _Traits = std::char_traits<char>; std::basic_ostream<_CharT, _Traits>::__ostream_type = std::basic_ostream<char>]
+       [01;36m[Koperator[m[K<<(double __f)
+       [01;36m[K^~~~~~~~[m[K
+[01m[K/usr/include/c++/7/ostream:220:7:[m[K [01;36m[Knote: [m[K  no known conversion for argument 1 from ‘[01m[Kconst std::vector<geometry_msgs::PoseStamped_<std::allocator<void> > >[m[K’ to ‘[01m[Kdouble[m[K’
+[01m[K/usr/include/c++/7/ostream:224:7:[m[K [01;36m[Knote: [m[Kcandidate: std::basic_ostream<_CharT, _Traits>::__ostream_type& std::basic_ostream<_CharT, _Traits>::operator<<(float) [with _CharT = char; _Traits = std::char_traits<char>; std::basic_ostream<_CharT, _Traits>::__ostream_type = std::basic_ostream<char>]
+       [01;36m[Koperator[m[K<<(float __f)
+       [01;36m[K^~~~~~~~[m[K
+[01m[K/usr/include/c++/7/ostream:224:7:[m[K [01;36m[Knote: [m[K  no known conversion for argument 1 from ‘[01m[Kconst std::vector<geometry_msgs::PoseStamped_<std::allocator<void> > >[m[K’ to ‘[01m[Kfloat[m[K’
+[01m[K/usr/include/c++/7/ostream:232:7:[m[K [01;36m[Knote: [m[Kcandidate: std::basic_ostream<_CharT, _Traits>::__ostream_type& std::basic_ostream<_CharT, _Traits>::operator<<(long double) [with _CharT = char; _Traits = std::char_traits<char>; std::basic_ostream<_CharT, _Traits>::__ostream_type = std::basic_ostream<char>]
+       [01;36m[Koperator[m[K<<(long double __f)
+       [01;36m[K^~~~~~~~[m[K
+[01m[K/usr/include/c++/7/ostream:232:7:[m[K [01;36m[Knote: [m[K  no known conversion for argument 1 from ‘[01m[Kconst std::vector<geometry_msgs::PoseStamped_<std::allocator<void> > >[m[K’ to ‘[01m[Klong double[m[K’
+[01m[K/usr/include/c++/7/ostream:245:7:[m[K [01;36m[Knote: [m[Kcandidate: std::basic_ostream<_CharT, _Traits>::__ostream_type& std::basic_ostream<_CharT, _Traits>::operator<<(const void*) [with _CharT = char; _Traits = std::char_traits<char>; std::basic_ostream<_CharT, _Traits>::__ostream_type = std::basic_ostream<char>]
+       [01;36m[Koperator[m[K<<(const void* __p)
+       [01;36m[K^~~~~~~~[m[K
+[01m[K/usr/include/c++/7/ostream:245:7:[m[K [01;36m[Knote: [m[K  no known conversion for argument 1 from ‘[01m[Kconst std::vector<geometry_msgs::PoseStamped_<std::allocator<void> > >[m[K’ to ‘[01m[Kconst void*[m[K’
+In file included from [01m[K/usr/include/c++/7/ostream:693:0[m[K,
+                 from [01m[K/usr/include/c++/7/iostream:39[m[K,
+                 from [01m[K/opt/ros/melodic/include/control_box_rst/corbo-core/time.h:32[m[K,
+                 from [01m[K/opt/ros/melodic/include/control_box_rst/corbo-controllers/statistics.h:28[m[K,
+                 from [01m[K/opt/ros/melodic/include/control_box_rst/corbo-controllers/controller_interface.h:28[m[K,
+                 from [01m[K/opt/ros/melodic/include/control_box_rst/corbo-controllers/predictive_controller.h:28[m[K,
+                 from [01m[K/home/vialab/nonlinear_mpc/src/mpc_local_planner/mpc_local_planner/include/mpc_local_planner/controller.h:26[m[K,
+                 from [01m[K/home/vialab/nonlinear_mpc/src/mpc_local_planner/mpc_local_planner/src/controller.cpp:23[m[K:
+[01m[K/usr/include/c++/7/bits/ostream.tcc:119:5:[m[K [01;36m[Knote: [m[Kcandidate: std::basic_ostream<_CharT, _Traits>& std::basic_ostream<_CharT, _Traits>::operator<<(std::basic_ostream<_CharT, _Traits>::__streambuf_type*) [with _CharT = char; _Traits = std::char_traits<char>; std::basic_ostream<_CharT, _Traits>::__streambuf_type = std::basic_streambuf<char>]
+     [01;36m[Kbasic_ostream<_CharT, _Traits>[m[K::
+     [01;36m[K^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K
+[01m[K/usr/include/c++/7/bits/ostream.tcc:119:5:[m[K [01;36m[Knote: [m[K  no known conversion for argument 1 from ‘[01m[Kconst std::vector<geometry_msgs::PoseStamped_<std::allocator<void> > >[m[K’ to ‘[01m[Kstd::basic_ostream<char>::__streambuf_type* {aka std::basic_streambuf<char>*}[m[K’
+In file included from [01m[K/opt/ros/melodic/include/ros/node_handle.h:52:0[m[K,
+                 from [01m[K/opt/ros/melodic/include/ros/ros.h:45[m[K,
+                 from [01m[K/opt/ros/melodic/include/tf2_ros/buffer.h:38[m[K,
+                 from [01m[K/opt/ros/melodic/include/tf/tf.h:49[m[K,
+                 from [01m[K/opt/ros/melodic/include/teb_local_planner/obstacles.h:56[m[K,
+                 from [01m[K/opt/ros/melodic/include/teb_local_planner/robot_footprint_model.h:44[m[K,
+                 from [01m[K/home/vialab/nonlinear_mpc/src/mpc_local_planner/mpc_local_planner/include/mpc_local_planner/optimal_control/stage_inequality_se2.h:29[m[K,
+                 from [01m[K/home/vialab/nonlinear_mpc/src/mpc_local_planner/mpc_local_planner/include/mpc_local_planner/controller.h:29[m[K,
+                 from [01m[K/home/vialab/nonlinear_mpc/src/mpc_local_planner/mpc_local_planner/src/controller.cpp:23[m[K:
+[01m[K/opt/ros/melodic/include/xmlrpcpp/XmlRpcValue.h:207:29:[m[K [01;36m[Knote: [m[Kcandidate: std::ostream& operator<<(std::ostream&, const XmlRpc::XmlRpcValue&)
+ XMLRPCPP_DECL std::ostream& [01;36m[Koperator[m[K<<(std::ostream& os, const XmlRpc::XmlRpcValue& v);
+                             [01;36m[K^~~~~~~~[m[K
+[01m[K/opt/ros/melodic/include/xmlrpcpp/XmlRpcValue.h:207:29:[m[K [01;36m[Knote: [m[K  no known conversion for argument 2 from ‘[01m[Kconst std::vector<geometry_msgs::PoseStamped_<std::allocator<void> > >[m[K’ to ‘[01m[Kconst XmlRpc::XmlRpcValue&[m[K’
+In file included from [01m[K/usr/include/boost/detail/container_fwd.hpp:96:0[m[K,
                  from [01m[K/usr/include/boost/functional/hash/extensions.hpp:22[m[K,
                  from [01m[K/usr/include/boost/functional/hash/hash.hpp:594[m[K,
                  from [01m[K/usr/include/boost/functional/hash.hpp:6[m[K,
@@ -12,168 +137,630 @@ In file included from [01m[K/usr/include/c++/7/deque:64:0[m[K,
                  from [01m[K/opt/ros/melodic/include/tf/tf.h:45[m[K,
                  from [01m[K/opt/ros/melodic/include/teb_local_planner/obstacles.h:56[m[K,
                  from [01m[K/opt/ros/melodic/include/teb_local_planner/robot_footprint_model.h:44[m[K,
-                 from [01m[K/home/vialab/mpc_traj_ws/src/mpc_local_planner/mpc_local_planner/include/mpc_local_planner/optimal_control/stage_inequality_se2.h:29[m[K,
-                 from [01m[K/home/vialab/mpc_traj_ws/src/mpc_local_planner/mpc_local_planner/include/mpc_local_planner/controller.h:29[m[K,
-                 from [01m[K/home/vialab/mpc_traj_ws/src/mpc_local_planner/mpc_local_planner/src/controller.cpp:23[m[K:
-[01m[K/usr/include/c++/7/bits/stl_deque.h:363:5:[m[K [01;36m[Knote: [m[Kcandidate: template<class _Tp, class _RefL, class _PtrL, class _RefR, class _PtrR> typename std::_Deque_iterator<_Tp, _Ref, _Ptr>::difference_type std::operator-(const std::_Deque_iterator<_Tp, _Ref, _Ptr>&, const std::_Deque_iterator<_Tp, _RefR, _PtrR>&)
-     [01;36m[Koperator[m[K-(const _Deque_iterator<_Tp, _RefL, _PtrL>& __x,
+                 from [01m[K/home/vialab/nonlinear_mpc/src/mpc_local_planner/mpc_local_planner/include/mpc_local_planner/optimal_control/stage_inequality_se2.h:29[m[K,
+                 from [01m[K/home/vialab/nonlinear_mpc/src/mpc_local_planner/mpc_local_planner/include/mpc_local_planner/controller.h:29[m[K,
+                 from [01m[K/home/vialab/nonlinear_mpc/src/mpc_local_planner/mpc_local_planner/src/controller.cpp:23[m[K:
+[01m[K/usr/include/c++/7/bitset:1530:5:[m[K [01;36m[Knote: [m[Kcandidate: template<class _CharT, class _Traits, long unsigned int _Nb> std::basic_ostream<_CharT, _Traits>& std::operator<<(std::basic_ostream<_CharT, _Traits>&, const std::bitset<_Nb>&)
+     [01;36m[Koperator[m[K<<(std::basic_ostream<_CharT, _Traits>& __os,
      [01;36m[K^~~~~~~~[m[K
-[01m[K/usr/include/c++/7/bits/stl_deque.h:363:5:[m[K [01;36m[Knote: [m[K  template argument deduction/substitution failed:
-[01m[K/home/vialab/mpc_traj_ws/src/mpc_local_planner/mpc_local_planner/src/controller.cpp:221:68:[m[K [01;36m[Knote: [m[K  ‘[01m[Kmpc_local_planner_msgs::OptimalControlResult_<std::allocator<void> >::_controls_type {aka std::vector<double>}[m[K’ is not derived from ‘[01m[Kconst std::_Deque_iterator<_Tp, _Ref, _Ptr>[m[K’
-     std::cout<< "Controls list length " << (*(&msg.controls + 1) - [01;36m[K1[m[K) << std::endl;
-                                                                    [01;36m[K^[m[K
-In file included from [01m[K/usr/include/c++/7/deque:64:0[m[K,
-                 from [01m[K/usr/include/boost/detail/container_fwd.hpp:91[m[K,
-                 from [01m[K/usr/include/boost/functional/hash/extensions.hpp:22[m[K,
-                 from [01m[K/usr/include/boost/functional/hash/hash.hpp:594[m[K,
-                 from [01m[K/usr/include/boost/functional/hash.hpp:6[m[K,
-                 from [01m[K/usr/include/boost/unordered/unordered_map.hpp:18[m[K,
-                 from [01m[K/usr/include/boost/unordered_map.hpp:17[m[K,
-                 from [01m[K/opt/ros/melodic/include/tf/tf.h:45[m[K,
+[01m[K/usr/include/c++/7/bitset:1530:5:[m[K [01;36m[Knote: [m[K  template argument deduction/substitution failed:
+[01m[K/home/vialab/nonlinear_mpc/src/mpc_local_planner/mpc_local_planner/src/controller.cpp:834:53:[m[K [01;36m[Knote: [m[K  ‘[01m[Kconst std::vector<geometry_msgs::PoseStamped_<std::allocator<void> > >[m[K’ is not derived from ‘[01m[Kconst std::bitset<_Nb>[m[K’
+     std::cout << "iNITIAL TRAJECTORY REFERENCE " << [01;36m[Kinitial_plan[m[K << std::endl;
+                                                     [01;36m[K^~~~~~~~~~~~[m[K
+In file included from [01m[K/usr/include/boost/math/policies/error_handling.hpp:12:0[m[K,
+                 from [01m[K/usr/include/boost/math/special_functions/round.hpp:14[m[K,
+                 from [01m[K/opt/ros/melodic/include/ros/time.h:58[m[K,
+                 from [01m[K/opt/ros/melodic/include/ros/serialization.h:34[m[K,
+                 from [01m[K/opt/ros/melodic/include/geometry_msgs/Pose.h:14[m[K,
+                 from [01m[K/opt/ros/melodic/include/teb_local_planner/pose_se2.h:46[m[K,
+                 from [01m[K/opt/ros/melodic/include/teb_local_planner/robot_footprint_model.h:43[m[K,
+                 from [01m[K/home/vialab/nonlinear_mpc/src/mpc_local_planner/mpc_local_planner/include/mpc_local_planner/optimal_control/stage_inequality_se2.h:29[m[K,
+                 from [01m[K/home/vialab/nonlinear_mpc/src/mpc_local_planner/mpc_local_planner/include/mpc_local_planner/controller.h:29[m[K,
+                 from [01m[K/home/vialab/nonlinear_mpc/src/mpc_local_planner/mpc_local_planner/src/controller.cpp:23[m[K:
+[01m[K/usr/include/c++/7/iomanip:363:5:[m[K [01;36m[Knote: [m[Kcandidate: template<class _CharT, class _Traits> std::basic_ostream<_CharT, _Traits>& std::operator<<(std::basic_ostream<_CharT, _Traits>&, std::_Put_time<_CharT>)
+     [01;36m[Koperator[m[K<<(basic_ostream<_CharT, _Traits>& __os, _Put_time<_CharT> __f)
+     [01;36m[K^~~~~~~~[m[K
+[01m[K/usr/include/c++/7/iomanip:363:5:[m[K [01;36m[Knote: [m[K  template argument deduction/substitution failed:
+[01m[K/home/vialab/nonlinear_mpc/src/mpc_local_planner/mpc_local_planner/src/controller.cpp:834:53:[m[K [01;36m[Knote: [m[K  ‘[01m[Kstd::vector<geometry_msgs::PoseStamped_<std::allocator<void> > >[m[K’ is not derived from ‘[01m[Kstd::_Put_time<_CharT>[m[K’
+     std::cout << "iNITIAL TRAJECTORY REFERENCE " << [01;36m[Kinitial_plan[m[K << std::endl;
+                                                     [01;36m[K^~~~~~~~~~~~[m[K
+In file included from [01m[K/usr/include/boost/math/policies/error_handling.hpp:12:0[m[K,
+                 from [01m[K/usr/include/boost/math/special_functions/round.hpp:14[m[K,
+                 from [01m[K/opt/ros/melodic/include/ros/time.h:58[m[K,
+                 from [01m[K/opt/ros/melodic/include/ros/serialization.h:34[m[K,
+                 from [01m[K/opt/ros/melodic/include/geometry_msgs/Pose.h:14[m[K,
+                 from [01m[K/opt/ros/melodic/include/teb_local_planner/pose_se2.h:46[m[K,
+                 from [01m[K/opt/ros/melodic/include/teb_local_planner/robot_footprint_model.h:43[m[K,
+                 from [01m[K/home/vialab/nonlinear_mpc/src/mpc_local_planner/mpc_local_planner/include/mpc_local_planner/optimal_control/stage_inequality_se2.h:29[m[K,
+                 from [01m[K/home/vialab/nonlinear_mpc/src/mpc_local_planner/mpc_local_planner/include/mpc_local_planner/controller.h:29[m[K,
+                 from [01m[K/home/vialab/nonlinear_mpc/src/mpc_local_planner/mpc_local_planner/src/controller.cpp:23[m[K:
+[01m[K/usr/include/c++/7/iomanip:311:5:[m[K [01;36m[Knote: [m[Kcandidate: template<class _CharT, class _Traits, class _MoneyT> std::basic_ostream<_CharT, _Traits>& std::operator<<(std::basic_ostream<_CharT, _Traits>&, std::_Put_money<_MoneyT>)
+     [01;36m[Koperator[m[K<<(basic_ostream<_CharT, _Traits>& __os, _Put_money<_MoneyT> __f)
+     [01;36m[K^~~~~~~~[m[K
+[01m[K/usr/include/c++/7/iomanip:311:5:[m[K [01;36m[Knote: [m[K  template argument deduction/substitution failed:
+[01m[K/home/vialab/nonlinear_mpc/src/mpc_local_planner/mpc_local_planner/src/controller.cpp:834:53:[m[K [01;36m[Knote: [m[K  ‘[01m[Kstd::vector<geometry_msgs::PoseStamped_<std::allocator<void> > >[m[K’ is not derived from ‘[01m[Kstd::_Put_money<_MoneyT>[m[K’
+     std::cout << "iNITIAL TRAJECTORY REFERENCE " << [01;36m[Kinitial_plan[m[K << std::endl;
+                                                     [01;36m[K^~~~~~~~~~~~[m[K
+In file included from [01m[K/usr/include/boost/math/policies/error_handling.hpp:12:0[m[K,
+                 from [01m[K/usr/include/boost/math/special_functions/round.hpp:14[m[K,
+                 from [01m[K/opt/ros/melodic/include/ros/time.h:58[m[K,
+                 from [01m[K/opt/ros/melodic/include/ros/serialization.h:34[m[K,
+                 from [01m[K/opt/ros/melodic/include/geometry_msgs/Pose.h:14[m[K,
+                 from [01m[K/opt/ros/melodic/include/teb_local_planner/pose_se2.h:46[m[K,
+                 from [01m[K/opt/ros/melodic/include/teb_local_planner/robot_footprint_model.h:43[m[K,
+                 from [01m[K/home/vialab/nonlinear_mpc/src/mpc_local_planner/mpc_local_planner/include/mpc_local_planner/optimal_control/stage_inequality_se2.h:29[m[K,
+                 from [01m[K/home/vialab/nonlinear_mpc/src/mpc_local_planner/mpc_local_planner/include/mpc_local_planner/controller.h:29[m[K,
+                 from [01m[K/home/vialab/nonlinear_mpc/src/mpc_local_planner/mpc_local_planner/src/controller.cpp:23[m[K:
+[01m[K/usr/include/c++/7/iomanip:238:5:[m[K [01;36m[Knote: [m[Kcandidate: template<class _CharT, class _Traits> std::basic_ostream<_CharT, _Traits>& std::operator<<(std::basic_ostream<_CharT, _Traits>&, std::_Setw)
+     [01;36m[Koperator[m[K<<(basic_ostream<_CharT, _Traits>& __os, _Setw __f)
+     [01;36m[K^~~~~~~~[m[K
+[01m[K/usr/include/c++/7/iomanip:238:5:[m[K [01;36m[Knote: [m[K  template argument deduction/substitution failed:
+[01m[K/home/vialab/nonlinear_mpc/src/mpc_local_planner/mpc_local_planner/src/controller.cpp:834:53:[m[K [01;36m[Knote: [m[K  cannot convert ‘[01m[Kinitial_plan[m[K’ (type ‘[01m[Kconst std::vector<geometry_msgs::PoseStamped_<std::allocator<void> > >[m[K’) to type ‘[01m[Kstd::_Setw[m[K’
+     std::cout << "iNITIAL TRAJECTORY REFERENCE " << [01;36m[Kinitial_plan[m[K << std::endl;
+                                                     [01;36m[K^~~~~~~~~~~~[m[K
+In file included from [01m[K/usr/include/boost/math/policies/error_handling.hpp:12:0[m[K,
+                 from [01m[K/usr/include/boost/math/special_functions/round.hpp:14[m[K,
+                 from [01m[K/opt/ros/melodic/include/ros/time.h:58[m[K,
+                 from [01m[K/opt/ros/melodic/include/ros/serialization.h:34[m[K,
+                 from [01m[K/opt/ros/melodic/include/geometry_msgs/Pose.h:14[m[K,
+                 from [01m[K/opt/ros/melodic/include/teb_local_planner/pose_se2.h:46[m[K,
+                 from [01m[K/opt/ros/melodic/include/teb_local_planner/robot_footprint_model.h:43[m[K,
+                 from [01m[K/home/vialab/nonlinear_mpc/src/mpc_local_planner/mpc_local_planner/include/mpc_local_planner/optimal_control/stage_inequality_se2.h:29[m[K,
+                 from [01m[K/home/vialab/nonlinear_mpc/src/mpc_local_planner/mpc_local_planner/include/mpc_local_planner/controller.h:29[m[K,
+                 from [01m[K/home/vialab/nonlinear_mpc/src/mpc_local_planner/mpc_local_planner/src/controller.cpp:23[m[K:
+[01m[K/usr/include/c++/7/iomanip:208:5:[m[K [01;36m[Knote: [m[Kcandidate: template<class _CharT, class _Traits> std::basic_ostream<_CharT, _Traits>& std::operator<<(std::basic_ostream<_CharT, _Traits>&, std::_Setprecision)
+     [01;36m[Koperator[m[K<<(basic_ostream<_CharT, _Traits>& __os, _Setprecision __f)
+     [01;36m[K^~~~~~~~[m[K
+[01m[K/usr/include/c++/7/iomanip:208:5:[m[K [01;36m[Knote: [m[K  template argument deduction/substitution failed:
+[01m[K/home/vialab/nonlinear_mpc/src/mpc_local_planner/mpc_local_planner/src/controller.cpp:834:53:[m[K [01;36m[Knote: [m[K  cannot convert ‘[01m[Kinitial_plan[m[K’ (type ‘[01m[Kconst std::vector<geometry_msgs::PoseStamped_<std::allocator<void> > >[m[K’) to type ‘[01m[Kstd::_Setprecision[m[K’
+     std::cout << "iNITIAL TRAJECTORY REFERENCE " << [01;36m[Kinitial_plan[m[K << std::endl;
+                                                     [01;36m[K^~~~~~~~~~~~[m[K
+In file included from [01m[K/usr/include/boost/math/policies/error_handling.hpp:12:0[m[K,
+                 from [01m[K/usr/include/boost/math/special_functions/round.hpp:14[m[K,
+                 from [01m[K/opt/ros/melodic/include/ros/time.h:58[m[K,
+                 from [01m[K/opt/ros/melodic/include/ros/serialization.h:34[m[K,
+                 from [01m[K/opt/ros/melodic/include/geometry_msgs/Pose.h:14[m[K,
+                 from [01m[K/opt/ros/melodic/include/teb_local_planner/pose_se2.h:46[m[K,
+                 from [01m[K/opt/ros/melodic/include/teb_local_planner/robot_footprint_model.h:43[m[K,
+                 from [01m[K/home/vialab/nonlinear_mpc/src/mpc_local_planner/mpc_local_planner/include/mpc_local_planner/optimal_control/stage_inequality_se2.h:29[m[K,
+                 from [01m[K/home/vialab/nonlinear_mpc/src/mpc_local_planner/mpc_local_planner/include/mpc_local_planner/controller.h:29[m[K,
+                 from [01m[K/home/vialab/nonlinear_mpc/src/mpc_local_planner/mpc_local_planner/src/controller.cpp:23[m[K:
+[01m[K/usr/include/c++/7/iomanip:178:5:[m[K [01;36m[Knote: [m[Kcandidate: template<class _CharT, class _Traits> std::basic_ostream<_CharT, _Traits>& std::operator<<(std::basic_ostream<_CharT, _Traits>&, std::_Setfill<_CharT>)
+     [01;36m[Koperator[m[K<<(basic_ostream<_CharT, _Traits>& __os, _Setfill<_CharT> __f)
+     [01;36m[K^~~~~~~~[m[K
+[01m[K/usr/include/c++/7/iomanip:178:5:[m[K [01;36m[Knote: [m[K  template argument deduction/substitution failed:
+[01m[K/home/vialab/nonlinear_mpc/src/mpc_local_planner/mpc_local_planner/src/controller.cpp:834:53:[m[K [01;36m[Knote: [m[K  ‘[01m[Kstd::vector<geometry_msgs::PoseStamped_<std::allocator<void> > >[m[K’ is not derived from ‘[01m[Kstd::_Setfill<_CharT>[m[K’
+     std::cout << "iNITIAL TRAJECTORY REFERENCE " << [01;36m[Kinitial_plan[m[K << std::endl;
+                                                     [01;36m[K^~~~~~~~~~~~[m[K
+In file included from [01m[K/usr/include/boost/math/policies/error_handling.hpp:12:0[m[K,
+                 from [01m[K/usr/include/boost/math/special_functions/round.hpp:14[m[K,
+                 from [01m[K/opt/ros/melodic/include/ros/time.h:58[m[K,
+                 from [01m[K/opt/ros/melodic/include/ros/serialization.h:34[m[K,
+                 from [01m[K/opt/ros/melodic/include/geometry_msgs/Pose.h:14[m[K,
+                 from [01m[K/opt/ros/melodic/include/teb_local_planner/pose_se2.h:46[m[K,
+                 from [01m[K/opt/ros/melodic/include/teb_local_planner/robot_footprint_model.h:43[m[K,
+                 from [01m[K/home/vialab/nonlinear_mpc/src/mpc_local_planner/mpc_local_planner/include/mpc_local_planner/optimal_control/stage_inequality_se2.h:29[m[K,
+                 from [01m[K/home/vialab/nonlinear_mpc/src/mpc_local_planner/mpc_local_planner/include/mpc_local_planner/controller.h:29[m[K,
+                 from [01m[K/home/vialab/nonlinear_mpc/src/mpc_local_planner/mpc_local_planner/src/controller.cpp:23[m[K:
+[01m[K/usr/include/c++/7/iomanip:143:5:[m[K [01;36m[Knote: [m[Kcandidate: template<class _CharT, class _Traits> std::basic_ostream<_CharT, _Traits>& std::operator<<(std::basic_ostream<_CharT, _Traits>&, std::_Setbase)
+     [01;36m[Koperator[m[K<<(basic_ostream<_CharT, _Traits>& __os, _Setbase __f)
+     [01;36m[K^~~~~~~~[m[K
+[01m[K/usr/include/c++/7/iomanip:143:5:[m[K [01;36m[Knote: [m[K  template argument deduction/substitution failed:
+[01m[K/home/vialab/nonlinear_mpc/src/mpc_local_planner/mpc_local_planner/src/controller.cpp:834:53:[m[K [01;36m[Knote: [m[K  cannot convert ‘[01m[Kinitial_plan[m[K’ (type ‘[01m[Kconst std::vector<geometry_msgs::PoseStamped_<std::allocator<void> > >[m[K’) to type ‘[01m[Kstd::_Setbase[m[K’
+     std::cout << "iNITIAL TRAJECTORY REFERENCE " << [01;36m[Kinitial_plan[m[K << std::endl;
+                                                     [01;36m[K^~~~~~~~~~~~[m[K
+In file included from [01m[K/usr/include/boost/math/policies/error_handling.hpp:12:0[m[K,
+                 from [01m[K/usr/include/boost/math/special_functions/round.hpp:14[m[K,
+                 from [01m[K/opt/ros/melodic/include/ros/time.h:58[m[K,
+                 from [01m[K/opt/ros/melodic/include/ros/serialization.h:34[m[K,
+                 from [01m[K/opt/ros/melodic/include/geometry_msgs/Pose.h:14[m[K,
+                 from [01m[K/opt/ros/melodic/include/teb_local_planner/pose_se2.h:46[m[K,
+                 from [01m[K/opt/ros/melodic/include/teb_local_planner/robot_footprint_model.h:43[m[K,
+                 from [01m[K/home/vialab/nonlinear_mpc/src/mpc_local_planner/mpc_local_planner/include/mpc_local_planner/optimal_control/stage_inequality_se2.h:29[m[K,
+                 from [01m[K/home/vialab/nonlinear_mpc/src/mpc_local_planner/mpc_local_planner/include/mpc_local_planner/controller.h:29[m[K,
+                 from [01m[K/home/vialab/nonlinear_mpc/src/mpc_local_planner/mpc_local_planner/src/controller.cpp:23[m[K:
+[01m[K/usr/include/c++/7/iomanip:109:5:[m[K [01;36m[Knote: [m[Kcandidate: template<class _CharT, class _Traits> std::basic_ostream<_CharT, _Traits>& std::operator<<(std::basic_ostream<_CharT, _Traits>&, std::_Setiosflags)
+     [01;36m[Koperator[m[K<<(basic_ostream<_CharT, _Traits>& __os, _Setiosflags __f)
+     [01;36m[K^~~~~~~~[m[K
+[01m[K/usr/include/c++/7/iomanip:109:5:[m[K [01;36m[Knote: [m[K  template argument deduction/substitution failed:
+[01m[K/home/vialab/nonlinear_mpc/src/mpc_local_planner/mpc_local_planner/src/controller.cpp:834:53:[m[K [01;36m[Knote: [m[K  cannot convert ‘[01m[Kinitial_plan[m[K’ (type ‘[01m[Kconst std::vector<geometry_msgs::PoseStamped_<std::allocator<void> > >[m[K’) to type ‘[01m[Kstd::_Setiosflags[m[K’
+     std::cout << "iNITIAL TRAJECTORY REFERENCE " << [01;36m[Kinitial_plan[m[K << std::endl;
+                                                     [01;36m[K^~~~~~~~~~~~[m[K
+In file included from [01m[K/usr/include/boost/math/policies/error_handling.hpp:12:0[m[K,
+                 from [01m[K/usr/include/boost/math/special_functions/round.hpp:14[m[K,
+                 from [01m[K/opt/ros/melodic/include/ros/time.h:58[m[K,
+                 from [01m[K/opt/ros/melodic/include/ros/serialization.h:34[m[K,
+                 from [01m[K/opt/ros/melodic/include/geometry_msgs/Pose.h:14[m[K,
+                 from [01m[K/opt/ros/melodic/include/teb_local_planner/pose_se2.h:46[m[K,
+                 from [01m[K/opt/ros/melodic/include/teb_local_planner/robot_footprint_model.h:43[m[K,
+                 from [01m[K/home/vialab/nonlinear_mpc/src/mpc_local_planner/mpc_local_planner/include/mpc_local_planner/optimal_control/stage_inequality_se2.h:29[m[K,
+                 from [01m[K/home/vialab/nonlinear_mpc/src/mpc_local_planner/mpc_local_planner/include/mpc_local_planner/controller.h:29[m[K,
+                 from [01m[K/home/vialab/nonlinear_mpc/src/mpc_local_planner/mpc_local_planner/src/controller.cpp:23[m[K:
+[01m[K/usr/include/c++/7/iomanip:79:5:[m[K [01;36m[Knote: [m[Kcandidate: template<class _CharT, class _Traits> std::basic_ostream<_CharT, _Traits>& std::operator<<(std::basic_ostream<_CharT, _Traits>&, std::_Resetiosflags)
+     [01;36m[Koperator[m[K<<(basic_ostream<_CharT, _Traits>& __os, _Resetiosflags __f)
+     [01;36m[K^~~~~~~~[m[K
+[01m[K/usr/include/c++/7/iomanip:79:5:[m[K [01;36m[Knote: [m[K  template argument deduction/substitution failed:
+[01m[K/home/vialab/nonlinear_mpc/src/mpc_local_planner/mpc_local_planner/src/controller.cpp:834:53:[m[K [01;36m[Knote: [m[K  cannot convert ‘[01m[Kinitial_plan[m[K’ (type ‘[01m[Kconst std::vector<geometry_msgs::PoseStamped_<std::allocator<void> > >[m[K’) to type ‘[01m[Kstd::_Resetiosflags[m[K’
+     std::cout << "iNITIAL TRAJECTORY REFERENCE " << [01;36m[Kinitial_plan[m[K << std::endl;
+                                                     [01;36m[K^~~~~~~~~~~~[m[K
+In file included from [01m[K/usr/include/eigen3/Eigen/Core:80:0[m[K,
+                 from [01m[K/opt/ros/melodic/include/control_box_rst/corbo-core/types.h:28[m[K,
+                 from [01m[K/opt/ros/melodic/include/control_box_rst/corbo-controllers/statistics.h:29[m[K,
+                 from [01m[K/opt/ros/melodic/include/control_box_rst/corbo-controllers/controller_interface.h:28[m[K,
+                 from [01m[K/opt/ros/melodic/include/control_box_rst/corbo-controllers/predictive_controller.h:28[m[K,
+                 from [01m[K/home/vialab/nonlinear_mpc/src/mpc_local_planner/mpc_local_planner/include/mpc_local_planner/controller.h:26[m[K,
+                 from [01m[K/home/vialab/nonlinear_mpc/src/mpc_local_planner/mpc_local_planner/src/controller.cpp:23[m[K:
+[01m[K/usr/include/c++/7/complex:528:5:[m[K [01;36m[Knote: [m[Kcandidate: template<class _Tp, class _CharT, class _Traits> std::basic_ostream<_CharT, _Traits>& std::operator<<(std::basic_ostream<_CharT, _Traits>&, const std::complex<_Tp>&)
+     [01;36m[Koperator[m[K<<(basic_ostream<_CharT, _Traits>& __os, const complex<_Tp>& __x)
+     [01;36m[K^~~~~~~~[m[K
+[01m[K/usr/include/c++/7/complex:528:5:[m[K [01;36m[Knote: [m[K  template argument deduction/substitution failed:
+[01m[K/home/vialab/nonlinear_mpc/src/mpc_local_planner/mpc_local_planner/src/controller.cpp:834:53:[m[K [01;36m[Knote: [m[K  ‘[01m[Kconst std::vector<geometry_msgs::PoseStamped_<std::allocator<void> > >[m[K’ is not derived from ‘[01m[Kconst std::complex<_Tp>[m[K’
+     std::cout << "iNITIAL TRAJECTORY REFERENCE " << [01;36m[Kinitial_plan[m[K << std::endl;
+                                                     [01;36m[K^~~~~~~~~~~~[m[K
+In file included from [01m[K/usr/include/c++/7/iostream:39:0[m[K,
+                 from [01m[K/opt/ros/melodic/include/control_box_rst/corbo-core/time.h:32[m[K,
+                 from [01m[K/opt/ros/melodic/include/control_box_rst/corbo-controllers/statistics.h:28[m[K,
+                 from [01m[K/opt/ros/melodic/include/control_box_rst/corbo-controllers/controller_interface.h:28[m[K,
+                 from [01m[K/opt/ros/melodic/include/control_box_rst/corbo-controllers/predictive_controller.h:28[m[K,
+                 from [01m[K/home/vialab/nonlinear_mpc/src/mpc_local_planner/mpc_local_planner/include/mpc_local_planner/controller.h:26[m[K,
+                 from [01m[K/home/vialab/nonlinear_mpc/src/mpc_local_planner/mpc_local_planner/src/controller.cpp:23[m[K:
+[01m[K/usr/include/c++/7/ostream:682:5:[m[K [01;36m[Knote: [m[Kcandidate: template<class _Ostream, class _Tp> typename std::enable_if<std::__and_<std::__not_<std::is_lvalue_reference<_Tp> >, std::__is_convertible_to_basic_ostream<_Ostream>, std::__is_insertable<typename std::__is_convertible_to_basic_ostream<_Tp>::__ostream_type, const _Tp&, void> >::value, typename std::__is_convertible_to_basic_ostream<_Tp>::__ostream_type>::type std::operator<<(_Ostream&&, const _Tp&)
+     [01;36m[Koperator[m[K<<(_Ostream&& __os, const _Tp& __x)
+     [01;36m[K^~~~~~~~[m[K
+[01m[K/usr/include/c++/7/ostream:682:5:[m[K [01;36m[Knote: [m[K  template argument deduction/substitution failed:
+/usr/include/c++/7/ostream: In substitution of ‘[01m[Ktemplate<class _Ostream, class _Tp> typename std::enable_if<std::__and_<std::__not_<std::is_lvalue_reference<_Tp> >, std::__is_convertible_to_basic_ostream<_Ostream>, std::__is_insertable<typename std::__is_convertible_to_basic_ostream<_Tp>::__ostream_type, const _Tp&, void> >::value, typename std::__is_convertible_to_basic_ostream<_Tp>::__ostream_type>::type std::operator<<(_Ostream&&, const _Tp&) [with _Ostream = std::basic_ostream<char>&; _Tp = std::vector<geometry_msgs::PoseStamped_<std::allocator<void> > >][m[K’:
+[01m[K/home/vialab/nonlinear_mpc/src/mpc_local_planner/mpc_local_planner/src/controller.cpp:834:53:[m[K   required from here
+[01m[K/usr/include/c++/7/ostream:682:5:[m[K [01;31m[Kerror: [m[Kno type named ‘[01m[Ktype[m[K’ in ‘[01m[Kstruct std::enable_if<false, std::basic_ostream<char>&>[m[K’
+[01m[K/usr/include/c++/7/ostream:574:5:[m[K [01;36m[Knote: [m[Kcandidate: template<class _Traits> std::basic_ostream<char, _Traits>& std::operator<<(std::basic_ostream<char, _Traits>&, const unsigned char*)
+     [01;36m[Koperator[m[K<<(basic_ostream<char, _Traits>& __out, const unsigned char* __s)
+     [01;36m[K^~~~~~~~[m[K
+[01m[K/usr/include/c++/7/ostream:574:5:[m[K [01;36m[Knote: [m[K  template argument deduction/substitution failed:
+[01m[K/home/vialab/nonlinear_mpc/src/mpc_local_planner/mpc_local_planner/src/controller.cpp:834:53:[m[K [01;36m[Knote: [m[K  cannot convert ‘[01m[Kinitial_plan[m[K’ (type ‘[01m[Kconst std::vector<geometry_msgs::PoseStamped_<std::allocator<void> > >[m[K’) to type ‘[01m[Kconst unsigned char*[m[K’
+     std::cout << "iNITIAL TRAJECTORY REFERENCE " << [01;36m[Kinitial_plan[m[K << std::endl;
+                                                     [01;36m[K^~~~~~~~~~~~[m[K
+In file included from [01m[K/usr/include/c++/7/iostream:39:0[m[K,
+                 from [01m[K/opt/ros/melodic/include/control_box_rst/corbo-core/time.h:32[m[K,
+                 from [01m[K/opt/ros/melodic/include/control_box_rst/corbo-controllers/statistics.h:28[m[K,
+                 from [01m[K/opt/ros/melodic/include/control_box_rst/corbo-controllers/controller_interface.h:28[m[K,
+                 from [01m[K/opt/ros/melodic/include/control_box_rst/corbo-controllers/predictive_controller.h:28[m[K,
+                 from [01m[K/home/vialab/nonlinear_mpc/src/mpc_local_planner/mpc_local_planner/include/mpc_local_planner/controller.h:26[m[K,
+                 from [01m[K/home/vialab/nonlinear_mpc/src/mpc_local_planner/mpc_local_planner/src/controller.cpp:23[m[K:
+[01m[K/usr/include/c++/7/ostream:569:5:[m[K [01;36m[Knote: [m[Kcandidate: template<class _Traits> std::basic_ostream<char, _Traits>& std::operator<<(std::basic_ostream<char, _Traits>&, const signed char*)
+     [01;36m[Koperator[m[K<<(basic_ostream<char, _Traits>& __out, const signed char* __s)
+     [01;36m[K^~~~~~~~[m[K
+[01m[K/usr/include/c++/7/ostream:569:5:[m[K [01;36m[Knote: [m[K  template argument deduction/substitution failed:
+[01m[K/home/vialab/nonlinear_mpc/src/mpc_local_planner/mpc_local_planner/src/controller.cpp:834:53:[m[K [01;36m[Knote: [m[K  cannot convert ‘[01m[Kinitial_plan[m[K’ (type ‘[01m[Kconst std::vector<geometry_msgs::PoseStamped_<std::allocator<void> > >[m[K’) to type ‘[01m[Kconst signed char*[m[K’
+     std::cout << "iNITIAL TRAJECTORY REFERENCE " << [01;36m[Kinitial_plan[m[K << std::endl;
+                                                     [01;36m[K^~~~~~~~~~~~[m[K
+In file included from [01m[K/usr/include/c++/7/iostream:39:0[m[K,
+                 from [01m[K/opt/ros/melodic/include/control_box_rst/corbo-core/time.h:32[m[K,
+                 from [01m[K/opt/ros/melodic/include/control_box_rst/corbo-controllers/statistics.h:28[m[K,
+                 from [01m[K/opt/ros/melodic/include/control_box_rst/corbo-controllers/controller_interface.h:28[m[K,
+                 from [01m[K/opt/ros/melodic/include/control_box_rst/corbo-controllers/predictive_controller.h:28[m[K,
+                 from [01m[K/home/vialab/nonlinear_mpc/src/mpc_local_planner/mpc_local_planner/include/mpc_local_planner/controller.h:26[m[K,
+                 from [01m[K/home/vialab/nonlinear_mpc/src/mpc_local_planner/mpc_local_planner/src/controller.cpp:23[m[K:
+[01m[K/usr/include/c++/7/ostream:556:5:[m[K [01;36m[Knote: [m[Kcandidate: template<class _Traits> std::basic_ostream<char, _Traits>& std::operator<<(std::basic_ostream<char, _Traits>&, const char*)
+     [01;36m[Koperator[m[K<<(basic_ostream<char, _Traits>& __out, const char* __s)
+     [01;36m[K^~~~~~~~[m[K
+[01m[K/usr/include/c++/7/ostream:556:5:[m[K [01;36m[Knote: [m[K  template argument deduction/substitution failed:
+[01m[K/home/vialab/nonlinear_mpc/src/mpc_local_planner/mpc_local_planner/src/controller.cpp:834:53:[m[K [01;36m[Knote: [m[K  cannot convert ‘[01m[Kinitial_plan[m[K’ (type ‘[01m[Kconst std::vector<geometry_msgs::PoseStamped_<std::allocator<void> > >[m[K’) to type ‘[01m[Kconst char*[m[K’
+     std::cout << "iNITIAL TRAJECTORY REFERENCE " << [01;36m[Kinitial_plan[m[K << std::endl;
+                                                     [01;36m[K^~~~~~~~~~~~[m[K
+In file included from [01m[K/usr/include/c++/7/ostream:693:0[m[K,
+                 from [01m[K/usr/include/c++/7/iostream:39[m[K,
+                 from [01m[K/opt/ros/melodic/include/control_box_rst/corbo-core/time.h:32[m[K,
+                 from [01m[K/opt/ros/melodic/include/control_box_rst/corbo-controllers/statistics.h:28[m[K,
+                 from [01m[K/opt/ros/melodic/include/control_box_rst/corbo-controllers/controller_interface.h:28[m[K,
+                 from [01m[K/opt/ros/melodic/include/control_box_rst/corbo-controllers/predictive_controller.h:28[m[K,
+                 from [01m[K/home/vialab/nonlinear_mpc/src/mpc_local_planner/mpc_local_planner/include/mpc_local_planner/controller.h:26[m[K,
+                 from [01m[K/home/vialab/nonlinear_mpc/src/mpc_local_planner/mpc_local_planner/src/controller.cpp:23[m[K:
+[01m[K/usr/include/c++/7/bits/ostream.tcc:321:5:[m[K [01;36m[Knote: [m[Kcandidate: template<class _CharT, class _Traits> std::basic_ostream<_CharT, _Traits>& std::operator<<(std::basic_ostream<_CharT, _Traits>&, const char*)
+     [01;36m[Koperator[m[K<<(basic_ostream<_CharT, _Traits>& __out, const char* __s)
+     [01;36m[K^~~~~~~~[m[K
+[01m[K/usr/include/c++/7/bits/ostream.tcc:321:5:[m[K [01;36m[Knote: [m[K  template argument deduction/substitution failed:
+[01m[K/home/vialab/nonlinear_mpc/src/mpc_local_planner/mpc_local_planner/src/controller.cpp:834:53:[m[K [01;36m[Knote: [m[K  cannot convert ‘[01m[Kinitial_plan[m[K’ (type ‘[01m[Kconst std::vector<geometry_msgs::PoseStamped_<std::allocator<void> > >[m[K’) to type ‘[01m[Kconst char*[m[K’
+     std::cout << "iNITIAL TRAJECTORY REFERENCE " << [01;36m[Kinitial_plan[m[K << std::endl;
+                                                     [01;36m[K^~~~~~~~~~~~[m[K
+In file included from [01m[K/usr/include/c++/7/iostream:39:0[m[K,
+                 from [01m[K/opt/ros/melodic/include/control_box_rst/corbo-core/time.h:32[m[K,
+                 from [01m[K/opt/ros/melodic/include/control_box_rst/corbo-controllers/statistics.h:28[m[K,
+                 from [01m[K/opt/ros/melodic/include/control_box_rst/corbo-controllers/controller_interface.h:28[m[K,
+                 from [01m[K/opt/ros/melodic/include/control_box_rst/corbo-controllers/predictive_controller.h:28[m[K,
+                 from [01m[K/home/vialab/nonlinear_mpc/src/mpc_local_planner/mpc_local_planner/include/mpc_local_planner/controller.h:26[m[K,
+                 from [01m[K/home/vialab/nonlinear_mpc/src/mpc_local_planner/mpc_local_planner/src/controller.cpp:23[m[K:
+[01m[K/usr/include/c++/7/ostream:539:5:[m[K [01;36m[Knote: [m[Kcandidate: template<class _CharT, class _Traits> std::basic_ostream<_CharT, _Traits>& std::operator<<(std::basic_ostream<_CharT, _Traits>&, const _CharT*)
+     [01;36m[Koperator[m[K<<(basic_ostream<_CharT, _Traits>& __out, const _CharT* __s)
+     [01;36m[K^~~~~~~~[m[K
+[01m[K/usr/include/c++/7/ostream:539:5:[m[K [01;36m[Knote: [m[K  template argument deduction/substitution failed:
+[01m[K/home/vialab/nonlinear_mpc/src/mpc_local_planner/mpc_local_planner/src/controller.cpp:834:53:[m[K [01;36m[Knote: [m[K  mismatched types ‘[01m[Kconst _CharT*[m[K’ and ‘[01m[Kstd::vector<geometry_msgs::PoseStamped_<std::allocator<void> > >[m[K’
+     std::cout << "iNITIAL TRAJECTORY REFERENCE " << [01;36m[Kinitial_plan[m[K << std::endl;
+                                                     [01;36m[K^~~~~~~~~~~~[m[K
+In file included from [01m[K/usr/include/c++/7/iostream:39:0[m[K,
+                 from [01m[K/opt/ros/melodic/include/control_box_rst/corbo-core/time.h:32[m[K,
+                 from [01m[K/opt/ros/melodic/include/control_box_rst/corbo-controllers/statistics.h:28[m[K,
+                 from [01m[K/opt/ros/melodic/include/control_box_rst/corbo-controllers/controller_interface.h:28[m[K,
+                 from [01m[K/opt/ros/melodic/include/control_box_rst/corbo-controllers/predictive_controller.h:28[m[K,
+                 from [01m[K/home/vialab/nonlinear_mpc/src/mpc_local_planner/mpc_local_planner/include/mpc_local_planner/controller.h:26[m[K,
+                 from [01m[K/home/vialab/nonlinear_mpc/src/mpc_local_planner/mpc_local_planner/src/controller.cpp:23[m[K:
+[01m[K/usr/include/c++/7/ostream:519:5:[m[K [01;36m[Knote: [m[Kcandidate: template<class _Traits> std::basic_ostream<char, _Traits>& std::operator<<(std::basic_ostream<char, _Traits>&, unsigned char)
+     [01;36m[Koperator[m[K<<(basic_ostream<char, _Traits>& __out, unsigned char __c)
+     [01;36m[K^~~~~~~~[m[K
+[01m[K/usr/include/c++/7/ostream:519:5:[m[K [01;36m[Knote: [m[K  template argument deduction/substitution failed:
+[01m[K/home/vialab/nonlinear_mpc/src/mpc_local_planner/mpc_local_planner/src/controller.cpp:834:53:[m[K [01;36m[Knote: [m[K  cannot convert ‘[01m[Kinitial_plan[m[K’ (type ‘[01m[Kconst std::vector<geometry_msgs::PoseStamped_<std::allocator<void> > >[m[K’) to type ‘[01m[Kunsigned char[m[K’
+     std::cout << "iNITIAL TRAJECTORY REFERENCE " << [01;36m[Kinitial_plan[m[K << std::endl;
+                                                     [01;36m[K^~~~~~~~~~~~[m[K
+In file included from [01m[K/usr/include/c++/7/iostream:39:0[m[K,
+                 from [01m[K/opt/ros/melodic/include/control_box_rst/corbo-core/time.h:32[m[K,
+                 from [01m[K/opt/ros/melodic/include/control_box_rst/corbo-controllers/statistics.h:28[m[K,
+                 from [01m[K/opt/ros/melodic/include/control_box_rst/corbo-controllers/controller_interface.h:28[m[K,
+                 from [01m[K/opt/ros/melodic/include/control_box_rst/corbo-controllers/predictive_controller.h:28[m[K,
+                 from [01m[K/home/vialab/nonlinear_mpc/src/mpc_local_planner/mpc_local_planner/include/mpc_local_planner/controller.h:26[m[K,
+                 from [01m[K/home/vialab/nonlinear_mpc/src/mpc_local_planner/mpc_local_planner/src/controller.cpp:23[m[K:
+[01m[K/usr/include/c++/7/ostream:514:5:[m[K [01;36m[Knote: [m[Kcandidate: template<class _Traits> std::basic_ostream<char, _Traits>& std::operator<<(std::basic_ostream<char, _Traits>&, signed char)
+     [01;36m[Koperator[m[K<<(basic_ostream<char, _Traits>& __out, signed char __c)
+     [01;36m[K^~~~~~~~[m[K
+[01m[K/usr/include/c++/7/ostream:514:5:[m[K [01;36m[Knote: [m[K  template argument deduction/substitution failed:
+[01m[K/home/vialab/nonlinear_mpc/src/mpc_local_planner/mpc_local_planner/src/controller.cpp:834:53:[m[K [01;36m[Knote: [m[K  cannot convert ‘[01m[Kinitial_plan[m[K’ (type ‘[01m[Kconst std::vector<geometry_msgs::PoseStamped_<std::allocator<void> > >[m[K’) to type ‘[01m[Ksigned char[m[K’
+     std::cout << "iNITIAL TRAJECTORY REFERENCE " << [01;36m[Kinitial_plan[m[K << std::endl;
+                                                     [01;36m[K^~~~~~~~~~~~[m[K
+In file included from [01m[K/usr/include/c++/7/iostream:39:0[m[K,
+                 from [01m[K/opt/ros/melodic/include/control_box_rst/corbo-core/time.h:32[m[K,
+                 from [01m[K/opt/ros/melodic/include/control_box_rst/corbo-controllers/statistics.h:28[m[K,
+                 from [01m[K/opt/ros/melodic/include/control_box_rst/corbo-controllers/controller_interface.h:28[m[K,
+                 from [01m[K/opt/ros/melodic/include/control_box_rst/corbo-controllers/predictive_controller.h:28[m[K,
+                 from [01m[K/home/vialab/nonlinear_mpc/src/mpc_local_planner/mpc_local_planner/include/mpc_local_planner/controller.h:26[m[K,
+                 from [01m[K/home/vialab/nonlinear_mpc/src/mpc_local_planner/mpc_local_planner/src/controller.cpp:23[m[K:
+[01m[K/usr/include/c++/7/ostream:508:5:[m[K [01;36m[Knote: [m[Kcandidate: template<class _Traits> std::basic_ostream<char, _Traits>& std::operator<<(std::basic_ostream<char, _Traits>&, char)
+     [01;36m[Koperator[m[K<<(basic_ostream<char, _Traits>& __out, char __c)
+     [01;36m[K^~~~~~~~[m[K
+[01m[K/usr/include/c++/7/ostream:508:5:[m[K [01;36m[Knote: [m[K  template argument deduction/substitution failed:
+[01m[K/home/vialab/nonlinear_mpc/src/mpc_local_planner/mpc_local_planner/src/controller.cpp:834:53:[m[K [01;36m[Knote: [m[K  cannot convert ‘[01m[Kinitial_plan[m[K’ (type ‘[01m[Kconst std::vector<geometry_msgs::PoseStamped_<std::allocator<void> > >[m[K’) to type ‘[01m[Kchar[m[K’
+     std::cout << "iNITIAL TRAJECTORY REFERENCE " << [01;36m[Kinitial_plan[m[K << std::endl;
+                                                     [01;36m[K^~~~~~~~~~~~[m[K
+In file included from [01m[K/usr/include/c++/7/iostream:39:0[m[K,
+                 from [01m[K/opt/ros/melodic/include/control_box_rst/corbo-core/time.h:32[m[K,
+                 from [01m[K/opt/ros/melodic/include/control_box_rst/corbo-controllers/statistics.h:28[m[K,
+                 from [01m[K/opt/ros/melodic/include/control_box_rst/corbo-controllers/controller_interface.h:28[m[K,
+                 from [01m[K/opt/ros/melodic/include/control_box_rst/corbo-controllers/predictive_controller.h:28[m[K,
+                 from [01m[K/home/vialab/nonlinear_mpc/src/mpc_local_planner/mpc_local_planner/include/mpc_local_planner/controller.h:26[m[K,
+                 from [01m[K/home/vialab/nonlinear_mpc/src/mpc_local_planner/mpc_local_planner/src/controller.cpp:23[m[K:
+[01m[K/usr/include/c++/7/ostream:502:5:[m[K [01;36m[Knote: [m[Kcandidate: template<class _CharT, class _Traits> std::basic_ostream<_CharT, _Traits>& std::operator<<(std::basic_ostream<_CharT, _Traits>&, char)
+     [01;36m[Koperator[m[K<<(basic_ostream<_CharT, _Traits>& __out, char __c)
+     [01;36m[K^~~~~~~~[m[K
+[01m[K/usr/include/c++/7/ostream:502:5:[m[K [01;36m[Knote: [m[K  template argument deduction/substitution failed:
+[01m[K/home/vialab/nonlinear_mpc/src/mpc_local_planner/mpc_local_planner/src/controller.cpp:834:53:[m[K [01;36m[Knote: [m[K  cannot convert ‘[01m[Kinitial_plan[m[K’ (type ‘[01m[Kconst std::vector<geometry_msgs::PoseStamped_<std::allocator<void> > >[m[K’) to type ‘[01m[Kchar[m[K’
+     std::cout << "iNITIAL TRAJECTORY REFERENCE " << [01;36m[Kinitial_plan[m[K << std::endl;
+                                                     [01;36m[K^~~~~~~~~~~~[m[K
+In file included from [01m[K/usr/include/c++/7/iostream:39:0[m[K,
+                 from [01m[K/opt/ros/melodic/include/control_box_rst/corbo-core/time.h:32[m[K,
+                 from [01m[K/opt/ros/melodic/include/control_box_rst/corbo-controllers/statistics.h:28[m[K,
+                 from [01m[K/opt/ros/melodic/include/control_box_rst/corbo-controllers/controller_interface.h:28[m[K,
+                 from [01m[K/opt/ros/melodic/include/control_box_rst/corbo-controllers/predictive_controller.h:28[m[K,
+                 from [01m[K/home/vialab/nonlinear_mpc/src/mpc_local_planner/mpc_local_planner/include/mpc_local_planner/controller.h:26[m[K,
+                 from [01m[K/home/vialab/nonlinear_mpc/src/mpc_local_planner/mpc_local_planner/src/controller.cpp:23[m[K:
+[01m[K/usr/include/c++/7/ostream:497:5:[m[K [01;36m[Knote: [m[Kcandidate: template<class _CharT, class _Traits> std::basic_ostream<_CharT, _Traits>& std::operator<<(std::basic_ostream<_CharT, _Traits>&, _CharT)
+     [01;36m[Koperator[m[K<<(basic_ostream<_CharT, _Traits>& __out, _CharT __c)
+     [01;36m[K^~~~~~~~[m[K
+[01m[K/usr/include/c++/7/ostream:497:5:[m[K [01;36m[Knote: [m[K  template argument deduction/substitution failed:
+[01m[K/home/vialab/nonlinear_mpc/src/mpc_local_planner/mpc_local_planner/src/controller.cpp:834:53:[m[K [01;36m[Knote: [m[K  deduced conflicting types for parameter ‘[01m[K_CharT[m[K’ (‘[01m[Kchar[m[K’ and ‘[01m[Kstd::vector<geometry_msgs::PoseStamped_<std::allocator<void> > >[m[K’)
+     std::cout << "iNITIAL TRAJECTORY REFERENCE " << [01;36m[Kinitial_plan[m[K << std::endl;
+                                                     [01;36m[K^~~~~~~~~~~~[m[K
+In file included from [01m[K/usr/include/c++/7/bits/ios_base.h:46:0[m[K,
+                 from [01m[K/usr/include/c++/7/ios:42[m[K,
+                 from [01m[K/usr/include/c++/7/ostream:38[m[K,
+                 from [01m[K/usr/include/c++/7/iostream:39[m[K,
+                 from [01m[K/opt/ros/melodic/include/control_box_rst/corbo-core/time.h:32[m[K,
+                 from [01m[K/opt/ros/melodic/include/control_box_rst/corbo-controllers/statistics.h:28[m[K,
+                 from [01m[K/opt/ros/melodic/include/control_box_rst/corbo-controllers/controller_interface.h:28[m[K,
+                 from [01m[K/opt/ros/melodic/include/control_box_rst/corbo-controllers/predictive_controller.h:28[m[K,
+                 from [01m[K/home/vialab/nonlinear_mpc/src/mpc_local_planner/mpc_local_planner/include/mpc_local_planner/controller.h:26[m[K,
+                 from [01m[K/home/vialab/nonlinear_mpc/src/mpc_local_planner/mpc_local_planner/src/controller.cpp:23[m[K:
+[01m[K/usr/include/c++/7/system_error:217:5:[m[K [01;36m[Knote: [m[Kcandidate: template<class _CharT, class _Traits> std::basic_ostream<_CharT, _Traits>& std::operator<<(std::basic_ostream<_CharT, _Traits>&, const std::error_code&)
+     [01;36m[Koperator[m[K<<(basic_ostream<_CharT, _Traits>& __os, const error_code& __e)
+     [01;36m[K^~~~~~~~[m[K
+[01m[K/usr/include/c++/7/system_error:217:5:[m[K [01;36m[Knote: [m[K  template argument deduction/substitution failed:
+[01m[K/home/vialab/nonlinear_mpc/src/mpc_local_planner/mpc_local_planner/src/controller.cpp:834:53:[m[K [01;36m[Knote: [m[K  cannot convert ‘[01m[Kinitial_plan[m[K’ (type ‘[01m[Kconst std::vector<geometry_msgs::PoseStamped_<std::allocator<void> > >[m[K’) to type ‘[01m[Kconst std::error_code&[m[K’
+     std::cout << "iNITIAL TRAJECTORY REFERENCE " << [01;36m[Kinitial_plan[m[K << std::endl;
+                                                     [01;36m[K^~~~~~~~~~~~[m[K
+In file included from [01m[K/opt/ros/melodic/include/control_box_rst/corbo-core/time.h:29:0[m[K,
+                 from [01m[K/opt/ros/melodic/include/control_box_rst/corbo-controllers/statistics.h:28[m[K,
+                 from [01m[K/opt/ros/melodic/include/control_box_rst/corbo-controllers/controller_interface.h:28[m[K,
+                 from [01m[K/opt/ros/melodic/include/control_box_rst/corbo-controllers/predictive_controller.h:28[m[K,
+                 from [01m[K/home/vialab/nonlinear_mpc/src/mpc_local_planner/mpc_local_planner/include/mpc_local_planner/controller.h:26[m[K,
+                 from [01m[K/home/vialab/nonlinear_mpc/src/mpc_local_planner/mpc_local_planner/src/controller.cpp:23[m[K:
+[01m[K/usr/include/c++/7/thread:313:5:[m[K [01;36m[Knote: [m[Kcandidate: template<class _CharT, class _Traits> std::basic_ostream<_CharT, _Traits>& std::operator<<(std::basic_ostream<_CharT, _Traits>&, std::thread::id)
+     [01;36m[Koperator[m[K<<(basic_ostream<_CharT, _Traits>& __out, thread::id __id)
+     [01;36m[K^~~~~~~~[m[K
+[01m[K/usr/include/c++/7/thread:313:5:[m[K [01;36m[Knote: [m[K  template argument deduction/substitution failed:
+[01m[K/home/vialab/nonlinear_mpc/src/mpc_local_planner/mpc_local_planner/src/controller.cpp:834:53:[m[K [01;36m[Knote: [m[K  cannot convert ‘[01m[Kinitial_plan[m[K’ (type ‘[01m[Kconst std::vector<geometry_msgs::PoseStamped_<std::allocator<void> > >[m[K’) to type ‘[01m[Kstd::thread::id[m[K’
+     std::cout << "iNITIAL TRAJECTORY REFERENCE " << [01;36m[Kinitial_plan[m[K << std::endl;
+                                                     [01;36m[K^~~~~~~~~~~~[m[K
+In file included from [01m[K/usr/include/c++/7/memory:81:0[m[K,
+                 from [01m[K/usr/include/c++/7/thread:39[m[K,
+                 from [01m[K/opt/ros/melodic/include/control_box_rst/corbo-core/time.h:29[m[K,
+                 from [01m[K/opt/ros/melodic/include/control_box_rst/corbo-controllers/statistics.h:28[m[K,
+                 from [01m[K/opt/ros/melodic/include/control_box_rst/corbo-controllers/controller_interface.h:28[m[K,
+                 from [01m[K/opt/ros/melodic/include/control_box_rst/corbo-controllers/predictive_controller.h:28[m[K,
+                 from [01m[K/home/vialab/nonlinear_mpc/src/mpc_local_planner/mpc_local_planner/include/mpc_local_planner/controller.h:26[m[K,
+                 from [01m[K/home/vialab/nonlinear_mpc/src/mpc_local_planner/mpc_local_planner/src/controller.cpp:23[m[K:
+[01m[K/usr/include/c++/7/bits/shared_ptr.h:66:5:[m[K [01;36m[Knote: [m[Kcandidate: template<class _Ch, class _Tr, class _Tp, __gnu_cxx::_Lock_policy _Lp> std::basic_ostream<_CharT, _Traits>& std::operator<<(std::basic_ostream<_CharT, _Traits>&, const std::__shared_ptr<_Tp, _Lp>&)
+     [01;36m[Koperator[m[K<<(std::basic_ostream<_Ch, _Tr>& __os,
+     [01;36m[K^~~~~~~~[m[K
+[01m[K/usr/include/c++/7/bits/shared_ptr.h:66:5:[m[K [01;36m[Knote: [m[K  template argument deduction/substitution failed:
+[01m[K/home/vialab/nonlinear_mpc/src/mpc_local_planner/mpc_local_planner/src/controller.cpp:834:53:[m[K [01;36m[Knote: [m[K  ‘[01m[Kconst std::vector<geometry_msgs::PoseStamped_<std::allocator<void> > >[m[K’ is not derived from ‘[01m[Kconst std::__shared_ptr<_Tp, _Lp>[m[K’
+     std::cout << "iNITIAL TRAJECTORY REFERENCE " << [01;36m[Kinitial_plan[m[K << std::endl;
+                                                     [01;36m[K^~~~~~~~~~~~[m[K
+In file included from [01m[K/usr/include/c++/7/string:52:0[m[K,
+                 from [01m[K/usr/include/c++/7/stdexcept:39[m[K,
+                 from [01m[K/usr/include/c++/7/array:39[m[K,
+                 from [01m[K/usr/include/c++/7/tuple:39[m[K,
+                 from [01m[K/usr/include/c++/7/bits/unique_ptr.h:37[m[K,
+                 from [01m[K/usr/include/c++/7/memory:80[m[K,
+                 from [01m[K/usr/include/c++/7/thread:39[m[K,
+                 from [01m[K/opt/ros/melodic/include/control_box_rst/corbo-core/time.h:29[m[K,
+                 from [01m[K/opt/ros/melodic/include/control_box_rst/corbo-controllers/statistics.h:28[m[K,
+                 from [01m[K/opt/ros/melodic/include/control_box_rst/corbo-controllers/controller_interface.h:28[m[K,
+                 from [01m[K/opt/ros/melodic/include/control_box_rst/corbo-controllers/predictive_controller.h:28[m[K,
+                 from [01m[K/home/vialab/nonlinear_mpc/src/mpc_local_planner/mpc_local_planner/include/mpc_local_planner/controller.h:26[m[K,
+                 from [01m[K/home/vialab/nonlinear_mpc/src/mpc_local_planner/mpc_local_planner/src/controller.cpp:23[m[K:
+[01m[K/usr/include/c++/7/bits/basic_string.h:6284:5:[m[K [01;36m[Knote: [m[Kcandidate: template<class _CharT, class _Traits, class _Alloc> std::basic_ostream<_CharT, _Traits>& std::operator<<(std::basic_ostream<_CharT, _Traits>&, const std::__cxx11::basic_string<_CharT, _Traits, _Alloc>&)
+     [01;36m[Koperator[m[K<<(basic_ostream<_CharT, _Traits>& __os,
+     [01;36m[K^~~~~~~~[m[K
+[01m[K/usr/include/c++/7/bits/basic_string.h:6284:5:[m[K [01;36m[Knote: [m[K  template argument deduction/substitution failed:
+[01m[K/home/vialab/nonlinear_mpc/src/mpc_local_planner/mpc_local_planner/src/controller.cpp:834:53:[m[K [01;36m[Knote: [m[K  ‘[01m[Kconst std::vector<geometry_msgs::PoseStamped_<std::allocator<void> > >[m[K’ is not derived from ‘[01m[Kconst std::__cxx11::basic_string<_CharT, _Traits, _Alloc>[m[K’
+     std::cout << "iNITIAL TRAJECTORY REFERENCE " << [01;36m[Kinitial_plan[m[K << std::endl;
+                                                     [01;36m[K^~~~~~~~~~~~[m[K
+In file included from [01m[K/opt/ros/melodic/include/tf2_geometry_msgs/tf2_geometry_msgs.h:46:0[m[K,
+                 from [01m[K/opt/ros/melodic/include/tf2/impl/utils.h:18[m[K,
+                 from [01m[K/opt/ros/melodic/include/tf2/utils.h:20[m[K,
+                 from [01m[K/home/vialab/nonlinear_mpc/src/mpc_local_planner/mpc_local_planner/src/controller.cpp:52[m[K:
+[01m[K/opt/ros/melodic/include/geometry_msgs/WrenchStamped.h:65:15:[m[K [01;36m[Knote: [m[Kcandidate: template<class ContainerAllocator> std::ostream& geometry_msgs::operator<<(std::ostream&, const geometry_msgs::WrenchStamped_<ContainerAllocator>&)
+ std::ostream& [01;36m[Koperator[m[K<<(std::ostream& s, const ::geometry_msgs::WrenchStamped_<ContainerAllocator> & v)
+               [01;36m[K^~~~~~~~[m[K
+[01m[K/opt/ros/melodic/include/geometry_msgs/WrenchStamped.h:65:15:[m[K [01;36m[Knote: [m[K  template argument deduction/substitution failed:
+[01m[K/home/vialab/nonlinear_mpc/src/mpc_local_planner/mpc_local_planner/src/controller.cpp:834:53:[m[K [01;36m[Knote: [m[K  ‘[01m[Kconst std::vector<geometry_msgs::PoseStamped_<std::allocator<void> > >[m[K’ is not derived from ‘[01m[Kconst geometry_msgs::WrenchStamped_<ContainerAllocator>[m[K’
+     std::cout << "iNITIAL TRAJECTORY REFERENCE " << [01;36m[Kinitial_plan[m[K << std::endl;
+                                                     [01;36m[K^~~~~~~~~~~~[m[K
+In file included from [01m[K/opt/ros/melodic/include/tf2_geometry_msgs/tf2_geometry_msgs.h:45:0[m[K,
+                 from [01m[K/opt/ros/melodic/include/tf2/impl/utils.h:18[m[K,
+                 from [01m[K/opt/ros/melodic/include/tf2/utils.h:20[m[K,
+                 from [01m[K/home/vialab/nonlinear_mpc/src/mpc_local_planner/mpc_local_planner/src/controller.cpp:52[m[K:
+[01m[K/opt/ros/melodic/include/geometry_msgs/Wrench.h:65:15:[m[K [01;36m[Knote: [m[Kcandidate: template<class ContainerAllocator> std::ostream& geometry_msgs::operator<<(std::ostream&, const geometry_msgs::Wrench_<ContainerAllocator>&)
+ std::ostream& [01;36m[Koperator[m[K<<(std::ostream& s, const ::geometry_msgs::Wrench_<ContainerAllocator> & v)
+               [01;36m[K^~~~~~~~[m[K
+[01m[K/opt/ros/melodic/include/geometry_msgs/Wrench.h:65:15:[m[K [01;36m[Knote: [m[K  template argument deduction/substitution failed:
+[01m[K/home/vialab/nonlinear_mpc/src/mpc_local_planner/mpc_local_planner/src/controller.cpp:834:53:[m[K [01;36m[Knote: [m[K  ‘[01m[Kconst std::vector<geometry_msgs::PoseStamped_<std::allocator<void> > >[m[K’ is not derived from ‘[01m[Kconst geometry_msgs::Wrench_<ContainerAllocator>[m[K’
+     std::cout << "iNITIAL TRAJECTORY REFERENCE " << [01;36m[Kinitial_plan[m[K << std::endl;
+                                                     [01;36m[K^~~~~~~~~~~~[m[K
+In file included from [01m[K/opt/ros/melodic/include/tf2_geometry_msgs/tf2_geometry_msgs.h:44:0[m[K,
+                 from [01m[K/opt/ros/melodic/include/tf2/impl/utils.h:18[m[K,
+                 from [01m[K/opt/ros/melodic/include/tf2/utils.h:20[m[K,
+                 from [01m[K/home/vialab/nonlinear_mpc/src/mpc_local_planner/mpc_local_planner/src/controller.cpp:52[m[K:
+[01m[K/opt/ros/melodic/include/geometry_msgs/PoseWithCovarianceStamped.h:65:15:[m[K [01;36m[Knote: [m[Kcandidate: template<class ContainerAllocator> std::ostream& geometry_msgs::operator<<(std::ostream&, const geometry_msgs::PoseWithCovarianceStamped_<ContainerAllocator>&)
+ std::ostream& [01;36m[Koperator[m[K<<(std::ostream& s, const ::geometry_msgs::PoseWithCovarianceStamped_<ContainerAllocator> & v)
+               [01;36m[K^~~~~~~~[m[K
+[01m[K/opt/ros/melodic/include/geometry_msgs/PoseWithCovarianceStamped.h:65:15:[m[K [01;36m[Knote: [m[K  template argument deduction/substitution failed:
+[01m[K/home/vialab/nonlinear_mpc/src/mpc_local_planner/mpc_local_planner/src/controller.cpp:834:53:[m[K [01;36m[Knote: [m[K  ‘[01m[Kconst std::vector<geometry_msgs::PoseStamped_<std::allocator<void> > >[m[K’ is not derived from ‘[01m[Kconst geometry_msgs::PoseWithCovarianceStamped_<ContainerAllocator>[m[K’
+     std::cout << "iNITIAL TRAJECTORY REFERENCE " << [01;36m[Kinitial_plan[m[K << std::endl;
+                                                     [01;36m[K^~~~~~~~~~~~[m[K
+In file included from [01m[K/opt/ros/melodic/include/geometry_msgs/PoseWithCovarianceStamped.h:19:0[m[K,
+                 from [01m[K/opt/ros/melodic/include/tf2_geometry_msgs/tf2_geometry_msgs.h:44[m[K,
+                 from [01m[K/opt/ros/melodic/include/tf2/impl/utils.h:18[m[K,
+                 from [01m[K/opt/ros/melodic/include/tf2/utils.h:20[m[K,
+                 from [01m[K/home/vialab/nonlinear_mpc/src/mpc_local_planner/mpc_local_planner/src/controller.cpp:52[m[K:
+[01m[K/opt/ros/melodic/include/geometry_msgs/PoseWithCovariance.h:66:15:[m[K [01;36m[Knote: [m[Kcandidate: template<class ContainerAllocator> std::ostream& geometry_msgs::operator<<(std::ostream&, const geometry_msgs::PoseWithCovariance_<ContainerAllocator>&)
+ std::ostream& [01;36m[Koperator[m[K<<(std::ostream& s, const ::geometry_msgs::PoseWithCovariance_<ContainerAllocator> & v)
+               [01;36m[K^~~~~~~~[m[K
+[01m[K/opt/ros/melodic/include/geometry_msgs/PoseWithCovariance.h:66:15:[m[K [01;36m[Knote: [m[K  template argument deduction/substitution failed:
+[01m[K/home/vialab/nonlinear_mpc/src/mpc_local_planner/mpc_local_planner/src/controller.cpp:834:53:[m[K [01;36m[Knote: [m[K  ‘[01m[Kconst std::vector<geometry_msgs::PoseStamped_<std::allocator<void> > >[m[K’ is not derived from ‘[01m[Kconst geometry_msgs::PoseWithCovariance_<ContainerAllocator>[m[K’
+     std::cout << "iNITIAL TRAJECTORY REFERENCE " << [01;36m[Kinitial_plan[m[K << std::endl;
+                                                     [01;36m[K^~~~~~~~~~~~[m[K
+In file included from [01m[K/opt/ros/melodic/include/costmap_2d/footprint.h:43:0[m[K,
+                 from [01m[K/opt/ros/melodic/include/base_local_planner/world_model.h:42[m[K,
+                 from [01m[K/opt/ros/melodic/include/base_local_planner/costmap_model.h:40[m[K,
+                 from [01m[K/home/vialab/nonlinear_mpc/src/mpc_local_planner/mpc_local_planner/include/mpc_local_planner/controller.h:36[m[K,
+                 from [01m[K/home/vialab/nonlinear_mpc/src/mpc_local_planner/mpc_local_planner/src/controller.cpp:23[m[K:
+[01m[K/opt/ros/melodic/include/geometry_msgs/PolygonStamped.h:65:15:[m[K [01;36m[Knote: [m[Kcandidate: template<class ContainerAllocator> std::ostream& geometry_msgs::operator<<(std::ostream&, const geometry_msgs::PolygonStamped_<ContainerAllocator>&)
+ std::ostream& [01;36m[Koperator[m[K<<(std::ostream& s, const ::geometry_msgs::PolygonStamped_<ContainerAllocator> & v)
+               [01;36m[K^~~~~~~~[m[K
+[01m[K/opt/ros/melodic/include/geometry_msgs/PolygonStamped.h:65:15:[m[K [01;36m[Knote: [m[K  template argument deduction/substitution failed:
+[01m[K/home/vialab/nonlinear_mpc/src/mpc_local_planner/mpc_local_planner/src/controller.cpp:834:53:[m[K [01;36m[Knote: [m[K  ‘[01m[Kconst std::vector<geometry_msgs::PoseStamped_<std::allocator<void> > >[m[K’ is not derived from ‘[01m[Kconst geometry_msgs::PolygonStamped_<ContainerAllocator>[m[K’
+     std::cout << "iNITIAL TRAJECTORY REFERENCE " << [01;36m[Kinitial_plan[m[K << std::endl;
+                                                     [01;36m[K^~~~~~~~~~~~[m[K
+In file included from [01m[K/opt/ros/melodic/include/tf/tf.h:47:0[m[K,
                  from [01m[K/opt/ros/melodic/include/teb_local_planner/obstacles.h:56[m[K,
                  from [01m[K/opt/ros/melodic/include/teb_local_planner/robot_footprint_model.h:44[m[K,
-                 from [01m[K/home/vialab/mpc_traj_ws/src/mpc_local_planner/mpc_local_planner/include/mpc_local_planner/optimal_control/stage_inequality_se2.h:29[m[K,
-                 from [01m[K/home/vialab/mpc_traj_ws/src/mpc_local_planner/mpc_local_planner/include/mpc_local_planner/controller.h:29[m[K,
-                 from [01m[K/home/vialab/mpc_traj_ws/src/mpc_local_planner/mpc_local_planner/src/controller.cpp:23[m[K:
-[01m[K/usr/include/c++/7/bits/stl_deque.h:351:5:[m[K [01;36m[Knote: [m[Kcandidate: template<class _Tp, class _Ref, class _Ptr> typename std::_Deque_iterator<_Tp, _Ref, _Ptr>::difference_type std::operator-(const std::_Deque_iterator<_Tp, _Ref, _Ptr>&, const std::_Deque_iterator<_Tp, _Ref, _Ptr>&)
-     [01;36m[Koperator[m[K-(const _Deque_iterator<_Tp, _Ref, _Ptr>& __x,
-     [01;36m[K^~~~~~~~[m[K
-[01m[K/usr/include/c++/7/bits/stl_deque.h:351:5:[m[K [01;36m[Knote: [m[K  template argument deduction/substitution failed:
-[01m[K/home/vialab/mpc_traj_ws/src/mpc_local_planner/mpc_local_planner/src/controller.cpp:221:68:[m[K [01;36m[Knote: [m[K  ‘[01m[Kmpc_local_planner_msgs::OptimalControlResult_<std::allocator<void> >::_controls_type {aka std::vector<double>}[m[K’ is not derived from ‘[01m[Kconst std::_Deque_iterator<_Tp, _Ref, _Ptr>[m[K’
-     std::cout<< "Controls list length " << (*(&msg.controls + 1) - [01;36m[K1[m[K) << std::endl;
-                                                                    [01;36m[K^[m[K
-In file included from [01m[K/usr/include/c++/7/vector:65:0[m[K,
-                 from [01m[K/opt/ros/melodic/include/control_box_rst/corbo-core/time_series.h:37[m[K,
-                 from [01m[K/opt/ros/melodic/include/control_box_rst/corbo-core/signals.h:30[m[K,
-                 from [01m[K/opt/ros/melodic/include/control_box_rst/corbo-core/reference_trajectory.h:29[m[K,
-                 from [01m[K/opt/ros/melodic/include/control_box_rst/corbo-controllers/controller_interface.h:30[m[K,
-                 from [01m[K/opt/ros/melodic/include/control_box_rst/corbo-controllers/predictive_controller.h:28[m[K,
-                 from [01m[K/home/vialab/mpc_traj_ws/src/mpc_local_planner/mpc_local_planner/include/mpc_local_planner/controller.h:26[m[K,
-                 from [01m[K/home/vialab/mpc_traj_ws/src/mpc_local_planner/mpc_local_planner/src/controller.cpp:23[m[K:
-[01m[K/usr/include/c++/7/bits/stl_bvector.h:208:3:[m[K [01;36m[Knote: [m[Kcandidate: std::ptrdiff_t std::operator-(const std::_Bit_iterator_base&, const std::_Bit_iterator_base&)
-   [01;36m[Koperator[m[K-(const _Bit_iterator_base& __x, const _Bit_iterator_base& __y)
-   [01;36m[K^~~~~~~~[m[K
-[01m[K/usr/include/c++/7/bits/stl_bvector.h:208:3:[m[K [01;36m[Knote: [m[K  no known conversion for argument 1 from ‘[01m[Kmpc_local_planner_msgs::OptimalControlResult_<std::allocator<void> >::_controls_type {aka std::vector<double>}[m[K’ to ‘[01m[Kconst std::_Bit_iterator_base&[m[K’
-In file included from [01m[K/usr/include/eigen3/Eigen/Core:80:0[m[K,
-                 from [01m[K/opt/ros/melodic/include/control_box_rst/corbo-core/types.h:28[m[K,
-                 from [01m[K/opt/ros/melodic/include/control_box_rst/corbo-controllers/statistics.h:29[m[K,
-                 from [01m[K/opt/ros/melodic/include/control_box_rst/corbo-controllers/controller_interface.h:28[m[K,
-                 from [01m[K/opt/ros/melodic/include/control_box_rst/corbo-controllers/predictive_controller.h:28[m[K,
-                 from [01m[K/home/vialab/mpc_traj_ws/src/mpc_local_planner/mpc_local_planner/include/mpc_local_planner/controller.h:26[m[K,
-                 from [01m[K/home/vialab/mpc_traj_ws/src/mpc_local_planner/mpc_local_planner/src/controller.cpp:23[m[K:
-[01m[K/usr/include/c++/7/complex:451:5:[m[K [01;36m[Knote: [m[Kcandidate: template<class _Tp> std::complex<_Tp> std::operator-(const std::complex<_Tp>&)
-     [01;36m[Koperator[m[K-(const complex<_Tp>& __x)
-     [01;36m[K^~~~~~~~[m[K
-[01m[K/usr/include/c++/7/complex:451:5:[m[K [01;36m[Knote: [m[K  template argument deduction/substitution failed:
-[01m[K/home/vialab/mpc_traj_ws/src/mpc_local_planner/mpc_local_planner/src/controller.cpp:221:68:[m[K [01;36m[Knote: [m[K  ‘[01m[Kmpc_local_planner_msgs::OptimalControlResult_<std::allocator<void> >::_controls_type {aka std::vector<double>}[m[K’ is not derived from ‘[01m[Kconst std::complex<_Tp>[m[K’
-     std::cout<< "Controls list length " << (*(&msg.controls + 1) - [01;36m[K1[m[K) << std::endl;
-                                                                    [01;36m[K^[m[K
-In file included from [01m[K/usr/include/eigen3/Eigen/Core:80:0[m[K,
-                 from [01m[K/opt/ros/melodic/include/control_box_rst/corbo-core/types.h:28[m[K,
-                 from [01m[K/opt/ros/melodic/include/control_box_rst/corbo-controllers/statistics.h:29[m[K,
-                 from [01m[K/opt/ros/melodic/include/control_box_rst/corbo-controllers/controller_interface.h:28[m[K,
-                 from [01m[K/opt/ros/melodic/include/control_box_rst/corbo-controllers/predictive_controller.h:28[m[K,
-                 from [01m[K/home/vialab/mpc_traj_ws/src/mpc_local_planner/mpc_local_planner/include/mpc_local_planner/controller.h:26[m[K,
-                 from [01m[K/home/vialab/mpc_traj_ws/src/mpc_local_planner/mpc_local_planner/src/controller.cpp:23[m[K:
-[01m[K/usr/include/c++/7/complex:374:5:[m[K [01;36m[Knote: [m[Kcandidate: template<class _Tp> std::complex<_Tp> std::operator-(const _Tp&, const std::complex<_Tp>&)
-     [01;36m[Koperator[m[K-(const _Tp& __x, const complex<_Tp>& __y)
-     [01;36m[K^~~~~~~~[m[K
-[01m[K/usr/include/c++/7/complex:374:5:[m[K [01;36m[Knote: [m[K  template argument deduction/substitution failed:
-[01m[K/home/vialab/mpc_traj_ws/src/mpc_local_planner/mpc_local_planner/src/controller.cpp:221:68:[m[K [01;36m[Knote: [m[K  mismatched types ‘[01m[Kconst std::complex<_Tp>[m[K’ and ‘[01m[Kint[m[K’
-     std::cout<< "Controls list length " << (*(&msg.controls + 1) - [01;36m[K1[m[K) << std::endl;
-                                                                    [01;36m[K^[m[K
-In file included from [01m[K/usr/include/eigen3/Eigen/Core:80:0[m[K,
-                 from [01m[K/opt/ros/melodic/include/control_box_rst/corbo-core/types.h:28[m[K,
-                 from [01m[K/opt/ros/melodic/include/control_box_rst/corbo-controllers/statistics.h:29[m[K,
-                 from [01m[K/opt/ros/melodic/include/control_box_rst/corbo-controllers/controller_interface.h:28[m[K,
-                 from [01m[K/opt/ros/melodic/include/control_box_rst/corbo-controllers/predictive_controller.h:28[m[K,
-                 from [01m[K/home/vialab/mpc_traj_ws/src/mpc_local_planner/mpc_local_planner/include/mpc_local_planner/controller.h:26[m[K,
-                 from [01m[K/home/vialab/mpc_traj_ws/src/mpc_local_planner/mpc_local_planner/src/controller.cpp:23[m[K:
-[01m[K/usr/include/c++/7/complex:365:5:[m[K [01;36m[Knote: [m[Kcandidate: template<class _Tp> std::complex<_Tp> std::operator-(const std::complex<_Tp>&, const _Tp&)
-     [01;36m[Koperator[m[K-(const complex<_Tp>& __x, const _Tp& __y)
-     [01;36m[K^~~~~~~~[m[K
-[01m[K/usr/include/c++/7/complex:365:5:[m[K [01;36m[Knote: [m[K  template argument deduction/substitution failed:
-[01m[K/home/vialab/mpc_traj_ws/src/mpc_local_planner/mpc_local_planner/src/controller.cpp:221:68:[m[K [01;36m[Knote: [m[K  ‘[01m[Kmpc_local_planner_msgs::OptimalControlResult_<std::allocator<void> >::_controls_type {aka std::vector<double>}[m[K’ is not derived from ‘[01m[Kconst std::complex<_Tp>[m[K’
-     std::cout<< "Controls list length " << (*(&msg.controls + 1) - [01;36m[K1[m[K) << std::endl;
-                                                                    [01;36m[K^[m[K
-In file included from [01m[K/usr/include/eigen3/Eigen/Core:80:0[m[K,
-                 from [01m[K/opt/ros/melodic/include/control_box_rst/corbo-core/types.h:28[m[K,
-                 from [01m[K/opt/ros/melodic/include/control_box_rst/corbo-controllers/statistics.h:29[m[K,
-                 from [01m[K/opt/ros/melodic/include/control_box_rst/corbo-controllers/controller_interface.h:28[m[K,
-                 from [01m[K/opt/ros/melodic/include/control_box_rst/corbo-controllers/predictive_controller.h:28[m[K,
-                 from [01m[K/home/vialab/mpc_traj_ws/src/mpc_local_planner/mpc_local_planner/include/mpc_local_planner/controller.h:26[m[K,
-                 from [01m[K/home/vialab/mpc_traj_ws/src/mpc_local_planner/mpc_local_planner/src/controller.cpp:23[m[K:
-[01m[K/usr/include/c++/7/complex:356:5:[m[K [01;36m[Knote: [m[Kcandidate: template<class _Tp> std::complex<_Tp> std::operator-(const std::complex<_Tp>&, const std::complex<_Tp>&)
-     [01;36m[Koperator[m[K-(const complex<_Tp>& __x, const complex<_Tp>& __y)
-     [01;36m[K^~~~~~~~[m[K
-[01m[K/usr/include/c++/7/complex:356:5:[m[K [01;36m[Knote: [m[K  template argument deduction/substitution failed:
-[01m[K/home/vialab/mpc_traj_ws/src/mpc_local_planner/mpc_local_planner/src/controller.cpp:221:68:[m[K [01;36m[Knote: [m[K  ‘[01m[Kmpc_local_planner_msgs::OptimalControlResult_<std::allocator<void> >::_controls_type {aka std::vector<double>}[m[K’ is not derived from ‘[01m[Kconst std::complex<_Tp>[m[K’
-     std::cout<< "Controls list length " << (*(&msg.controls + 1) - [01;36m[K1[m[K) << std::endl;
-                                                                    [01;36m[K^[m[K
-In file included from [01m[K/usr/include/c++/7/bits/stl_algobase.h:67:0[m[K,
-                 from [01m[K/usr/include/c++/7/memory:62[m[K,
-                 from [01m[K/usr/include/c++/7/thread:39[m[K,
-                 from [01m[K/opt/ros/melodic/include/control_box_rst/corbo-core/time.h:29[m[K,
-                 from [01m[K/opt/ros/melodic/include/control_box_rst/corbo-controllers/statistics.h:28[m[K,
-                 from [01m[K/opt/ros/melodic/include/control_box_rst/corbo-controllers/controller_interface.h:28[m[K,
-                 from [01m[K/opt/ros/melodic/include/control_box_rst/corbo-controllers/predictive_controller.h:28[m[K,
-                 from [01m[K/home/vialab/mpc_traj_ws/src/mpc_local_planner/mpc_local_planner/include/mpc_local_planner/controller.h:26[m[K,
-                 from [01m[K/home/vialab/mpc_traj_ws/src/mpc_local_planner/mpc_local_planner/src/controller.cpp:23[m[K:
-[01m[K/usr/include/c++/7/bits/stl_iterator.h:1194:5:[m[K [01;36m[Knote: [m[Kcandidate: template<class _IteratorL, class _IteratorR> decltype ((__x.base() - __y.base())) std::operator-(const std::move_iterator<_IteratorL>&, const std::move_iterator<_IteratorR>&)
-     [01;36m[Koperator[m[K-(const move_iterator<_IteratorL>& __x,
-     [01;36m[K^~~~~~~~[m[K
-[01m[K/usr/include/c++/7/bits/stl_iterator.h:1194:5:[m[K [01;36m[Knote: [m[K  template argument deduction/substitution failed:
-[01m[K/home/vialab/mpc_traj_ws/src/mpc_local_planner/mpc_local_planner/src/controller.cpp:221:68:[m[K [01;36m[Knote: [m[K  ‘[01m[Kmpc_local_planner_msgs::OptimalControlResult_<std::allocator<void> >::_controls_type {aka std::vector<double>}[m[K’ is not derived from ‘[01m[Kconst std::move_iterator<_IteratorL>[m[K’
-     std::cout<< "Controls list length " << (*(&msg.controls + 1) - [01;36m[K1[m[K) << std::endl;
-                                                                    [01;36m[K^[m[K
-In file included from [01m[K/usr/include/c++/7/bits/stl_algobase.h:67:0[m[K,
-                 from [01m[K/usr/include/c++/7/memory:62[m[K,
-                 from [01m[K/usr/include/c++/7/thread:39[m[K,
-                 from [01m[K/opt/ros/melodic/include/control_box_rst/corbo-core/time.h:29[m[K,
-                 from [01m[K/opt/ros/melodic/include/control_box_rst/corbo-controllers/statistics.h:28[m[K,
-                 from [01m[K/opt/ros/melodic/include/control_box_rst/corbo-controllers/controller_interface.h:28[m[K,
-                 from [01m[K/opt/ros/melodic/include/control_box_rst/corbo-controllers/predictive_controller.h:28[m[K,
-                 from [01m[K/home/vialab/mpc_traj_ws/src/mpc_local_planner/mpc_local_planner/include/mpc_local_planner/controller.h:26[m[K,
-                 from [01m[K/home/vialab/mpc_traj_ws/src/mpc_local_planner/mpc_local_planner/src/controller.cpp:23[m[K:
-[01m[K/usr/include/c++/7/bits/stl_iterator.h:392:5:[m[K [01;36m[Knote: [m[Kcandidate: template<class _IteratorL, class _IteratorR> decltype ((__y.base() - __x.base())) std::operator-(const std::reverse_iterator<_Iterator>&, const std::reverse_iterator<_IteratorR>&)
-     [01;36m[Koperator[m[K-(const reverse_iterator<_IteratorL>& __x,
-     [01;36m[K^~~~~~~~[m[K
-[01m[K/usr/include/c++/7/bits/stl_iterator.h:392:5:[m[K [01;36m[Knote: [m[K  template argument deduction/substitution failed:
-[01m[K/home/vialab/mpc_traj_ws/src/mpc_local_planner/mpc_local_planner/src/controller.cpp:221:68:[m[K [01;36m[Knote: [m[K  ‘[01m[Kmpc_local_planner_msgs::OptimalControlResult_<std::allocator<void> >::_controls_type {aka std::vector<double>}[m[K’ is not derived from ‘[01m[Kconst std::reverse_iterator<_Iterator>[m[K’
-     std::cout<< "Controls list length " << (*(&msg.controls + 1) - [01;36m[K1[m[K) << std::endl;
-                                                                    [01;36m[K^[m[K
-In file included from [01m[K/usr/include/c++/7/bits/stl_algobase.h:67:0[m[K,
-                 from [01m[K/usr/include/c++/7/memory:62[m[K,
-                 from [01m[K/usr/include/c++/7/thread:39[m[K,
-                 from [01m[K/opt/ros/melodic/include/control_box_rst/corbo-core/time.h:29[m[K,
-                 from [01m[K/opt/ros/melodic/include/control_box_rst/corbo-controllers/statistics.h:28[m[K,
-                 from [01m[K/opt/ros/melodic/include/control_box_rst/corbo-controllers/controller_interface.h:28[m[K,
-                 from [01m[K/opt/ros/melodic/include/control_box_rst/corbo-controllers/predictive_controller.h:28[m[K,
-                 from [01m[K/home/vialab/mpc_traj_ws/src/mpc_local_planner/mpc_local_planner/include/mpc_local_planner/controller.h:26[m[K,
-                 from [01m[K/home/vialab/mpc_traj_ws/src/mpc_local_planner/mpc_local_planner/src/controller.cpp:23[m[K:
-[01m[K/usr/include/c++/7/bits/stl_iterator.h:965:5:[m[K [01;36m[Knote: [m[Kcandidate: template<class _Iterator, class _Container> typename __gnu_cxx::__normal_iterator<_Iterator, _Container>::difference_type __gnu_cxx::operator-(const __gnu_cxx::__normal_iterator<_Iterator, _Container>&, const __gnu_cxx::__normal_iterator<_Iterator, _Container>&)
-     [01;36m[Koperator[m[K-(const __normal_iterator<_Iterator, _Container>& __lhs,
-     [01;36m[K^~~~~~~~[m[K
-[01m[K/usr/include/c++/7/bits/stl_iterator.h:965:5:[m[K [01;36m[Knote: [m[K  template argument deduction/substitution failed:
-[01m[K/home/vialab/mpc_traj_ws/src/mpc_local_planner/mpc_local_planner/src/controller.cpp:221:68:[m[K [01;36m[Knote: [m[K  ‘[01m[Kmpc_local_planner_msgs::OptimalControlResult_<std::allocator<void> >::_controls_type {aka std::vector<double>}[m[K’ is not derived from ‘[01m[Kconst __gnu_cxx::__normal_iterator<_Iterator, _Container>[m[K’
-     std::cout<< "Controls list length " << (*(&msg.controls + 1) - [01;36m[K1[m[K) << std::endl;
-                                                                    [01;36m[K^[m[K
-In file included from [01m[K/usr/include/c++/7/bits/stl_algobase.h:67:0[m[K,
-                 from [01m[K/usr/include/c++/7/memory:62[m[K,
-                 from [01m[K/usr/include/c++/7/thread:39[m[K,
-                 from [01m[K/opt/ros/melodic/include/control_box_rst/corbo-core/time.h:29[m[K,
-                 from [01m[K/opt/ros/melodic/include/control_box_rst/corbo-controllers/statistics.h:28[m[K,
-                 from [01m[K/opt/ros/melodic/include/control_box_rst/corbo-controllers/controller_interface.h:28[m[K,
-                 from [01m[K/opt/ros/melodic/include/control_box_rst/corbo-controllers/predictive_controller.h:28[m[K,
-                 from [01m[K/home/vialab/mpc_traj_ws/src/mpc_local_planner/mpc_local_planner/include/mpc_local_planner/controller.h:26[m[K,
-                 from [01m[K/home/vialab/mpc_traj_ws/src/mpc_local_planner/mpc_local_planner/src/controller.cpp:23[m[K:
-[01m[K/usr/include/c++/7/bits/stl_iterator.h:953:5:[m[K [01;36m[Knote: [m[Kcandidate: template<class _IteratorL, class _IteratorR, class _Container> decltype ((__lhs.base() - __rhs.base())) __gnu_cxx::operator-(const __gnu_cxx::__normal_iterator<_IteratorL, _Container>&, const __gnu_cxx::__normal_iterator<_IteratorR, _Container>&)
-     [01;36m[Koperator[m[K-(const __normal_iterator<_IteratorL, _Container>& __lhs,
-     [01;36m[K^~~~~~~~[m[K
-[01m[K/usr/include/c++/7/bits/stl_iterator.h:953:5:[m[K [01;36m[Knote: [m[K  template argument deduction/substitution failed:
-[01m[K/home/vialab/mpc_traj_ws/src/mpc_local_planner/mpc_local_planner/src/controller.cpp:221:68:[m[K [01;36m[Knote: [m[K  ‘[01m[Kmpc_local_planner_msgs::OptimalControlResult_<std::allocator<void> >::_controls_type {aka std::vector<double>}[m[K’ is not derived from ‘[01m[Kconst __gnu_cxx::__normal_iterator<_IteratorL, _Container>[m[K’
-     std::cout<< "Controls list length " << (*(&msg.controls + 1) - [01;36m[K1[m[K) << std::endl;
-                                                                    [01;36m[K^[m[K
+                 from [01m[K/home/vialab/nonlinear_mpc/src/mpc_local_planner/mpc_local_planner/include/mpc_local_planner/optimal_control/stage_inequality_se2.h:29[m[K,
+                 from [01m[K/home/vialab/nonlinear_mpc/src/mpc_local_planner/mpc_local_planner/include/mpc_local_planner/controller.h:29[m[K,
+                 from [01m[K/home/vialab/nonlinear_mpc/src/mpc_local_planner/mpc_local_planner/src/controller.cpp:23[m[K:
+[01m[K/opt/ros/melodic/include/geometry_msgs/TwistStamped.h:65:15:[m[K [01;36m[Knote: [m[Kcandidate: template<class ContainerAllocator> std::ostream& geometry_msgs::operator<<(std::ostream&, const geometry_msgs::TwistStamped_<ContainerAllocator>&)
+ std::ostream& [01;36m[Koperator[m[K<<(std::ostream& s, const ::geometry_msgs::TwistStamped_<ContainerAllocator> & v)
+               [01;36m[K^~~~~~~~[m[K
+[01m[K/opt/ros/melodic/include/geometry_msgs/TwistStamped.h:65:15:[m[K [01;36m[Knote: [m[K  template argument deduction/substitution failed:
+[01m[K/home/vialab/nonlinear_mpc/src/mpc_local_planner/mpc_local_planner/src/controller.cpp:834:53:[m[K [01;36m[Knote: [m[K  ‘[01m[Kconst std::vector<geometry_msgs::PoseStamped_<std::allocator<void> > >[m[K’ is not derived from ‘[01m[Kconst geometry_msgs::TwistStamped_<ContainerAllocator>[m[K’
+     std::cout << "iNITIAL TRAJECTORY REFERENCE " << [01;36m[Kinitial_plan[m[K << std::endl;
+                                                     [01;36m[K^~~~~~~~~~~~[m[K
+In file included from [01m[K/opt/ros/melodic/include/teb_local_planner/obstacles.h:53:0[m[K,
+                 from [01m[K/opt/ros/melodic/include/teb_local_planner/robot_footprint_model.h:44[m[K,
+                 from [01m[K/home/vialab/nonlinear_mpc/src/mpc_local_planner/mpc_local_planner/include/mpc_local_planner/optimal_control/stage_inequality_se2.h:29[m[K,
+                 from [01m[K/home/vialab/nonlinear_mpc/src/mpc_local_planner/mpc_local_planner/include/mpc_local_planner/controller.h:29[m[K,
+                 from [01m[K/home/vialab/nonlinear_mpc/src/mpc_local_planner/mpc_local_planner/src/controller.cpp:23[m[K:
+[01m[K/opt/ros/melodic/include/geometry_msgs/TwistWithCovariance.h:66:15:[m[K [01;36m[Knote: [m[Kcandidate: template<class ContainerAllocator> std::ostream& geometry_msgs::operator<<(std::ostream&, const geometry_msgs::TwistWithCovariance_<ContainerAllocator>&)
+ std::ostream& [01;36m[Koperator[m[K<<(std::ostream& s, const ::geometry_msgs::TwistWithCovariance_<ContainerAllocator> & v)
+               [01;36m[K^~~~~~~~[m[K
+[01m[K/opt/ros/melodic/include/geometry_msgs/TwistWithCovariance.h:66:15:[m[K [01;36m[Knote: [m[K  template argument deduction/substitution failed:
+[01m[K/home/vialab/nonlinear_mpc/src/mpc_local_planner/mpc_local_planner/src/controller.cpp:834:53:[m[K [01;36m[Knote: [m[K  ‘[01m[Kconst std::vector<geometry_msgs::PoseStamped_<std::allocator<void> > >[m[K’ is not derived from ‘[01m[Kconst geometry_msgs::TwistWithCovariance_<ContainerAllocator>[m[K’
+     std::cout << "iNITIAL TRAJECTORY REFERENCE " << [01;36m[Kinitial_plan[m[K << std::endl;
+                                                     [01;36m[K^~~~~~~~~~~~[m[K
+In file included from [01m[K/opt/ros/melodic/include/geometry_msgs/TwistWithCovariance.h:18:0[m[K,
+                 from [01m[K/opt/ros/melodic/include/teb_local_planner/obstacles.h:53[m[K,
+                 from [01m[K/opt/ros/melodic/include/teb_local_planner/robot_footprint_model.h:44[m[K,
+                 from [01m[K/home/vialab/nonlinear_mpc/src/mpc_local_planner/mpc_local_planner/include/mpc_local_planner/optimal_control/stage_inequality_se2.h:29[m[K,
+                 from [01m[K/home/vialab/nonlinear_mpc/src/mpc_local_planner/mpc_local_planner/include/mpc_local_planner/controller.h:29[m[K,
+                 from [01m[K/home/vialab/nonlinear_mpc/src/mpc_local_planner/mpc_local_planner/src/controller.cpp:23[m[K:
+[01m[K/opt/ros/melodic/include/geometry_msgs/Twist.h:65:15:[m[K [01;36m[Knote: [m[Kcandidate: template<class ContainerAllocator> std::ostream& geometry_msgs::operator<<(std::ostream&, const geometry_msgs::Twist_<ContainerAllocator>&)
+ std::ostream& [01;36m[Koperator[m[K<<(std::ostream& s, const ::geometry_msgs::Twist_<ContainerAllocator> & v)
+               [01;36m[K^~~~~~~~[m[K
+[01m[K/opt/ros/melodic/include/geometry_msgs/Twist.h:65:15:[m[K [01;36m[Knote: [m[K  template argument deduction/substitution failed:
+[01m[K/home/vialab/nonlinear_mpc/src/mpc_local_planner/mpc_local_planner/src/controller.cpp:834:53:[m[K [01;36m[Knote: [m[K  ‘[01m[Kconst std::vector<geometry_msgs::PoseStamped_<std::allocator<void> > >[m[K’ is not derived from ‘[01m[Kconst geometry_msgs::Twist_<ContainerAllocator>[m[K’
+     std::cout << "iNITIAL TRAJECTORY REFERENCE " << [01;36m[Kinitial_plan[m[K << std::endl;
+                                                     [01;36m[K^~~~~~~~~~~~[m[K
+In file included from [01m[K/opt/ros/melodic/include/teb_local_planner/obstacles.h:52:0[m[K,
+                 from [01m[K/opt/ros/melodic/include/teb_local_planner/robot_footprint_model.h:44[m[K,
+                 from [01m[K/home/vialab/nonlinear_mpc/src/mpc_local_planner/mpc_local_planner/include/mpc_local_planner/optimal_control/stage_inequality_se2.h:29[m[K,
+                 from [01m[K/home/vialab/nonlinear_mpc/src/mpc_local_planner/mpc_local_planner/include/mpc_local_planner/controller.h:29[m[K,
+                 from [01m[K/home/vialab/nonlinear_mpc/src/mpc_local_planner/mpc_local_planner/src/controller.cpp:23[m[K:
+[01m[K/opt/ros/melodic/include/geometry_msgs/Polygon.h:59:15:[m[K [01;36m[Knote: [m[Kcandidate: template<class ContainerAllocator> std::ostream& geometry_msgs::operator<<(std::ostream&, const geometry_msgs::Polygon_<ContainerAllocator>&)
+ std::ostream& [01;36m[Koperator[m[K<<(std::ostream& s, const ::geometry_msgs::Polygon_<ContainerAllocator> & v)
+               [01;36m[K^~~~~~~~[m[K
+[01m[K/opt/ros/melodic/include/geometry_msgs/Polygon.h:59:15:[m[K [01;36m[Knote: [m[K  template argument deduction/substitution failed:
+[01m[K/home/vialab/nonlinear_mpc/src/mpc_local_planner/mpc_local_planner/src/controller.cpp:834:53:[m[K [01;36m[Knote: [m[K  ‘[01m[Kconst std::vector<geometry_msgs::PoseStamped_<std::allocator<void> > >[m[K’ is not derived from ‘[01m[Kconst geometry_msgs::Polygon_<ContainerAllocator>[m[K’
+     std::cout << "iNITIAL TRAJECTORY REFERENCE " << [01;36m[Kinitial_plan[m[K << std::endl;
+                                                     [01;36m[K^~~~~~~~~~~~[m[K
+In file included from [01m[K/opt/ros/melodic/include/geometry_msgs/Polygon.h:18:0[m[K,
+                 from [01m[K/opt/ros/melodic/include/teb_local_planner/obstacles.h:52[m[K,
+                 from [01m[K/opt/ros/melodic/include/teb_local_planner/robot_footprint_model.h:44[m[K,
+                 from [01m[K/home/vialab/nonlinear_mpc/src/mpc_local_planner/mpc_local_planner/include/mpc_local_planner/optimal_control/stage_inequality_se2.h:29[m[K,
+                 from [01m[K/home/vialab/nonlinear_mpc/src/mpc_local_planner/mpc_local_planner/include/mpc_local_planner/controller.h:29[m[K,
+                 from [01m[K/home/vialab/nonlinear_mpc/src/mpc_local_planner/mpc_local_planner/src/controller.cpp:23[m[K:
+[01m[K/opt/ros/melodic/include/geometry_msgs/Point32.h:68:15:[m[K [01;36m[Knote: [m[Kcandidate: template<class ContainerAllocator> std::ostream& geometry_msgs::operator<<(std::ostream&, const geometry_msgs::Point32_<ContainerAllocator>&)
+ std::ostream& [01;36m[Koperator[m[K<<(std::ostream& s, const ::geometry_msgs::Point32_<ContainerAllocator> & v)
+               [01;36m[K^~~~~~~~[m[K
+[01m[K/opt/ros/melodic/include/geometry_msgs/Point32.h:68:15:[m[K [01;36m[Knote: [m[K  template argument deduction/substitution failed:
+[01m[K/home/vialab/nonlinear_mpc/src/mpc_local_planner/mpc_local_planner/src/controller.cpp:834:53:[m[K [01;36m[Knote: [m[K  ‘[01m[Kconst std::vector<geometry_msgs::PoseStamped_<std::allocator<void> > >[m[K’ is not derived from ‘[01m[Kconst geometry_msgs::Point32_<ContainerAllocator>[m[K’
+     std::cout << "iNITIAL TRAJECTORY REFERENCE " << [01;36m[Kinitial_plan[m[K << std::endl;
+                                                     [01;36m[K^~~~~~~~~~~~[m[K
+In file included from [01m[K/opt/ros/melodic/include/tf/transform_datatypes.h:40:0[m[K,
+                 from [01m[K/opt/ros/melodic/include/teb_local_planner/pose_se2.h:47[m[K,
+                 from [01m[K/opt/ros/melodic/include/teb_local_planner/robot_footprint_model.h:43[m[K,
+                 from [01m[K/home/vialab/nonlinear_mpc/src/mpc_local_planner/mpc_local_planner/include/mpc_local_planner/optimal_control/stage_inequality_se2.h:29[m[K,
+                 from [01m[K/home/vialab/nonlinear_mpc/src/mpc_local_planner/mpc_local_planner/include/mpc_local_planner/controller.h:29[m[K,
+                 from [01m[K/home/vialab/nonlinear_mpc/src/mpc_local_planner/mpc_local_planner/src/controller.cpp:23[m[K:
+[01m[K/opt/ros/melodic/include/geometry_msgs/PoseStamped.h:65:15:[m[K [01;36m[Knote: [m[Kcandidate: template<class ContainerAllocator> std::ostream& geometry_msgs::operator<<(std::ostream&, const geometry_msgs::PoseStamped_<ContainerAllocator>&)
+ std::ostream& [01;36m[Koperator[m[K<<(std::ostream& s, const ::geometry_msgs::PoseStamped_<ContainerAllocator> & v)
+               [01;36m[K^~~~~~~~[m[K
+[01m[K/opt/ros/melodic/include/geometry_msgs/PoseStamped.h:65:15:[m[K [01;36m[Knote: [m[K  template argument deduction/substitution failed:
+[01m[K/home/vialab/nonlinear_mpc/src/mpc_local_planner/mpc_local_planner/src/controller.cpp:834:53:[m[K [01;36m[Knote: [m[K  ‘[01m[Kconst std::vector<geometry_msgs::PoseStamped_<std::allocator<void> > >[m[K’ is not derived from ‘[01m[Kconst geometry_msgs::PoseStamped_<ContainerAllocator>[m[K’
+     std::cout << "iNITIAL TRAJECTORY REFERENCE " << [01;36m[Kinitial_plan[m[K << std::endl;
+                                                     [01;36m[K^~~~~~~~~~~~[m[K
+In file included from [01m[K/opt/ros/melodic/include/tf/transform_datatypes.h:39:0[m[K,
+                 from [01m[K/opt/ros/melodic/include/teb_local_planner/pose_se2.h:47[m[K,
+                 from [01m[K/opt/ros/melodic/include/teb_local_planner/robot_footprint_model.h:43[m[K,
+                 from [01m[K/home/vialab/nonlinear_mpc/src/mpc_local_planner/mpc_local_planner/include/mpc_local_planner/optimal_control/stage_inequality_se2.h:29[m[K,
+                 from [01m[K/home/vialab/nonlinear_mpc/src/mpc_local_planner/mpc_local_planner/include/mpc_local_planner/controller.h:29[m[K,
+                 from [01m[K/home/vialab/nonlinear_mpc/src/mpc_local_planner/mpc_local_planner/src/controller.cpp:23[m[K:
+[01m[K/opt/ros/melodic/include/geometry_msgs/TransformStamped.h:70:15:[m[K [01;36m[Knote: [m[Kcandidate: template<class ContainerAllocator> std::ostream& geometry_msgs::operator<<(std::ostream&, const geometry_msgs::TransformStamped_<ContainerAllocator>&)
+ std::ostream& [01;36m[Koperator[m[K<<(std::ostream& s, const ::geometry_msgs::TransformStamped_<ContainerAllocator> & v)
+               [01;36m[K^~~~~~~~[m[K
+[01m[K/opt/ros/melodic/include/geometry_msgs/TransformStamped.h:70:15:[m[K [01;36m[Knote: [m[K  template argument deduction/substitution failed:
+[01m[K/home/vialab/nonlinear_mpc/src/mpc_local_planner/mpc_local_planner/src/controller.cpp:834:53:[m[K [01;36m[Knote: [m[K  ‘[01m[Kconst std::vector<geometry_msgs::PoseStamped_<std::allocator<void> > >[m[K’ is not derived from ‘[01m[Kconst geometry_msgs::TransformStamped_<ContainerAllocator>[m[K’
+     std::cout << "iNITIAL TRAJECTORY REFERENCE " << [01;36m[Kinitial_plan[m[K << std::endl;
+                                                     [01;36m[K^~~~~~~~~~~~[m[K
+In file included from [01m[K/opt/ros/melodic/include/geometry_msgs/TransformStamped.h:19:0[m[K,
+                 from [01m[K/opt/ros/melodic/include/tf/transform_datatypes.h:39[m[K,
+                 from [01m[K/opt/ros/melodic/include/teb_local_planner/pose_se2.h:47[m[K,
+                 from [01m[K/opt/ros/melodic/include/teb_local_planner/robot_footprint_model.h:43[m[K,
+                 from [01m[K/home/vialab/nonlinear_mpc/src/mpc_local_planner/mpc_local_planner/include/mpc_local_planner/optimal_control/stage_inequality_se2.h:29[m[K,
+                 from [01m[K/home/vialab/nonlinear_mpc/src/mpc_local_planner/mpc_local_planner/include/mpc_local_planner/controller.h:29[m[K,
+                 from [01m[K/home/vialab/nonlinear_mpc/src/mpc_local_planner/mpc_local_planner/src/controller.cpp:23[m[K:
+[01m[K/opt/ros/melodic/include/geometry_msgs/Transform.h:65:15:[m[K [01;36m[Knote: [m[Kcandidate: template<class ContainerAllocator> std::ostream& geometry_msgs::operator<<(std::ostream&, const geometry_msgs::Transform_<ContainerAllocator>&)
+ std::ostream& [01;36m[Koperator[m[K<<(std::ostream& s, const ::geometry_msgs::Transform_<ContainerAllocator> & v)
+               [01;36m[K^~~~~~~~[m[K
+[01m[K/opt/ros/melodic/include/geometry_msgs/Transform.h:65:15:[m[K [01;36m[Knote: [m[K  template argument deduction/substitution failed:
+[01m[K/home/vialab/nonlinear_mpc/src/mpc_local_planner/mpc_local_planner/src/controller.cpp:834:53:[m[K [01;36m[Knote: [m[K  ‘[01m[Kconst std::vector<geometry_msgs::PoseStamped_<std::allocator<void> > >[m[K’ is not derived from ‘[01m[Kconst geometry_msgs::Transform_<ContainerAllocator>[m[K’
+     std::cout << "iNITIAL TRAJECTORY REFERENCE " << [01;36m[Kinitial_plan[m[K << std::endl;
+                                                     [01;36m[K^~~~~~~~~~~~[m[K
+In file included from [01m[K/opt/ros/melodic/include/tf/transform_datatypes.h:38:0[m[K,
+                 from [01m[K/opt/ros/melodic/include/teb_local_planner/pose_se2.h:47[m[K,
+                 from [01m[K/opt/ros/melodic/include/teb_local_planner/robot_footprint_model.h:43[m[K,
+                 from [01m[K/home/vialab/nonlinear_mpc/src/mpc_local_planner/mpc_local_planner/include/mpc_local_planner/optimal_control/stage_inequality_se2.h:29[m[K,
+                 from [01m[K/home/vialab/nonlinear_mpc/src/mpc_local_planner/mpc_local_planner/include/mpc_local_planner/controller.h:29[m[K,
+                 from [01m[K/home/vialab/nonlinear_mpc/src/mpc_local_planner/mpc_local_planner/src/controller.cpp:23[m[K:
+[01m[K/opt/ros/melodic/include/geometry_msgs/QuaternionStamped.h:65:15:[m[K [01;36m[Knote: [m[Kcandidate: template<class ContainerAllocator> std::ostream& geometry_msgs::operator<<(std::ostream&, const geometry_msgs::QuaternionStamped_<ContainerAllocator>&)
+ std::ostream& [01;36m[Koperator[m[K<<(std::ostream& s, const ::geometry_msgs::QuaternionStamped_<ContainerAllocator> & v)
+               [01;36m[K^~~~~~~~[m[K
+[01m[K/opt/ros/melodic/include/geometry_msgs/QuaternionStamped.h:65:15:[m[K [01;36m[Knote: [m[K  template argument deduction/substitution failed:
+[01m[K/home/vialab/nonlinear_mpc/src/mpc_local_planner/mpc_local_planner/src/controller.cpp:834:53:[m[K [01;36m[Knote: [m[K  ‘[01m[Kconst std::vector<geometry_msgs::PoseStamped_<std::allocator<void> > >[m[K’ is not derived from ‘[01m[Kconst geometry_msgs::QuaternionStamped_<ContainerAllocator>[m[K’
+     std::cout << "iNITIAL TRAJECTORY REFERENCE " << [01;36m[Kinitial_plan[m[K << std::endl;
+                                                     [01;36m[K^~~~~~~~~~~~[m[K
+In file included from [01m[K/opt/ros/melodic/include/tf/transform_datatypes.h:37:0[m[K,
+                 from [01m[K/opt/ros/melodic/include/teb_local_planner/pose_se2.h:47[m[K,
+                 from [01m[K/opt/ros/melodic/include/teb_local_planner/robot_footprint_model.h:43[m[K,
+                 from [01m[K/home/vialab/nonlinear_mpc/src/mpc_local_planner/mpc_local_planner/include/mpc_local_planner/optimal_control/stage_inequality_se2.h:29[m[K,
+                 from [01m[K/home/vialab/nonlinear_mpc/src/mpc_local_planner/mpc_local_planner/include/mpc_local_planner/controller.h:29[m[K,
+                 from [01m[K/home/vialab/nonlinear_mpc/src/mpc_local_planner/mpc_local_planner/src/controller.cpp:23[m[K:
+[01m[K/opt/ros/melodic/include/geometry_msgs/Vector3Stamped.h:65:15:[m[K [01;36m[Knote: [m[Kcandidate: template<class ContainerAllocator> std::ostream& geometry_msgs::operator<<(std::ostream&, const geometry_msgs::Vector3Stamped_<ContainerAllocator>&)
+ std::ostream& [01;36m[Koperator[m[K<<(std::ostream& s, const ::geometry_msgs::Vector3Stamped_<ContainerAllocator> & v)
+               [01;36m[K^~~~~~~~[m[K
+[01m[K/opt/ros/melodic/include/geometry_msgs/Vector3Stamped.h:65:15:[m[K [01;36m[Knote: [m[K  template argument deduction/substitution failed:
+[01m[K/home/vialab/nonlinear_mpc/src/mpc_local_planner/mpc_local_planner/src/controller.cpp:834:53:[m[K [01;36m[Knote: [m[K  ‘[01m[Kconst std::vector<geometry_msgs::PoseStamped_<std::allocator<void> > >[m[K’ is not derived from ‘[01m[Kconst geometry_msgs::Vector3Stamped_<ContainerAllocator>[m[K’
+     std::cout << "iNITIAL TRAJECTORY REFERENCE " << [01;36m[Kinitial_plan[m[K << std::endl;
+                                                     [01;36m[K^~~~~~~~~~~~[m[K
+In file included from [01m[K/opt/ros/melodic/include/geometry_msgs/Vector3Stamped.h:19:0[m[K,
+                 from [01m[K/opt/ros/melodic/include/tf/transform_datatypes.h:37[m[K,
+                 from [01m[K/opt/ros/melodic/include/teb_local_planner/pose_se2.h:47[m[K,
+                 from [01m[K/opt/ros/melodic/include/teb_local_planner/robot_footprint_model.h:43[m[K,
+                 from [01m[K/home/vialab/nonlinear_mpc/src/mpc_local_planner/mpc_local_planner/include/mpc_local_planner/optimal_control/stage_inequality_se2.h:29[m[K,
+                 from [01m[K/home/vialab/nonlinear_mpc/src/mpc_local_planner/mpc_local_planner/include/mpc_local_planner/controller.h:29[m[K,
+                 from [01m[K/home/vialab/nonlinear_mpc/src/mpc_local_planner/mpc_local_planner/src/controller.cpp:23[m[K:
+[01m[K/opt/ros/melodic/include/geometry_msgs/Vector3.h:68:15:[m[K [01;36m[Knote: [m[Kcandidate: template<class ContainerAllocator> std::ostream& geometry_msgs::operator<<(std::ostream&, const geometry_msgs::Vector3_<ContainerAllocator>&)
+ std::ostream& [01;36m[Koperator[m[K<<(std::ostream& s, const ::geometry_msgs::Vector3_<ContainerAllocator> & v)
+               [01;36m[K^~~~~~~~[m[K
+[01m[K/opt/ros/melodic/include/geometry_msgs/Vector3.h:68:15:[m[K [01;36m[Knote: [m[K  template argument deduction/substitution failed:
+[01m[K/home/vialab/nonlinear_mpc/src/mpc_local_planner/mpc_local_planner/src/controller.cpp:834:53:[m[K [01;36m[Knote: [m[K  ‘[01m[Kconst std::vector<geometry_msgs::PoseStamped_<std::allocator<void> > >[m[K’ is not derived from ‘[01m[Kconst geometry_msgs::Vector3_<ContainerAllocator>[m[K’
+     std::cout << "iNITIAL TRAJECTORY REFERENCE " << [01;36m[Kinitial_plan[m[K << std::endl;
+                                                     [01;36m[K^~~~~~~~~~~~[m[K
+In file included from [01m[K/opt/ros/melodic/include/tf/transform_datatypes.h:36:0[m[K,
+                 from [01m[K/opt/ros/melodic/include/teb_local_planner/pose_se2.h:47[m[K,
+                 from [01m[K/opt/ros/melodic/include/teb_local_planner/robot_footprint_model.h:43[m[K,
+                 from [01m[K/home/vialab/nonlinear_mpc/src/mpc_local_planner/mpc_local_planner/include/mpc_local_planner/optimal_control/stage_inequality_se2.h:29[m[K,
+                 from [01m[K/home/vialab/nonlinear_mpc/src/mpc_local_planner/mpc_local_planner/include/mpc_local_planner/controller.h:29[m[K,
+                 from [01m[K/home/vialab/nonlinear_mpc/src/mpc_local_planner/mpc_local_planner/src/controller.cpp:23[m[K:
+[01m[K/opt/ros/melodic/include/geometry_msgs/PointStamped.h:65:15:[m[K [01;36m[Knote: [m[Kcandidate: template<class ContainerAllocator> std::ostream& geometry_msgs::operator<<(std::ostream&, const geometry_msgs::PointStamped_<ContainerAllocator>&)
+ std::ostream& [01;36m[Koperator[m[K<<(std::ostream& s, const ::geometry_msgs::PointStamped_<ContainerAllocator> & v)
+               [01;36m[K^~~~~~~~[m[K
+[01m[K/opt/ros/melodic/include/geometry_msgs/PointStamped.h:65:15:[m[K [01;36m[Knote: [m[K  template argument deduction/substitution failed:
+[01m[K/home/vialab/nonlinear_mpc/src/mpc_local_planner/mpc_local_planner/src/controller.cpp:834:53:[m[K [01;36m[Knote: [m[K  ‘[01m[Kconst std::vector<geometry_msgs::PoseStamped_<std::allocator<void> > >[m[K’ is not derived from ‘[01m[Kconst geometry_msgs::PointStamped_<ContainerAllocator>[m[K’
+     std::cout << "iNITIAL TRAJECTORY REFERENCE " << [01;36m[Kinitial_plan[m[K << std::endl;
+                                                     [01;36m[K^~~~~~~~~~~~[m[K
+In file included from [01m[K/opt/ros/melodic/include/teb_local_planner/pose_se2.h:46:0[m[K,
+                 from [01m[K/opt/ros/melodic/include/teb_local_planner/robot_footprint_model.h:43[m[K,
+                 from [01m[K/home/vialab/nonlinear_mpc/src/mpc_local_planner/mpc_local_planner/include/mpc_local_planner/optimal_control/stage_inequality_se2.h:29[m[K,
+                 from [01m[K/home/vialab/nonlinear_mpc/src/mpc_local_planner/mpc_local_planner/include/mpc_local_planner/controller.h:29[m[K,
+                 from [01m[K/home/vialab/nonlinear_mpc/src/mpc_local_planner/mpc_local_planner/src/controller.cpp:23[m[K:
+[01m[K/opt/ros/melodic/include/geometry_msgs/Pose.h:65:15:[m[K [01;36m[Knote: [m[Kcandidate: template<class ContainerAllocator> std::ostream& geometry_msgs::operator<<(std::ostream&, const geometry_msgs::Pose_<ContainerAllocator>&)
+ std::ostream& [01;36m[Koperator[m[K<<(std::ostream& s, const ::geometry_msgs::Pose_<ContainerAllocator> & v)
+               [01;36m[K^~~~~~~~[m[K
+[01m[K/opt/ros/melodic/include/geometry_msgs/Pose.h:65:15:[m[K [01;36m[Knote: [m[K  template argument deduction/substitution failed:
+[01m[K/home/vialab/nonlinear_mpc/src/mpc_local_planner/mpc_local_planner/src/controller.cpp:834:53:[m[K [01;36m[Knote: [m[K  ‘[01m[Kconst std::vector<geometry_msgs::PoseStamped_<std::allocator<void> > >[m[K’ is not derived from ‘[01m[Kconst geometry_msgs::Pose_<ContainerAllocator>[m[K’
+     std::cout << "iNITIAL TRAJECTORY REFERENCE " << [01;36m[Kinitial_plan[m[K << std::endl;
+                                                     [01;36m[K^~~~~~~~~~~~[m[K
+In file included from [01m[K/opt/ros/melodic/include/geometry_msgs/Pose.h:19:0[m[K,
+                 from [01m[K/opt/ros/melodic/include/teb_local_planner/pose_se2.h:46[m[K,
+                 from [01m[K/opt/ros/melodic/include/teb_local_planner/robot_footprint_model.h:43[m[K,
+                 from [01m[K/home/vialab/nonlinear_mpc/src/mpc_local_planner/mpc_local_planner/include/mpc_local_planner/optimal_control/stage_inequality_se2.h:29[m[K,
+                 from [01m[K/home/vialab/nonlinear_mpc/src/mpc_local_planner/mpc_local_planner/include/mpc_local_planner/controller.h:29[m[K,
+                 from [01m[K/home/vialab/nonlinear_mpc/src/mpc_local_planner/mpc_local_planner/src/controller.cpp:23[m[K:
+[01m[K/opt/ros/melodic/include/geometry_msgs/Quaternion.h:73:15:[m[K [01;36m[Knote: [m[Kcandidate: template<class ContainerAllocator> std::ostream& geometry_msgs::operator<<(std::ostream&, const geometry_msgs::Quaternion_<ContainerAllocator>&)
+ std::ostream& [01;36m[Koperator[m[K<<(std::ostream& s, const ::geometry_msgs::Quaternion_<ContainerAllocator> & v)
+               [01;36m[K^~~~~~~~[m[K
+[01m[K/opt/ros/melodic/include/geometry_msgs/Quaternion.h:73:15:[m[K [01;36m[Knote: [m[K  template argument deduction/substitution failed:
+[01m[K/home/vialab/nonlinear_mpc/src/mpc_local_planner/mpc_local_planner/src/controller.cpp:834:53:[m[K [01;36m[Knote: [m[K  ‘[01m[Kconst std::vector<geometry_msgs::PoseStamped_<std::allocator<void> > >[m[K’ is not derived from ‘[01m[Kconst geometry_msgs::Quaternion_<ContainerAllocator>[m[K’
+     std::cout << "iNITIAL TRAJECTORY REFERENCE " << [01;36m[Kinitial_plan[m[K << std::endl;
+                                                     [01;36m[K^~~~~~~~~~~~[m[K
+In file included from [01m[K/opt/ros/melodic/include/geometry_msgs/Pose.h:18:0[m[K,
+                 from [01m[K/opt/ros/melodic/include/teb_local_planner/pose_se2.h:46[m[K,
+                 from [01m[K/opt/ros/melodic/include/teb_local_planner/robot_footprint_model.h:43[m[K,
+                 from [01m[K/home/vialab/nonlinear_mpc/src/mpc_local_planner/mpc_local_planner/include/mpc_local_planner/optimal_control/stage_inequality_se2.h:29[m[K,
+                 from [01m[K/home/vialab/nonlinear_mpc/src/mpc_local_planner/mpc_local_planner/include/mpc_local_planner/controller.h:29[m[K,
+                 from [01m[K/home/vialab/nonlinear_mpc/src/mpc_local_planner/mpc_local_planner/src/controller.cpp:23[m[K:
+[01m[K/opt/ros/melodic/include/geometry_msgs/Point.h:68:15:[m[K [01;36m[Knote: [m[Kcandidate: template<class ContainerAllocator> std::ostream& geometry_msgs::operator<<(std::ostream&, const geometry_msgs::Point_<ContainerAllocator>&)
+ std::ostream& [01;36m[Koperator[m[K<<(std::ostream& s, const ::geometry_msgs::Point_<ContainerAllocator> & v)
+               [01;36m[K^~~~~~~~[m[K
+[01m[K/opt/ros/melodic/include/geometry_msgs/Point.h:68:15:[m[K [01;36m[Knote: [m[K  template argument deduction/substitution failed:
+[01m[K/home/vialab/nonlinear_mpc/src/mpc_local_planner/mpc_local_planner/src/controller.cpp:834:53:[m[K [01;36m[Knote: [m[K  ‘[01m[Kconst std::vector<geometry_msgs::PoseStamped_<std::allocator<void> > >[m[K’ is not derived from ‘[01m[Kconst geometry_msgs::Point_<ContainerAllocator>[m[K’
+     std::cout << "iNITIAL TRAJECTORY REFERENCE " << [01;36m[Kinitial_plan[m[K << std::endl;
+                                                     [01;36m[K^~~~~~~~~~~~[m[K
 make[2]: *** [CMakeFiles/mpc_local_planner.dir/src/controller.cpp.o] Error 1
 make[1]: *** [CMakeFiles/mpc_local_planner.dir/all] Error 2
 make: *** [all] Error 2

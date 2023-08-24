@@ -1,6 +1,6 @@
 file(REMOVE_RECURSE
-  "/home/vialab/mpc_traj_ws/devel/.private/mpc_local_planner/lib/libmpc_local_planner_optimal_control.pdb"
-  "/home/vialab/mpc_traj_ws/devel/.private/mpc_local_planner/lib/libmpc_local_planner_optimal_control.so"
+  "/home/vialab/nonlinear_mpc/devel/.private/mpc_local_planner/lib/libmpc_local_planner_optimal_control.pdb"
+  "/home/vialab/nonlinear_mpc/devel/.private/mpc_local_planner/lib/libmpc_local_planner_optimal_control.so"
   "CMakeFiles/mpc_local_planner_optimal_control.dir/src/optimal_control/final_state_conditions_se2.cpp.o"
   "CMakeFiles/mpc_local_planner_optimal_control.dir/src/optimal_control/final_state_conditions_se2.cpp.o.d"
   "CMakeFiles/mpc_local_planner_optimal_control.dir/src/optimal_control/finite_differences_grid_se2.cpp.o"
