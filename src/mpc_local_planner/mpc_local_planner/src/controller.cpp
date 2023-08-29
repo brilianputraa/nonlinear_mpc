@@ -87,7 +87,7 @@ bool Controller::configure(ros::NodeHandle& nh, const teb_local_planner::ObstCon
     // result publisher:
     _ocp_result_pub = nh.advertise<mpc_local_planner_msgs::OptimalControlResult>("ocp_result", 100);
     // change the topic name of the control pub here:
-    _ctrl_pub = nh.advertise<ackermann_msgs::AckermannDriveStamped>("/ack_cmd", 1);
+    _ctrl_pub = nh.advertise<ackermann_msgs::AckermannDriveStamped>("/rbcar_robot_control/command", 1);
 
     nh.param("controller/publish_ocp_results", _publish_ocp_results, _publish_ocp_results);
     nh.param("controller/print_cpu_time", _print_cpu_time, _print_cpu_time);
@@ -110,7 +110,7 @@ bool Controller::step(const Controller::PoseSE2& start, const Controller::PoseSE
     std::vector<geometry_msgs::PoseStamped> initial_plan(2);
     start.toPoseMsg(initial_plan.front().pose);
     goal.toPoseMsg(initial_plan.back().pose);
-    std::cout << "Current GOal " << goal << std::endl;
+    // std::cout << "Current goal " << goal << std::endl;
     return step(initial_plan, vel, dt, t, u_seq, x_seq);
 }
 
@@ -155,7 +155,7 @@ bool Controller::step(const std::vector<geometry_msgs::PoseStamped>& initial_pla
     }
 
     // now check goal
-    std::cout << "Current Goal " << goal << std::endl;
+    // std::cout << "Current Goal " << goal << std::endl;
     if (_force_reinit_num_steps > 0 && _ocp_seq % _force_reinit_num_steps == 0) _grid->clear();
     if (!_grid->isEmpty() && ((goal.position() - _last_goal.position()).norm() > _force_reinit_new_goal_dist ||
                               std::abs(normalize_theta(goal.theta() - _last_goal.theta())) > _force_reinit_new_goal_angular))
@@ -176,7 +176,7 @@ bool Controller::step(const std::vector<geometry_msgs::PoseStamped>& initial_pla
     corbo::StaticReference xref(xf);  // currently, we only support point-to-point transitions in ros
     corbo::ZeroReference uref(_dynamics->getInputDimension());
     // Getting the x reference
-    std::cout << "Current X final " << xf << std::endl;
+    // std::cout << "Current X final " << xf << std::endl;
 
     _ocp_successful = PredictiveController::step(x, xref, uref, corbo::Duration(dt), time, u_seq, x_seq, nullptr, nullptr, &_x_seq_init);
     
@@ -227,16 +227,61 @@ void Controller::publishOptimalControlResult()
         msg.controls      = _u_ts->getValues();
     }
 
+    // Goal distance calc
+    ros::NodeHandle nh;
+    double x_goal {};
+    double y_goal {};
+    double dx {};
+    double dy {};
+    double dist {};
+    double new_vel {};
+    double shifting {};
+    double thres_dist {2.0};
+
+    nh.param("/goal_x", x_goal, x_goal);
+    nh.param("/goal_y", y_goal, y_goal);
+    
+    dx = x_goal - msg.states[0];
+    dy = y_goal - msg.states[1];
+
+    dist = std::abs(std::sqrt(dx*dx + dy*dy));
+
+    shifting = 1.8;
+
+    if (dist < thres_dist){     
+        new_vel = speedControlRegulator(msg.controls[0], dist, shifting, 2.0);
+    } else {
+        new_vel = msg.controls[0];
+    }
+    // std::cout << "Distance to final goal " << dist << " (m)" << std::endl;
+
+    // 
+
     ackermann_msgs::AckermannDriveStamped ackermann_msg;
     ackermann_msg.header.stamp = ros::Time::now();
     ackermann_msg.header.seq   = static_cast<unsigned int>(_ocp_seq);
-    ackermann_msg.drive.speed  = msg.controls[0];
+    ackermann_msg.drive.speed  = new_vel;
     ackermann_msg.drive.steering_angle = msg.controls[1];
     _ctrl_pub.publish(ackermann_msg);
 
-    std::cout<< "Control velocity signal " << msg.controls[0] << " Control steering signal " << msg.controls[1] << std::endl;
+    // std::cout<< "Current vehicle states x: " << msg.states[0] << " y: " << msg.states[1] << " heading: " << msg.states[2] << std::endl;
+    std::cout << "Distance to goal " << dist << " Control velocity before scaling " << msg.controls[0] << std::endl;
+    std::cout << "Control velocity signal " << new_vel << " Control steering signal " << msg.controls[1] << std::endl;
     
     _ocp_result_pub.publish(msg);
+}
+
+double Controller::speedControlRegulator(double vel, double dist_to_goal, double shift, double scale)
+{
+    double new_vel;
+    double vel_scaler;
+
+    vel_scaler = 1 / (1 + std::exp(-scale*(dist_to_goal - shift)));
+    new_vel = vel * vel_scaler;
+
+    std::cout << "Velocity Scaler " << vel_scaler << std::endl;
+
+    return new_vel;
 }
 
 void Controller::reset() { PredictiveController::reset(); }
@@ -593,7 +638,7 @@ corbo::StructuredOptimalControlProblem::Ptr Controller::configureOcp(const ros::
             ROS_ERROR_STREAM("State weights dimension invalid. Must be either " << x_dim << " x 1 or " << x_dim << " x " << x_dim << ".");
             return {};
         }
-        std::cout << "Q value " << Q << std::endl;
+        // std::cout << "Q value " << Q << std::endl;
         std::vector<double> control_weights;
         nh.param("planning/objective/quadratic_form/control_weights", control_weights, control_weights);
         Eigen::MatrixXd R;
