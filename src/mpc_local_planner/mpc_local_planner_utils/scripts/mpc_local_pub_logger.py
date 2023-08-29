@@ -67,10 +67,7 @@ class ControlLogger:
                     # Stop signal when goal is reached
                     isstop = Bool()
                     isstop.data = True
-                    self.pub_ctrl.publish(control_msg)
-                    self.pub_stop.publish(isstop)
-                    self.pub_mpc.publish(isstop)
-
+                                    
                     if self.parking:
                         if self.counter < 10:
                             # Halt control and align wheels
@@ -98,7 +95,7 @@ class ControlLogger:
                         self.pub_stop.publish(isstop)
             else:
                 print("============================MPC IS CURRENTLY RUNNING=============================")
-
+        
     def save_data(self):
         dataFrame = {}
 
