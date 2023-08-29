@@ -281,7 +281,10 @@ uint32_t MpcLocalPlannerROS::computeVelocityCommands(const geometry_msgs::PoseSt
     double dy           = global_goal.pose.position.y - _robot_pose.y();
     double delta_orient = g2o::normalize_theta(tf2::getYaw(global_goal.pose.orientation) - _robot_pose.theta());
 
+    ros::NodeHandle nh;
     // std::cout << "Global goal pose " << global_goal << std::endl; 
+    nh.setParam("/goal_x", global_goal.pose.position.x);
+    nh.setParam("/goal_y", global_goal.pose.position.y);
 
 
     if (std::abs(std::sqrt(dx * dx + dy * dy)) < _params.xy_goal_tolerance && std::abs(delta_orient) < _params.yaw_goal_tolerance)
@@ -780,7 +783,7 @@ double MpcLocalPlannerROS::estimateLocalGoalOrientation(const std::vector<geomet
 {
     int n = (int)global_plan.size();
 
-    std::cout << "Current Local goal " << local_goal << std::endl;
+    // std::cout << "Current Local goal " << local_goal << std::endl;
 
     // check if we are near the global goal already
     if (current_goal_idx > n - moving_average_length - 2)
