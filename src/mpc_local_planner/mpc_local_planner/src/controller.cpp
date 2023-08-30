@@ -238,17 +238,19 @@ void Controller::publishOptimalControlResult()
     double shifting {};
     double thres_dist {2.0};
     double min_speed_to_stop {0.52};
-    double target_speed {2.0};
+    double target_speed {};
     double vel_before {};
 
     nh.param("/goal_x", x_goal, x_goal);
     nh.param("/goal_y", y_goal, y_goal);
-    
+    nh.param("/move_base/MpcLocalPlannerROS/robot/simple_car/max_vel_x", target_speed, target_speed);
+
     dx = x_goal - msg.states[0];
     dy = y_goal - msg.states[1];
 
     dist = std::abs(std::sqrt(dx*dx + dy*dy));
 
+    // shifting calculation
     // 2 m/s
     // shifting = 1.4;
     // 1 m/s
@@ -256,7 +258,6 @@ void Controller::publishOptimalControlResult()
     // 0.8 m/s
     // shifting = 0.1;
 
-    // shifting calculation
     vel_before = min_speed_to_stop / target_speed;
     shifting = std::log((1-vel_before)/vel_before) + 0.4;
     std::cout << shifting << " shifting value\n";

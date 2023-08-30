@@ -9,11 +9,11 @@ MpcLocalPlannerROS:
       wheelbase: 2.48
       front_wheel_driving: False
       max_vel_x: 2.0
-      max_vel_x_backwards: 0.8
+      max_vel_x_backwards: 1.5
       max_steering_angle: 0.5236
       acc_lim_x: 5.0 # deactive bounds with zero
       dec_lim_x: 5.0 # deactive bounds with zero
-      max_steering_rate: 0.261799
+      max_steering_rate: 0.174533
       # 0.115192 0.174533  # deactive bounds with zero
 
   ## Footprint model for collision avoidance
@@ -30,7 +30,7 @@ MpcLocalPlannerROS:
 
   ## Collision avoidance
   collision_avoidance:
-    min_obstacle_dist: 0.61 # Note, this parameter must be chosen w.r.t. the footprint_model
+    min_obstacle_dist: 0.62 # Note, this parameter must be chosen w.r.t. the footprint_model
     enable_dynamic_obstacles: True
     force_inclusion_dist: 0.5
     cutoff_dist: 2.5 
@@ -62,14 +62,14 @@ MpcLocalPlannerROS:
     objective:
       type: "quadratic_form" # minimum_time requires grid/variable_grid/enable=True and grid/xf_fixed set properly
       quadratic_form: 
-        state_weights: [0.1, 0.1, 0.05]
+        state_weights: [2.0, 2.0, 0.5]
         control_weights: [1.0, 0.5]
         integral_form: False
         hybrid_cost_minimum_time: False
     terminal_cost:
       type: "quadratic"
       quadratic: 
-        final_state_weights: [0.0, 0.0, 0.0]
+        final_state_weights: [10.0, 10.0, 0.5]
     terminal_constraint:
       type: "none"
 
