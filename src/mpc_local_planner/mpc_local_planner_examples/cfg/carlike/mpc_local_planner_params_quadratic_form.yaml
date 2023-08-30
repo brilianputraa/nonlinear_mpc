@@ -1,6 +1,6 @@
 MpcLocalPlannerROS:
 
-  odom_topic: /odoms
+  odom_topic: /INS/odom
     
    ## Robot settings
   robot:
@@ -63,7 +63,7 @@ MpcLocalPlannerROS:
       type: "quadratic_form" # minimum_time requires grid/variable_grid/enable=True and grid/xf_fixed set properly
       quadratic_form: 
         state_weights: [2.0, 2.0, 0.5]
-        control_weights: [2.0, 0.5]
+        control_weights: [1.0, 0.5]
         integral_form: False
         hybrid_cost_minimum_time: False
     terminal_cost:

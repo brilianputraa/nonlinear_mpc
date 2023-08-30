@@ -66,6 +66,9 @@ class Controller : public corbo::PredictiveController
     bool step(const std::vector<geometry_msgs::PoseStamped>& initial_plan, const geometry_msgs::Twist& vel, double dt, ros::Time t,
               corbo::TimeSeries::Ptr u_seq, corbo::TimeSeries::Ptr x_seq);
 
+    // Regulating speed when goal is almost reached (20230829)
+    double speedControlRegulator(double vel, double dist_to_goal, double shift = 2, double scale = 2);
+
     // implements interface method
     corbo::ControllerInterface::Ptr getInstance() const override { return std::make_shared<Controller>(); }
     static corbo::ControllerInterface::Ptr getInstanceStatic() { return std::make_shared<Controller>(); }

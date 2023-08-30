@@ -40,6 +40,7 @@ class ControlLogger:
         self.sub_ctrl = message_filters.Subscriber("/move_base/MpcLocalPlannerROS/ocp_result", OptimalControlResult)
         self.sub_odom =  message_filters.Subscriber("/odoms", Odometry)
         self.counter = 0
+        self.parking = False
         self.count_flag = True
         
         self.header_measurement = ["odom_x", "odom_y", "odom_vel", "odom_yaw"]
@@ -67,21 +68,33 @@ class ControlLogger:
                     isstop = Bool()
                     isstop.data = True
                                     
-                    if self.counter < 20:
+                    if self.parking:
+                        if self.counter < 10:
+                            # Halt control and align wheels
+                            control_msg = AckermannDriveStamped()
+                            control_msg.header.stamp = rospy.Time.now()
+                            control_msg.drive.acceleration = 0.0
+                            control_msg.drive.speed = 0.0
+                            control_msg.drive.steering_angle = -26.0
+                            control_msg.drive.jerk = 0.0
+                            self.pub_ctrl.publish(control_msg)
+                            self.counter += 1
+                            self.pub_stop.publish(isstop)
+                        else:
+                            # Activating the Linear MPC for Parking    
+                            self.pub_mpc.publish(isstop)
+                    else:
                         # Halt control and align wheels
                         control_msg = AckermannDriveStamped()
                         control_msg.header.stamp = rospy.Time.now()
-                        control_msg.drive.steering_angle = 0.0
                         control_msg.drive.acceleration = 0.0
                         control_msg.drive.speed = 0.0
+                        control_msg.drive.steering_angle = 0.0
                         control_msg.drive.jerk = 0.0
                         self.pub_ctrl.publish(control_msg)
                         self.pub_stop.publish(isstop)
-                        self.counter += 1
-                    
-                    # Activating the Linear MPC for Parking    
-                    self.pub_mpc.publish(isstop)
-
+            else:
+                print("============================MPC IS CURRENTLY RUNNING=============================")
         
     def save_data(self):
         dataFrame = {}

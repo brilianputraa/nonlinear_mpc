@@ -20,7 +20,7 @@
   		<rosparam file="$(find mpc_local_planner_examples)/cfg/carlike/mpc_local_planner_params_quadratic_form.yaml" command="load" />
 
 		<param name="base_global_planner" value="global_planner/GlobalPlanner" />
-		<param name="planner_frequency" value="1.0" />
+		<param name="planner_frequency" value="0.75" />
 		<param name="planner_patience" value="5.0" />
 
 		<param name="base_local_planner" value="mpc_local_planner/MpcLocalPlannerROS" />
