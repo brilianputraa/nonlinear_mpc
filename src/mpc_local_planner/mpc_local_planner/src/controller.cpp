@@ -237,6 +237,9 @@ void Controller::publishOptimalControlResult()
     double new_vel {};
     double shifting {};
     double thres_dist {2.0};
+    double min_speed_to_stop {0.52};
+    double target_speed {2.0};
+    double vel_before {};
 
     nh.param("/goal_x", x_goal, x_goal);
     nh.param("/goal_y", y_goal, y_goal);
@@ -246,16 +249,23 @@ void Controller::publishOptimalControlResult()
 
     dist = std::abs(std::sqrt(dx*dx + dy*dy));
 
-    shifting = 1.8;
+    // 2 m/s
+    // shifting = 1.4;
+    // 1 m/s
+    // shifting = 0.4;
+    // 0.8 m/s
+    // shifting = 0.1;
 
+    // shifting calculation
+    vel_before = min_speed_to_stop / target_speed;
+    shifting = std::log((1-vel_before)/vel_before) + 0.4;
+    std::cout << shifting << " shifting value\n";
     if (dist < thres_dist){     
-        new_vel = speedControlRegulator(msg.controls[0], dist, shifting, 2.0);
+        new_vel = speedControlRegulator(msg.controls[0], dist, shifting, 1.0);
     } else {
         new_vel = msg.controls[0];
     }
     // std::cout << "Distance to final goal " << dist << " (m)" << std::endl;
-
-    // 
 
     ackermann_msgs::AckermannDriveStamped ackermann_msg;
     ackermann_msg.header.stamp = ros::Time::now();
