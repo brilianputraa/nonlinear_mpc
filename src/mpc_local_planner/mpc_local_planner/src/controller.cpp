@@ -239,11 +239,13 @@ void Controller::publishOptimalControlResult()
     double thres_dist {2.0};
     double min_speed_to_stop {0.52};
     double target_speed {};
+    double goal_tolerance {0.4};
     double vel_before {};
 
     nh.param("/goal_x", x_goal, x_goal);
     nh.param("/goal_y", y_goal, y_goal);
     nh.param("/move_base/MpcLocalPlannerROS/robot/simple_car/max_vel_x", target_speed, target_speed);
+    nh.param("/move_base/MpcLocalPlannerROS/controller/xy_goal_tolerance", goal_tolerance, goal_tolerance);
 
     dx = x_goal - msg.states[0];
     dy = y_goal - msg.states[1];
@@ -259,10 +261,11 @@ void Controller::publishOptimalControlResult()
     // shifting = 0.1;
 
     vel_before = min_speed_to_stop / target_speed;
-    shifting = std::log((1-vel_before)/vel_before) + 0.4;
+    shifting = std::log((1-vel_before)/vel_before) + goal_tolerance;
     std::cout << shifting << " shifting value\n";
     if (dist < thres_dist){     
         new_vel = speedControlRegulator(msg.controls[0], dist, shifting, 1.0);
+        msg.controls[0] = new_vel;
     } else {
         new_vel = msg.controls[0];
     }
