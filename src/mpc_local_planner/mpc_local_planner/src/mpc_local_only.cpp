@@ -22,6 +22,15 @@ class MpcLocalOnly {
         geometry_msgs::Twist robot_vel;
         double dt = 0.1;
 
+    protected:
+        void CB_clicked_points(const geometry_msgs::PoseStampedConstPtr& msg);
+        void CB_odom(const nav_msgs::OdometryConstPtr& msg);
+        void CB_via_points(const nav_msgs::PathConstPtr& msg);
+        void updateObstacleContainerWithCostmap();
+
+        teb_local_planner::ObstContainer _obstacles;
+        std::vector<teb_local_planner::PoseSE2> _via_points;
+
         // Costmap
         _costmap_ros = costmap_ros;
         _costmap     = _costmap_ros->getCostmap(); 
@@ -35,15 +44,6 @@ class MpcLocalOnly {
 
         // reserve some memory for obstacles
         _obstacles.reserve(700);
-
-    protected:
-        void CB_clicked_points(const geometry_msgs::PoseStampedConstPtr& msg);
-        void CB_odom(const nav_msgs::OdometryConstPtr& msg);
-        void updateObstacleContainerWithCostmap();
-
-        teb_local_planner::ObstContainer _obstacles;
-        std::vector<teb_local_planner::PoseSE2> _via_points;
-
 };
 
 void MpcLocalOnly::start(ros::NodeHandle& nh) {
@@ -61,7 +61,7 @@ void MpcLocalOnly::start(ros::NodeHandle& nh) {
     // Define Controller
     mpc::Controller controller;
 
-    if (!controller.configure(nh)) {
+    if (!controller.configure(nh, _obstacles, robot_model, _via_points)) {
         ROS_ERROR("Failed to configure controller");
         return;
     }
@@ -103,6 +103,13 @@ void MpcLocalOnly::CB_clicked_points(const geometry_msgs::PoseStampedConstPtr& m
 void MpcLocalOnly::CB_odom(const nav_msgs::OdometryConstPtr& msg) {
     robot_vel = msg->twist.twist;
     init_pose = teb_local_planner::PoseSE2(msg->pose.pose.position.x, msg->pose.pose.position.y, tf::getYaw(msg->pose.pose.orientation));
+}
+
+void MpcLocalOnly::CB_via_points(const nav_msgs::PathConstPtr& msg) {
+    _via_points.clear();
+    for (const auto& p : msg->poses) {
+        _via_points.emplace_back(p.pose.position.x, p.pose.position.y, tf::getYaw(p.pose.orientation));
+    }
 }
 
 void MpcLocalOnly::updateObstacleContainerWithCostmap()
