@@ -205,7 +205,7 @@ bool MpcLocalPlannerROS::setPlan(const std::vector<geometry_msgs::PoseStamped>& 
     _global_plan.clear();
     _global_plan = orig_global_plan;
 
-    // cut the global path 
+    // Drop the global path except the goal point 20231114 Bili
     std::vector<geometry_msgs::PoseStamped> _tmp_global_plan;
 
     _tmp_global_plan.push_back(_global_plan[_global_plan.size()-1]);
