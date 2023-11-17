@@ -97,6 +97,7 @@ class BehaviorManager():
             goal_points = self.goal_point_list[self.parking_slot, 1:4]
             goal = self.goal_utils.get_the_goal(goal_points)
             self.goal_pub.publish(goal)
+            #TODO: Possibly not able to know the status of the goal (can be replaced with manually receiving the status from the server)
             self.client.wait_for_result()
             rospy.loginfo("Passenger successfully dropped off")
             
@@ -113,6 +114,7 @@ class BehaviorManager():
             goal_points = self.goal_point_list[self.parking_slot, 4:]
             goal = self.goal_utils.get_the_goal(goal_points)
             self.goal_pub.publish(goal)
+            #TODO: Possibly not able to know the status of the goal (can be replaced with manually receiving the status from the server)
             self.client.wait_for_result()
             rospy.loginfo("The golf-cart is parked")
             
@@ -123,6 +125,7 @@ class BehaviorManager():
         
         # Waiting for the Server to Send the Scenario
         while True:
+            print("Waiting for the Server for Requesting Pickup")
             bytes_data = self.sock.recv(self.BUFFER_SIZE)
             self.scenario = bytes_data[0].decode('utf-8')
             self.parking_slot = bytes_data[1].decode('utf-8')
@@ -144,6 +147,7 @@ class BehaviorManager():
             goal_points = self.pickup_point_list[self.parking_slot, 1:4]
             goal = self.goal_utils.get_the_goal(goal_points)
             self.goal_pub.publish(goal)
+            #TODO: Possibly not able to know the status of the goal (can be replaced with manually receiving the status from the server)
             self.client.wait_for_result()
             rospy.loginfo("Passenger successfully picked up")
             # Change to the manual driving mode
