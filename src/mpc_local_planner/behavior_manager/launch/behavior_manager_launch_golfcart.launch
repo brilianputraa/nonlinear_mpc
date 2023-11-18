@@ -1,0 +1,5 @@
+<launch>
+        <!--  ************** Behavior Manager ***************  -->
+	<node pkg="behavior_manager" type="BehaviorManager.py" respawn="false" name="behavior_manager" output="screen">
+	</node>
+</launch>
