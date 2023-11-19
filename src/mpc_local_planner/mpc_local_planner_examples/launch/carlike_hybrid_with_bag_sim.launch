@@ -17,12 +17,12 @@
 
         <!--  ************** Navigation ***************  -->
 	<node pkg="move_base" type="move_base" respawn="false" name="move_base" output="screen">
-  	  	<rosparam file="$(find mpc_local_planner_examples)/cfg/carlike/costmap_common_params.yaml" command="load" ns="global_costmap" />
-  	 	<rosparam file="$(find mpc_local_planner_examples)/cfg/carlike/costmap_common_params.yaml" command="load" ns="local_costmap" />
-  		<rosparam file="$(find mpc_local_planner_examples)/cfg/carlike/local_costmap_params.yaml" command="load" />
-  		<rosparam file="$(find mpc_local_planner_examples)/cfg/carlike/global_costmap_params.yaml" command="load" />
-		<!-- <rosparam file="$(find mpc_local_planner_examples)/cfg/carlike/mpc_local_planner_params_hybrid.yaml" command="load" /> -->
-  		<rosparam file="$(find mpc_local_planner_examples)/cfg/carlike/mpc_local_planner_params_quadratic_form.yaml" command="load" />
+  	  	<rosparam file="$(find mpc_local_planner_examples)/cfg/carlike/costmap_common_params_hybrid.yaml" command="load" ns="global_costmap" />
+  	 	<rosparam file="$(find mpc_local_planner_examples)/cfg/carlike/costmap_common_params_hybrid.yaml" command="load" ns="local_costmap" />
+  		<rosparam file="$(find mpc_local_planner_examples)/cfg/carlike/local_costmap_params_hybrid.yaml" command="load" />
+  		<rosparam file="$(find mpc_local_planner_examples)/cfg/carlike/global_costmap_params_hybrid.yaml" command="load" />
+		<rosparam file="$(find mpc_local_planner_examples)/cfg/carlike/mpc_local_planner_params_hybrid.yaml" command="load" />
+  		<!-- <rosparam file="$(find mpc_local_planner_examples)/cfg/carlike/mpc_local_planner_params_quadratic_form.yaml" command="load" /> -->
 
 		<param name="base_global_planner" value="global_planner/GlobalPlanner" />
 		<!-- <param name="base_global_planner" value="sample_planner/SamplePlanner" />  -->
@@ -54,7 +54,7 @@
 
 	<!-- Bagfiles-->
 	<node pkg="rosbag" type="record" name="traj_data_log_bag"
-		args="-o traj_data_log_bag /move_base_simple/goal /move_base/MpcLocalPlannerROS/obstacles /ack_cmd /move_base/global_costmap/costmap  /move_base/MpcLocalPlannerROS/local_plan /move_base/MpcLocalPlannerROS/global_plan /move_base/MpcLocalPlannerROS/ocp_result /move_base/local_costmap/footprint /move_base/GlobalPlanner/potential /move_base/local_costmap/costmap /move_base/local_costmap/costmap /map /INS/odom"  if ="$(arg with_bag)" />
+		args="-o traj_data_log_bag /move_base_simple/goal /move_base/MpcLocalPlannerROS/obstacles /ack_cmd /move_base/global_costmap/costmap  /move_base/MpcLocalPlannerROS/local_plan /move_base/MpcLocalPlannerROS/global_plan /move_base/MpcLocalPlannerROS/ocp_result /move_base/local_costmap/footprint /move_base/GlobalPlanner/potential /move_base/local_costmap/costmap /move_base/local_costmap/costmap /map /INS/odom" if ="$(arg with_bag)" />
 	
 	<!-- RViz-->
 	<node name="rviz" pkg="rviz" type="rviz" args="-d $(find mpc_local_planner_examples)/cfg/rviz_golfcart_navigation.rviz" if="$(arg rviz)"/>
