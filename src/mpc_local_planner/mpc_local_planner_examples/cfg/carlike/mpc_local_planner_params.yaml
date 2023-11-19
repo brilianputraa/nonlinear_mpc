@@ -42,7 +42,7 @@ MpcLocalPlannerROS:
   grid:
     type: "fd_grid"
     grid_size_ref: 20
-    dt_ref: 0.05
+    dt_ref: 0.1
     xf_fixed: [True, True, True]
     warm_start: True
     collocation_method: "forward_differences"

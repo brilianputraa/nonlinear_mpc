@@ -8,12 +8,12 @@ MpcLocalPlannerROS:
     simple_car:
       wheelbase: 2.48
       front_wheel_driving: False
-      max_vel_x: 2.0
-      max_vel_x_backwards: 1.5
-      max_steering_angle: 0.5236
-      acc_lim_x: 5.0 # deactive bounds with zero
-      dec_lim_x: 5.0 # deactive bounds with zero
-      max_steering_rate: 0.174533
+      max_vel_x: 0.6
+      max_vel_x_backwards: 0.5
+      max_steering_angle: 0.483 #0.523
+      acc_lim_x: 2.0 #5.0 # deactive bounds with zero
+      dec_lim_x: 2.0 #5.0 # deactive bounds with zero
+      max_steering_rate: 0.1850049 #0.261799  
       # 0.115192 0.174533  # deactive bounds with zero
 
   ## Footprint model for collision avoidance
@@ -30,19 +30,19 @@ MpcLocalPlannerROS:
 
   ## Collision avoidance
   collision_avoidance:
-    min_obstacle_dist: 0.62 # Note, this parameter must be chosen w.r.t. the footprint_model
-    enable_dynamic_obstacles: True
-    force_inclusion_dist: 0.5
+    min_obstacle_dist: 1.0 #0.82 # Note, this parameter must be chosen w.r.t. the footprint_model
+    enable_dynamic_obstacles: False
+    force_inclusion_dist: 0.83 #0.83
     cutoff_dist: 2.5 
     include_costmap_obstacles: True
-    costmap_obstacles_behind_robot_dist: 4.0
+    costmap_obstacles_behind_robot_dist: 1.0
     collision_check_no_poses: 5
     
   ## Planning grid 
   grid:
     type: "fd_grid"
     grid_size_ref: 20
-    dt_ref: 0.05
+    dt_ref: 0.1
     xf_fixed: [True, True, True]
     warm_start: True
     collocation_method: "forward_differences"
@@ -62,14 +62,16 @@ MpcLocalPlannerROS:
     objective:
       type: "quadratic_form" # minimum_time requires grid/variable_grid/enable=True and grid/xf_fixed set properly
       quadratic_form: 
-        state_weights: [2.0, 2.0, 0.5]
-        control_weights: [1.0, 0.5]
+        # state_weights: [0.1, 0.1, 0.05]
+        # control_weights: [1.0, 0.5]
+        state_weights: [2.0, 2.0, 1.0]
+        control_weights: [0.1, 0.0]
         integral_form: False
         hybrid_cost_minimum_time: False
     terminal_cost:
       type: "quadratic"
       quadratic: 
-        final_state_weights: [10.0, 10.0, 0.5]
+        final_state_weights: [10.0, 10.0, 0.001] #[10.0, 10.0, 0.5]
     terminal_constraint:
       type: "none"
 
@@ -80,12 +82,13 @@ MpcLocalPlannerROS:
     yaw_goal_tolerance: 0.1
     global_plan_overwrite_orientation: False
     global_plan_prune_distance: 1.0
-    allow_init_with_backward_motion: True
+    allow_init_with_backward_motion: False
     max_global_plan_lookahead_dist: 50 
     force_reinit_new_goal_dist: 1.0
     force_reinit_new_goal_angular: 1.57
     prefer_x_feedback: False
     publish_ocp_results: True
+    use_local_planner_only: False
     
   ## Solver settings
   solver:

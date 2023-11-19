@@ -20,7 +20,7 @@ obstacle_layer:
 
  observation_sources: laser_scan_sensor
  # NHH: should also add min/max_obstacle_height as big value (e.g. -10, 10) so that the laser scan is not filtered out in case the sensor is not parallel to ground
- laser_scan_sensor: {data_type: LaserScan, topic: /base_scan/scan, marking: true, clearing: true, observation_persistence: 0.0, min_obstacle_height: -20, max_obstacle_height: 20}
+ laser_scan_sensor: {data_type: LaserScan, topic: /rear/scan, marking: true, clearing: true, observation_persistence: 0.0, min_obstacle_height: -20, max_obstacle_height: 20}
 
 #  laser_scan_sensor_rear: {data_type: LaserScan, topic: /rear/scan, marking: true, clearing: true, observation_persistence: 0.0, min_obstacle_height: -20, max_obstacle_height: 20}
 

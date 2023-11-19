@@ -5,8 +5,7 @@ local_costmap:
   publish_frequency: 5.0
   rolling_window_map_center_shift_from_base_link_for_forward_x: 2.480    # Shift wheel-base to front wheel for forward
   rolling_window_map_center_shift_from_base_link_for_forward_y: 0.0
-  rolling_window_map_center_shift_from_base_link_for_backward_x: 0.0 
-  # Keep at the rear wheel for backward
+  rolling_window_map_center_shift_from_base_link_for_backward_x: -2.48     # Keep at the rear wheel for backward
   rolling_window_map_center_shift_from_base_link_for_backward_y: 0.0
 
 
