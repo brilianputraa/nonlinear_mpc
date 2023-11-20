@@ -34,7 +34,7 @@ class BehaviorManager():
         
         self.goal_status_sub = rospy.Subscriber("/move_base/status", GoalStatusArray, self.move_base_status_cb, queue_size=1)
         self.goal_pub = rospy.Publisher("/move_base_simple/goal", PoseStamped, queue_size=1)
-        self.mode_pub = rospy.Publisher("/mode_change", String, queue_size=1)
+        self.mode_pub = rospy.Publisher("/driving_mode", String, queue_size=1)
 
         self.parking_slot = None
         self.scenario = None
@@ -59,18 +59,8 @@ class BehaviorManager():
         self.parked_state = self.parked_state_front + self.parked_state_middle + self.parked_state_back
         
     def scenario_runner(self):        
-        rospy.loginfo("Automated Vallet Parking System is Running!")
-        #TODO: Implement the roslaunch API to launch the MPC (1st phase)
-        # Starting the Move Base Server
-        uuid = roslaunch.rlutil.get_or_generate_uuid(None, False)
-        roslaunch.configure_logging(uuid)
-        launch_with_gp = roslaunch.parent.ROSLaunchParent(uuid, [self.mpc_with_global_planner_dir])
-        launch_with_gp.start()
-        
-        # Starting the Move Base Client and Checking the Server (1st phase)
-        # self.client.wait_for_server()
-        while not self.client.wait_for_server():
-            rospy.loginfo("Waiting for the move_base action server to come up")
+        rospy.loginfo("Automated Valet Parking System is Running!")
+        rospy.loginfo("Trying to Connect to the Server")
         
         while not self.is_connected:
         # Initializing the Socket Connection to the Server
@@ -79,7 +69,6 @@ class BehaviorManager():
                 self.is_connected = True
                 print("Connection with Server Established!")
             except:
-                print("Error Connecting to the Server!")
                 rospy.sleep(0.1)
         
         test_data = struct.pack('!B', 2) + struct.pack('!B', 0)
@@ -89,16 +78,28 @@ class BehaviorManager():
         ############ Starting the Behavior Manager #############
 
         # Waiting for the Server to Send the Scenario (Dropping off the passenger and go to the parking slot)
-        while self.scenario != 1 and self.parking_slot is None:
+        while self.scenario != 1:
             rospy.loginfo("Waiting for the Server to Send the Scenario")
-            bytesData = self.sock.recv(self.BUFFER_SIZE)
-            self.scenario = bytesData[0].decode('utf-8')
-            self.parking_slot = bytesData[1].decode('utf-8')
-            ###################### Testing purposes (will be removed when the app is completed) #########################
-            self.scenario = 1
-            self.parking_slot = 14
-            ###################### Testing purposes (will be removed when the app is completed) #########################
+            bytes_data = self.sock.recv(self.BUFFER_SIZE)
+            bytes_data = bytearray(bytes_data)
+            self.scenario = bytes_data[0]
+            self.parking_slot = int(bytes_data[1]) * 256 + bytes_data[2]
+
+        print('Receive scenario: {:d}, slot number: {:d}'.format(self.scenario, self.parking_slot))
+
+        #TODO: Implement the roslaunch API to launch the MPC (1st phase)
+        # Starting the Move Base Server
+        uuid = roslaunch.rlutil.get_or_generate_uuid(None, False)
+        roslaunch.configure_logging(uuid)
+        launch_with_gp = roslaunch.parent.ROSLaunchParent(uuid, [self.mpc_with_global_planner_dir])
+        launch_with_gp.start()
+         
+        # Starting the Move Base Client and Checking the Server (1st phase)
+        while not self.client.wait_for_server():
+            rospy.sleep(0.1)
             
+        rospy.loginfo("Move_base action server is on")
+               
         # Activate the Autonomous Driving Mode
         self.mode_pub.publish(self.autonomous_mode)
         print("Received Data!")
@@ -123,7 +124,8 @@ class BehaviorManager():
             # Starting the Move Base Client and Checking the Server (2nd phase)
             # self.client.wait_for_server()
             while not self.client.wait_for_server():
-                rospy.loginfo("Waiting for the move_base action server to come up")
+                rospy.sleep(0.1)
+            rospy.loginfo("Move_base action server is on")
             
             for i in range(self.waiting_time_before_parking):
                 print("Waiting before going to the parking slot: ", i)
@@ -172,11 +174,11 @@ class BehaviorManager():
             launch_with_gp_pickup.start()
             # Starting the Move Base Client and Checking the Server (3rd phase)
             while not self.client.wait_for_server():
-                rospy.loginfo("Waiting for the move_base action server to come up")
+                rospy.sleep(0.1)
+            rospy.loginfo("Move_base action server is on")  
             rospy.loginfo("Going to the passenger")
             goal_points = self.pickup_point_list[0, 0:3]
             goal = self.goal_utils.get_the_goal(goal_points, pickup=True)
-            print(goal)
             self.client.send_goal(goal)
             #TODO: Possibly not able to know the status of the goal (can be replaced with manually receiving the status from the server)
             self.client.wait_for_result()
