@@ -26,11 +26,13 @@ class BehaviorManager():
         self.HOST = rospy.get_param("~SERVER_HOST")
         self.goal_lists_dir = rospy.get_param("~goal_lists_dir")
         self.pickup_point_list_dir = rospy.get_param("~pickup_point_list_dir")
+        self.intemediate_goal_dir = rospy.get_param("~intermediate_goal_lists_dir")
         self.mpc_with_global_planner_dir = rospy.get_param("~mpc_with_global_planner_dir")
         self.mpc_without_global_planner_dir = rospy.get_param("~mpc_without_global_planner_dir")
         
         self.goal_point_list = np.loadtxt(self.goal_lists_dir, delimiter=',')
         self.pickup_point_list = np.loadtxt(self.pickup_point_list_dir, delimiter=',')
+        self.intemediate_goal_dir = np.loadtxt(self.intemediate_goal_dir, delimiter=',')
         
         self.goal_status_sub = rospy.Subscriber("/move_base/status", GoalStatusArray, self.move_base_status_cb, queue_size=1)
         self.goal_pub = rospy.Publisher("/move_base_simple/goal", PoseStamped, queue_size=1)
@@ -114,12 +116,15 @@ class BehaviorManager():
             self.client.send_goal(goal)
             #TODO: Possibly not able to know the status of the goal (can be replaced with manually receiving the status from the server)
             self.client.wait_for_result()
-            rospy.loginfo("Passenger successfully dropped off")
             
             #TODO: Implement the roslaunch API to kill the current MPC and change the MPC parameters (2nd phase)
-            launch_with_gp.shutdown()
-            launch_without_gp = roslaunch.parent.ROSLaunchParent(uuid, [self.mpc_without_global_planner_dir])
-            launch_without_gp.start()
+            if self.client.get_result():
+                rospy.loginfo("Passenger successfully dropped off")
+                launch_with_gp.shutdown()
+                launch_without_gp = roslaunch.parent.ROSLaunchParent(uuid, [self.mpc_without_global_planner_dir])
+                launch_without_gp.start()
+            else:
+                rospy.loginfo("Passenger drop off failed")
             
             # Starting the Move Base Client and Checking the Server (2nd phase)
             # self.client.wait_for_server()
@@ -136,16 +141,19 @@ class BehaviorManager():
             self.client.send_goal(goal)
             #TODO: Possibly not able to know the status of the goal (can be replaced with manually receiving the status from the server)
             self.client.wait_for_result()
-            rospy.loginfo("The golf-cart is parked")
-            self.cart_parked = True
+            if self.client.get_result():
+                rospy.loginfo("The golf-cart is parked")
+                self.cart_parked = True
             
-            # Change to the manual driving mode
-            self.mode_pub.publish(self.manual_mode)
-            # Sending the parked state to the Server
-            self.sock.send(self.parked_state)
-            print("Parked State Sent!")
-            # Resetting the Scenario and to be ready for the next phase
-            launch_without_gp.shutdown()
+                # Change to the manual driving mode
+                self.mode_pub.publish(self.manual_mode)
+                # Sending the parked state to the Server
+                self.sock.send(self.parked_state)
+                print("Parked State Sent!")
+                # Resetting the Scenario and to be ready for the next phase
+                launch_without_gp.shutdown()
+            else:
+                rospy.loginfo("Parking failed")
         
         # Waiting for the Server to Send the Scenario (When the server requests the pickup)
         while True:
@@ -177,21 +185,36 @@ class BehaviorManager():
                 rospy.sleep(0.1)
             rospy.loginfo("Move_base action server is on")  
             rospy.loginfo("Going to the passenger")
-            goal_points = self.pickup_point_list[0, 0:3]
+            # Intermediate goal points setter
+            goal_points = self.intemediate_goal_dir[0, 1:]
             goal = self.goal_utils.get_the_goal(goal_points, pickup=True)
             self.client.send_goal(goal)
             #TODO: Possibly not able to know the status of the goal (can be replaced with manually receiving the status from the server)
             self.client.wait_for_result()
-            rospy.loginfo("Passenger successfully picked up")
-            # Change to the manual driving mode
-            self.mode_pub.publish(self.manual_mode)
-            
-            # Resetting the Scenario and the Parking Slot  
-            self.is_connected = False
-            self.scenario = None
-            self.parking_slot = None
-            self.cart_parked = False
-            launch_with_gp_pickup.shutdown()
+            if self.client.get_result():
+                rospy.loginfo("Intermediate goal reached")
+                # After the intermediate goal is reached, the goal is set to the actual pickup point
+                goal_points = self.pickup_point_list[0, :]
+                goal = self.goal_utils.get_the_goal(goal_points, pickup=True)
+                self.client.send_goal(goal)
+            else:
+                rospy.loginfo("Intermediate goal failed")
+            self.client.wait_for_result()
+            # When the passenger is picked up successfully, reset the state of the scenario
+            if self.client.get_result():
+                rospy.loginfo("Passenger successfully picked up")
+                self.cart_parked = False
+                # Change to the manual driving mode
+                self.mode_pub.publish(self.manual_mode)
+                
+                # Resetting the Scenario and the Parking Slot  
+                self.is_connected = False
+                self.scenario = None
+                self.parking_slot = None
+                self.cart_parked = False
+                launch_with_gp_pickup.shutdown()
+            else:
+                rospy.loginfo("Passenger pickup failed")
             
     def move_base_status_cb(self, msg):
         if self.goal_utils.get_the_goal_reached_status(msg):
