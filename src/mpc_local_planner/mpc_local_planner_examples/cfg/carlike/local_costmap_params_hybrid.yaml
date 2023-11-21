@@ -5,15 +5,15 @@ local_costmap:
   publish_frequency: 5.0
   rolling_window_map_center_shift_from_base_link_for_forward_x: 2.480    # Shift wheel-base to front wheel for forward
   rolling_window_map_center_shift_from_base_link_for_forward_y: 0.0
-  rolling_window_map_center_shift_from_base_link_for_backward_x: 0.0     # Keep at the rear wheel for backward
+  rolling_window_map_center_shift_from_base_link_for_backward_x: -2.480     # Keep at the rear wheel for backward
   rolling_window_map_center_shift_from_base_link_for_backward_y: 0.0
 
   static_map: true
   rolling_window: true
   # NHH: width and height should be 30 m to allow the full local planning (about 15 m)
   # NHH: width and height should not be greater or the processing time is more than 0.1 sec
-  width: 12.0
-  height: 12.0
+  width: 15.0
+  height: 15.0
   # NHH: should set the same as the resolution of the input map to fully utilize the map
   resolution: 0.1
   transform_tolerance: 0.5

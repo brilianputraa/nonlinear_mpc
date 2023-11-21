@@ -12,22 +12,23 @@ obstacle_layer:
  enabled: true
  obstacle_range: 100.0 #30.0
  raytrace_range: 100.0 #35
- max_obstacle_height: 20     # NHH: should be set as big value (e.g. 10) so that the laser scan is not filtered out in case the sensor is not parallel to ground
+ inflation_radius: 15
+ # NHH: should be set as big value (e.g. 10) so that the laser scan is not filtered out in case the sensor is not parallel to ground
+ max_obstacle_height: 20
  track_unknown_space: false
  combination_method: 1
- reset_before_update_bounds: true
 
  observation_sources: laser_scan_sensor
  # NHH: should also add min/max_obstacle_height as big value (e.g. -10, 10) so that the laser scan is not filtered out in case the sensor is not parallel to ground
- #laser_scan_sensor: {data_type: LaserScan, topic: /base_scan/scan, marking: true, clearing: true, observation_persistence: 0.0, min_obstacle_height: -20, max_obstacle_height: 20}
- laser_scan_sensor: {data_type: LaserScan, topic: /base_scan/scan, marking: true, clearing: false, observation_persistence: 0.0, min_obstacle_height: -20, max_obstacle_height: 20}
+ laser_scan_sensor: {data_type: LaserScan, topic: /base_scan/scan, marking: true, clearing: true, observation_persistence: 0.0, min_obstacle_height: -20, max_obstacle_height: 20}
+
 #  velodyne_sensor: {data_type: PointCloud2, topic: /velodyne_points, marking: true, clearing: true}
 
 
 inflation_layer:
   enabled:              true
-  cost_scaling_factor:  2.0  # exponential rate at which the obstacle cost drops off (default: 10)
-  inflation_radius:     1.75  # max. distance from an obstacle at which costs are incurred for planning paths.
+  cost_scaling_factor:  10.0  # exponential rate at which the obstacle cost drops off (default: 10)
+  inflation_radius:     10  # max. distance from an obstacle at which costs are incurred for planning paths.
 
 static_layer:
   enabled:              true

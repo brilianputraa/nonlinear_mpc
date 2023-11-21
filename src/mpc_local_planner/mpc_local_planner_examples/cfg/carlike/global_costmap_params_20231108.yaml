@@ -4,11 +4,6 @@ global_costmap:
   update_frequency: 1.0 #1.0
   publish_frequency: 0.5 #0.5
   static_map: true
-  
-  width: 150
-  height: 150
-  resolution: 0.5
-  rolling_window: false
  
   transform_tolerance: 0.5
   plugins:
