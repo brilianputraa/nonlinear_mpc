@@ -1,7 +1,0 @@
-[01m[K/home/vialab/nonlinear_mpc/src/mpc_local_planner/mpc_local_planner/src/controller.cpp:[m[K In member function ‘[01m[Kbool mpc_local_planner::Controller::step(const std::vector<geometry_msgs::PoseStamped_<std::allocator<void> > >&, const Twist&, double, ros::Time, corbo::TimeSeries::Ptr, corbo::TimeSeries::Ptr)[m[K’:
-[01m[K/home/vialab/nonlinear_mpc/src/mpc_local_planner/mpc_local_planner/src/controller.cpp:179:45:[m[K [01;31m[Kerror: [m[Kno match for call to ‘[01m[K(corbo::StaticReference) (Eigen::VectorXd&)[m[K’
-     std::cout << "Current X Ref " << xref(xf[01;31m[K)[m[K << std::endl;
-                                             [01;31m[K^[m[K
-make[2]: *** [CMakeFiles/mpc_local_planner.dir/src/controller.cpp.o] Error 1
-make[1]: *** [CMakeFiles/mpc_local_planner.dir/all] Error 2
-make: *** [all] Error 2
