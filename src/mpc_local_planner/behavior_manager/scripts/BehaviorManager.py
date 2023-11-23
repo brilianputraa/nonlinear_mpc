@@ -39,6 +39,7 @@ class BehaviorManager():
         self.mode_pub = rospy.Publisher("/driving_mode", String, queue_size=1)
 
         self.parking_slot = None
+        self.pickup_req = None
         self.scenario = None
         self.is_connected = False
         self.cart_parked = False
@@ -119,6 +120,7 @@ class BehaviorManager():
             
             #TODO: Implement the roslaunch API to kill the current MPC and change the MPC parameters (2nd phase)
             if self.client.get_result():
+                print("Goal is reached status: %s".format(self.client.get_result()))
                 rospy.loginfo("Passenger successfully dropped off")
                 launch_with_gp.shutdown()
                 launch_without_gp = roslaunch.parent.ROSLaunchParent(uuid, [self.mpc_without_global_planner_dir])
@@ -142,6 +144,7 @@ class BehaviorManager():
             #TODO: Possibly not able to know the status of the goal (can be replaced with manually receiving the status from the server)
             self.client.wait_for_result()
             if self.client.get_result():
+                print("Goal is reached status: %s".format(self.client.get_result()))
                 rospy.loginfo("The golf-cart is parked")
                 self.cart_parked = True
             
@@ -150,30 +153,30 @@ class BehaviorManager():
                 # Sending the parked state to the Server
                 self.sock.send(self.parked_state)
                 print("Parked State Sent!")
-                # Resetting the Scenario and to be ready for the next phase
+                # Resetting the Scenario and to be ready for the next phase (Shutdown the local planner)
                 launch_without_gp.shutdown()
             else:
                 rospy.loginfo("Parking failed")
         
         # Waiting for the Server to Send the Scenario (When the server requests the pickup)
+        rospy.loginfo("Waiting for the Server for Requesting Pickup")
         while True:
-            rospy.loginfo("Waiting for the Server for Requesting Pickup")
             bytes_data = self.sock.recv(self.BUFFER_SIZE)
             self.scenario = bytes_data[0].decode('utf-8')
-            self.parking_slot = bytes_data[1].decode('utf-8')
+            self.pickup_req = bytes_data[1].decode('utf-8')
             
             ###################### Testing purposes (will be removed when the app is completed) #########################
             self.scenario = 2
-            self.parking_slot = 0
+            self.pickup_req = 0
             ############################################################################################################
 
-            if self.scenario == 2 and self.parking_slot == 0:
+            if self.scenario == 2 and self.pickup_req == 0:
                 rospy.loginfo("The Server has requested the pickup")
                 break
         
         # Start the Scenario (Getting the second goal): Picking up the passenger
         if self.scenario == 2 and self.cart_parked:
-            launch_with_gp_pickup = roslaunch.parent.ROSLaunchParent(uuid, [self.mpc_with_global_planner_dir])
+            launch_with_gp_pickup = roslaunch.parent.ROSLaunchParent(uuid, [self.mpc_without_global_planner_dir])
             for i in range(self.waiting_time_before_pickup):
                 print("Waiting before picking up the passenger: ", i)
             # Activate the Autonomous Driving Mode
@@ -186,19 +189,33 @@ class BehaviorManager():
             rospy.loginfo("Move_base action server is on")  
             rospy.loginfo("Going to the passenger")
             # Intermediate goal points setter
-            goal_points = self.intemediate_goal_dir[0, 1:]
-            goal = self.goal_utils.get_the_goal(goal_points, pickup=True)
+            # First intermediate goal
+            goal_points = self.goal_point_list[self.parking_slot, 7:10]
+            print(goal_points)
+            goal = self.goal_utils.get_the_goal(goal_points, pickup=False)
             self.client.send_goal(goal)
             #TODO: Possibly not able to know the status of the goal (can be replaced with manually receiving the status from the server)
             self.client.wait_for_result()
             if self.client.get_result():
-                rospy.loginfo("Intermediate goal reached")
+                rospy.loginfo("1st Intermediate goal reached")
+                # After the intermediate goal is reached, the goal is set to the actual pickup point
+                goal_points = self.goal_point_list[self.parking_slot, 10:]
+                goal = self.goal_utils.get_the_goal(goal_points, pickup=False)
+                self.client.send_goal(goal)
+            else:
+                rospy.loginfo("1st Intermediate goal failed")
+            
+            # Second Intermediate goal
+            self.client.wait_for_result()
+            if self.client.get_result():
+                rospy.loginfo("2nd Intermediate goal reached")
                 # After the intermediate goal is reached, the goal is set to the actual pickup point
                 goal_points = self.pickup_point_list[0, :]
                 goal = self.goal_utils.get_the_goal(goal_points, pickup=True)
                 self.client.send_goal(goal)
             else:
-                rospy.loginfo("Intermediate goal failed")
+                rospy.loginfo("2nd Intermediate goal failed")
+            
             self.client.wait_for_result()
             # When the passenger is picked up successfully, reset the state of the scenario
             if self.client.get_result():
