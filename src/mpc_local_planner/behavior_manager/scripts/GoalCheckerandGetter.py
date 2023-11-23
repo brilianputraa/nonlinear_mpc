@@ -36,8 +36,8 @@ class GoalCheckerandGetter():
             goal.target_pose.pose.position.x = goal_points[0]
             goal.target_pose.pose.position.y = goal_points[1]
         else: 
-            goal.target_pose.pose.position.x = goal_points[0] - 50
-            goal.target_pose.pose.position.y = goal_points[1] - 50
+            goal.target_pose.pose.position.x = goal_points[0]
+            goal.target_pose.pose.position.y = goal_points[1]
         rpy_goal = quaternion_from_euler(0, 0, goal_points[2])
         goal.target_pose.pose.orientation.x = rpy_goal[0]
         goal.target_pose.pose.orientation.y = rpy_goal[1]
