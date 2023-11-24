@@ -1,5 +1,6 @@
 
 import math
+import os
 
 import rospy
 import actionlib
@@ -9,8 +10,9 @@ import tf.transformations
 import GazeboHelper
 import GoalCheckerandGetter
 
-from geometry_msgs.msg import Pose
+from nav_msgs.msg import Odometry
 from geometry_msgs.msg import Twist
+from geometry_msgs.msg import Pose
 from gazebo_msgs.msg import ModelState
 from gazebo_msgs.srv import SetModelState
 from move_base_msgs.msg import MoveBaseActionGoal
@@ -48,8 +50,11 @@ class BatchSim:
         # Set the initial pose of the robot in the gazebo world
         self.pose_z = 0.098094
         # Get the rosparam
-        self.pickup_point_dir = rospy.get_param("/pickup_point_dir")
-        self.mpc_local_planner_launch_dir = rospy.get_param("/mpc_local_planner_launch_dir")
+        self.pickup_point_dir = rospy.get_param("~pickup_point_dir")
+        self.mpc_local_planner_launch_dir = rospy.get_param("~mpc_local_planner_launch_dir")
+        # ROS Subscribers
+        self.odom_sub = rospy.Subscriber("/odom", Odometry, self.odom_callback)
+        self.cmd_vel_sub = rospy.Subscriber("/cmd_vel", Twist, self.cmd_vel_callback)
         # Get the goal pose of the robot in the gazebo world
         self.pickup_point_list = np.loadtxt(self.pickup_point_dir, delimiter=',')
         # Grid area of the search
@@ -66,12 +71,13 @@ class BatchSim:
         # ROS Timeouts
         self.move_base_client_timeout = 120.0
         # Loggers
+        self.logdir = os.path.join(os.path.dirname(os.path.realpath(__file__)), "logs")
         self.log_file_everything = None
         self.log_file_per_grid_point = None
         self.log_file_name_grid_point = None
 
     def run_batch_sim(self):
-        with open("log_everything.txt", "w") as self.log_file_everything:
+        with open(os.path.join(self.logdir, "log_everything.txt"), "w") as self.log_file_everything:
             # Write Header to the log file
             self.log_file_everything.write("x_grid,y_grid,yaw_grid,distance_travelled,time_elapsed,goal_status\n")
             # For each x in the grid area
@@ -85,7 +91,7 @@ class BatchSim:
                         # Set the log file name for the current grid point
                         self.log_file_name_grid_point = "log_per_grid_point_" + str(x) + "_" + str(y) + "_" + str(yaw) + ".txt"
                         # Open the log file for the current grid point
-                        with open(self.log_file_name_grid_point, "w") as self.log_file_per_grid_point:
+                        with open(os.path.join(self.logdir, self.log_file_name_grid_point), "w") as self.log_file_per_grid_point:
                             # Write Header to the log file
                             self.log_file_per_grid_point.write("time,current_pose_x,current_pose_y,current_pose_heading,current_twist_linear_x,current_twist_linear_y,current_twist_angular_x,current_twist_angular_y,current_twist_angular_z,current_vel_command,current_steering_command,goal_status\n")
                             # Set the pose of the robot to the current grid poin
@@ -101,11 +107,11 @@ class BatchSim:
                             # Send the goal pose to the move base client
                             goal = gcg.get_the_goal(self.pickup_point_list)
                             self.client.send_goal(goal)
-                            self.time = rospy.Time.now()
+                            self.time = self.client.get_goal_status().header.stamp
                             # Wait for the goal to be reached
                             while self.status != actionlib.GoalStatus.SUCCEEDED or self.status != actionlib.GoalStatus.ABORTED or not self.timeout:
                                 self.status = self.client.get_state()
-                                self.timeout = (rospy.Time.now() - self.client.get_goal_status().header.stamp) > rospy.Duration.from_sec(self.move_base_client_timeout)
+                                self.timeout = (rospy.Time.now() - self.time) > rospy.Duration.from_sec(self.move_base_client_timeout)
                                 self.log_file_per_grid_point.write(ros::Time::now() + "," + self.current_pose_x + "," + self.current_pose_y + "," + self.current_pose_heading + "," + self.current_twist_linear_x + "," + self.current_twist_linear_y + "," + self.current_twist_angular_x + "," + self.current_twist_angular_y + "," + self.current_twist_angular_z + "," + self.current_vel_command + "," + self.current_steering_command + "," + self.status + "\n")
                                 self.current_pose.append([self.current_pose_x, self.current_pose_y])
                             # Shutdown the mpc_local_planner
