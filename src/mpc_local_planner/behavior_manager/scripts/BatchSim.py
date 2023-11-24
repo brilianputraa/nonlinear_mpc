@@ -85,69 +85,75 @@ class BatchSim:
         self.log_file_name_grid_point = None
 
     def run_batch_sim(self):
+        # Create the log directory and open the log file
         os.mkdir(self.logdir)
-        rospy.sleep(0.1)
-        with open(os.path.join(self.logdir, "log_all_grid.txt"), "w") as self.log_file_everything:
-            # Write Header to the log file
-            # print("WRITING HEADER")
-            self.log_file_everything.write("x_grid,y_grid,yaw_grid,distance_travelled,time_elapsed,goal_status\n")
-            # For each x in the grid area
-            for x in np.arange(self.grid_x_min, self.grid_x_max, self.increment_grid_size_x):
-                # For each y in the grid area
-                for y in np.arange(self.grid_y_min, self.grid_y_max, self.increment_grid_size_y):
-                    # For each yaw in the grid area
-                    for yaw in np.arange(self.grid_yaw_min, self.grid_yaw_max, self.increment_grid_size_yaw):
-                        # Set the log file name for the current grid point
-                        self.log_file_name_grid_point = "log_per_grid_point_" + str(x) + "_" + str(y) + "_" + str(yaw) + ".txt"
-                        # Open the log file for the current grid point
-                        with open(os.path.join(self.logdir, self.log_file_name_grid_point), "w") as self.log_file_per_grid_point:
-                            # Write Header to the log file
-                             # print("WRITING HEADER")
-                            self.log_file_per_grid_point.write("time,current_pose_x,current_pose_y,current_pose_heading,current_twist_linear_x,current_twist_linear_y,current_twist_angular_x,current_twist_angular_y,current_twist_angular_z,current_vel_command,current_steering_command,goal_status\n")
-                            # Set the pose of the robot to the current grid poin
-                            self.gh.setModelPoseAndSpeed("rbcar", [x, y, self.pose_z, 0.0, 0.0, yaw], [0.0, 0.0, 0.0, 0.0, 0.0, 0.0])
+        log_file_everything = open(os.path.join(self.logdir, "log_all_grid.txt"), "w")
+        # Write Header to the log file
+        log_file_everything.write("x_grid,y_grid,yaw_grid,distance_travelled,time_elapsed,goal_status\n")
+        # For each x in the grid area
+        for x in np.arange(self.grid_x_min, self.grid_x_max, self.increment_grid_size_x):
+            # For each y in the grid area
+            for y in np.arange(self.grid_y_min, self.grid_y_max, self.increment_grid_size_y):
+                # For each yaw in the grid area
+                for yaw in np.arange(self.grid_yaw_min, self.grid_yaw_max, self.increment_grid_size_yaw):
+                    # Set the log file name for the current grid point
+                    self.log_file_name_grid_point = "log_per_grid_point_" + str(x) + "_" + str(y) + "_" + str(yaw) + ".txt"
+                    # Open the log file for the current grid point
+                    with open(os.path.join(self.logdir, self.log_file_name_grid_point), "w") as log_file_per_grid_point:
+                        # Write Header to the log file
+                            # print("WRITING HEADER")
+                        log_file_per_grid_point.write("time,current_pose_x,current_pose_y,current_pose_heading,current_twist_linear_x,current_twist_linear_y,current_twist_angular_x,current_twist_angular_y,current_twist_angular_z,current_vel_command,current_steering_command,goal_status\n")
+                        # Set the pose of the robot to the current grid poin
+                        self.gh.setModelPoseAndSpeed("rbcar", [x, y, self.pose_z, 0.0, 0.0, yaw], [0.0, 0.0, 0.0, 0.0, 0.0, 0.0])
+                        rospy.sleep(0.1)
+                        # Launch the mpc_local_planner
+                        uuid = roslaunch.rlutil.get_or_generate_uuid(None, False)
+                        roslaunch.configure_logging(uuid)
+                        # Configure the arguments for the bag file
+                        bag_file_args = "bag_name:=" + "log_per_grid_point_" + str(x) + "_" + str(y) + "_" + str(yaw)
+                        cli_args = [self.mpc_local_planner_launch_dir, bag_file_args]
+                        launch_without_gp = roslaunch.parent.ROSLaunchParent(uuid, [(roslaunch.rlutil.resolve_launch_arguments(cli_args)[0], cli_args[1:])])
+                        # Start the mpc_local_planner
+                        launch_without_gp.start()            
+                        # Starting the Move Base Client
+                        while not self.client.wait_for_server():
                             rospy.sleep(0.1)
-                            # Launch the mpc_local_planner
-                            uuid = roslaunch.rlutil.get_or_generate_uuid(None, False)
-                            roslaunch.configure_logging(uuid)
-                            launch_without_gp = roslaunch.parent.ROSLaunchParent(uuid, [self.mpc_local_planner_launch_dir])
-                            launch_without_gp.start()            
-                            # Starting the Move Base Client
-                            while not self.client.wait_for_server():
-                                rospy.sleep(0.1)
-                            # Send the goal pose to the move base client
-                            goal = self.gcg.get_the_goal(self.pickup_point_list[0, :])
-                            self.client.send_goal(goal)
-                            self.time = rospy.Time.now()
-                            # Wait for the goal to be reached
-                            while self.status != 3 and self.status != 4 and not self.timeout:
-                                self.status = self.client.get_state()
-                                # print("Running Time: " + str(rospy.Time.now().to_sec() - self.time.to_sec()) + " Goal Status: " + str(self.status))
-                                self.timeout = (rospy.Time.now().to_sec() - self.time.to_sec()) > self.move_base_client_timeout
-                                # If new pose is received then write to the log file
-                                if self.odom_stamp != self.previous_odom_stamp:
-                                    # print(4)
-                                    self.log_file_per_grid_point.write(str(rospy.Time.now()) + "," + str(self.current_pose_x) + "," + str(self.current_pose_y) + "," + str(self.current_pose_heading) + "," + str(self.current_twist_linear_x) + "," + str(self.current_twist_linear_y) + "," + str(self.current_twist_angular_x) + "," + str(self.current_twist_angular_y) + "," + str(self.current_twist_angular_z) + "," + str(self.current_vel_command) + "," + str(self.current_steering_command) + "," + str(self.status) + "\n")
-                                    self.current_pose.append([self.current_pose_x, self.current_pose_y])
-                                    self.previous_odom_stamp = self.odom_stamp
-                        # Calculate the time elapsed
-                        self.time_elapsed = rospy.Time.now().to_sec() - self.time.to_sec()
-                        # Shutdown the mpc_local_planner
-                        launch_without_gp.shutdown()
-                        # Calculate the distance travelled
-                        current_pose_array = np.array(self.current_pose)
-                        self.distance_travelled = np.linalg.norm(current_pose_array[1:, :] - current_pose_array[:-1, :], axis=1).sum()
-                        print("Distance Travelled: " + str(self.distance_travelled) + " Time Elapsed: " + str(self.time_elapsed) + " Status: " + str(self.status))
-                        # Write to the whole log file
-                        if self.status == 3:
-                            self.goal_status = "SUCCEDDED"
-                        elif self.status == 4:
-                            self.goal_status = "ABORTED"
-                        elif self.timeout:
-                            self.goal_status = "TIMEOUT"
-                        self.log_file_everything.write(str(x) + "," + str(y) + "," + str(yaw) + "," + str(self.distance_travelled) + "," + str(self.time_elapsed) + "," + str(self.goal_status) + "\n")
-                        # Reset the variables
-                        self.reset_variables()
+                        # Send the goal pose to the move base client
+                        goal = self.gcg.get_the_goal(self.pickup_point_list[0, :])
+                        self.client.send_goal(goal)
+                        self.time = rospy.Time.now()
+                        # Wait for the goal to be reached
+                        while self.status != 3 and self.status != 4 and not self.timeout:
+                            self.status = self.client.get_state()
+                            # print("Running Time: " + str(rospy.Time.now().to_sec() - self.time.to_sec()) + " Goal Status: " + str(self.status))
+                            self.timeout = (rospy.Time.now().to_sec() - self.time.to_sec()) > self.move_base_client_timeout
+                            # If new pose is received then write to the log file
+                            if self.odom_stamp != self.previous_odom_stamp:
+                                # print(4)
+                                log_file_per_grid_point.write(str(rospy.Time.now()) + "," + str(self.current_pose_x) + "," + str(self.current_pose_y) + "," + str(self.current_pose_heading) + "," + str(self.current_twist_linear_x) + "," + str(self.current_twist_linear_y) + "," + str(self.current_twist_angular_x) + "," + str(self.current_twist_angular_y) + "," + str(self.current_twist_angular_z) + "," + str(self.current_vel_command) + "," + str(self.current_steering_command) + "," + str(self.status) + "\n")
+                                self.current_pose.append([self.current_pose_x, self.current_pose_y])
+                                self.previous_odom_stamp = self.odom_stamp
+                    # Calculate the time elapsed
+                    self.time_elapsed = rospy.Time.now().to_sec() - self.time.to_sec()
+                    # Shutdown the mpc_local_planner
+                    launch_without_gp.shutdown()
+                    # Calculate the distance travelled
+                    current_pose_array = np.array(self.current_pose)
+                    self.distance_travelled = np.linalg.norm(current_pose_array[1:, :] - current_pose_array[:-1, :], axis=1).sum()
+                    # Write to the whole log file
+                    if self.status == 3:
+                        self.goal_status = "SUCCEDDED"
+                    elif self.status == 4:
+                        self.goal_status = "ABORTED"
+                    elif self.timeout:
+                        self.goal_status = "TIMEOUT"
+                    # Writing to the log files
+                    log_file_everything.write(str(x) + "," + str(y) + "," + str(yaw) + "," + str(self.distance_travelled) + "," + str(self.time_elapsed) + "," + str(self.goal_status) + "\n")
+                    rospy.sleep(0.1)
+                    # Reset the variables
+                    self.reset_variables()
+        # Close the log files
+        log_file_everything.close()
                     
     def odom_callback(self, odom):
         self.odom_stamp = odom.header.stamp
@@ -196,4 +202,3 @@ if __name__ == '__main__':
     batch_sim = BatchSim()
     while not rospy.is_shutdown():
         batch_sim.run_batch_sim()
-        
