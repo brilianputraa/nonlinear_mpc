@@ -1,21 +1,22 @@
+#!/usr/bin/env python2.7
 
 import math
 import os
-
+import datetime
 import rospy
 import actionlib
 import roslaunch
 import numpy as np
 import tf.transformations
-import GazeboHelper
-import GoalCheckerandGetter
+import GazeboHelper as gh
+import GoalCheckerandGetter as gcg
 
 from nav_msgs.msg import Odometry
 from geometry_msgs.msg import Twist
 from geometry_msgs.msg import Pose
 from gazebo_msgs.msg import ModelState
 from gazebo_msgs.srv import SetModelState
-from move_base_msgs.msg import MoveBaseActionGoal
+from move_base_msgs.msg import MoveBaseAction
 from move_base_msgs.msg import MoveBaseGoal
 
 
@@ -33,6 +34,10 @@ class BatchSim:
         self.current_twist_angular_z = None
         self.previous_pose_x = None
         self.previous_pose_y = None
+        self.previous_command_vel = None
+        self.previous_command_steering = None
+        self.odom_stamp = None
+        self.previous_odom_stamp = None
         # Control commands
         self.current_vel_command = None
         self.current_steering_command = None
@@ -44,19 +49,19 @@ class BatchSim:
         self.goal_reached = False
         self.status = None
         # Helper classes
-        self.gh = GazeboHelper()
-        self.gcg = GoalCheckerandGetter()
-        self.move_base_client = actionlib.SimpleActionClient('move_base', MoveBaseActionGoal)
+        self.gh = gh.GazeboHelper()
+        self.gcg = gcg.GoalCheckerandGetter()
+        self.client = actionlib.SimpleActionClient('move_base',MoveBaseAction)
         # Set the initial pose of the robot in the gazebo world
         self.pose_z = 0.098094
         # Get the rosparam
-        self.pickup_point_dir = rospy.get_param("~pickup_point_dir")
-        self.mpc_local_planner_launch_dir = rospy.get_param("~mpc_local_planner_launch_dir")
+        self.pickup_point_list_dir = rospy.get_param("~pickup_point_list_dir")
+        self.mpc_local_planner_launch_dir = rospy.get_param("~mpc_without_global_planner_dir")
         # ROS Subscribers
         self.odom_sub = rospy.Subscriber("/odom", Odometry, self.odom_callback)
         self.cmd_vel_sub = rospy.Subscriber("/cmd_vel", Twist, self.cmd_vel_callback)
         # Get the goal pose of the robot in the gazebo world
-        self.pickup_point_list = np.loadtxt(self.pickup_point_dir, delimiter=',')
+        self.pickup_point_list = np.loadtxt(self.pickup_point_list_dir, delimiter=',')
         # Grid area of the search
         self.grid_x_min = 26.071
         self.grid_x_max = 29.071
@@ -69,23 +74,27 @@ class BatchSim:
         self.increment_grid_size_y = 0.2
         self.increment_grid_size_yaw = 0.0872665  
         # ROS Timeouts
-        self.move_base_client_timeout = 120.0
+        self.move_base_client_timeout = 60.0
         # Loggers
-        self.logdir = os.path.join(os.path.dirname(os.path.realpath(__file__)), "logs")
+        self.current_date_time = datetime.datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
+        self.logdir = os.path.join(os.path.dirname(os.path.realpath(__file__)), "logs", self.current_date_time)
         self.log_file_everything = None
         self.log_file_per_grid_point = None
         self.log_file_name_grid_point = None
 
     def run_batch_sim(self):
+        os.mkdir(self.logdir)
+        rospy.sleep(0.1)
         with open(os.path.join(self.logdir, "log_everything.txt"), "w") as self.log_file_everything:
             # Write Header to the log file
+            # print("WRITING HEADER")
             self.log_file_everything.write("x_grid,y_grid,yaw_grid,distance_travelled,time_elapsed,goal_status\n")
             # For each x in the grid area
-            for x in range(self.grid_x_min, self.grid_x_max, self.increment_grid_size_x):
+            for x in np.arange(self.grid_x_min, self.grid_x_max, self.increment_grid_size_x):
                 # For each y in the grid area
-                for y in range(self.grid_y_min, self.grid_y_max, self.increment_grid_size_y):
+                for y in np.arange(self.grid_y_min, self.grid_y_max, self.increment_grid_size_y):
                     # For each yaw in the grid area
-                    for yaw in range(self.grid_yaw_min, self.grid_yaw_max, self.increment_grid_size_yaw):
+                    for yaw in np.arange(self.grid_yaw_min, self.grid_yaw_max, self.increment_grid_size_yaw):
                         # Write the current grid point to the log file
                         self.log_file_everything.write(str(x) + "," + str(y) + "," + str(yaw) + ",")
                         # Set the log file name for the current grid point
@@ -93,6 +102,7 @@ class BatchSim:
                         # Open the log file for the current grid point
                         with open(os.path.join(self.logdir, self.log_file_name_grid_point), "w") as self.log_file_per_grid_point:
                             # Write Header to the log file
+                             # print("WRITING HEADER")
                             self.log_file_per_grid_point.write("time,current_pose_x,current_pose_y,current_pose_heading,current_twist_linear_x,current_twist_linear_y,current_twist_angular_x,current_twist_angular_y,current_twist_angular_z,current_vel_command,current_steering_command,goal_status\n")
                             # Set the pose of the robot to the current grid poin
                             self.gh.setModelPoseAndSpeed("rbcar", [x, y, self.pose_z, 0.0, 0.0, yaw], [0.0, 0.0, 0.0, 0.0, 0.0, 0.0])
@@ -105,17 +115,20 @@ class BatchSim:
                             while not self.client.wait_for_server():
                                 rospy.sleep(0.1)
                             # Send the goal pose to the move base client
-                            goal = gcg.get_the_goal(self.pickup_point_list)
+                            goal = self.gcg.get_the_goal(self.pickup_point_list[0, :])
                             self.client.send_goal(goal)
-                            self.time = self.client.get_goal_status().header.stamp
+                            self.time = rospy.Time.now()
                             # Wait for the goal to be reached
                             while self.status != actionlib.GoalStatus.SUCCEEDED or self.status != actionlib.GoalStatus.ABORTED or not self.timeout:
                                 self.status = self.client.get_state()
                                 self.timeout = (rospy.Time.now() - self.time) > rospy.Duration.from_sec(self.move_base_client_timeout)
-                                self.log_file_per_grid_point.write(ros::Time::now() + "," + self.current_pose_x + "," + self.current_pose_y + "," + self.current_pose_heading + "," + self.current_twist_linear_x + "," + self.current_twist_linear_y + "," + self.current_twist_angular_x + "," + self.current_twist_angular_y + "," + self.current_twist_angular_z + "," + self.current_vel_command + "," + self.current_steering_command + "," + self.status + "\n")
-                                self.current_pose.append([self.current_pose_x, self.current_pose_y])
-                            # Shutdown the mpc_local_planner
-                            launch_without_gp.shutdown()
+                                # If new pose is received then write to the log file
+                                if self.odom_stamp != self.previous_odom_stamp:
+                                    self.log_file_per_grid_point.write(str(rospy.Time.now()) + "," + str(self.current_pose_x) + "," + str(self.current_pose_y) + "," + str(self.current_pose_heading) + "," + str(self.current_twist_linear_x) + "," + str(self.current_twist_linear_y) + "," + str(self.current_twist_angular_x) + "," + str(self.current_twist_angular_y) + "," + str(self.current_twist_angular_z) + "," + str(self.current_vel_command) + "," + str(self.current_steering_command) + "," + str(self.status) + "\n")
+                                    self.current_pose.append([self.current_pose_x, self.current_pose_y])
+                                    self.previous_odom_stamp = self.odom_stamp
+                        # Shutdown the mpc_local_planner
+                        launch_without_gp.shutdown()
                         # Calculate the time elapsed
                         self.time_elapsed = rospy.Time.now() - self.time
                         # Calculate the distance travelled
@@ -132,6 +145,7 @@ class BatchSim:
                         self.reset_variables()
                     
     def odom_callback(self, odom):
+        self.odom_stamp = odom.header.stamp
         self.current_pose_x = odom.pose.pose.position.x
         self.current_pose_y = odom.pose.pose.position.y
         self.current_pose_z = odom.pose.pose.position.z
