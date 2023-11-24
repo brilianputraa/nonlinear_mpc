@@ -23,8 +23,7 @@ class GoalCheckerandGetter():
             match = re.search(pattern, goal)
             if match:
                 status = match.group("number")
-                if status == "3":
-                    return True            
+                return status          
     
     # Getting the goal points
     @staticmethod
