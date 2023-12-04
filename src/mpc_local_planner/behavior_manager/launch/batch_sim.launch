@@ -1,0 +1,6 @@
+<launch>
+        <!--  ************** Behavior Manager ***************  -->
+	<node pkg="behavior_manager" type="BatchSim.py" respawn="false" name="batch_sim" output="screen">
+		<rosparam file="$(find behavior_manager)/cfg/behavior_manager_params.yaml" command="load" />
+	</node>
+</launch>

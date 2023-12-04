@@ -1,6 +1,6 @@
 <launch>
         <!--  ************** Behavior Manager ***************  -->
 	<node pkg="behavior_manager" type="BehaviorManager.py" respawn="false" name="behavior_manager" output="screen">
-		<rosparam file="$(find behavior_manager)/cfg/behavior_manager_params_golfcart.yaml" command="load" />
+		<rosparam file="$(find behavior_manager)/cfg/behavior_manager_params.yaml" command="load" />
 	</node>
 </launch>

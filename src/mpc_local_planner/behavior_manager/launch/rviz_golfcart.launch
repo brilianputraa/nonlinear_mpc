@@ -1,0 +1,4 @@
+<launch>
+	<!-- RViz-->
+	<node name="rviz" pkg="rviz" type="rviz" args="-d $(find mpc_local_planner_examples)/cfg/rviz_golfcart_navigation.rviz"/>
+</launch>
