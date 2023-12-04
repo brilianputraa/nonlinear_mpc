@@ -4,8 +4,12 @@ SERVER_HOST: 164.125.253.215
 
 # Behavior parameters and directories
 goal_lists_dir: /home/vialab/nonlinear_mpc_sim/src/behavior_manager/data/parking_slot_locations.txt
+intermediate_goal_lists_dir: /home/vialab/nonlinear_mpc_sim/src/behavior_manager/data/intermediate_goal_locations.txt
 pickup_point_list_dir: /home/vialab/nonlinear_mpc_sim/src/behavior_manager/data/pickup_locations.txt
 
 # MPC Local Planner roslaunch directories
 mpc_with_global_planner_dir: /home/vialab/nonlinear_mpc_sim/src/mpc_local_planner/mpc_local_planner_examples/launch/carlike_quadratic_form_with_bag_sim.launch
 mpc_without_global_planner_dir: /home/vialab/nonlinear_mpc_sim/src/mpc_local_planner/mpc_local_planner_examples/launch/carlike_hybrid_with_bag_sim.launch
+
+# Simulation parameters
+is_sim : True
