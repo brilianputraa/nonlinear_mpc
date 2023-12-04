@@ -1,236 +1,297 @@
 #!/usr/bin/env python2.7
 
-import math
-import os
-import datetime
+import socket
+import re
+import struct
+
 import rospy
-import pickle
-import actionlib
 import roslaunch
 import numpy as np
-import tf.transformations
-import GazeboHelper as gh
+import actionlib
+import tf
 import GoalCheckerandGetter as gcg
+import GazeboHelper as gh
 
-from nav_msgs.msg import Odometry
-from geometry_msgs.msg import Twist
-from geometry_msgs.msg import Pose
-from gazebo_msgs.msg import ModelState
-from gazebo_msgs.srv import SetModelState
+from std_msgs.msg import String
 from move_base_msgs.msg import MoveBaseAction
-from move_base_msgs.msg import MoveBaseGoal
+from actionlib_msgs.msg import GoalStatusArray
+from geometry_msgs.msg import PoseStamped, PoseWithCovarianceStamped
+from nav_msgs.msg import Odometry
+from cgi import test
 
 
-class BatchSim:
+class BehaviorManager():
     def __init__(self):
-        # Pose and Twist of the robot
-        self.current_pose = []
-        self.current_pose_x = None
-        self.current_pose_y = None
-        self.current_pose_heading = None
-        self.current_twist_linear_x = None
-        self.current_twist_linear_y = None
-        self.current_twist_angular_x = None
-        self.current_twist_angular_y = None
-        self.current_twist_angular_z = None
-        self.previous_pose_x = None
-        self.previous_pose_y = None
-        self.previous_command_vel = None
-        self.previous_command_steering = None
-        self.odom_stamp = None
-        self.previous_odom_stamp = None
-        # Control commands
-        self.current_vel_command = None
-        self.current_steering_command = None
-        # Time measurement and distance measurement
-        self.distance_travelled = 0
-        self.time_elapsed = 0
-        # Goal status
-        self.goal_status = None
-        self.goal_reached = False
-        self.status = None
-        self.previous_status = None
-        self.timeout = False
-        self.time = None
-        # Helper classes
-        self.gh = gh.GazeboHelper()
-        self.gcg = gcg.GoalCheckerandGetter()
         self.client = actionlib.SimpleActionClient('move_base',MoveBaseAction)
-        # Set the initial pose of the robot in the gazebo world
-        self.pose_z = 0.098094
-        # Get the rosparam
+        self.sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+        self.PORT = rospy.get_param("~PORT_NUMBER")
+        self.HOST = rospy.get_param("~SERVER_HOST")
+        self.goal_lists_dir = rospy.get_param("~goal_lists_dir")
         self.pickup_point_list_dir = rospy.get_param("~pickup_point_list_dir")
-        self.mpc_local_planner_launch_dir = rospy.get_param("~mpc_without_global_planner_dir")
-        # ROS Subscribers
-        self.odom_sub = rospy.Subscriber("/INS/odom", Odometry, self.odom_callback)
-        self.cmd_vel_sub = rospy.Subscriber("/cmd_vel", Twist, self.cmd_vel_callback)
-        # Get the goal pose of the robot in the gazebo world
-        self.pickup_point_list = np.loadtxt(self.pickup_point_list_dir, delimiter=',')
-        # Grid area of the search
-        self.grid_x_min = 26.071 #26.071
-        self.grid_x_max = 29.071
-        self.grid_y_min = -1.609
-        self.grid_y_max = 1.391
-        self.grid_yaw_max = 0.0
-        self.grid_yaw_min = -np.pi/4
-        # Incrementing grid size for the grid search
-        self.increment_grid_size_x = 0.2
-        self.increment_grid_size_y = 0.2
-        self.increment_grid_size_yaw = 0.0872665  
-        # ROS Timeouts
-        self.move_base_client_timeout = 90.0
-        # Loggers
-        self.current_date_time = datetime.datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
-        self.logdir = os.path.join(os.path.dirname(os.path.realpath(__file__)), "logs", self.current_date_time)
-        self.log_file_everything = None
-        self.log_file_per_grid_point = None
-        self.log_file_name_grid_point = None
-        self.checkpoint_dir = os.path.join(os.path.dirname(os.path.realpath(__file__)), "checkpoint")
-        self.checkpoint_reached = False
-        try:    
-            self.checkpoint = pickle.load(open(os.path.join(self.checkpoint_dir, "checkpoint.p"), "rb"))
-            rospy.loginfo("Checkpoint found, setting the checkpoint to: " + str(self.checkpoint))
-        except:
-            self.checkpoint = [26.471, -1.0090000000000001, -0.7853981633974483]
-            rospy.loginfo("Checkpoint not found, setting the checkpoint to: " + str(self.checkpoint))
-            pass
-
-    def run_batch_sim(self):
-        # Create the log directory and open the log file
-        os.mkdir(self.logdir)
-        time_start = rospy.Time.now().to_sec()
-        log_file_everything = open(os.path.join(self.logdir, "log_all_grid.txt"), "w")
-        # Write Header to the log file
-        log_file_everything.write("x_grid,y_grid,yaw_grid,distance_travelled,time_elapsed,goal_status\n")
-        # Close the Log file
-        log_file_everything.close()
-        # For each x in the grid area
-        for x in np.arange(self.grid_x_min, self.grid_x_max + self.increment_grid_size_x, self.increment_grid_size_x):
-            # For each y in the grid area
-            for y in np.arange(self.grid_y_min, self.grid_y_max + self.increment_grid_size_y , self.increment_grid_size_y):
-                # For each yaw in the grid area
-                for yaw in np.arange(self.grid_yaw_min, self.grid_yaw_max + self.increment_grid_size_yaw, self.increment_grid_size_yaw):
-                    # Check the checkpoint
-                    if not self.checkpoint_reached: 
-                        if self.checkpoint[0] == x and self.checkpoint[1] == y and self.checkpoint[2] == yaw:
-                            self.checkpoint_reached = True
-                        else:
-                            rospy.loginfo("Grid has been explored")
-                            continue
-                    # Dumping current grid point
-                    self.checkpoint = [x, y, yaw]
-                    pickle.dump(self.checkpoint, open(os.path.join(self.checkpoint_dir, "checkpoint.p"), "wb"))
-                    # Set the log file name for the current grid point
-                    self.log_file_name_grid_point = "log_per_grid_point_" + str(x) + "_" + str(y) + "_" + str(yaw) + ".txt"
-                    # Open the log file for the current grid point
-                    with open(os.path.join(self.logdir, self.log_file_name_grid_point), "w") as log_file_per_grid_point:
-                        # Write Header to the log file
-                        log_file_per_grid_point.write("time,current_pose_x,current_pose_y,current_pose_heading,current_twist_linear_x,current_twist_linear_y,current_twist_angular_x,current_twist_angular_y,current_twist_angular_z,current_vel_command,current_steering_command,goal_status\n")
-                        # Set the pose of the robot to the current grid poin
-                        self.gh.setModelPoseAndSpeed("rbcar", [x, y, self.pose_z, 0.0, 0.0, yaw], [0.0, 0.0, 0.0, 0.0, 0.0, 0.0])
-                        self.gh.setModelPoseAndSpeed("unit_box_4", [27.044562, -5.320081, 0.549281, 0.0, 0.0, 0.0], [0.0, 0.0, 0.0, 0.0, 0.0, 0.0])
-                        rospy.sleep(0.5)
-                        # Launch the mpc_local_planner
-                        uuid = roslaunch.rlutil.get_or_generate_uuid(None, False)
-                        roslaunch.configure_logging(uuid)
-                        # Configure the arguments for the bag file
-                        bag_file_args = "bag_name:=" + "log_per_grid_point_" + str(x) + "_" + str(y) + "_" + str(yaw)
-                        cli_args = [self.mpc_local_planner_launch_dir, bag_file_args]
-                        launch_without_gp = roslaunch.parent.ROSLaunchParent(uuid, [(roslaunch.rlutil.resolve_launch_arguments(cli_args)[0], cli_args[1:])])
-                        # Start the mpc_local_planner
-                        launch_without_gp.start()         
-                        # Make sure that everything is started
-                        rospy.sleep(4)                    
-                        self.client.wait_for_server()
-                        rospy.loginfo("Move Base Client is Ready")
-                        # Send the goal pose to the move base client
-                        goal = self.gcg.get_the_goal(self.pickup_point_list[0, :])
-                        self.client.send_goal(goal)
-                        self.time = rospy.Time.now()
-                        # Wait for the goal to be reached
-                        while self.status != 3 and self.status != 4 and not self.timeout:
-                            self.status = self.client.get_state()
-                            # print("Running Time: " + str(rospy.Time.now().to_sec() - self.time.to_sec()) + " Goal Status: " + str(self.status))
-                            self.timeout = (rospy.Time.now().to_sec() - self.time.to_sec()) > self.move_base_client_timeout
-                            # If new pose is received then write to the log file
-                            if self.odom_stamp != self.previous_odom_stamp or self.status != self.previous_status:
-                                log_file_per_grid_point.write(str(rospy.Time.now()) + "," + str(self.current_pose_x) + "," + str(self.current_pose_y) + "," + str(self.current_pose_heading) + "," + str(self.current_twist_linear_x) + "," + str(self.current_twist_linear_y) + "," + str(self.current_twist_angular_x) + "," + str(self.current_twist_angular_y) + "," + str(self.current_twist_angular_z) + "," + str(self.current_vel_command) + "," + str(self.current_steering_command) + "," + str(self.status) + "\n")
-                                self.current_pose.append([self.current_pose_x, self.current_pose_y])
-                                self.previous_odom_stamp = self.odom_stamp
-                                self.previous_status = self.status
-                    # Calculate the time elapsed
-                    self.time_elapsed = rospy.Time.now().to_sec() - self.time.to_sec()
-                    # Shutdown the mpc_local_planner
-                    launch_without_gp.shutdown()
-                    # Make sure that everything is shutdown
-                    rospy.sleep(4)
-                    # Calculate the distance travelled
-                    current_pose_array = np.array(self.current_pose)
-                    self.distance_travelled = np.linalg.norm(current_pose_array[1:, :] - current_pose_array[:-1, :], axis=1).sum()
-                    # Write to the whole log file
-                    if self.status == 3:
-                        self.goal_status = "SUCCEDDED"
-                    elif self.status == 4:
-                        self.goal_status = "ABORTED"
-                    elif self.timeout:
-                        self.goal_status = "TIMEOUT"
-                    # Open the log file for the whole simulation
-                    log_file_everything = open(os.path.join(self.logdir, "log_all_grid.txt"), "a")
-                    # Writing to the log files
-                    log_file_everything.write(str(x) + "," + str(y) + "," + str(yaw) + "," + str(self.distance_travelled) + "," + str(self.time_elapsed) + "," + str(self.goal_status) + "\n")
-                    rospy.sleep(0.1)
-                    # Close the log file for the whole simulation
-                    log_file_everything.close()
-                    # Reset the variables
-                    self.reset_variables()
-        print("########################################## Batch Simulation Completed #########################################")
-        print("Elapsed Time: " + str(rospy.Time.now().to_sec() - time_start) + " seconds")
-                    
-    def odom_callback(self, odom):
-        self.odom_stamp = odom.header.stamp
-        self.current_pose_x = odom.pose.pose.position.x
-        self.current_pose_y = odom.pose.pose.position.y
-        self.current_pose_z = odom.pose.pose.position.z
-        current_pose_rpy = tf.transformations.euler_from_quaternion([odom.pose.pose.orientation.x, odom.pose.pose.orientation.y, odom.pose.pose.orientation.z, odom.pose.pose.orientation.w])
-        self.current_pose_heading = current_pose_rpy[2]
-        self.current_twist_linear_x = odom.twist.twist.linear.x
-        self.current_twist_linear_y = odom.twist.twist.linear.y
-        self.current_twist_angular_x = odom.twist.twist.angular.x
-        self.current_twist_angular_y = odom.twist.twist.angular.y
-        self.current_twist_angular_z = odom.twist.twist.angular.z
-        pass
-    
-    def cmd_vel_callback(self, cmd_vel):
-        self.current_vel_command = cmd_vel.linear.x
-        self.current_steering_command = cmd_vel.angular.z
-        pass
-    
-    def reset_variables(self):
-        self.current_pose = []
-        self.current_pose_x = None
-        self.current_pose_y = None
-        self.current_pose_heading = None
-        self.current_twist_linear_x = None
-        self.current_twist_linear_y = None
-        self.current_twist_angular_x = None
-        self.current_twist_angular_y = None
-        self.current_twist_angular_z = None
-        self.previous_pose_x = None
-        self.previous_pose_y = None
-        self.current_vel_command = None
-        self.current_steering_command = None
-        self.distance_travelled = 0
-        self.time_elapsed = 0
-        self.goal_status = None
-        self.goal_reached = False
-        self.status = None
-        self.timeout = False
-        pass
-    
-                    
-if __name__ == '__main__':
-    rospy.init_node('batch_sim', anonymous=True)
-    batch_sim = BatchSim()
-    while not rospy.is_shutdown():
-        batch_sim.run_batch_sim()
+        self.intemediate_goal_dir = rospy.get_param("~intermediate_goal_lists_dir")
+        self.mpc_with_global_planner_dir = rospy.get_param("~mpc_with_global_planner_dir")
+        self.mpc_without_global_planner_dir = rospy.get_param("~mpc_without_global_planner_dir")
+        self.is_sim = rospy.get_param("~is_sim")
         
+        self.goal_point_list = np.loadtxt(self.goal_lists_dir, delimiter=',')
+        self.pickup_point_list = np.loadtxt(self.pickup_point_list_dir, delimiter=',')
+        self.intemediate_goal_dir = np.loadtxt(self.intemediate_goal_dir, delimiter=',')
+        
+        self.goal_status_sub = rospy.Subscriber("/move_base/status", GoalStatusArray, self.move_base_status_cb, queue_size=1)
+        self.odom_sub = rospy.Subscriber("/INS/odom", Odometry, self.odom_cb, queue_size=1)
+        self.goal_pub = rospy.Publisher("/move_base_simple/goal", PoseStamped, queue_size=1)
+        self.mode_pub = rospy.Publisher("/driving_mode", String, queue_size=1)
+        self.amcl_pose_pub = rospy.Publisher("/initialpose", PoseWithCovarianceStamped, queue_size=1)
+
+        # Simulation Parameters (Gazebo)
+        if self.is_sim:
+            self.gazebo_helper = gh.GazeboHelper()
+            self.starting_pose = [-19.8261, -12.2594, 0.097952, 0.0, 0.0, 0.0]
+            self.starting_vel = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+            
+        self.amcl_pose_activate = True
+            
+        self.parking_slot = None
+        self.pickup_req = None
+        self.scenario = None
+        self.is_connected = False
+        self.cart_parked = False
+        self.waiting_time_before_parking = 20
+        self.waiting_time_before_pickup = 20
+        self.HEADER_SIZE = 10
+        self.BUFFER_SIZE = 1024
+        
+        self.manual_mode = String()
+        self.manual_mode.data = "m"
+        self.autonomous_mode = String()
+        self.autonomous_mode.data = "a"
+        
+        self.goal_utils = gcg.GoalCheckerandGetter()
+        
+        # Current Pose
+        self.current_pose = [0.0, 0.0, 0.0]
+        
+        # Byte Data for the Server Communication
+        self.parked_state_front = struct.pack('!B', 10)
+        self.parked_state_middle = struct.pack('!B', 0)
+        self.parked_state_back = struct.pack('!B', 0)
+        self.parked_state = self.parked_state_front + self.parked_state_middle + self.parked_state_back
+        
+    def scenario_runner(self):        
+        rospy.loginfo("Automated Valet Parking System is Running!")
+        rospy.loginfo("Trying to Connect to the Server")
+        
+        while not self.is_connected:
+        # Initializing the Socket Connection to the Server
+            try:
+                self.sock.connect((self.HOST, self.PORT))
+                self.is_connected = True
+                print("Connection with Server Established!")
+            except:
+                rospy.sleep(0.1)
+        
+        test_data = struct.pack('!B', 2) + struct.pack('!B', 0)
+        self.sock.sendall(test_data)
+        print("Data Sent!")
+        
+        ############ Starting the Behavior Manager #############
+        # If in the simulation mode, reset the gazebo world
+        if self.is_sim:
+            rospy.loginfo("Resetting the Simulation World")
+            self.gazebo_helper.setModelPoseAndSpeed("rbcar", self.starting_pose, self.starting_vel)
+        
+        # Waiting for the Server to Send the Scenario (Dropping off the passenger and go to the parking slot)
+        while self.scenario != 1:
+            rospy.loginfo("Waiting for the Server to Send the Scenario")
+            bytes_data = self.sock.recv(self.BUFFER_SIZE)
+            bytes_data = bytearray(bytes_data)
+            self.scenario = bytes_data[0]
+            self.parking_slot = int(bytes_data[1]) * 256 + bytes_data[2]
+
+        print('Receive scenario: {:d}, slot number: {:d}'.format(self.scenario, self.parking_slot))
+
+        #TODO: Implement the roslaunch API to launch the MPC (1st phase)
+        # Starting the Move Base Server
+        uuid = roslaunch.rlutil.get_or_generate_uuid(None, False)
+        roslaunch.configure_logging(uuid)
+        launch_with_gp = roslaunch.parent.ROSLaunchParent(uuid, [self.mpc_with_global_planner_dir])
+        launch_with_gp.start()
+         
+        # Starting the Move Base Client and Checking the Server (1st phase)
+        while not self.client.wait_for_server():
+            rospy.sleep(0.1)
+            
+        rospy.loginfo("Move_base action server is on")
+               
+        # Activate the Autonomous Driving Mode
+        self.mode_pub.publish(self.autonomous_mode)
+        print("Received Data!")
+        print("Parking Slot Number: ", self.parking_slot)
+        
+        # Set the AMCL Initial Pose
+        if self.amcl_pose_activate:
+            amcl_pose = self.goal_utils.set_amcl_pose(self.current_pose)
+            self.amcl_pose_pub.publish(amcl_pose)
+
+        # Start the Scenario (Getting the first goal): Dropping off the passenger and go to the parking slot
+        if self.scenario == 1:
+            rospy.loginfo("Dropping off the passenger")
+            goal_points = self.goal_point_list[self.parking_slot - 1, 1:4]
+            goal = self.goal_utils.get_the_goal(goal_points)
+            print(goal)
+            self.client.send_goal(goal)
+            #TODO: Possibly not able to know the status of the goal (can be replaced with manually receiving the status from the server)
+            self.client.wait_for_result()
+            
+            #TODO: Implement the roslaunch API to kill the current MPC and change the MPC parameters (2nd phase)
+            if self.client.get_result():
+                print("Goal is reached status: %s".format(self.client.get_result()))
+                rospy.loginfo("Passenger successfully dropped off")
+                launch_with_gp.shutdown()
+                launch_without_gp = roslaunch.parent.ROSLaunchParent(uuid, [self.mpc_without_global_planner_dir])
+                launch_without_gp.start()
+            else:
+                rospy.loginfo("Passenger drop off failed")
+            
+            # Starting the Move Base Client and Checking the Server (2nd phase)
+            # self.client.wait_for_server()
+            while not self.client.wait_for_server():
+                rospy.sleep(0.1)
+            rospy.loginfo("Move_base action server is on")
+            
+            for i in range(self.waiting_time_before_parking):
+                print("Waiting before going to the parking slot: ", i)
+            
+            rospy.loginfo("Going to the parking slot")
+            # Set the AMCL Initial Pose
+            if self.amcl_pose_activate:
+                amcl_pose = self.goal_utils.set_amcl_pose(self.current_pose)
+                self.amcl_pose_pub.publish(amcl_pose)
+            goal_points = self.goal_point_list[self.parking_slot - 1, 4:]
+            goal = self.goal_utils.get_the_goal(goal_points)
+            self.client.send_goal(goal)
+            #TODO: Possibly not able to know the status of the goal (can be replaced with manually receiving the status from the server)
+            self.client.wait_for_result()
+            if self.client.get_result():
+                print("Goal is reached status: %s".format(self.client.get_result()))
+                rospy.loginfo("The golf-cart is parked")
+                self.cart_parked = True
+            
+                # Change to the manual driving mode
+                self.mode_pub.publish(self.manual_mode)
+                # Sending the parked state to the Server
+                self.sock.send(self.parked_state)
+                print("Parked State Sent!")
+                # Resetting the Scenario and to be ready for the next phase (Shutdown the local planner)
+                launch_without_gp.shutdown()
+            else:
+                rospy.loginfo("Parking failed")
+        # Waiting for the Server to Send the Scenario (When the server requests the pickup)
+        rospy.loginfo("Waiting for the Server for Requesting Pickup")
+        while True:
+            bytes_data = self.sock.recv(self.BUFFER_SIZE)
+            bytes_data = bytearray(bytes_data)
+            self.scenario = bytes_data[0]
+            self.pickup_req = int(bytes_data[1]) * 256 + bytes_data[2]
+            rospy.loginfo("Received Data! Scenario: {}, Pickup Request: {}".format(self.scenario, self.pickup_req))
+            
+            ###################### Testing purposes (will be removed when the app is completed) #########################
+            #self.scenario = 2
+            #self.pickup_req = 0
+            ############################################################################################################
+
+            if self.scenario == 2 and self.pickup_req == 0:
+                rospy.loginfo("The Server has requested the pickup")
+                break
+        
+        # Start the Scenario (Getting the second goal): Picking up the passenger
+        if self.scenario == 2 and self.cart_parked:
+            launch_with_gp_pickup = roslaunch.parent.ROSLaunchParent(uuid, [self.mpc_without_global_planner_dir])
+            for i in range(self.waiting_time_before_pickup):
+                print("Waiting before picking up the passenger: ", i)
+            # Activate the Autonomous Driving Mode
+            self.mode_pub.publish(self.autonomous_mode)
+            #TODO: Implement the roslaunch API to launch the MPC with the new parameters (3rd phase)
+            launch_with_gp_pickup.start()
+            # Starting the Move Base Client and Checking the Server (3rd phase)
+            while not self.client.wait_for_server():
+                rospy.sleep(0.1)
+            rospy.loginfo("Move_base action server is on")  
+            rospy.loginfo("Going to the passenger")
+            # Intermediate goal points setter
+            # First intermediate goal
+            goal_points = self.goal_point_list[self.parking_slot - 1, 7:10]
+            # Set the AMCL Initial Pose
+            if self.amcl_pose_activate:
+                amcl_pose = self.goal_utils.set_amcl_pose(self.current_pose)
+                self.amcl_pose_pub.publish(amcl_pose)
+            goal = self.goal_utils.get_the_goal(goal_points, pickup=False)
+            self.client.send_goal(goal)
+            #TODO: Possibly not able to know the status of the goal (can be replaced with manually receiving the status from the server)
+            self.client.wait_for_result()
+            if self.client.get_result():
+                rospy.loginfo("1st Intermediate goal reached")
+                # Set the AMCL Initial Pose
+                if self.amcl_pose_activate:
+                    amcl_pose = self.goal_utils.set_amcl_pose(self.current_pose)
+                    self.amcl_pose_pub.publish(amcl_pose)
+                # After the intermediate goal is reached, the goal is set to the actual pickup point
+                goal_points = self.goal_point_list[self.parking_slot - 1, 10:]
+                goal = self.goal_utils.get_the_goal(goal_points, pickup=False)
+                self.client.send_goal(goal)
+            else:
+                rospy.loginfo("1st Intermediate goal failed")
+            # Second Intermediate goal
+            self.client.wait_for_result()
+            if self.client.get_result():
+                rospy.loginfo("2nd Intermediate goal reached")
+                # Set the AMCL Initial Pose
+                if self.amcl_pose_activate:
+                    amcl_pose = self.goal_utils.set_amcl_pose(self.current_pose)
+                    self.amcl_pose_pub.publish(amcl_pose)
+                # After the intermediate goal is reached, the goal is set to the actual pickup point
+                goal_points = self.pickup_point_list[0, :]
+                goal = self.goal_utils.get_the_goal(goal_points, pickup=True)
+                self.client.send_goal(goal)
+            else:
+                rospy.loginfo("2nd Intermediate goal failed")
+            
+            self.client.wait_for_result()
+            # When the passenger is picked up successfully, reset the state of the scenario
+            if self.client.get_result():
+                rospy.loginfo("Passenger successfully picked up")
+                self.cart_parked = False
+                # Change to the manual driving mode
+                self.mode_pub.publish(self.manual_mode)
+                
+                # Resetting the Scenario and the Parking Slot  
+                self.is_connected = False
+                self.scenario = None
+                self.parking_slot = None
+                self.cart_parked = False
+                launch_with_gp_pickup.shutdown()
+            else:
+                rospy.loginfo("Passenger pickup failed")
+            
+    def move_base_status_cb(self, msg):
+        if self.goal_utils.get_the_goal_reached_status(msg):
+            pass
+        
+    def odom_cb(self, msg):
+        self.current_pose[0] = msg.pose.pose.position.x
+        self.current_pose[1] = msg.pose.pose.position.y
+        self.current_pose[2] = tf.transformations.euler_from_quaternion([msg.pose.pose.orientation.x, msg.pose.pose.orientation.y, msg.pose.pose.orientation.z, msg.pose.pose.orientation.w])[2]
+        # rospy.loginfo("Current Pose: {}".format(self.current_pose))
+        pass
+            
+class ActionStatus():
+    def __init__(self):
+        self.current_status = 0
+
+
+if __name__ == '__main__':
+    rospy.init_node("behavior_manager")
+    behavior_manager = BehaviorManager()
+    while not rospy.is_shutdown():
+        behavior_manager.scenario_runner()
+    rospy.spin()

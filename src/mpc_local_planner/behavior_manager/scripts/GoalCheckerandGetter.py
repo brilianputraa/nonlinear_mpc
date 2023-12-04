@@ -5,6 +5,7 @@ import rospy
 
 from tf.transformations import quaternion_from_euler
 from move_base_msgs.msg import MoveBaseGoal
+from geometry_msgs.msg import PoseWithCovarianceStamped, PoseStamped
 
 
 class GoalCheckerandGetter():
@@ -43,6 +44,21 @@ class GoalCheckerandGetter():
         goal.target_pose.pose.orientation.z = rpy_goal[2]
         goal.target_pose.pose.orientation.w = rpy_goal[3]
         return goal
+    
+    # Setting amcl pose
+    @staticmethod
+    def set_amcl_pose(amcl_pose_points):
+        amcl_pose = PoseWithCovarianceStamped()
+        amcl_pose.header.frame_id = "map"
+        amcl_pose.header.stamp = rospy.Time.now()
+        amcl_pose.pose.pose.position.x = amcl_pose_points[0]
+        amcl_pose.pose.pose.position.y = amcl_pose_points[1]
+        rpy_amcl = quaternion_from_euler(0, 0, amcl_pose_points[2])
+        amcl_pose.pose.pose.orientation.x = rpy_amcl[0]
+        amcl_pose.pose.pose.orientation.y = rpy_amcl[1]
+        amcl_pose.pose.pose.orientation.z = rpy_amcl[2]
+        amcl_pose.pose.pose.orientation.w = rpy_amcl[3]
+        return amcl_pose
 
 
 if __name__ == '__main__':
