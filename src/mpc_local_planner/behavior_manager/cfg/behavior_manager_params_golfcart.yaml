@@ -13,3 +13,4 @@ mpc_without_global_planner_dir: /home/vialab/AVP_ws/src/nonlinear_mpc/src/mpc_lo
 
 # Simulation parameters
 is_sim : False
+isTestWithoutServer: True
