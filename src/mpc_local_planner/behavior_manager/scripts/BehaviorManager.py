@@ -32,6 +32,9 @@ class BehaviorManager():
         self.mpc_with_global_planner_dir = rospy.get_param("~mpc_with_global_planner_dir")
         self.mpc_without_global_planner_dir = rospy.get_param("~mpc_without_global_planner_dir")
         self.is_sim = rospy.get_param("~is_sim")
+        # Using behavior manager without the server (for testing purposes)
+        self.isTestWithoutServer = rospy.get_param("~isTestWithoutServer")
+        ############## Testing purposes Only #################
         
         self.goal_point_list = np.loadtxt(self.goal_lists_dir, delimiter=',')
         self.pickup_point_list = np.loadtxt(self.pickup_point_list_dir, delimiter=',')
@@ -41,16 +44,13 @@ class BehaviorManager():
         self.odom_sub = rospy.Subscriber("/INS/odom", Odometry, self.odom_cb, queue_size=1)
         self.goal_pub = rospy.Publisher("/move_base_simple/goal", PoseStamped, queue_size=1)
         self.mode_pub = rospy.Publisher("/driving_mode", String, queue_size=1)
-        self.amcl_pose_pub = rospy.Publisher("/initialpose", PoseWithCovarianceStamped, queue_size=1)
 
         # Simulation Parameters (Gazebo)
         if self.is_sim:
             self.gazebo_helper = gh.GazeboHelper()
             self.starting_pose = [-19.8261, -12.2594, 0.097952, 0.0, 0.0, 0.0]
             self.starting_vel = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
-            
-        self.amcl_pose_activate = True
-            
+                        
         self.parking_slot = None
         self.pickup_req = None
         self.scenario = None
@@ -79,38 +79,41 @@ class BehaviorManager():
         
     def scenario_runner(self):        
         rospy.loginfo("Automated Valet Parking System is Running!")
-        rospy.loginfo("Trying to Connect to the Server")
-        
-        while not self.is_connected:
-        # Initializing the Socket Connection to the Server
-            try:
-                self.sock.connect((self.HOST, self.PORT))
-                self.is_connected = True
-                print("Connection with Server Established!")
-            except:
-                rospy.sleep(0.1)
-        
-        test_data = struct.pack('!B', 2) + struct.pack('!B', 0)
-        self.sock.sendall(test_data)
-        print("Data Sent!")
-        
         ############ Starting the Behavior Manager #############
-        # If in the simulation mode, reset the gazebo world
-        if self.is_sim:
-            rospy.loginfo("Resetting the Simulation World")
-            self.gazebo_helper.setModelPoseAndSpeed("rbcar", self.starting_pose, self.starting_vel)
-        
-        # Waiting for the Server to Send the Scenario (Dropping off the passenger and go to the parking slot)
-        while self.scenario != 1:
-            rospy.loginfo("Waiting for the Server to Send the Scenario")
-            bytes_data = self.sock.recv(self.BUFFER_SIZE)
-            bytes_data = bytearray(bytes_data)
-            self.scenario = bytes_data[0]
-            self.parking_slot = int(bytes_data[1]) * 256 + bytes_data[2]
+        if not self.isTestWithoutServer:
+            rospy.loginfo("Trying to Connect to the Server")
+            
+            while not self.is_connected:
+            # Initializing the Socket Connection to the Server
+                try:
+                    self.sock.connect((self.HOST, self.PORT))
+                    self.is_connected = True
+                    print("Connection with Server Established!")
+                except:
+                    rospy.sleep(0.1)
+            
+            test_data = struct.pack('!B', 2) + struct.pack('!B', 0)
+            self.sock.sendall(test_data)
+            print("Data Sent!")
+            
+            # If in the simulation mode, reset the gazebo world
+            if self.is_sim:
+                rospy.loginfo("Resetting the Simulation World")
+                self.gazebo_helper.setModelPoseAndSpeed("rbcar", self.starting_pose, self.starting_vel)
+            
+            # Waiting for the Server to Send the Scenario (Dropping off the passenger and go to the parking slot)
+            while self.scenario != 1:
+                rospy.loginfo("Waiting for the Server to Send the Scenario")
+                bytes_data = self.sock.recv(self.BUFFER_SIZE)
+                bytes_data = bytearray(bytes_data)
+                self.scenario = bytes_data[0]
+                self.parking_slot = int(bytes_data[1]) * 256 + bytes_data[2]
+        else:
+            self.scenario = 1
+            self.parking_slot = 9
 
         print('Receive scenario: {:d}, slot number: {:d}'.format(self.scenario, self.parking_slot))
 
-        #TODO: Implement the roslaunch API to launch the MPC (1st phase)
         # Starting the Move Base Server
         uuid = roslaunch.rlutil.get_or_generate_uuid(None, False)
         roslaunch.configure_logging(uuid)
@@ -127,11 +130,6 @@ class BehaviorManager():
         self.mode_pub.publish(self.autonomous_mode)
         print("Received Data!")
         print("Parking Slot Number: ", self.parking_slot)
-        
-        # Set the AMCL Initial Pose
-        if self.amcl_pose_activate:
-            amcl_pose = self.goal_utils.set_amcl_pose(self.current_pose)
-            self.amcl_pose_pub.publish(amcl_pose)
 
         # Start the Scenario (Getting the first goal): Dropping off the passenger and go to the parking slot
         if self.scenario == 1:
@@ -163,10 +161,6 @@ class BehaviorManager():
                 print("Waiting before going to the parking slot: ", i)
             
             rospy.loginfo("Going to the parking slot")
-            # Set the AMCL Initial Pose
-            if self.amcl_pose_activate:
-                amcl_pose = self.goal_utils.set_amcl_pose(self.current_pose)
-                self.amcl_pose_pub.publish(amcl_pose)
             goal_points = self.goal_point_list[self.parking_slot - 1, 4:]
             goal = self.goal_utils.get_the_goal(goal_points)
             self.client.send_goal(goal)
@@ -176,33 +170,38 @@ class BehaviorManager():
                 print("Goal is reached status: %s".format(self.client.get_result()))
                 rospy.loginfo("The golf-cart is parked")
                 self.cart_parked = True
-            
                 # Change to the manual driving mode
                 self.mode_pub.publish(self.manual_mode)
-                # Sending the parked state to the Server
-                self.sock.send(self.parked_state)
+                if not self.isTestWithoutServer:
+                    # Sending the parked state to the Server
+                    self.sock.send(self.parked_state)
                 print("Parked State Sent!")
                 # Resetting the Scenario and to be ready for the next phase (Shutdown the local planner)
                 launch_without_gp.shutdown()
             else:
                 rospy.loginfo("Parking failed")
         # Waiting for the Server to Send the Scenario (When the server requests the pickup)
-        rospy.loginfo("Waiting for the Server for Requesting Pickup")
-        while True:
-            bytes_data = self.sock.recv(self.BUFFER_SIZE)
-            bytes_data = bytearray(bytes_data)
-            self.scenario = bytes_data[0]
-            self.pickup_req = int(bytes_data[1]) * 256 + bytes_data[2]
-            rospy.loginfo("Received Data! Scenario: {}, Pickup Request: {}".format(self.scenario, self.pickup_req))
-            
-            ###################### Testing purposes (will be removed when the app is completed) #########################
-            #self.scenario = 2
-            #self.pickup_req = 0
-            ############################################################################################################
+        if not self.isTestWithoutServer:
+            rospy.loginfo("Waiting for the Server for Requesting Pickup")
+            while True:
+                bytes_data = self.sock.recv(self.BUFFER_SIZE)
+                bytes_data = bytearray(bytes_data)
+                self.scenario = bytes_data[0]
+                self.pickup_req = int(bytes_data[1]) * 256 + bytes_data[2]
+                rospy.loginfo("Received Data! Scenario: {}, Pickup Request: {}".format(self.scenario, self.pickup_req))
+                
+                ###################### Testing purposes (will be removed when the app is completed) #########################
+                #self.scenario = 2
+                #self.pickup_req = 0
+                ############################################################################################################
 
-            if self.scenario == 2 and self.pickup_req == 0:
-                rospy.loginfo("The Server has requested the pickup")
-                break
+                if self.scenario == 2 and self.pickup_req == 0:
+                    rospy.loginfo("The Server has requested the pickup")
+                    break
+        else:
+            rospy.sleep(5)
+            self.scenario = 2
+            self.pickup_req = 0
         
         # Start the Scenario (Getting the second goal): Picking up the passenger
         if self.scenario == 2 and self.cart_parked:
@@ -221,20 +220,12 @@ class BehaviorManager():
             # Intermediate goal points setter
             # First intermediate goal
             goal_points = self.goal_point_list[self.parking_slot - 1, 7:10]
-            # Set the AMCL Initial Pose
-            if self.amcl_pose_activate:
-                amcl_pose = self.goal_utils.set_amcl_pose(self.current_pose)
-                self.amcl_pose_pub.publish(amcl_pose)
             goal = self.goal_utils.get_the_goal(goal_points, pickup=False)
             self.client.send_goal(goal)
             #TODO: Possibly not able to know the status of the goal (can be replaced with manually receiving the status from the server)
             self.client.wait_for_result()
             if self.client.get_result():
                 rospy.loginfo("1st Intermediate goal reached")
-                # Set the AMCL Initial Pose
-                if self.amcl_pose_activate:
-                    amcl_pose = self.goal_utils.set_amcl_pose(self.current_pose)
-                    self.amcl_pose_pub.publish(amcl_pose)
                 # After the intermediate goal is reached, the goal is set to the actual pickup point
                 goal_points = self.goal_point_list[self.parking_slot - 1, 10:]
                 goal = self.goal_utils.get_the_goal(goal_points, pickup=False)
@@ -245,10 +236,6 @@ class BehaviorManager():
             self.client.wait_for_result()
             if self.client.get_result():
                 rospy.loginfo("2nd Intermediate goal reached")
-                # Set the AMCL Initial Pose
-                if self.amcl_pose_activate:
-                    amcl_pose = self.goal_utils.set_amcl_pose(self.current_pose)
-                    self.amcl_pose_pub.publish(amcl_pose)
                 # After the intermediate goal is reached, the goal is set to the actual pickup point
                 goal_points = self.pickup_point_list[0, :]
                 goal = self.goal_utils.get_the_goal(goal_points, pickup=True)
@@ -292,6 +279,5 @@ class ActionStatus():
 if __name__ == '__main__':
     rospy.init_node("behavior_manager")
     behavior_manager = BehaviorManager()
-    while not rospy.is_shutdown():
-        behavior_manager.scenario_runner()
+    behavior_manager.scenario_runner()
     rospy.spin()
